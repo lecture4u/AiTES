@@ -115,7 +115,7 @@ public class MQTTClient implements MqttCallback{
 		connOpt = new MqttConnectOptions();
 		connOpt.setCleanSession(true);
 		connOpt.setKeepAliveInterval(30);
-		
+		System.out.println("run");
 		
 		try{
 			myClient = new MqttClient(brokerIP,clientID);
