@@ -4,14 +4,12 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.lang.reflect.Method;
-
-
-
-
-
+import java.util.ArrayList;
+import java.util.Iterator;
 
 import org.eclipse.paho.client.mqttv3.*;
 
+import com.github.aites.device.Device;
 import com.github.aites.iotgateway.DataProcessor;
 import com.opencsv.CSVReader;
 public class MQTTClient implements MqttCallback{
@@ -33,10 +31,13 @@ public class MQTTClient implements MqttCallback{
 	private String affiliateLocalName;
 	private String affiliateGlobalName;
 	private String affiliateName;
+	
+	private ArrayList<Device> deviceList;
 	public MQTTClient(String clientID, String brokerIP, String moduleURL){
 		this.clientID = clientID;
 		this.brokerIP = brokerIP;
 		this.moduleURL = moduleURL;
+		deviceList = new ArrayList<Device>();
 		idenfyAffiliate();
 	}
 	@Override
@@ -59,19 +60,58 @@ public class MQTTClient implements MqttCallback{
 		System.out.println("Topic:"+topic);
 		System.out.println("Message:"+mqttMessage);
 		System.out.println("----------------------------------------------------------");
+		
+		String[] deviceSplit = new String[4];
+		String deviceName;
 		if(topic.equals("$SYS/broker/log/N")){
 			if(mqttMessage.matches(".*connected.*")){
+				int deviceNameStart = mqttMessage.indexOf("as");
+				String deviceMiddleName = mqttMessage.substring(deviceNameStart);
 				
+				int deviceNameEnd = deviceMiddleName.indexOf("(");
+				deviceName = deviceMiddleName.substring(3,deviceNameEnd-1);
+			
+			    
+			    deviceSplit =  deviceName.split("/");
+			    
+			    if(deviceSplit[1].equals(affiliateLocalName)){
+			    	deviceList.add(new Device(deviceSplit[2]));
+			    	for(int di=0; di<deviceList.size(); di++){
+			    		deviceList.get(di).printDevice();
+			    	}
+			    }
 			}
 			else if(mqttMessage.matches(".*disconnecting.*")){
+				int deviceNameStart = mqttMessage.indexOf("nt");
+				String deviceMiddleName = mqttMessage.substring(deviceNameStart);
+		
+				int deviceNameEnd = deviceMiddleName.indexOf(",");
+				deviceName = deviceMiddleName.substring(3,deviceNameEnd);
 				
+			    deviceSplit =  deviceName.split("/");
+			    
+			    if(deviceSplit[1].equals(affiliateLocalName)){
+			    	
+			    	for(Iterator<Device> it = deviceList.iterator(); it.hasNext();){
+			    		Device device = it.next();
+			    		if(device.getDeviceName().equals(deviceSplit[2])){
+			    			it.remove();
+			    		}
+			    	}
+			    	for(int di=0; di<deviceList.size(); di++){
+			    		deviceList.get(di).printDevice();
+			    	}
+			    }
 			}
 		}
 		
 	}
 	
+	
 	public void runClient(){
-		subDevice = "Gateway/Local1/Gateway1/#";
+		subDevice = "Gateway/"+affiliateLocalName+"/"+affiliateName+"/#";
+		System.out.println("affiliate:"+subDevice);
+		String logTopic= "$SYS/broker/log/N";
 		connOpt = new MqttConnectOptions();
 		connOpt.setCleanSession(true);
 		connOpt.setKeepAliveInterval(30);
@@ -93,7 +133,7 @@ public class MQTTClient implements MqttCallback{
 		pubLocal = "Local/"+affiliateGlobalName+"/"+affiliateLocalName+"/envData";
 		try{
 			myClient.subscribe(subDevice, subQoS);
-			
+			myClient.subscribe(logTopic, subQoS);
 		}catch(MqttException e){
 			e.printStackTrace();
 			System.exit(-1);
@@ -101,6 +141,7 @@ public class MQTTClient implements MqttCallback{
 	
 		
 	}
+	
 	public void publishTestData(){
 		System.out.println("publish excel data");
 		try {
@@ -130,7 +171,7 @@ public class MQTTClient implements MqttCallback{
 	            	else{
 	            		postData = dp.getProcessedTestData(preData);
 	            		
-	            		MqttMessage message = new MqttMessage(postData.getBytes());
+	            		MqttMessage message = setMqttMessage(postData);
 	            		message.setQos(pubQoS);
 		    			message.setRetained(false);
 		    			MqttDeliveryToken token = null;
@@ -163,11 +204,18 @@ public class MQTTClient implements MqttCallback{
 		String affiliate[] = clientID.split("/");
 		this.affiliateGlobalName = affiliate[0];
 		this.affiliateLocalName = affiliate[1];
-		this.affiliateGlobalName = affiliate[2];
+		this.affiliateName = affiliate[2];
 		System.out.println("------------------------affiliate information------------------------");
-		System.out.println(affiliate[0]);
-		System.out.println(affiliate[1]); 
-		System.out.println(affiliate[2]);
+		System.out.println(affiliateGlobalName);
+		System.out.println(affiliateLocalName); 
+		System.out.println(affiliateName);
 		System.out.println("---------------------------------------------------------------------");
+	}
+	private MqttMessage setMqttMessage(String message){
+		MqttMessage mqMessage = new MqttMessage(message.getBytes());
+		mqMessage.setQos(pubQoS);
+		mqMessage.setRetained(false);
+		
+		return mqMessage;
 	}
 }
