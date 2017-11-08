@@ -31,7 +31,7 @@ public class MQTTClient implements MqttCallback{
 	private String affiliateLocalName;
 	private String affiliateGlobalName;
 	private String affiliateName;
-	
+	private static int deviceCounter = 0;
 	private ArrayList<Device> deviceList;
 	public MQTTClient(String clientID, String brokerIP, String moduleURL){
 		this.clientID = clientID;
@@ -61,8 +61,10 @@ public class MQTTClient implements MqttCallback{
 		System.out.println("Message:"+mqttMessage);
 		System.out.println("----------------------------------------------------------");
 		
-		String[] deviceSplit = new String[4];
+		String[] deviceSplit = new String[5];
 		String deviceName;
+		DataProcessor dp = new DataProcessor(deviceSplit[0]);
+		
 		if(topic.equals("$SYS/broker/log/N")){
 			if(mqttMessage.matches(".*connected.*")){
 				int deviceNameStart = mqttMessage.indexOf("as");
@@ -103,6 +105,21 @@ public class MQTTClient implements MqttCallback{
 			    	}
 			    }
 			}
+			else{
+				
+				System.out.println("get message");
+				deviceSplit = mqttMessage.split(",");
+				dp.setDeviceHader(deviceSplit[0]);
+				dp.processDeviceData(deviceSplit[1], deviceSplit[2], deviceSplit[3]);
+				deviceCounter +=1;
+			}
+			
+			if(deviceCounter == deviceList.size()){
+				deviceCounter = 0;
+				String deviceData = dp.getProcessedDeviceData();
+				publishDeviceData(deviceData);
+				
+			}
 		}
 		
 	}
@@ -141,7 +158,9 @@ public class MQTTClient implements MqttCallback{
 	
 		
 	}
-	
+	public void publishDeviceData(String iotEnvData){
+		System.out.println("publish iot environment data");
+	}
 	public void publishTestData(){
 		System.out.println("publish excel data");
 		try {
