@@ -1,5 +1,47 @@
 package com.github.aites.localaitesimpl.framework;
 
-public class LocalAiTES {
+import com.github.aites.aitesconnector.Monitor;
+
+import AiTESConnector.ManagerAF;
+import AiTESManager.Manager;
+import Communicate.DataTransfer;
+import Framework.LocalAiTESManager;
+
+public class LocalAiTES extends LocalAiTESManager{
+	DataTransfer df = DataTransfer.getInstance();;
+	public LocalAiTES(){
+		
+	}
+	public void runAiTES(){
+		brokerURL = "tcp://127.0.0.1:1883";
+		clientID = "Global1/Local1";
+		
+		LocalAiTES smd = new LocalAiTES();
+		Class cl = smd.getClass();
+		
+		try{
+			df.setMQTTConnection(brokerURL, cl, clientID);
+			df.setAfficationMode("Local");
+			df.runClient();
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+	}
+	@Override
+	public void changeRule(String arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void manageAiTES(String mqttMessage, String topic, String deviceName) throws Exception {
+		System.out.println("----------Get IoT environment Data from IoT gateway----------");
+		System.out.println("Topic:"+topic);
+		System.out.println("Message:"+mqttMessage);
+		System.out.println("deviceName:"+deviceName);
+		System.out.println("-------------------------------------------------------------");
+		Manager af = ManagerAF.getManager(new Monitor(mqttMessage,deviceName,clientID));
+		af.run();
+	}
 
 }

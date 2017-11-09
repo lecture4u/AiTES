@@ -171,7 +171,9 @@ public class DataTransfer implements MqttCallback{
 			 System.exit(-1);
 	    }
 	}
-
+	public void setAfficationMode(String affilientmode){
+		this.affilientmode = affilientmode;
+	}
 	private void idenfyAffiliate(){
 		String affiliate[] = clientID.split("/");
 		if(affilientmode.equals("Local")){
