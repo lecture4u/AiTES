@@ -10,19 +10,25 @@ public class DataTransfer implements MqttCallback{
 	MqttClient myClient;
 	MqttClient myClientPub;
 	MqttConnectOptions connOpt;
-	static String clientID;
-	static String MQTT_BROKER_URL = "tcp://broker_server_ip:port";
-	private Class mainClass;
-	private static String logTopic= "$SYS/broker/log/N";
-	
-	private static MqttTopic pubtopic;
-	private String deviceName;
-	
-	private static ArrayList deviceList = new ArrayList();
 	
 	private final int pubQos=0;
+	private final int subQos=0;
+	private static String clientID;
+	private static String MQTT_BROKER_URL = "tcp://broker_server_ip:port";
+	
+	private static final String logTopic= "$SYS/broker/log/N";
+	private static MqttTopic pubtopic;
+	private static String basicsubTopic;
+	private Class mainClass;
+   
+	private String affiliateLocalName;
+	private String affiliateGlobalName;
+	
+	private String deviceName;
+	private String affilientmode;
+	
 	/**Set Mqtt Broker Server, ClientID, Own Class for using method invoke*/
-	public void setMQTTConnection(String brokerURL, Class mainClass, String clientID){
+ 	public void setMQTTConnection(String brokerURL, Class mainClass, String clientID){
 		MQTT_BROKER_URL = brokerURL;
 		this.mainClass = mainClass;
 		this.clientID = clientID;
@@ -42,9 +48,9 @@ public class DataTransfer implements MqttCallback{
 	}
 	
 	public void subscription(String subURL){
-		int subQoS = 0; 
+	 
 		try {
-			myClient.subscribe(subURL, subQoS);
+			myClient.subscribe(subURL, subQos);
 		} catch (MqttException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -56,7 +62,7 @@ public class DataTransfer implements MqttCallback{
 		System.out.println("Message Publish Complete");
 	}
 	/** publish message to broker server*/
-	public void publish(File sendModule, String device)throws IOException{ // ÀåÄ¡·Î µ¥ÀÌÅÍ¸¦ ÇÇµå¹é ÇÏ´Â ¸Þ¼ÒµåÀÔ´Ï´Ù.
+	public void publish(File sendModule, String device)throws IOException{ 
 	    String fileName = sendModule.getName();
 		String deviceTopic = "Effector/"+device+"/"+fileName;
 		MqttTopic new_Topic = myClient.getTopic(deviceTopic);
@@ -68,13 +74,13 @@ public class DataTransfer implements MqttCallback{
 		MqttMessage message = new MqttMessage(fileByte);
 		
 		
-		message.setQos(pubQoS);//QoS ¼³Á¤
+		message.setQos(pubQoS);//QoS ï¿½ï¿½ï¿½ï¿½
 		message.setRetained(false);
 		
 		MqttDeliveryToken token = null;
 	
 		try{
-			token = new_Topic.publish(message); // ÅäÅ«À¸·Î ¸Þ¼¼Áö¸¦ ºê·ÎÄ¿ ¼­¹ö¿¡ Àü´ÞÇÏ°Ô µË´Ï´Ù.
+			token = new_Topic.publish(message); // ï¿½ï¿½Å«ï¿½ï¿½ï¿½ï¿½ ï¿½Þ¼ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ä¿ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï°ï¿½ ï¿½Ë´Ï´ï¿½.
 			
 		}catch(Exception e){
 			e.printStackTrace();
@@ -90,13 +96,13 @@ public class DataTransfer implements MqttCallback{
 		
 		MqttMessage mqttMessage = new MqttMessage(fileByte);
 		
-		mqttMessage.setQos(pubQoS);//QoS ¼³Á¤
+		mqttMessage.setQos(pubQoS);//QoS ï¿½ï¿½ï¿½ï¿½
 		mqttMessage.setRetained(false);
 		
 		MqttDeliveryToken token = null;
 		
 		try{
-			token = new_Topic.publish(mqttMessage); // ÅäÅ«À¸·Î ¸Þ¼¼Áö¸¦ ºê·ÎÄ¿ ¼­¹ö¿¡ Àü´ÞÇÏ°Ô µË´Ï´Ù.
+			token = new_Topic.publish(mqttMessage); // ï¿½ï¿½Å«ï¿½ï¿½ï¿½ï¿½ ï¿½Þ¼ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ä¿ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï°ï¿½ ï¿½Ë´Ï´ï¿½.
 			
 		}catch(Exception e){
 			e.printStackTrace();
@@ -104,7 +110,7 @@ public class DataTransfer implements MqttCallback{
 	}
 	@Override
 	public void messageArrived(String topic, MqttMessage message) throws Exception {
-				
+		//Loccal, Global mode Setting
 	    String mqttMessage = message.toString();
 	    Class[] methodParamClass = new Class[] {String.class, String.class, String.class};	 	 
 		
@@ -114,134 +120,18 @@ public class DataTransfer implements MqttCallback{
 		MqttTopic pubTopic;
 		
 		String[] clientIDSplit = clientID.split("/");
-		/*»ý¼ºÀÚÀÇ ¸Å°³º¯¼ö·Î ³Ñ°Ü¹ÞÀº Å¬·¡½ºÀÇ ¸Þ¼Òµå¸¦ invokeÇØ¼­ MQTTMessage¿Í TopicÀ» ³Ñ°ÜÁÝ´Ï´Ù.*/
-		System.out.println(topic);
-		if(topic.equals("$SYS/broker/log/N")){
-			if(mqttMessage.matches(".*connected.*")){
-				int deviceNameStart = mqttMessage.indexOf("as");
-				String deviceMiddleName = mqttMessage.substring(deviceNameStart);
-				
-				int deviceNameEnd = deviceMiddleName.indexOf("(");
-				deviceName = deviceMiddleName.substring(3,deviceNameEnd-1);
-				
-			    String[] deviceSplit = new String[4];
-			    deviceSplit =  deviceName.split("/");
-			   
-			    if(deviceSplit[2].matches(".*Device.*")){
-			    	System.out.println("connected Participant: Device");
-			    	topic = "Local/"+deviceSplit[0]+"/"+deviceSplit[1]+"/"+deviceSplit[2]+"/Connection";
-			    	mqttMessage = "echoConnected";
-			    	MqttMessage mqMessage = setMqttMessage(mqttMessage);
-			    	pubTopic = myClient.getTopic(topic);
-			    	try{
-			    		token = pubTopic.publish(mqMessage); 
-			    	}catch(Exception e){
-			    		e.printStackTrace();
-			    	}
-			    	
-			 
-			    //	method.invoke(clsInstance, mqttMessage, topic, deviceName);
-			    }
-			    else if(deviceSplit[2].matches(".*Local.*")){
-			    	System.out.println("connected Participant: Local");
-			    	mqttMessage = "echoConnected";
-			    
-			    	topic = "Global/"+deviceSplit[0]+"/"+deviceSplit[0]+"/"+deviceSplit[2]+"/Connection";
-			    	mqttMessage = "echoConnected";
-			    	MqttMessage mqMessage = setMqttMessage(mqttMessage);
-			    	pubTopic = myClient.getTopic(topic);
-			    	try{
-			    		token = pubTopic.publish(mqMessage); 
-			    	}catch(Exception e){
-			    		e.printStackTrace();
-			    	}
-			    	//method.invoke(clsInstance, mqttMessage, topic, deviceName);
-			    }
-			 			   			    
-				deviceList.add(deviceName);
-				
-				printDeviceList();
-				
-			}			
-			else if(mqttMessage.matches(".*disconnecting.*")){
-				int deviceNameStart = mqttMessage.indexOf("nt");
-				String deviceMiddleName = mqttMessage.substring(deviceNameStart);
+		String[] deviceSplit = new String[4];
 		
-				int deviceNameEnd = deviceMiddleName.indexOf(",");
-				deviceName = deviceMiddleName.substring(3,deviceNameEnd);
-				System.out.println("deviceName:"+deviceName);
-				String[] deviceSplit = new String[4];
-			    deviceSplit =  deviceName.split("/");
-			    
-			    if(deviceSplit[2].matches(".*Device.*")){
-			    	System.out.println("disConnected Participant: Device");
-			    	mqttMessage = "DisConnected";
-			    	
-			    	topic = "Local/"+deviceSplit[0]+"/"+deviceSplit[1]+"/"+deviceSplit[2]+"/Connection";
-			    	;
-			    	mqttMessage = "echoDisConnected";
-			    	MqttMessage mqMessage = setMqttMessage(mqttMessage);
-			    	pubTopic = myClient.getTopic(topic);
-			    	try{
-			    		token = pubTopic.publish(mqMessage); 
-			    	}catch(Exception e){
-			    		e.printStackTrace();
-			    	}
-			   
-			    	//method.invoke(clsInstance, mqttMessage, topic, deviceName);
-			    }
-			    else if(deviceSplit[2].matches(".*Local.*")){
-			    	System.out.println("disConnected Participant: Local");
-			    	mqttMessage = "echoDisConnected";
-			    
-
-			    	topic = "Global/"+deviceSplit[0]+"/"+deviceSplit[0]+"/"+deviceSplit[2]+"/Connection";
-			    	mqttMessage = "echoConnected";
-			    	MqttMessage mqMessage = setMqttMessage(mqttMessage);
-			    	pubTopic = myClient.getTopic(topic);
-			    	try{
-			    		token = pubTopic.publish(mqMessage); 
-			    	}catch(Exception e){
-			    		e.printStackTrace();
-			    	}
-			    	//method.invoke(clsInstance, mqttMessage, topic, deviceName);
-			    }
-			
-				deviceList.remove(deviceName);
-			
-				printDeviceList();
-			}		
-		}
-		
-		else if(topic.matches(".*Check.*")){
-			System.out.println("Check");
-			String mqMessage = new String(message.getPayload());
-			String[] messageSplit = mqMessage.split("/");
-			deviceName =messageSplit[2];
-			System.out.printf("get running Device Name: "+deviceName +" add List");
-			deviceList.add(deviceName);
-			printDeviceList();
-		}
-		
-		else{
-			
-			try{
+		try{
 			String[] topicSplit = topic.split("/");
-				
-			
-				
-				deviceName =topicSplit[3];
-				method.invoke(clsInstance, mqttMessage, topic, deviceName);
+	
+			deviceName =topicSplit[3];
+			method.invoke(clsInstance, mqttMessage, topic, deviceName);
 			}catch(Exception e){
-				e.printStackTrace();
+					e.printStackTrace();
 			}
-		}
-
 	}
 	
-	private void printDeviceList(){
-		System.out.println("Connected Device List: "+deviceList);
-	}
 	private MqttMessage setMqttMessage(String message){
 		MqttMessage mqMessage = new MqttMessage(message.getBytes());
 		mqMessage.setQos(pubQos);
@@ -249,69 +139,59 @@ public class DataTransfer implements MqttCallback{
 		
 		return mqMessage;
 	}
-	/**Get All Connected Device List*/
-	public ArrayList getDeviceList(){
-		return deviceList;
-	}
-	
-	public String getDevice(String device){
-		if(deviceList.contains(device)){
-			return device;
-		}
-		else{
-			return "That Device not in a List";
-		}
-	}
-	
 	/**Running MQTT Client*/
 	public void runClient(){
-		/*Broker¿¡ Connection½Ã ¿É¼ÇÀ» Á¶ÀýÇÏ´Â ºÎºÐÀÔ´Ï´Ù.*/
+	
 		
 		connOpt = new MqttConnectOptions();
 		
 		connOpt.setCleanSession(true);  
 		connOpt.setKeepAliveInterval(30); 
 		
-		/*¼­¹ö¿¡ Á¢¼ÓÇÒ ÀÌ Å¬¶óÀÌ¾ðÆ®ÀÇ Á¤º¸¸¦ ¼ÂÆÃÇÏ´Â ºÎºÐÀÔ´Ï´Ù.*/
+		
 		try{
 			myClient = new MqttClient(MQTT_BROKER_URL,clientID);
 			myClient.setCallback(this);
 			myClient.connect(connOpt);
 			
+		
+		    System.out.println("Connected to "+ MQTT_BROKER_URL+" with "+clientID);
+	    
+	        idenfyAffiliate();
+	        if(affilientmode.equals("Local")){
+		         basicsubTopic = "Local/"+affiliateGlobalName+"/"+affiliateLocalName+"/#";
+	         }
+	         else if(affilientmode.equalsIgnoreCase("Global")){
+		         basicsubTopic = "Global/"+affiliateGlobalName+"/#";
+	         }
+	         System.out.println(basicsubTopic);
+	         myClient.subscribe(basicsubTopic);
 		}catch(MqttException e){
-			e.printStackTrace();
-			System.exit(-1);
-		}
-		System.out.println("Connected to "+ MQTT_BROKER_URL+" with "+clientID);
-	   String topic = "";
-	  
-	   String message = "Check";
-	   String[] clientIDSplit = clientID.split("/");
-	    if(clientIDSplit[2].matches(".*Local.*")){
-	    	topic = "Device/"+clientIDSplit[2]+"/Check";
+			 e.printStackTrace();
+			 System.exit(-1);
 	    }
-	    else if(clientIDSplit[2].matches(".*Global.*")){
-	    	topic = "Local/"+clientIDSplit[2]+"/Check";
-	    }
-	    System.out.println("CheckTopic1 :"+topic);
-		MqttMessage mqMessage = setMqttMessage(message);	
-	
-	
-	
-		try{
-			int subQoS=0;		
-			MqttTopic pubTopic = myClient.getTopic(topic);
-		 	MqttDeliveryToken token = pubTopic.publish(mqMessage);
-			
-			myClient.subscribe(logTopic, subQoS);		
-	
-		
-		}catch(Exception e){
-			e.printStackTrace();
-		}
-		
 	}
-	
+
+	private void idenfyAffiliate(){
+		String affiliate[] = clientID.split("/");
+		if(affilientmode.equals("Local")){
+			this.affiliateGlobalName = affiliate[0];
+			this.affiliateLocalName = affiliate[1];
+			System.out.println("------------------------affiliate information------------------------");
+			System.out.println(affiliateGlobalName);
+			System.out.println(affiliateLocalName); 
+		}
+		else if(affilientmode.equals("Global")){
+			this.affiliateGlobalName = affiliate[0];
+			System.out.println("------------------------affiliate information------------------------");
+			System.out.println(affiliateGlobalName);
+		}
+		else{
+			System.out.println("please choose affilientmode first!");
+			System.exit(0);
+		}
+		System.out.println("---------------------------------------------------------------------");
+	}
 	public static byte[] getBytesFromFile(File file) throws IOException {
 	     InputStream is = new FileInputStream(file);
 	     long length = file.length();
