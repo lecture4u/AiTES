@@ -3,10 +3,10 @@ package LocalPropertyConnect;
 import java.sql.*;
 
 public abstract class DBConnector {
-	Connection cn = null;   
-	PreparedStatement ps = null;
-	ResultSet rs = null;
-	Object object; // µ¥ÀÌÅÍº£ÀÌ½º¿¡ ÀúÀåÇÏ°Å³ª ¹Þ¾Æ¿Ã º¯¼ö.
+	protected Connection cn = null;   
+	protected PreparedStatement ps = null;
+	protected ResultSet rs = null;
+	protected Object object; // ï¿½ï¿½ï¿½ï¿½ï¿½Íºï¿½ï¿½Ì½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï°Å³ï¿½ ï¿½Þ¾Æ¿ï¿½ ï¿½ï¿½ï¿½ï¿½.
 	
     static String url;
 	static String user;
@@ -23,7 +23,7 @@ public abstract class DBConnector {
 		this.password = password;
 	}
 	public void dbConnect(){
-		  /*Template Method Pattern, µ¥ÀÌÅÍÇ®ÀÌ µî·ÏÇÏ°í ÇØÁ¦ÇÏ´Â °øÅë »óÀ§ ¸Þ¼ÒµåÀÔ´Ï´Ù.*/		    	
+		  /*Template Method Pattern, ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ï°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Þ¼Òµï¿½ï¿½Ô´Ï´ï¿½.*/		    	
 		  DBConnectionMgr db = DBConnectionMgr.getInstance();
 		  try{ 
 				
@@ -31,10 +31,10 @@ public abstract class DBConnector {
 				
 			
 				
-				String query = setQuery(); // µ¥ÀÌÅÍº£ÀÌ½º¿¡ Àü´ÞÇÒ Äõ¸® ¼ÂÆÃ ºÎºÐ
+				String query = setQuery(); // ï¿½ï¿½ï¿½ï¿½ï¿½Íºï¿½ï¿½Ì½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Îºï¿½
 				 
 			    ps = cn.prepareStatement(query);
-				executeSetting();  //Äõ¸® ½ÇÇà ÈÄ µ¥ÀÌÅÍ Ã³¸® ºÎºÐÀÔ´Ï´Ù.
+				executeSetting();  //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Ã³ï¿½ï¿½ ï¿½Îºï¿½ï¿½Ô´Ï´ï¿½.
 			      			      
 			} catch (Exception e) {
 				// TODO Auto-generated catch block

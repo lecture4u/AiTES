@@ -9,7 +9,7 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 public class DataPreProcessor implements PreProcessor{
-
+	private EnvData envData;
 	@Override
 	public void dataPreprocess() {
 		// TODO Auto-generated method stub
@@ -19,14 +19,16 @@ public class DataPreProcessor implements PreProcessor{
 	@Override
 	public Object getProcessedData() {
 		// TODO Auto-generated method stub
-		return null;
+		return envData;
 	}
 
 	@Override
 	public void processData(Object mqttMessage) {
 		String message = mqttMessage.toString();
 		String date = message.substring(2, 16);
+		
 		System.out.println(date);
+		envData = new EnvData(date);
 		try{
 			JSONParser parser = new JSONParser();
 			Object jsonObj = parser.parse(message);
@@ -42,7 +44,9 @@ public class DataPreProcessor implements PreProcessor{
 			while(iter.hasNext()){
 				JSONObject innerObj = (JSONObject) iter.next();
 				System.out.println("data:"+innerObj.get("data"));
+				envData.addDeviceData(innerObj.get("data").toString());
 				System.out.println("name:"+innerObj.get("name"));
+				envData.addDeviceName(innerObj.get("name").toString());
 
 			}
 

@@ -6,6 +6,8 @@ import AiTESConnector.ManagerAF;
 import AiTESManager.Manager;
 import Communicate.DataTransfer;
 import Framework.LocalAiTESManager;
+import LocalPropertyConnect.ConnectionStarter;
+import LocalPropertyConnect.DBConnector;
 
 public class LocalAiTES extends LocalAiTESManager{
 	DataTransfer df = DataTransfer.getInstance();;
@@ -13,6 +15,13 @@ public class LocalAiTES extends LocalAiTESManager{
 		
 	}
 	public void runAiTES(){
+		try{
+			DBConnector db = new ConnectionStarter("jdbc:mysql://220.149.235.85:3306/globalknowledge","root","1234");
+			db.dbConnect();
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		
 		brokerURL = "tcp://127.0.0.1:1883";
 		clientID = "Global1/Local1";
 		
