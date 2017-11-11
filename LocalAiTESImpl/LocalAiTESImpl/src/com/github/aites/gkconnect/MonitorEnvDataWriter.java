@@ -20,7 +20,10 @@ public class MonitorEnvDataWriter extends DBConnector{
 	public void executeSetting() throws SQLException {
 		// TODO Auto-generated method stub
 		super.ps.setString(1, date);
-		
+		super.ps.setString(2, clientName);
+		super.ps.setString(3, deviceName);
+		super.ps.setString(4, deviceData);
+		super.ps.execute();
 	}
 
 	@Override

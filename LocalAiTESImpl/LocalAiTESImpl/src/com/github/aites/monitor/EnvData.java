@@ -24,7 +24,7 @@ public class EnvData {
 	public ArrayList<String> getDeviceNmae(){
 		return deviceName;
 	}
-	public String getCollectData(){
+	public String getCollectDate(){
 		return collectDate;
 	}
 	
