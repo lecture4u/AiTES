@@ -1,5 +1,7 @@
 package com.github.aites.localaitesimpl.framework;
 
+import org.semanticweb.owlapi.model.OWLOntologyCreationException;
+
 import com.github.aites.aitesconnector.Monitor;
 
 import AiTESConnector.ManagerAF;
@@ -8,6 +10,7 @@ import Communicate.DataTransfer;
 import Framework.LocalAiTESManager;
 import LocalPropertyConnect.ConnectionStarter;
 import LocalPropertyConnect.DBConnector;
+import Rule.RuleSetLoader;
 
 public class LocalAiTES extends LocalAiTESManager{
 	DataTransfer df = DataTransfer.getInstance();;
@@ -35,6 +38,16 @@ public class LocalAiTES extends LocalAiTESManager{
 		}catch(Exception e){
 			e.printStackTrace();
 		}
+		
+		RuleSetLoader ruleloader = new RuleSetLoader("./smarthome.xml");
+		//ruleloader.resonOntologyFromFile();
+		try {
+			ruleloader.resonOntologyFromFile();
+		} catch (OWLOntologyCreationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 	}
 	@Override
 	public void changeRule(String arg0) {
