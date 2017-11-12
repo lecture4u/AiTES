@@ -1,5 +1,6 @@
 package com.github.aites.aitesmanager;
 
+import com.github.aites.gkconnect.MonitorEnvDataReader;
 import com.github.aites.gkconnect.MonitorEnvDataWriter;
 import com.github.aites.monitor.DataPreProcessor;
 import com.github.aites.monitor.EnvData;
@@ -37,6 +38,12 @@ public class MonitorManager extends Manager{
 			DBConnector dc = new MonitorEnvDataWriter(envdata.getCollectDate(),clientID,envdata.getDeviceNmae().get(di),envdata.getDeviceData().get(di));
 			dc.dbConnect();
 		}
+		
+		DBConnector dc = new MonitorEnvDataReader(envdata.getCollectDate(),clientID);
+		dc.dbConnect();
+		
+		double result = ((MonitorEnvDataReader)dc).getResult();
+		System.out.println(result);
 	}
 
 }
