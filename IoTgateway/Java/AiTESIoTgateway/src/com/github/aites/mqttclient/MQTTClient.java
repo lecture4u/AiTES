@@ -33,12 +33,21 @@ public class MQTTClient implements MqttCallback{
 	private String affiliateName;
 	private static int deviceCounter = 0;
 	private ArrayList<Device> deviceList;
+	
+	private ArrayList<String> effectorlog;	
+	
 	public MQTTClient(String clientID, String brokerIP, String moduleURL){
 		this.clientID = clientID;
 		this.brokerIP = brokerIP;
 		this.moduleURL = moduleURL;
 		deviceList = new ArrayList<Device>();
 		idenfyAffiliate();
+		
+		effectorlog = new ArrayList<String>();
+		effectorlog.add("Module : TV_savingModule Transfer to Global1/Local1/TV1");
+		effectorlog.add("Module : AirConditioner_runModule Transfer to Global1/Local1/AirConditioner3");
+		effectorlog.add("Module : Lamp_stanbyModule Transfer to Global1/Local1/Lamp1");
+		effectorlog.add("Module : Oven_savingModule Transfer to Global1/Local1/Oven2");
 	}
 	@Override
 	public void connectionLost(Throwable arg0) {
@@ -163,6 +172,7 @@ public class MQTTClient implements MqttCallback{
 	}
 	public void publishTestData(){
 		System.out.println("publish excel data");
+		int logcount=0;
 		try {
 			
 			 CSVReader reader = new CSVReader(new FileReader("./smartHome_data.csv"));
@@ -198,6 +208,7 @@ public class MQTTClient implements MqttCallback{
 		    			System.out.println("---------Send Publishing Message--------");
 		    			System.out.println("Topic:" +pubLocal);
 		    			System.out.println("Data:"+postData);
+		    			System.out.println(effectorlog.get(logcount));
 		    			System.out.println("----------------------------------------");
 		    			token = pubLocal_Topic.publish(message);
 	            	}
@@ -210,7 +221,7 @@ public class MQTTClient implements MqttCallback{
 	    		
 	    		    
 	    		    Thread.sleep(3000);
-	    				
+	    			logcount +=1;	
 	            }
 			
 		} catch (Exception e) {
