@@ -1,8 +1,10 @@
 package com.github.aites.mqttclient;
+import java.io.BufferedWriter;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileReader;
+import java.io.OutputStreamWriter;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -174,11 +176,13 @@ public class MQTTClient implements MqttCallback{
 		System.out.println("publish excel data");
 		int logcount=0;
 		try {
-			
+			 String csvFileName = "exresult2.csv";
+			 BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(csvFileName),"MS949"));
 			 CSVReader reader = new CSVReader(new FileReader("./smartHome_data.csv"));
 			 String[] testData;
 			 String preData="";
 			 String postData;
+			 long start = System.currentTimeMillis();
 			 boolean headerC = false;
 			 DataProcessor dp = new DataProcessor();
 			 
@@ -208,10 +212,14 @@ public class MQTTClient implements MqttCallback{
 		    			System.out.println("---------Send Publishing Message--------");
 		    			System.out.println("Topic:" +pubLocal);
 		    			System.out.println("Data:"+postData);
-		    			System.out.println(effectorlog.get(logcount));
+		    			//System.out.println(effectorlog.get(logcount));
 		    			System.out.println("----------------------------------------");
 		    			token = pubLocal_Topic.publish(message);
 	            	}
+	               long end = System.currentTimeMillis();
+	  	           double time = (end - start)/(double)1000;
+	  	           System.out.println(time);
+	  	           writer.write(time+"\r\n");
 	            	preData ="";
 	            	
 	            	
@@ -220,16 +228,17 @@ public class MQTTClient implements MqttCallback{
 	    		
 	    		
 	    		    
-	    		    Thread.sleep(3000);
+	    		    
 	    			logcount +=1;	
 	            }
-			
+			   writer.close(); 
 		} catch (Exception e) {
 			
 			e.printStackTrace();
 		}
 		
 	}
+	
 	private void idenfyAffiliate(){
 		String affiliate[] = clientID.split("/");
 		this.affiliateGlobalName = affiliate[0];

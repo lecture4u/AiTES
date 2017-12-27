@@ -1,5 +1,6 @@
 package com.github.aites.iotgateway;
 
+import com.github.aites.mqttclient.BlockChainClient;
 import com.github.aites.mqttclient.MQTTClient;
 
 public class IoTgateway {
@@ -8,7 +9,7 @@ public class IoTgateway {
 		
 		
 		
-		PropReader prop = new PropReader();
+	/*	PropReader prop = new PropReader();
 		
 		// TODO Auto-generated method stub
 	
@@ -31,7 +32,10 @@ public class IoTgateway {
 		}
 		else if(args[0].equals("-r")){
 			System.out.println("Regular mode run");
-		}
+		}*/
+		
+		BlockChainClient bclient = new BlockChainClient();
+		bclient.inputTestData();
 		
 	}
 
