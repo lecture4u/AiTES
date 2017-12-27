@@ -1,0 +1,85 @@
+Prefix(swrl:=<http://www.w3.org/2003/11/swrl#>)
+Prefix(owl:=<http://www.w3.org/2002/07/owl#>)
+Prefix(rdf:=<http://www.w3.org/1999/02/22-rdf-syntax-ns#>)
+Prefix(var2:=<urn:http://www.w3.org/2003/11/swrl#>)
+Prefix(var:=<urn:swrl#>)
+Prefix(xsd:=<http://www.w3.org/2001/XMLSchema#>)
+Prefix(swrlb:=<http://www.w3.org/2003/11/swrlb#>)
+Prefix(:=<http://com.github.aites/ontologies/smarthome.owl#>)
+Prefix(xml:=<http://www.w3.org/XML/1998/namespace>)
+
+Prefix(rdfs:=<http://www.w3.org/2000/01/rdf-schema#>)
+
+
+Ontology(<http://com.github.aites/ontologies/smarthome.owl>
+
+
+Declaration(Class(:Home))
+Declaration(Class(:Bedroom))
+Declaration(Class(:Kitchen))
+Declaration(Class(:Livingroom))
+Declaration(Class(:Airconditioner))
+Declaration(Class(:Tv))
+Declaration(Class(:Lamp))
+Declaration(Class(:Airconditioner))
+Declaration(Class(:Smartpone))
+
+Declaration(ObjectProperty(:partOf))
+InverseObjectProperties(:isPart :partOf)
+
+Declaration(ObjectProperty(:hasPlace))
+InverseObjectProperties(:isPlace :placeOf)
+
+Declaration(DataProperty(:hasIndex))
+Declaration(DataProperty(:hasCollecttime))
+Declaration(DataProperty(:hasPowerconsumtion))
+Declaration(DataProperty(:hasState))
+Declaration(DataProperty(:hasPlace))
+Declaration(DataProperty(:hasActivity))
+ObjectPropertyAssertion(:partOf :Bedroom :Home)
+ObjectPropertyAssertion(:partOf :Kitchen :Home)
+ObjectPropertyAssertion(:partOf :Livingroom :Home)
+
+ObjectPropertyAssertion(:placeOf :Lamp :Bedroom)
+ObjectPropertyAssertion(:placeOf :Tv :Livingroom)
+ObjectPropertyAssertion(:placeOf :Airconditioner :Livingroom)
+
+Declaration(NamedIndividual(:HomeData1))
+ClassAssertion(:Home :HomeData1)
+DataPropertyAssertion(:hasIndex :HomeData1 "0"^^xsd:index)
+DataPropertyAssertion(:hasCollecttime :HomeData1 "2017-07-17 0:00"^^xsd:string)
+DataPropertyAssertion(:hasPowerconsumtion :HomeData1 "1140.05"^^xsd:string)
+DataPropertyAssertion(:hasState :HomeData1 "normal"^^xsd:string)
+Declaration(NamedIndividual(:HomeData2))
+ClassAssertion(:Home :HomeData2)
+Declaration(NamedIndividual(:HomeData3))
+ClassAssertion(:Home :HomeData3)
+Declaration(NamedIndividual(:HomeData4))
+ClassAssertion(:Home :HomeData4)
+Declaration(NamedIndividual(:HomeData5))
+ClassAssertion(:Home :HomeData5)
+Declaration(NamedIndividual(:BedroomData1))
+ClassAssertion(:Bedroom :BedroomData1)
+DataPropertyAssertion(:hasIndex :BedroomData1 "0"^^xsd:index)
+DataPropertyAssertion(:hasCollecttime :BedroomData1 "2017-07-17 0:00"^^xsd:string)
+DataPropertyAssertion(:hasPowerconsumtion :BedroomData1 "11.25"^^xsd:string)
+DataPropertyAssertion(:hasState :BedroomData1 "normal"^^xsd:string)
+
+Declaration(NamedIndividual(:TVData1))
+ClassAssertion(:Tv :TVData1)
+DataPropertyAssertion(:hasIndex :TVData1 "10"^^xsd:index)
+DataPropertyAssertion(:hasCollecttime :TVData1 "2017-07-17 10:00"^^xsd:string)
+DataPropertyAssertion(:hasPowerconsumtion :TVData1 "114.75"^^xsd:string)
+DataPropertyAssertion(:hasActivity :TVData1 "ready"^^xsd:string)
+
+Declaration(NamedIndividual(:SmartphoneData1))
+ClassAssertion(:Smartpone :SmartphoneData1)
+DataPropertyAssertion(:hasIndex :SmartphoneData1 "10"^^xsd:index)
+DataPropertyAssertion(:hasCollecttime :SmartphoneData1 "2017-07-17 10:00"^^xsd:string)
+DataPropertyAssertion(:hasPlace :SmartphoneData1 "outside"^^xsd:string)
+
+ObjectPropertyAssertion(:partOf :BedroomData1 :HomeData1)
+
+
+
+)
