@@ -2,12 +2,12 @@ package com.github.aites.localaitesimpl.framework;
 
 import com.github.aites.rest.JavaRestTemplate;
 
-public class Main {
+public class LocalAiTESMain {
 
 	public static void main(String[] args) {
 		
 		
-		JavaRestTemplate rest = new JavaRestTemplate();
+	/*	JavaRestTemplate rest = new JavaRestTemplate();
 		String arrive_time = "";
 		rest.enrollId();
 		int key =0;
@@ -19,10 +19,7 @@ public class Main {
 			String query1 = rest.query(keyvalue);
 			System.out.println(query1);
 			key++;
-		}
-		
-		
-		
+		}*/
 		
 		LocalAiTES localAiTES = new LocalAiTES();
 		localAiTES.runAiTES();
