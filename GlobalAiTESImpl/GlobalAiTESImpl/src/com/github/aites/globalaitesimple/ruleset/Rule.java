@@ -1,4 +1,5 @@
-package Rule;
+package com.github.aites.globalaitesimple.ruleset;
+
 import java.util.ArrayList;
 
 public class Rule {
@@ -7,19 +8,13 @@ public class Rule {
 	private ArrayList<PropertyAtom> propertyAtoms = new ArrayList<PropertyAtom>();
 	private BulitInAtom builtInAtom;
 	private ClassAtom classAtom;
-	private String comment;
-	public Rule(String ruleName, String afilclass, String variable, String comment){
-		this.ruleName = ruleName;
-		this.comment = comment;
-		classAtom = new ClassAtom(afilclass,variable);
-		ruleBody = classAtom.makeClassAtom();
-		
-	}
+	
 	public Rule(String ruleName, String afilclass, String variable){
 		this.ruleName = ruleName;
 		
 		classAtom = new ClassAtom(afilclass,variable);
 		ruleBody = classAtom.makeClassAtom();
+		
 	}
 	public Rule(){
 		
@@ -39,18 +34,6 @@ public class Rule {
 			ruleBody = ruleBody + propertyAtoms.get(i).makePropertyAtom();
 		}
 		ruleBody = ruleBody + builtInAtom.makeBultInAtom();
-	}
-	public String generateRule(){
-		String dlHead = "DLSafeRule(";
-		String annotation = "Annotation(rdfs:comment "+comment+")";
-		String body ="Body("+ruleBody+")";
-		String head = "Head(ClassAtom(:"+ruleName+" Variable(var:"+classAtom.variable+")))";
-		String dlTail = ")";
-		 
-		
-		String dlRule = dlHead+annotation+body+head+dlTail;
-		return dlRule;
-		
 	}
 	public void printRule(){
 		System.out.println(ruleBody);
@@ -130,11 +113,11 @@ public class Rule {
 			this.variables = variables;
 		}
 		String makeBultInAtom(){
-			String propertyAtom = "BuiltInAtom(swrlb:"+property;
+			String propertyAtom = "BuiltInAtom(:swrlb"+property;
 			for(int i=0; i<variables.length; i++){
 				propertyAtom = propertyAtom + " Variable(var:"+variables[i]+")";
 			}
-			propertyAtom = propertyAtom+" "+ atom;
+			propertyAtom = propertyAtom + atom;
 			propertyAtom = propertyAtom + ") ";
 			
 			return propertyAtom;

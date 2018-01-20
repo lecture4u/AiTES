@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import DBComponent.DBForeignKey;
 import DBComponent.DBProperty;
 import DBComponent.DBTable;
+import Rule.Rule;
 public class RuleSetGenerator {
 	private static String head;
 	private static final String tail = ")";
@@ -34,10 +35,10 @@ public class RuleSetGenerator {
 		String className = stringFirstUpper(table.getTableName());
 		body = body  + owlclassg.owlClassGener(className);
 	}
-	public void addRuleToRuleSet(String ruleName, String rule){
-		String ruleClassAssertion = "Declaration(Class(:"+ruleName+"))\n";
+	public void addRuleToRuleSet(Rule rule){
+		String ruleClassAssertion = "Declaration(Class(:"+rule.getRuleName()+"))\n";
 		body = body + ruleClassAssertion;
-		body = body + rule + "\n";
+		body = body + rule.generateRule() + "\n";
 	}
     public void generateRuleOntology(){
     	for(int i=0; i<tableList.size(); i++){

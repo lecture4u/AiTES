@@ -1,18 +1,20 @@
 package Test;
 
 import java.io.File;
+import java.util.ArrayList;
 
 import Rule.Rule;
-import Rule.RuleGenerator;
+import Rule.RuleSetParser;
 import LocalPropertyConnect.ConnectionStarter;
 import LocalPropertyConnect.DBConnector;
 import RuleSet.DBSchemaLoader;
 import RuleSet.RuleSetGenerator;
 
 public class TestMain {
-
+	 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
+		ArrayList<Rule> ruleList = new ArrayList<Rule>();
 		System.out.println("Hello Test");
 		try{
 			  DBConnector db = new ConnectionStarter("jdbc:mysql://220.149.235.85:3306/globalknowledge","root","1213");
@@ -20,7 +22,7 @@ public class TestMain {
 			
 			  DBSchemaLoader dbLoader = new DBSchemaLoader(db);
 			  dbLoader.loadSchemaFromDB();
-			  RuleGenerator ruleG = new RuleGenerator();
+	
 			  RuleSetGenerator ruleSetGener= new RuleSetGenerator("http://com.github.aites/ontologies/smarthome.owl#",dbLoader.getDBTableList());
 			  ruleSetGener.generateRuleOntology();
 		   	  
@@ -31,31 +33,32 @@ public class TestMain {
 	          String[] ruleBody3BuiltVariable = {"stat"};
 	          
 	         
-	          Rule ruleBody1 = new Rule("OverPower","Cctv","p");
-	      
-	          ruleBody1.addPropertyAtom("DataProperty", "power_consumtion", ruleBody1Variable);
-	          ruleBody1.addBuiltInAtom("greaterThan",ruleBody1BuiltVariable, "\"120\"^^xsd:integer");         
+	          Rule rule1 = new Rule("OverPower","Cctv","p","\"Rule for judge CCTV overpower condition\"");
+	          rule1.addPropertyAtom("DataProperty", "power_consumtion", ruleBody1Variable);
+	          rule1.addBuiltInAtom("greaterThan",ruleBody1BuiltVariable, "\"120\"^^xsd:integer");         
+	          ruleList.add(rule1);
 	          
-	          Rule ruleBody2 = new Rule("UnderPower","Cctv","p");
-	          ruleBody2.addPropertyAtom("DataProperty", "power_consumtion", ruleBody1Variable);
-	          ruleBody2.addBuiltInAtom("lessTan", ruleBody1BuiltVariable, "\"20\"^^xsd:integer");
+	          Rule rule2 = new Rule("UnderPower","Cctv","p","\"Rule for judge CCTV underpower condition\"");
+	          rule2.addPropertyAtom("DataProperty", "power_consumtion", ruleBody1Variable);
+	          rule2.addBuiltInAtom("lessTan", ruleBody1BuiltVariable, "\"20\"^^xsd:integer");
+	          ruleList.add(rule2);
 	          
-	          Rule ruleBody3 = new Rule("StatusEqualAct","Device","p");
-	          ruleBody3.addPropertyAtom("DataPropertyAtom", "power_consumtion", ruleBody1Variable);
-	          ruleBody3.addBuiltInAtom("equal", ruleBody3BuiltVariable, "\"act\"^^xsd:string");
+	          Rule rule3 = new Rule("StatusEqualAct","Device","p","\"Rule about status act \"");
+	          rule3.addPropertyAtom("DataPropertyAtom", "power_consumtion", ruleBody1Variable);
+	          rule3.addBuiltInAtom("equal", ruleBody3BuiltVariable, "\"act\"^^xsd:string");
+	          ruleList.add(rule3);
 	          
-	          String rule1 = ruleG.ruleGenerate(ruleBody1.getRuleName(), ruleBody1.getRuleBody(), "\"Rule for judge CCTV owerfower condition\"", "p");
-	          String rule2 = ruleG.ruleGenerate(ruleBody2.getRuleName(), ruleBody2.getRuleBody(), "\"Rule for judge CCTV underpower condition\"", "p");
-	          String rule3 = ruleG.ruleGenerate(ruleBody3.getRuleName(), ruleBody3.getRuleBody(), "\"Rule about status act \"", "s");
-	         
-	          
-	          ruleSetGener.addRuleToRuleSet(ruleBody1.getRuleName(), rule1);
-	          ruleSetGener.addRuleToRuleSet(ruleBody2.getRuleName(), rule2);
-	          ruleSetGener.addRuleToRuleSet(ruleBody3.getRuleName(), rule3);
-	          
-	          ruleSetGener.rulesetGen("./","testRuleSet.xml");
+	          for(int i=0; i<ruleList.size(); i++){
+	        	  ruleList.get(i).makeRuleBody();
+	        	  ruleSetGener.addRuleToRuleSet(ruleList.get(i));
+	          }
+	    	 String fileName = "testRuleSet.xml";
+	          ruleSetGener.rulesetGen("./",fileName);
 	          
 	          File ruleSet = ruleSetGener.getRuleSetFile();
+	          
+	          RuleSetParser rulesetParser = new RuleSetParser();
+	          rulesetParser.ruleSetParsing(fileName);
 		}catch(Exception e){
 			e.printStackTrace();
 		}

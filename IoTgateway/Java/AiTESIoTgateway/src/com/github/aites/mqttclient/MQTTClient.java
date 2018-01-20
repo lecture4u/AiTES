@@ -56,13 +56,11 @@ public class MQTTClient implements MqttCallback{
 		// TODO Auto-generated method stub
 		
 	}
-
 	@Override
 	public void deliveryComplete(IMqttDeliveryToken arg0) {
 		// TODO Auto-generated method stub
 		
 	}
-
 	@Override
 	public void messageArrived(String topic, MqttMessage message) throws Exception {
 		// TODO Auto-generated method stub
@@ -134,8 +132,7 @@ public class MQTTClient implements MqttCallback{
 		}
 		
 	}
-	
-	
+
 	public void runClient(){
 		subDevice = "Gateway/"+affiliateLocalName+"/"+affiliateName+"/#";
 		System.out.println("affiliate:"+subDevice);
