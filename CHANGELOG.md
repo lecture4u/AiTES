@@ -16,3 +16,15 @@
 
 #### Other
 
+### Version 2.1.1 Beta - January 19, 2018 
+
+#### Framework changes
+
+- [Commit 14caa] (https://github.com/lecture4u/AiTES/commit/14caabd1febb34309bc6fb0df05d21b1e8af0ca7): Rule configuration impl
+- [Commit f71c] (https://github.com/lecture4u/AiTES/commit/f71c54b35f1826db92b197ae0c6fb900d5b519a2): project dependency modifyed
+
+#### Documentation changes
+
+#### Bugfixes
+
+#### Other
