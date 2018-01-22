@@ -1,4 +1,4 @@
-package application;
+package com.github.aites.localtest.application;
 	
 import javafx.application.Application;
 import javafx.stage.Stage;
