@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.chart.*?>
 <?import javafx.scene.text.*?>
 <?import java.lang.*?>
 <?import javafx.scene.control.*?>
@@ -35,7 +36,7 @@
                                                 <Label fx:id="brokerServerURLLabel" text="&quot;tcp://brokerserverIP&quot;" GridPane.columnIndex="1" />
                                                 <Label text="Clietnt ID                :" GridPane.rowIndex="1" />
                                                 <Label fx:id="clintIDLabel" text="Global1/Local1" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                                                <Label text="Connection Status :" GridPane.rowIndex="2" />
+                                                <Label text="Connection status :" GridPane.rowIndex="2" />
                                                 <Label fx:id="connectionStatusLabel" text="connection" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                                              </children>
                                           </GridPane>
@@ -76,14 +77,14 @@
                                              <font>
                                                 <Font size="16.0" />
                                              </font></Label>
-                                          <TableView layoutX="600.0" layoutY="41.0" prefHeight="150.0" prefWidth="170.0">
+                                          <TableView fx:id="subTopicListTableView" layoutX="600.0" layoutY="41.0" prefHeight="150.0" prefWidth="170.0">
                                             <columns>
-                                              <TableColumn fx:id="subTopicListTableView" prefWidth="168.0" text="Topic Name" />
+                                              <TableColumn fx:id="subTopicNameColumn" prefWidth="168.0" text="Topic Name" />
                                             </columns>
                                           </TableView>
-                                          <TableView layoutX="800.0" layoutY="41.0" prefHeight="150.0" prefWidth="170.0">
+                                          <TableView fx:id="pubTopicListTableView" layoutX="800.0" layoutY="41.0" prefHeight="150.0" prefWidth="170.0">
                                              <columns>
-                                                <TableColumn fx:id="pubTopicListTableView" prefWidth="168.0" text="Topic Name" />
+                                                <TableColumn fx:id="pubTopicNameColumn" prefWidth="168.0" text="Topic Name" />
                                              </columns>
                                           </TableView>
                                        </children>
@@ -92,12 +93,80 @@
                               </TitledPane>
                               <TitledPane animated="false" layoutX="10.0" layoutY="260.0" prefHeight="230.0" prefWidth="1150.0" text="Global knowledge database connection">
                                 <content>
-                                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                       <children>
+                                          <Label layoutX="10.0" layoutY="15.0" text="Global Knowledge Connection" underline="true">
+                                             <font>
+                                                <Font name="System Bold" size="16.0" />
+                                             </font>
+                                          </Label>
+                                          <GridPane layoutX="10.0" layoutY="45.0" prefHeight="90.0" prefWidth="326.0">
+                                             <children>
+                                                <Label text="Global knowledge DB URL:" />
+                                                <Label fx:id="globalKnowledgeURLLabel" text="dbdriver:ddffdfs" GridPane.columnIndex="1" />
+                                                <Label text="Connection ID                    :" GridPane.rowIndex="1" />
+                                                <Label fx:id="connectionIDLable" text="root" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                                <Label text="Connection status             :" GridPane.rowIndex="2" />
+                                                <Label fx:id="gkconnectionStatusLabel" text="connection" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                             </children>
+                                             <columnConstraints>
+                                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="179.0" minWidth="10.0" prefWidth="170.0" />
+                                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="149.0" minWidth="10.0" prefWidth="110.0" />
+                                             </columnConstraints>
+                                             <rowConstraints>
+                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                             </rowConstraints>
+                                          </GridPane>
+                                          <TextArea fx:id="gkConnectionLogTextArea" layoutX="600.0" layoutY="45.0" prefHeight="140.0" prefWidth="540.0" />
+                                          <Label layoutX="600.0" layoutY="15.0" text="Global Knowledge Connection Log" underline="true">
+                                             <font>
+                                                <Font name="System Bold" size="16.0" />
+                                             </font>
+                                          </Label>
+                                       </children></AnchorPane>
                                 </content>
                               </TitledPane>
-                              <TitledPane animated="false" layoutX="10.0" layoutY="500.0" prefHeight="230.0" prefWidth="1150.0" text="External file management">
+                              <TitledPane animated="false" layoutX="10.0" layoutY="500.0" prefHeight="230.0" prefWidth="1150.0" text="External file information">
                                 <content>
-                                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                       <children>
+                                          <Label layoutX="10.0" layoutY="15.0" text="File URL Information" underline="true">
+                                             <font>
+                                                <Font name="System Bold" size="16.0" />
+                                             </font>
+                                          </Label>
+                                          <GridPane layoutX="10.0" layoutY="45.0" prefHeight="90.0" prefWidth="326.0">
+                                             <children>
+                                                <Label text="RuleSet File URL                :" />
+                                                <Label fx:id="globalKnowledgeURLLabel1" text="ruleSetURL" GridPane.columnIndex="1" />
+                                                <Label text="Modules Forder URL         :" GridPane.rowIndex="1" />
+                                                <Label fx:id="connectionIDLable1" text="moduleURL" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                                <Label text="Logs File URL                    :" GridPane.rowIndex="2" />
+                                                <Label fx:id="gkconnectionStatusLabel1" text="logURL" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                             </children>
+                                             <columnConstraints>
+                                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="179.0" minWidth="10.0" prefWidth="170.0" />
+                                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="149.0" minWidth="10.0" prefWidth="110.0" />
+                                             </columnConstraints>
+                                             <rowConstraints>
+                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                             </rowConstraints>
+                                          </GridPane>
+                                          <Label layoutX="600.0" layoutY="15.0" text="Action Module LIst" underline="true">
+                                             <font>
+                                                <Font name="System Bold" size="16.0" />
+                                             </font>
+                                          </Label>
+                                          <TableView fx:id="moduleListTableView" layoutX="600.0" layoutY="45.0" prefHeight="150.0" prefWidth="170.0">
+                                            <columns>
+                                              <TableColumn fx:id="moduleNameColumn" prefWidth="168.0" text="Module Name" />
+                                            </columns>
+                                          </TableView>
+                                       </children></AnchorPane>
                                 </content>
                               </TitledPane>
                            </children>
@@ -106,22 +175,239 @@
                 </Tab>
                 <Tab text="Monitor">
                   <content>
-                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <Label layoutX="10.0" layoutY="10.0" text="IoT Environment Data" underline="true">
+                                 <font>
+                                    <Font name="System Bold" size="16.0" />
+                                 </font>
+                              </Label>
+                              <TableView fx:id="iotEnvTableView" layoutX="10.0" layoutY="35.0" prefHeight="200.0" prefWidth="1150.0">
+                                <columns>
+                                  <TableColumn fx:id="arrivalTimeColumn" prefWidth="85.0" text="Arrival_Time" />
+                                  <TableColumn fx:id="airconditionerColumn" prefWidth="106.0" text="Air_conditioner" />
+                                    <TableColumn fx:id="tvColumn" prefWidth="53.0" text="TV" />
+                                    <TableColumn fx:id="lampColumn" prefWidth="57.0" text="Lamp" />
+                                    <TableColumn fx:id="rvcColumn" prefWidth="167.0" text="Robotic Vaccum Cleaner" />
+                                    <TableColumn fx:id="flowerpotColumn" prefWidth="74.0" text="FlowerPot" />
+                                    <TableColumn fx:id="wmColumn" prefWidth="124.0" text="Washing Merchine" />
+                                    <TableColumn fx:id="lamp2Column" prefWidth="57.0" text="Lamp2" />
+                                    <TableColumn fx:id="smartcookColumn" prefWidth="87.0" text="Smart Cook" />
+                                    <TableColumn fx:id="cctvColumn" prefWidth="68.0" text="CCTV" />
+                                    <TableColumn fx:id="mixerColumn" prefWidth="58.0" text="Mixer" />
+                                    <TableColumn fx:id="aispeakerColumn" prefWidth="89.0" text="AI_Speaker" />
+                                    <TableColumn fx:id="ovenColumn" prefWidth="69.0" text="Oven" />
+                                </columns>
+                              </TableView>
+                              <LineChart fx:id="shpcLineChart" layoutX="10.0" layoutY="270.0" prefHeight="400.0" prefWidth="1150.0">
+                                <xAxis>
+                                  <CategoryAxis side="BOTTOM" />
+                                </xAxis>
+                                <yAxis>
+                                  <NumberAxis side="LEFT" />
+                                </yAxis>
+                              </LineChart>
+                              <Label layoutX="10.0" layoutY="240.0" text="Smart Home Power Consumtion :" underline="true">
+                                 <font>
+                                    <Font name="System Bold" size="16.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="10.0" layoutY="660.0" text="Monitoring Log" underline="true">
+                                 <font>
+                                    <Font name="System Bold" size="16.0" />
+                                 </font>
+                              </Label>
+                              <TextArea fx:id="monitorLogTextArea" layoutX="10.0" layoutY="690.0" prefHeight="160.0" prefWidth="1150.0" />
+                           </children></AnchorPane>
                   </content>
                 </Tab>
                   <Tab text="Analyzer">
                     <content>
-                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <Label layoutX="15.0" layoutY="15.0" text="Current Ruleset URI: " underline="true">
+                                 <font>
+                                    <Font name="System Bold" size="16.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="450.0" layoutY="15.0" text="Current Time:" underline="true">
+                                 <font>
+                                    <Font name="System Bold" size="16.0" />
+                                 </font>
+                              </Label>
+                              <TitledPane animated="false" layoutX="10.0" layoutY="45.0" prefHeight="230.0" prefWidth="1150.0" text="State Reasoner">
+                                <content>
+                                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                       <children>
+                                          <TableView fx:id="stateReasonerTableView" layoutX="10.0" layoutY="10.0" prefHeight="180.0" prefWidth="1020.0">
+                                            <columns>
+                                              <TableColumn fx:id="reasonerTimeColumn" prefWidth="120.0" text="Time" />
+                                              <TableColumn fx:id="individualolumn" prefWidth="180.0" text="Individual" />
+                                                <TableColumn fx:id="classColumn" prefWidth="180.0" text="Class" />
+                                                <TableColumn fx:id="propertyDataTimeColumn" prefWidth="180.0" text="Property Data" />
+                                                <TableColumn fx:id="ruleColumn" prefWidth="180.0" text="Rule" />
+                                                <TableColumn fx:id="resultColumn" prefWidth="180.0" text="Result" />
+                                            </columns>
+                                          </TableView>
+                                       </children>
+                                    </AnchorPane>
+                                </content>
+                              </TitledPane>
+                              <TitledPane animated="false" layoutX="10.0" layoutY="285.0" prefHeight="230.0" prefWidth="1150.0" text="State Combiner">
+                                <content>
+                                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                       <children>
+                                          <TableView fx:id="stateCombinerTableView" layoutX="10.0" layoutY="10.0" prefHeight="184.0" prefWidth="632.0">
+                                            <columns>
+                                              <TableColumn fx:id="combinerTimeColumn" prefWidth="120.0" text="Time" />
+                                              <TableColumn fx:id="combinerStateColumn" prefWidth="170.0" text="State" />
+                                                <TableColumn fx:id="combinerState2Column" prefWidth="170.0" text="State2" />
+                                                <TableColumn fx:id="combinerState3Column" prefWidth="170.0" text="State3" />
+                                            </columns>
+                                          </TableView>
+                                          <Label fx:id="combineResultLabel" layoutX="780.0" layoutY="89.0" text="State String">
+                                             <font>
+                                                <Font size="20.0" />
+                                             </font>
+                                          </Label>
+                                       </children>
+                                    </AnchorPane>
+                                </content>
+                              </TitledPane>
+                              <Label layoutX="15.0" layoutY="530.0" text="Rule List" underline="true">
+                                 <font>
+                                    <Font name="System Bold" size="16.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="640.0" layoutY="530.0" text="Analyzer Log" underline="true">
+                                 <font>
+                                    <Font name="System Bold" size="16.0" />
+                                 </font>
+                              </Label>
+                              <TextArea layoutX="640.0" layoutY="560.0" prefHeight="285.0" prefWidth="521.0" />
+                              <TableView fx:id="ruleListTableView" layoutX="10.0" layoutY="560.0" prefHeight="284.0" prefWidth="620.0">
+                                <columns>
+                                  <TableColumn fx:id="ruleNameColumn" prefWidth="108.0" text="RuleName" />
+                                  <TableColumn fx:id="classAtomColumn" prefWidth="170.0" text="ClassAtom" />
+                                    <TableColumn fx:id="propertyAtomColumn" prefWidth="170.0" text="PropertyAtom" />
+                                    <TableColumn fx:id="builtInAtomColumn" prefWidth="170.0" text="BuiltInAtom" />
+                                </columns>
+                              </TableView>
+                              <Label fx:id="ruleSetURILabel" layoutX="180.0" layoutY="15.0" text="URI">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="analyzerCurrentTime" layoutX="560.0" layoutY="15.0" text="CurrentTime">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Label>
+                           </children></AnchorPane>
                     </content>
                   </Tab>
                   <Tab text="Planner">
                     <content>
-                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <TitledPane animated="false" layoutX="10.0" layoutY="10.0" prefHeight="230.0" prefWidth="1050.0" text="Scheduler">
+                                <content>
+                                  <AnchorPane fx:id="schedulerAnchorPane" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                                </content>
+                              </TitledPane>
+                              <TitledPane animated="false" layoutX="10.0" layoutY="253.0" prefHeight="280.0" prefWidth="1050.0" text="Schedule Plan">
+                                <content>
+                                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                       <children>
+                                          <Label layoutX="10.0" layoutY="10.0" text="Detail Plan" underline="true">
+                                             <font>
+                                                <Font name="System Bold" size="16.0" />
+                                             </font>
+                                          </Label>
+                                          <GridPane layoutX="10.0" layoutY="40.0" prefHeight="90.0" prefWidth="280.0">
+                                             <children>
+                                                <Label text="Total Spend Time" />
+                                                <Label fx:id="totalspendTimeLabel" text="30" GridPane.columnIndex="1" />
+                                                <Label text="plan name" GridPane.rowIndex="1" />
+                                                <Label fx:id="plannameLabel" text="Global1/Local1" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                                <Label text="plan result" GridPane.rowIndex="2" />
+                                                <Label fx:id="planResultLabel" text="Done" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                             </children>
+                                             <columnConstraints>
+                                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="136.0" minWidth="10.0" prefWidth="131.0" />
+                                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="149.0" minWidth="10.0" prefWidth="149.0" />
+                                             </columnConstraints>
+                                             <rowConstraints>
+                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                             </rowConstraints>
+                                          </GridPane>
+                                          <Label layoutX="360.0" layoutY="10.0" text="Plan Action List" underline="true">
+                                             <font>
+                                                <Font name="System Bold" size="16.0" />
+                                             </font>
+                                          </Label>
+                                          <TableView fx:id="actionListTableView" layoutX="360.0" layoutY="40.0" prefHeight="200.0" prefWidth="511.0">
+                                            <columns>
+                                              <TableColumn fx:id="actionNameColumn" prefWidth="100.0" text="Action Name" />
+                                              <TableColumn fx:id="moduleColumn" prefWidth="100.0" text="Module" />
+                                                <TableColumn fx:id="targetColumn" prefWidth="100.0" text="Target" />
+                                                <TableColumn fx:id="spendTimeColumn" prefWidth="110.0" text="Spend Time" />
+                                                <TableColumn fx:id="processStateColumn" prefWidth="100.0" text="Process State" />
+                                            </columns>
+                                          </TableView>
+                                       </children>
+                                    </AnchorPane>
+                                </content>
+                              </TitledPane>
+                              <Label layoutX="10.0" layoutY="542.0" text="Plan List" underline="true">
+                                 <font>
+                                    <Font name="System Bold" size="16.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="535.0" layoutY="542.0" text="Planner Log" underline="true">
+                                 <font>
+                                    <Font name="System Bold" size="16.0" />
+                                 </font>
+                              </Label>
+                              <TextArea fx:id="plannerLogTextArea" layoutX="530.0" layoutY="570.0" prefHeight="285.0" prefWidth="530.0" />
+                              <TableView fx:id="planListTableView" layoutX="10.0" layoutY="570.0" prefHeight="276.0" prefWidth="505.0">
+                                <columns>
+                                  <TableColumn fx:id="planNameColumn" prefWidth="84.0" text="Plan Name" />
+                                  <TableColumn fx:id="planTotalSpendColumn" prefWidth="126.0" text="Total Spend Time" />
+                                    <TableColumn fx:id="planPerposeColumn" prefWidth="294.0" text="Perpose" />
+                                </columns>
+                              </TableView>
+                           </children></AnchorPane>
                     </content>
                   </Tab>
                   <Tab text="Executor">
                     <content>
-                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <Label layoutX="10.0" layoutY="10.0" text="Connected Device List" underline="true">
+                                 <font>
+                                    <Font name="System Bold" size="16.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="10.0" layoutY="327.0" text="Executor Log" underline="true">
+                                 <font>
+                                    <Font name="System Bold" size="16.0" />
+                                 </font>
+                              </Label>
+                              <TableView fx:id="executorTableView" layoutX="10.0" layoutY="39.0" prefHeight="280.0" prefWidth="1150.0">
+                                <columns>
+                                  <TableColumn fx:id="deviceNameColumn" prefWidth="140.0" text="DeviceName" />
+                                  <TableColumn fx:id="powerConsumtionColumn" prefWidth="140.0" text="Power_consumtion" />
+                                    <TableColumn fx:id="adressColumn" prefWidth="140.0" text="Address" />
+                                    <TableColumn fx:id="currentModeColumn" prefWidth="140.0" text="Current Mode" />
+                                    <TableColumn fx:id="typeColumn" prefWidth="140.0" text="Type" />
+                                    <TableColumn fx:id="affilienceColumn" prefWidth="140.0" text="Affilience" />
+                                </columns>
+                              </TableView>
+                              <TextArea fx:id="executorLogTextArea" layoutX="10.0" layoutY="359.0" prefHeight="344.0" prefWidth="1150.0" />
+                           </children></AnchorPane>
                     </content>
                   </Tab>
               </tabs>
