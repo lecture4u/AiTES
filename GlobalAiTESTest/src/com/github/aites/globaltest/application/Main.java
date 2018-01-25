@@ -1,4 +1,4 @@
-package application;
+package com.github.aites.globaltest.application;
 	
 import javafx.application.Application;
 import javafx.stage.Stage;

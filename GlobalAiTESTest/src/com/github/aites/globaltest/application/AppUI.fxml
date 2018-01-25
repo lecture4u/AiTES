@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.BorderPane?>
+
+<ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.github.aites.globaltest.application.AppUIController">
+  <content>
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="898.0" prefWidth="1198.0">
+         <children>
+            <TabPane layoutX="6.0" layoutY="7.0" prefHeight="898.0" prefWidth="1198.0" tabClosingPolicy="UNAVAILABLE">
+              <tabs>
+                <Tab text="Config">
+                  <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                  </content>
+                </Tab>
+                <Tab text="Monitor">
+                  <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                  </content>
+                </Tab>
+                  <Tab text="Analyzer">
+                    <content>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                    </content>
+                  </Tab>
+                  <Tab text="Planner">
+                    <content>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                    </content>
+                  </Tab>
+                  <Tab text="Executor">
+                    <content>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                    </content>
+                  </Tab>
+                  <Tab text="Orchestration">
+                    <content>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <ScrollPane fx:id="orchestrationScrollPane" layoutX="10.0" layoutY="40.0" prefHeight="600.0" prefWidth="900.0">
+                                <content>
+                                  <AnchorPane fx:id="orchestrationPane" minHeight="0.0" minWidth="0.0" prefHeight="598.0" prefWidth="898.0" />
+                                </content>
+                              </ScrollPane>
+                              <Label layoutX="14.0" layoutY="14.0" text="IT Ecosystem hierarchy ">
+                                 <font>
+                                    <Font name="System Bold" size="16.0" />
+                                 </font>
+                              </Label>
+                              <TableView fx:id="orchestrationMemberTable" layoutX="940.0" layoutY="40.0" prefHeight="600.0" prefWidth="240.0">
+                                <columns>
+                                  <TableColumn fx:id="memberNameColumn" prefWidth="123.0" text="Member Name" />
+                                  <TableColumn fx:id="affilienceColumn" prefWidth="116.0" text="Affilience" />
+                                </columns>
+                              </TableView>
+                              <Label layoutX="940.0" layoutY="14.0" text="Member List">
+                                 <font>
+                                    <Font name="System Bold" size="16.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="10.0" layoutY="648.0" text="Orchestration Log">
+                                 <font>
+                                    <Font name="System Bold" size="16.0" />
+                                 </font>
+                              </Label>
+                              <TextArea fx:id="orchestrationLogTextArea" layoutX="10.0" layoutY="683.0" prefHeight="165.0" prefWidth="1170.0" />
+                           </children></AnchorPane>
+                    </content>
+                  </Tab>
+                  <Tab text="Rule configuration">
+                    <content>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                    </content>
+                  </Tab>
+                  <Tab text="Smart Module">
+                    <content>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                    </content>
+                  </Tab>
+              </tabs>
+            </TabPane>
+         </children></AnchorPane>
+  </content>
+</ScrollPane>

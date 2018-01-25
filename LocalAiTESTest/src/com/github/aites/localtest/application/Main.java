@@ -1,5 +1,7 @@
 package com.github.aites.localtest.application;
 	
+import com.github.aites.localtest.framework.LocalAiTES;
+
 import javafx.application.Application;
 import javafx.stage.Stage;
 import javafx.scene.Parent;
@@ -23,6 +25,11 @@ public class Main extends Application {
 			primaryStage.show();
 			
 			primaryStage.setTitle("Local Adaptive Internet Things Ecosystem");
+			
+			AppUIController controller = loader.getController();
+			LocalAiTES localAiTES = new LocalAiTES(controller);
+			localAiTES.runAiTES();
+			
 		} catch(Exception e) {
 			e.printStackTrace();
 		}

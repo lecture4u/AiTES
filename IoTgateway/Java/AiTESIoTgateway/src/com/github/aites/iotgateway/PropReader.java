@@ -7,7 +7,7 @@ public class PropReader {
 	private String clientID;
 	private String brokerIP;
 	private String moduleURL;
-	
+
 	public void propReader(){
 		try{
 			String propFile = "./config.properties";
