@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.image.*?>
 <?import javafx.scene.text.*?>
 <?import java.lang.*?>
 <?import javafx.scene.control.*?>
@@ -73,12 +74,105 @@
                   </Tab>
                   <Tab text="Rule configuration">
                     <content>
-                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <TitledPane animated="false" layoutX="10.0" layoutY="10.0" prefHeight="639.0" prefWidth="370.0" text="Global knowledge schema information">
+                                <content>
+                                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                       <children>
+                                          <Label layoutX="51.0" layoutY="14.0" text="Tables">
+                                             <font>
+                                                <Font name="System Bold" size="16.0" />
+                                             </font>
+                                          </Label>
+                                          <TableView fx:id="gkSchemaTableTableView" layoutX="14.0" layoutY="36.0" prefHeight="567.0" prefWidth="124.0">
+                                            <columns>
+                                              <TableColumn fx:id="tableNameColumn" prefWidth="123.0" text="Table Name" />
+                                            </columns>
+                                          </TableView>
+                                          <TableView fx:id="gkSchemaPropertyTableView" layoutX="148.0" layoutY="36.0" prefHeight="200.0" prefWidth="211.0">
+                                            <columns>
+                                              <TableColumn fx:id="propertyNameColumn" prefWidth="132.0" text="Attribute Name" />
+                                                <TableColumn fx:id="propertyTypeColumn" prefWidth="78.0" text="Type" />
+                                            </columns>
+                                          </TableView>
+                                          <Label layoutX="216.0" layoutY="14.0" text="Attributes">
+                                             <font>
+                                                <Font name="System Bold" size="16.0" />
+                                             </font>
+                                          </Label>
+                                          <Label layoutX="216.0" layoutY="242.0" text="Foreign Key">
+                                             <font>
+                                                <Font name="System Bold" size="16.0" />
+                                             </font>
+                                          </Label>
+                                          <TableView fx:id="gkSchemaForeignKeyTableView" layoutX="148.0" layoutY="262.0" prefHeight="340.0" prefWidth="210.0">
+                                            <columns>
+                                              <TableColumn fx:id="foreignKeyAttribteColumn" prefWidth="99.0" text="Attributes" />
+                                                <TableColumn fx:id="foreignKeyRTColumn" prefWidth="109.0" text="Reference Table" />
+                                            </columns>
+                                          </TableView>
+                                       </children>
+                                    </AnchorPane>
+                                </content>
+                              </TitledPane>
+                              <Label layoutX="10.0" layoutY="657.0" text="Rule Configuration Log">
+                                 <font>
+                                    <Font name="System Bold" size="16.0" />
+                                 </font>
+                              </Label>
+                              <TextArea fx:id="rulConfigLogTextArea" layoutX="10.0" layoutY="688.0" prefHeight="161.0" prefWidth="1170.0" />
+                              <TextArea fx:id="ruleSetTextArea" layoutX="388.0" layoutY="36.0" prefHeight="613.0" prefWidth="390.0" />
+                              <Label fx:id="owlURLLabel" layoutX="388.0" layoutY="14.0" text="OWL Rulest URL: http://com.github.aites/ontologies/smarthome.owl">
+                                 <font>
+                                    <Font name="System Bold" size="16.0" />
+                                 </font>
+                              </Label>
+                              <TableView fx:id="swrlRuleSetTableView" layoutX="787.0" layoutY="36.0" prefHeight="614.0" prefWidth="399.0">
+                                <columns>
+                                  <TableColumn fx:id="ruleNameColumn" prefWidth="75.0" text="RuleName" />
+                                  <TableColumn fx:id="classAtomColumn" prefWidth="89.0" text="ClassAtom" />
+                                    <TableColumn fx:id="propertyAtomColumn" prefWidth="129.0" text="PropertyAtom" />
+                                    <TableColumn fx:id="builtInAtomColumn" prefWidth="105.0" text="BuiltInAtom" />
+                                </columns>
+                              </TableView>
+                              <Label layoutX="929.0" layoutY="14.0" text="SWRL Rule List">
+                                 <font>
+                                    <Font name="System Bold" size="16.0" />
+                                 </font>
+                              </Label>
+                           </children></AnchorPane>
                     </content>
                   </Tab>
                   <Tab text="Smart Module">
                     <content>
-                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <Label layoutX="14.0" layoutY="14.0" text="Merchine learning  result visualization">
+                                 <font>
+                                    <Font name="System Bold" size="16.0" />
+                                 </font>
+                              </Label>
+                              <ImageView fx:id="mlVisualizationImageView" fitHeight="626.0" fitWidth="842.0" layoutX="14.0" layoutY="34.0" pickOnBounds="true" preserveRatio="true" />
+                              <Label layoutX="959.0" layoutY="14.0" text="Smart Module List">
+                                 <font>
+                                    <Font name="System Bold" size="16.0" />
+                                 </font>
+                              </Label>
+                              <TableView fx:id="smartModuleListTableView" layoutX="870.0" layoutY="34.0" prefHeight="625.0" prefWidth="314.0">
+                                <columns>
+                                  <TableColumn fx:id="moduleNameColumn" prefWidth="125.0" text="Module Name" />
+                                  <TableColumn fx:id="variableColumn" prefWidth="77.0" text="Variable" />
+                                    <TableColumn fx:id="outFileColumn" prefWidth="111.0" text="Output File" />
+                                </columns>
+                              </TableView>
+                              <TextArea fx:id="smartModuleLogTextArea" layoutX="14.0" layoutY="688.0" prefHeight="162.0" prefWidth="1169.0" />
+                              <Label layoutX="14.0" layoutY="660.0" text="Smart Module Log">
+                                 <font>
+                                    <Font name="System Bold" size="16.0" />
+                                 </font>
+                              </Label>
+                           </children></AnchorPane>
                     </content>
                   </Tab>
               </tabs>
