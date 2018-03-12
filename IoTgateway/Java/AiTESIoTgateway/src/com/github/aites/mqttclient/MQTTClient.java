@@ -155,7 +155,7 @@ public class MQTTClient implements MqttCallback{
 		System.out.println("to clientID:"+clientID);
 		System.out.println("to DynamicModulePath:"+moduleURL);
 		System.out.println("---------------------------------------------------------------------");
-		pubLocal = "Local/"+affiliateGlobalName+"/"+affiliateLocalName+"/envData";
+		pubLocal = "Local/"+affiliateGlobalName+"/"+affiliateLocalName+"/"+affiliateName+"/envData";
 		try{
 			myClient.subscribe(subDevice, subQoS);
 			myClient.subscribe(logTopic, subQoS);
@@ -218,14 +218,10 @@ public class MQTTClient implements MqttCallback{
 	  	           System.out.println(time);
 	  	           writer.write(time+"\r\n");
 	            	preData ="";
-	            	
-	            	
-	    			
-	    			
+	            	Thread.sleep(1000);
+	            			
 	    		
-	    		
-	    		    
-	    		    
+	    			    
 	    			logcount +=1;	
 	            }
 			   writer.close(); 

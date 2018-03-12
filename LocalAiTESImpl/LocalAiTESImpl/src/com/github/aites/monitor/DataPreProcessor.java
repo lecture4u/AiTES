@@ -10,6 +10,7 @@ import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 public class DataPreProcessor implements PreProcessor{
 	private EnvData envData;
+	private static int dayCounter = 0;
 	@Override
 	public void dataPreprocess() {
 		// TODO Auto-generated method stub
@@ -25,8 +26,15 @@ public class DataPreProcessor implements PreProcessor{
 	@Override
 	public void processData(Object mqttMessage) {
 		String message = mqttMessage.toString();
-		String date = message.substring(2, 16);
 		
+		String date =""; 
+	    
+	    if(dayCounter<=9){
+	    	date = message.substring(2, 16);
+	    }
+	    else{
+	    	date = message.substring(2, 17);
+	    }
 		System.out.println(date);
 		envData = new EnvData(date);
 		try{
@@ -34,7 +42,7 @@ public class DataPreProcessor implements PreProcessor{
 			Object jsonObj = parser.parse(message);
 			JSONObject jsonObject = (JSONObject)jsonObj; 
 			
-			System.out.println("------------Parsed Json Data---------------");
+			System.out.println("------------PreProcessing: Parsed Json Data---------------");
 		    JSONArray iotenv = (JSONArray)jsonObject.get(date);
 			/*for(int i=0; i<iotenv.size(); i++){
 			    System.out.println("The " + i + " element of the array: "+iotenv.get(i));
@@ -51,11 +59,14 @@ public class DataPreProcessor implements PreProcessor{
 			}
 
 			
-			System.out.println("-------------------------------------------");
+			System.out.println("--------------------------------------------------------");
 		}catch(Exception e){
 			e.printStackTrace();
 		}
-		
+		dayCounter+=1;
+		if(dayCounter > 23){
+			dayCounter = 0;
+		}
 	}
 
 }

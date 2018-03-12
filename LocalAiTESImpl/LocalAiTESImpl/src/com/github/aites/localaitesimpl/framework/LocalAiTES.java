@@ -24,7 +24,7 @@ public class LocalAiTES extends LocalAiTESManager{
 	}
 	public void runAiTES(){
 		try{
-			DBConnector db = new ConnectionStarter("jdbc:mysql://220.149.235.85:3306/globalknowledge","root","1213");
+			DBConnector db = new ConnectionStarter("jdbc:mysql://220.149.235.85:3306/globalknowledge","root","1234");
 			db.dbConnect();
 		}catch(Exception e){
 			e.printStackTrace();
@@ -63,7 +63,7 @@ public class LocalAiTES extends LocalAiTESManager{
 
 	@Override
 	public void manageAiTES(String mqttMessage, String topic, String deviceName) throws Exception {
-		if(topic.contains("Global1")){
+		if(topic.equals("Global1")){
 			System.out.println("----------Get RuleSet from Global AiTES----------");
 			System.out.println("Topic:"+topic);
 			System.out.println("Message:"+mqttMessage);
@@ -72,7 +72,7 @@ public class LocalAiTES extends LocalAiTESManager{
 			String[] topicSplit = topic.split("/");
 			System.out.println(topicSplit[3]);
 			try {
-			      ////////////////////////////////////////////////////////////////
+			      
 			      BufferedWriter out = new BufferedWriter(new FileWriter(topicSplit[3]));
 				      
 			      out.write(mqttMessage); out.newLine();			 			      
@@ -96,9 +96,9 @@ public class LocalAiTES extends LocalAiTESManager{
 			System.out.println("deviceName:"+deviceName);
 			System.out.println("-------------------------------------------------------------");
 		}
-		System.out.println("cctv1 status is underpower and acting");
-		//Manager af = ManagerAF.getManager(new Monitor(mqttMessage,deviceName,clientID));
-		//af.run();
+		
+		Manager af = ManagerAF.getManager(new Monitor(mqttMessage,deviceName,clientID));
+		af.run();
 	}
 
 }

@@ -4,6 +4,7 @@ import com.github.aites.gkconnect.MonitorEnvDataReader;
 import com.github.aites.gkconnect.MonitorEnvDataWriter;
 import com.github.aites.monitor.DataPreProcessor;
 import com.github.aites.monitor.EnvData;
+import com.github.aites.monitor.MonitorHRAlgorithm;
 
 import AiTESManager.Manager;
 import LocalPropertyConnect.DBConnector;
@@ -15,6 +16,7 @@ public class MonitorManager extends Manager{
 	private String clientID;
 	
 	private EnvData envdata;
+	private String psReult;
 	public MonitorManager(String mqttMessage, String deviceName, String clientID){
 		this.mqttMessage = mqttMessage;
 		this.deviceName = deviceName;
@@ -27,23 +29,35 @@ public class MonitorManager extends Manager{
 		System.out.println("Topic:"+clientID);
 		System.out.println("Message:"+mqttMessage);
 		System.out.println("deviceName:"+deviceName);
-		System.out.println("-------------------------------------------------------------");
+		
 		
 		PreProcessor pr = new DataPreProcessor();
 		pr.processData(mqttMessage);
 		
 		envdata = (EnvData)pr.getProcessedData();
 		
-		for(int di=0; di<envdata.getDeviceData().size(); di++){
-			DBConnector dc = new MonitorEnvDataWriter(envdata.getCollectDate(),clientID,envdata.getDeviceNmae().get(di),envdata.getDeviceData().get(di));
-			dc.dbConnect();
-		}
+		MonitorHRAlgorithm mh = new MonitorHRAlgorithm(envdata);
+		String mReult = mh.envDataHRAlgorithm();
 		
-		DBConnector dc = new MonitorEnvDataReader(envdata.getCollectDate(),clientID);
+		DBConnector dc = new MonitorEnvDataWriter(envdata.getCollectDate(),clientID,mh.getAllEnvData(),mReult);
 		dc.dbConnect();
 		
-		double result = ((MonitorEnvDataReader)dc).getResult();
-		System.out.println(result);
+		if(mReult.equals("under") ){
+			psReult = "under:";
+			System.out.println("Occur env situation, Call analyzer");
+		}
+		else if(mReult.equals("over")){
+			psReult = "over:";
+		}
+		else{
+			psReult = "normal:";
+		}
+		
+		
+		
+		System.out.println("-------------------------------------------------------------");
 	}
-
+	public String getEnvPSresult(){
+		return psReult;
+	}
 }

@@ -7,7 +7,6 @@ import LocalPropertyConnect.DBConnector;
 public class MonitorEnvDataReader extends DBConnector{
 	private String collectDate;
 	private String clientName;
-	private double  result;
 	public MonitorEnvDataReader(String collectDate, String clientName){
 		this.collectDate = collectDate;
 		this.clientName = clientName;
@@ -24,19 +23,13 @@ public class MonitorEnvDataReader extends DBConnector{
 	          double devicedata = Double.parseDouble(device_data);
 	          dataSum += devicedata;
 	          count +=1;
-		 }
-		 result = dataSum/count;
-		
+		 }	
 	}
 
 	@Override
 	public String setQuery() {
 		String query = "SELECT collectdate,clientname,devicename,devicedata from localmonitering where clientName = '"+clientName+"' and collectDate= '"+collectDate+"'";
 		return query;
-	}
-	
-	public double getResult(){
-		return result;
 	}
 
 }
