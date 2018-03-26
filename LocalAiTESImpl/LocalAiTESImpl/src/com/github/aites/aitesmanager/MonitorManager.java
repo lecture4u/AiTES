@@ -1,11 +1,15 @@
 package com.github.aites.aitesmanager;
 
+import com.github.aites.aitesconnector.Analyzer;
+import com.github.aites.aitesconnector.Monitor;
 import com.github.aites.gkconnect.MonitorEnvDataReader;
 import com.github.aites.gkconnect.MonitorEnvDataWriter;
+import com.github.aites.log.LogWritter;
 import com.github.aites.monitor.DataPreProcessor;
 import com.github.aites.monitor.EnvData;
 import com.github.aites.monitor.MonitorHRAlgorithm;
 
+import AiTESConnector.ManagerAF;
 import AiTESManager.Manager;
 import LocalPropertyConnect.DBConnector;
 import Monitor.PreProcessor;
@@ -16,7 +20,7 @@ public class MonitorManager extends Manager{
 	private String clientID;
 	
 	private EnvData envdata;
-	private String psReult;
+	LogWritter log = LogWritter.getInstance();
 	public MonitorManager(String mqttMessage, String deviceName, String clientID){
 		this.mqttMessage = mqttMessage;
 		this.deviceName = deviceName;
@@ -24,11 +28,11 @@ public class MonitorManager extends Manager{
 	}
 	@Override
 	public void run() {
-		// TODO Auto-generated method stub
-		System.out.println("----------Monitoring base data----------");
-		System.out.println("Topic:"+clientID);
-		System.out.println("Message:"+mqttMessage);
-		System.out.println("deviceName:"+deviceName);
+		log.logInput("---------------MonitorManager: Monitoring IoT env data from"+deviceName+"---------------");
+		log.logInput("Topic:"+clientID);
+		log.logInput("Message:"+mqttMessage);
+		log.logInput("deviceName:"+deviceName);
+		
 		
 		
 		PreProcessor pr = new DataPreProcessor();
@@ -37,27 +41,15 @@ public class MonitorManager extends Manager{
 		envdata = (EnvData)pr.getProcessedData();
 		
 		MonitorHRAlgorithm mh = new MonitorHRAlgorithm(envdata);
-		String mReult = mh.envDataHRAlgorithm();
 		
-		DBConnector dc = new MonitorEnvDataWriter(envdata.getCollectDate(),clientID,mh.getAllEnvData(),mReult);
+		String mReult = mh.envDataHRAlgorithm();
+		String position = ((DataPreProcessor)pr).getPosition();
+		String temperture = ((DataPreProcessor)pr).getTemperture();
+		
+		DBConnector dc = new MonitorEnvDataWriter(envdata.getCollectDate(),clientID,mh.getAllEnvData(),mReult,position,temperture);
 		dc.dbConnect();
 		
-		if(mReult.equals("under") ){
-			psReult = "under:";
-			System.out.println("Occur env situation, Call analyzer");
-		}
-		else if(mReult.equals("over")){
-			psReult = "over:";
-		}
-		else{
-			psReult = "normal:";
-		}
-		
-		
-		
-		System.out.println("-------------------------------------------------------------");
+		log.logInput("----------------------------------------------------------------");
 	}
-	public String getEnvPSresult(){
-		return psReult;
-	}
+	
 }

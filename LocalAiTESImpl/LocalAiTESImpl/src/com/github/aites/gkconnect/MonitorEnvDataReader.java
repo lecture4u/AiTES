@@ -1,35 +1,51 @@
 package com.github.aites.gkconnect;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
+
+import com.github.aites.log.LogWritter;
 
 import LocalPropertyConnect.DBConnector;
 
 public class MonitorEnvDataReader extends DBConnector{
 	private String collectDate;
-	private String clientName;
-	public MonitorEnvDataReader(String collectDate, String clientName){
-		this.collectDate = collectDate;
-		this.clientName = clientName;
+	private String mresult;
+	
+	private String position;
+	private String temperture;
+	LogWritter log = LogWritter.getInstance();
+	private ArrayList<String> monitorInfo = new ArrayList<String>();
+	public MonitorEnvDataReader(){
 	}
 	@Override
 	public void executeSetting() throws SQLException {
-		// TODO Auto-generated method stub
-		double dataSum = 0;
-		double count =0 ;
+	
+		log.logInput("Read current monitoring data");
 		rs = ps.executeQuery();
 		
-		 while(rs.next()){			   			    	 
-	          String device_data = rs.getString("devicedata");
-	          double devicedata = Double.parseDouble(device_data);
-	          dataSum += devicedata;
-	          count +=1;
+		while(rs.next()){		
+			collectDate = rs.getString("shlocalmonitor_collectdate");
+			monitorInfo.add(collectDate);
+			mresult = rs.getString("shlocalmonitor_mresult");
+			monitorInfo.add(mresult);
+			position = rs.getString("shlocalmonitor_position");
+			monitorInfo.add(position);
+			temperture = rs.getString("shlocalmonitor_temperture");
+			monitorInfo.add(temperture);
+	     
+	    	log.logInput("collectDate:"+collectDate+",mreult:"+mresult+",position:"+position+",temperture:"+temperture);
+	          
 		 }	
 	}
 
 	@Override
 	public String setQuery() {
-		String query = "SELECT collectdate,clientname,devicename,devicedata from localmonitering where clientName = '"+clientName+"' and collectDate= '"+collectDate+"'";
+		
+		
+		String query = "SELECT shlocalmonitor_collectdate,shlocalmonitor_mresult,shlocalmonitor_position, shlocalmonitor_temperture from shlocalmonitor order by shlocalmonitor_id desc limit 1";
 		return query;
 	}
-
+	public ArrayList<String> getMonitorInfo(){
+		return monitorInfo;
+	}
 }

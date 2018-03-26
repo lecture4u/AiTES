@@ -9,7 +9,7 @@ import org.eclipse.paho.client.mqttv3.MqttDeliveryToken;
 import org.eclipse.paho.client.mqttv3.MqttMessage;
 import org.eclipse.paho.client.mqttv3.MqttTopic;
 
-import com.github.aites.iotgateway.DataProcessor;
+import com.github.aites.iotgateway.DeviceDataProcessor;
 import com.opencsv.CSVReader;
 
 import rest.JavaRestTemplate;

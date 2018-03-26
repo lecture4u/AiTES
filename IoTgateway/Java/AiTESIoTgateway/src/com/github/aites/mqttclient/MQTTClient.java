@@ -12,7 +12,8 @@ import java.util.Iterator;
 import org.eclipse.paho.client.mqttv3.*;
 
 import com.github.aites.device.Device;
-import com.github.aites.iotgateway.DataProcessor;
+import com.github.aites.iotgateway.DeviceDataProcessor;
+import com.github.aites.iotgateway.EnvDataProcessor;
 import com.opencsv.CSVReader;
 public class MQTTClient implements MqttCallback{
 	private String clientID;
@@ -24,6 +25,7 @@ public class MQTTClient implements MqttCallback{
 	
 	private String pubDevice;
 	private String pubLocal;
+	private String pubConnection;
 	
 	private MqttClient myClient;
 	private MqttConnectOptions connOpt;
@@ -44,12 +46,8 @@ public class MQTTClient implements MqttCallback{
 		this.moduleURL = moduleURL;
 		deviceList = new ArrayList<Device>();
 		idenfyAffiliate();
+		initpartnerDevice();
 		
-		effectorlog = new ArrayList<String>();
-		effectorlog.add("Module : TV_savingModule Transfer to Global1/Local1/TV1");
-		effectorlog.add("Module : AirConditioner_runModule Transfer to Global1/Local1/AirConditioner3");
-		effectorlog.add("Module : Lamp_stanbyModule Transfer to Global1/Local1/Lamp1");
-		effectorlog.add("Module : Oven_savingModule Transfer to Global1/Local1/Oven2");
 	}
 	@Override
 	public void connectionLost(Throwable arg0) {
@@ -72,7 +70,7 @@ public class MQTTClient implements MqttCallback{
 		
 		String[] deviceSplit = new String[5];
 		String deviceName;
-		DataProcessor dp = new DataProcessor(deviceSplit[0]);
+	
 		
 		if(topic.equals("$SYS/broker/log/N")){
 			if(mqttMessage.matches(".*connected.*")){
@@ -86,7 +84,7 @@ public class MQTTClient implements MqttCallback{
 			    deviceSplit =  deviceName.split("/");
 			    
 			    if(deviceSplit[1].equals(affiliateLocalName)){
-			    	deviceList.add(new Device(deviceSplit[2]));
+			    	//deviceList.add(new Device(deviceSplit[2]));
 			    	for(int di=0; di<deviceList.size(); di++){
 			    		deviceList.get(di).printDevice();
 			    	}
@@ -118,15 +116,15 @@ public class MQTTClient implements MqttCallback{
 				
 				System.out.println("get message");
 				deviceSplit = mqttMessage.split(",");
-				dp.setDeviceHader(deviceSplit[0]);
-				dp.processDeviceData(deviceSplit[1], deviceSplit[2], deviceSplit[3]);
+				
+				
 				deviceCounter +=1;
 			}
 			
 			if(deviceCounter == deviceList.size()){
 				deviceCounter = 0;
-				String deviceData = dp.getProcessedDeviceData();
-				publishDeviceData(deviceData);
+				
+				
 				
 			}
 		}
@@ -155,7 +153,8 @@ public class MQTTClient implements MqttCallback{
 		System.out.println("to clientID:"+clientID);
 		System.out.println("to DynamicModulePath:"+moduleURL);
 		System.out.println("---------------------------------------------------------------------");
-		pubLocal = "Local/"+affiliateGlobalName+"/"+affiliateLocalName+"/"+affiliateName+"/envData";
+		setPubTopicFromAffiliate();
+		
 		try{
 			myClient.subscribe(subDevice, subQoS);
 			myClient.subscribe(logTopic, subQoS);
@@ -168,6 +167,37 @@ public class MQTTClient implements MqttCallback{
 	}
 	public void publishDeviceData(String iotEnvData){
 		System.out.println("publish iot environment data");
+		
+	}
+	public void publishInitDeviceInfo(){
+		System.out.println("publish init IoT env participant device Information");
+		 
+		MqttTopic pubConnection_Topic = myClient.getTopic(pubConnection);
+		try{
+			for(Device d : deviceList){
+				DeviceDataProcessor dp = new DeviceDataProcessor();
+				dp.setHeader(d.getDeviceName());
+				dp.processData(d);
+				String processedDevice = dp.getProcessedData();
+	
+				
+        		MqttMessage message = setMqttMessage(processedDevice);
+        		message.setQos(pubQoS);
+    			message.setRetained(false);
+    			MqttDeliveryToken token = null;
+    			
+    			System.out.println("---------Send Publishing Message--------");
+    			System.out.println("Topic:" +pubConnection);
+    			System.out.println("Data:"+processedDevice);
+    			//System.out.println(effectorlog.get(logcount));
+    			System.out.println("----------------------------------------");
+    			token = pubConnection_Topic.publish(message);
+				 
+			}
+			
+		}catch(Exception e){
+			e.printStackTrace();
+		}
 	}
 	public void publishTestData(){
 		System.out.println("publish excel data");
@@ -175,13 +205,13 @@ public class MQTTClient implements MqttCallback{
 		try {
 			 String csvFileName = "exresult2.csv";
 			 BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(csvFileName),"MS949"));
-			 CSVReader reader = new CSVReader(new FileReader("./smartHome_data.csv"));
+			 CSVReader reader = new CSVReader(new FileReader("./smartHome_data_spec.csv"));
 			 String[] testData;
 			 String preData="";
 			 String postData;
 			 long start = System.currentTimeMillis();
 			 boolean headerC = false;
-			 DataProcessor dp = new DataProcessor();
+			 EnvDataProcessor dp = new EnvDataProcessor();
 			 
 			 MqttTopic pubLocal_Topic = myClient.getTopic(pubLocal);
 			 while ((testData = reader.readNext()) != null) {
@@ -194,12 +224,14 @@ public class MQTTClient implements MqttCallback{
 	            		}
 	            			
 	            	}
+	            	System.out.println(preData);
 	            	if(!headerC){
 	            		headerC = true;
 	            		dp.setHeader(preData);
 	            	}
 	            	else{
-	            		postData = dp.getProcessedTestData(preData);
+	            		dp.processData(preData);
+	            		postData = dp.getProcessedData();
 	            		
 	            		MqttMessage message = setMqttMessage(postData);
 	            		message.setQos(pubQoS);
@@ -218,14 +250,17 @@ public class MQTTClient implements MqttCallback{
 	  	           System.out.println(time);
 	  	           writer.write(time+"\r\n");
 	            	preData ="";
-	            	Thread.sleep(1000);
+	            	Thread.sleep(3000);
 	            			
 	    		
 	    			    
 	    			logcount +=1;	
 	            }
 			   writer.close(); 
-		} catch (Exception e) {
+		}catch(ArrayIndexOutOfBoundsException are){
+			System.out.println("Data publish end");
+		}
+		catch (Exception e) {
 			
 			e.printStackTrace();
 		}
@@ -249,5 +284,23 @@ public class MQTTClient implements MqttCallback{
 		mqMessage.setRetained(false);
 		
 		return mqMessage;
+	}
+	private void initpartnerDevice(){ //1.Device Name,Status, Address, ModelCode
+		deviceList.add(new Device("Air_Conditioner","ready","192.168.0.14","FGRC084451"));
+		deviceList.add(new Device("TV","ready","192.168.0.23","UN75J6350AFXK"));
+		deviceList.add(new Device("Lamp","ready","192.168.0.11","XMCTD01YL"));
+		deviceList.add(new Device("Robotic_Vaccum_Cleaner","ready","192.168.0.46","VR6480VMNC"));
+		deviceList.add(new Device("FlowerPot","ready","192.168.0.23","GA3A00417A14"));
+		deviceList.add(new Device("Washing_Machine","ready","192.168.0.11","F17WPSW"));
+		deviceList.add(new Device("Lamp2","ready","192.168.0.36","BE1915VWSP8"));
+		deviceList.add(new Device("Smart_Cook_Pot","ready","192.168.0.45","SCCPWM600-V2"));
+		deviceList.add(new Device("CCTV","ready","192.168.0.22","722823017"));
+		deviceList.add(new Device("Mixer","ready","192.168.0.45","B06XRKC719"));
+		deviceList.add(new Device("AI_Speaker","ready","192.168.0.61","GA3A00417A14"));
+		deviceList.add(new Device("Oven","ready","192.168.0.55","JC00A121601"));
+	}
+	private void setPubTopicFromAffiliate(){
+		pubLocal = "Local/"+affiliateGlobalName+"/"+affiliateLocalName+"/"+affiliateName+"/envData";
+		pubConnection = "Local/"+affiliateGlobalName+"/"+affiliateLocalName+"/"+affiliateName+"/connection";
 	}
 }

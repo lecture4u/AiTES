@@ -8,9 +8,16 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
+
+import com.github.aites.log.LogWritter;
 public class DataPreProcessor implements PreProcessor{
 	private EnvData envData;
 	private static int dayCounter = 0;
+    private String position;
+    private String temperture;
+    private String date;
+    
+	LogWritter log = LogWritter.getInstance();
 	@Override
 	public void dataPreprocess() {
 		// TODO Auto-generated method stub
@@ -27,7 +34,7 @@ public class DataPreProcessor implements PreProcessor{
 	public void processData(Object mqttMessage) {
 		String message = mqttMessage.toString();
 		
-		String date =""; 
+		 date =""; 
 	    
 	    if(dayCounter<=9){
 	    	date = message.substring(2, 16);
@@ -42,24 +49,27 @@ public class DataPreProcessor implements PreProcessor{
 			Object jsonObj = parser.parse(message);
 			JSONObject jsonObject = (JSONObject)jsonObj; 
 			
-			System.out.println("------------PreProcessing: Parsed Json Data---------------");
+			
+			log.logInput("*****PreProcessing: Parsed Json Data*****");
 		    JSONArray iotenv = (JSONArray)jsonObject.get(date);
-			/*for(int i=0; i<iotenv.size(); i++){
-			    System.out.println("The " + i + " element of the array: "+iotenv.get(i));
-		
-			}*/
+			
 			Iterator iter = iotenv.iterator();
 			while(iter.hasNext()){
+               
 				JSONObject innerObj = (JSONObject) iter.next();
-				System.out.println("data:"+innerObj.get("data"));
-				envData.addDeviceData(innerObj.get("data").toString());
-				System.out.println("name:"+innerObj.get("name"));
-				envData.addDeviceName(innerObj.get("name").toString());
-
+				
+				log.logInput("data:"+innerObj.get("data")+", name:"+innerObj.get("name"));
+				if(innerObj.get("name").toString().equals("Position")){
+					position = innerObj.get("data").toString();
+				}
+				else if(innerObj.get("name").toString().equals("Temperture")){
+					temperture = innerObj.get("data").toString();
+				}
+				else{
+					envData.addDeviceData(innerObj.get("data").toString());
+					envData.addDeviceName(innerObj.get("name").toString());
+				}
 			}
-
-			
-			System.out.println("--------------------------------------------------------");
 		}catch(Exception e){
 			e.printStackTrace();
 		}
@@ -68,5 +78,15 @@ public class DataPreProcessor implements PreProcessor{
 			dayCounter = 0;
 		}
 	}
+	public String getPosition(){
+		 return position;
+		
+	}
+	public String getTemperture(){
+	     return temperture;
+	}
+
+	
+	
 
 }

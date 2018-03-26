@@ -28,6 +28,7 @@ public class IoTgateway {
 		
 		if(args[0].equals("-t")){
 			System.out.println("Test mode run");
+			mt.publishInitDeviceInfo();
 			mt.publishTestData();
 		}
 		else if(args[0].equals("-r")){
