@@ -26,6 +26,7 @@ public class MQTTClient implements MqttCallback{
 	private String pubDevice;
 	private String pubLocal;
 	private String pubConnection;
+	private String pubDisConnection;
 	
 	private MqttClient myClient;
 	private MqttConnectOptions connOpt;
@@ -259,6 +260,7 @@ public class MQTTClient implements MqttCallback{
 			   writer.close(); 
 		}catch(ArrayIndexOutOfBoundsException are){
 			System.out.println("Data publish end");
+			publishDisconnectDevice();
 		}
 		catch (Exception e) {
 			
@@ -266,7 +268,35 @@ public class MQTTClient implements MqttCallback{
 		}
 		
 	}
+	private void publishDisconnectDevice(){
+
+		System.out.println("publish disconnecting IoT env device");
+		 
+		MqttTopic pubDisConnection_Topic = myClient.getTopic(pubDisConnection);
+		try{
+			for(Device d : deviceList){
+			
 	
+				
+        		MqttMessage message = setMqttMessage(d.getDeviceName());
+        		message.setQos(pubQoS);
+    			message.setRetained(false);
+    			MqttDeliveryToken token = null;
+    			
+    			System.out.println("---------Send Publishing Message--------");
+    			System.out.println("Topic:" +pubDisConnection);
+    			System.out.println("Data:"+d.getDeviceName());
+
+    			System.out.println("----------------------------------------");
+    			token = pubDisConnection_Topic.publish(message);
+				 
+			}
+			deviceList.clear();
+			
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+	}
 	private void idenfyAffiliate(){
 		String affiliate[] = clientID.split("/");
 		this.affiliateGlobalName = affiliate[0];
@@ -302,5 +332,6 @@ public class MQTTClient implements MqttCallback{
 	private void setPubTopicFromAffiliate(){
 		pubLocal = "Local/"+affiliateGlobalName+"/"+affiliateLocalName+"/"+affiliateName+"/envData";
 		pubConnection = "Local/"+affiliateGlobalName+"/"+affiliateLocalName+"/"+affiliateName+"/connection";
+		pubDisConnection = "Local/"+affiliateGlobalName+"/"+affiliateLocalName+"/"+affiliateName+"/disconnection";
 	}
 }
