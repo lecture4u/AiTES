@@ -34,13 +34,14 @@ import Communicate.DataTransfer;
 import Framework.LocalAiTESManager;
 import LocalPropertyConnect.ConnectionStarter;
 import LocalPropertyConnect.DBConnector;
-import Rule.RuleSetLoader;
+import com.github.aites.ruleset.*;
 
 public class LocalAiTES extends LocalAiTESManager{
 	DataTransfer df = DataTransfer.getInstance();
 	Timer timer = Timer.getInstance();
 	LogWritter log = LogWritter.getInstance();
 	Participants participants = Participants.getInstance();
+	RuleSetLoader ruleloader = RuleSetLoader.getInstance();
 	DBConnector dc;
 	public LocalAiTES(){
 		
@@ -70,14 +71,10 @@ public class LocalAiTES extends LocalAiTESManager{
 		}
 		df.subscription("Effector/#");
 		
-		//ruleloader.resonOntologyFromFile();
-		/*RuleSetLoader ruleloader = new RuleSetLoader("testRuleSet.xml");
-		try {
-			ruleloader.resonOntologyFromFile();
-		} catch (OWLOntologyCreationException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}*/
+		
+		//ruleloader.setRuleSetURL("SHlocalRuleSet.xml");
+		//ruleloader.ruleSetLoad();
+	
 		
 	}
 	@Override

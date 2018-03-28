@@ -1,0 +1,36 @@
+Prefix(swrl:=<http://www.w3.org/2003/11/swrl#>)
+Prefix(owl:=<http://www.w3.org/2002/07/owl#>)
+Prefix(rdf:=<http://www.w3.org/1999/02/22-rdf-syntax-ns#>)
+Prefix(var2:=<urn:http://www.w3.org/2003/11/swrl#>)
+Prefix(var:=<urn:swrl#>)
+Prefix(xsd:=<http://www.w3.org/2001/XMLSchema#>)
+Prefix(swrlb:=<http://www.w3.org/2003/11/swrlb#>)
+Prefix(:=<http://com.github.aites/ontologies/sample.owl#>)
+Prefix(xml:=<http://www.w3.org/XML/1998/namespace>)
+
+Prefix(rdfs:=<http://www.w3.org/2000/01/rdf-schema#>)
+
+
+Ontology(<http://com.github.aites/ontologies/sample.owl>
+
+Declaration(Class(:SHEnvironment))
+Declaration(DataProperty(:hasPS))
+
+Declaration(NamedIndividual(:SHE1))
+ClassAssertion(:SHEnvironment :SHE1)
+DataPropertyAssertion(:hasPS :SHE1 "1150"^^xsd:integer)
+
+Declaration(Class(:PSoverRule))
+DLSafeRule(
+        Annotation(rdfs:comment "Rule for Power consumtion is over?")
+        Body(
+            ClassAtom(:SHEnvironment Variable(var:s))
+            DataPropertyAtom(:hasPS Variable(var:s) Variable(var:p))
+            BuiltInAtom(swrlb:greaterThan Variable(var:p) "1600"^^xsd:integer)
+        )
+        Head(
+            ClassAtom(:PSoverRule Variable(var:s))
+        )
+)
+
+)
