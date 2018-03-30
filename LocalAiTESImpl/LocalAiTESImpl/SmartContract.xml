@@ -1,0 +1,96 @@
+Prefix(swrl:=<http://www.w3.org/2003/11/swrl#>)
+Prefix(owl:=<http://www.w3.org/2002/07/owl#>)
+Prefix(rdf:=<http://www.w3.org/1999/02/22-rdf-syntax-ns#>)
+Prefix(var2:=<urn:http://www.w3.org/2003/11/swrl#>)
+Prefix(var:=<urn:swrl#>)
+Prefix(xsd:=<http://www.w3.org/2001/XMLSchema#>)
+Prefix(swrlb:=<http://www.w3.org/2003/11/swrlb#>)
+Prefix(:=<http://com.github.aites/ontologies/itecosystem.owl#>)
+Prefix(xml:=<http://www.w3.org/XML/1998/namespace>)
+
+Prefix(rdfs:=<http://www.w3.org/2000/01/rdf-schema#>)
+
+
+Ontology(<http://com.github.aites/ontologies/itecosystem.owl>
+
+
+Declaration(Class(:People))
+Declaration(Class(:Client))
+SubClassOf(:Client :People)
+
+Declaration(DataProperty(:hasMessage))
+Declaration(DataProperty(:hasMoney))
+Declaration(DataProperty(:hasIdentification))
+Declaration(DataProperty(:hasAccount))
+
+Declaration(NamedIndividual(:Client1))
+ClassAssertion(:Client :Client1)
+DataPropertyAssertion(:hasMoney :Client1 "5000"^^xsd:integer)
+
+Declaration(NamedIndividual(:Client2))
+ClassAssertion(:Client :Client2)
+DataPropertyAssertion(:hasMoney :Client2 "15000"^^xsd:integer)
+
+
+Declaration(Class(:Machine))
+Declaration(Class(:Device))
+SubClassOf(:Device :Machine)
+
+Declaration(DataProperty(:hasData))
+Declaration(DataProperty(:hasOriginData))
+Declaration(DataProperty(:hasIP))
+
+Declaration(Class(:TransactionInformation))
+
+Declaration(DataProperty(:hasTransactionType))
+Declaration(DataProperty(:hasTransactionCreationTime))
+Declaration(DataProperty(:hasTransactionID))
+Declaration(DataProperty(:hasTransactionPayload))
+
+Declaration(NamedIndividual(:TransactionInformation1))
+ClassAssertion(:TransactionInformation :TransactionInformation1)
+DataPropertyAssertion(:hasTransactionType :TransactionInformation1 "Transfer"^^xsd:string)
+DataPropertyAssertion(:hasTransactionCreationTime :TransactionInformation1 "2018-03-15"^^xsd:string)
+DataPropertyAssertion(:hasTransactionID :TransactionInformation1 "1dasd23-asdasdj242-xk29fjd"^^xsd:string)
+
+Declaration(ObjectProperty(:TransferRequest))
+InverseObjectProperties(:TransferReceive :TransferRequest)
+Declaration(ObjectProperty(:isTxDataForClient))
+Declaration(ObjectProperty(:isTxDataForDevice))
+InverseObjectProperties(:hasTxDataForClient :isTxDataForClient)
+InverseObjectProperties(:hasTxDataForDevice :isTxDataForDevice)
+
+ObjectPropertyAssertion(:isTxDataForClient :TransactionInformation :Client)
+ObjectPropertyAssertion(:isTxDataForDevice :TransactionInformation :Device)
+
+ObjectPropertyAssertion(:isTxDataForClient :TransactionInformation1 :Client1)
+
+Declaration(Class(:TxTypeTransfer))
+DLSafeRule(
+ Annotation(rdfs:comment "Check Transaction Type")
+ Body(
+  ClassAtom(:TransactionInformation Variable(var:t))
+  DataPropertyAtom(:hasTransactionType Variable(var:t) Variable(var:hasTransactionType))
+  ObjectPropertyAtom(:isTxDataForClient Variable(var:t) Variable(var:isTxDataForClient))
+  BuiltInAtom(swrlb:equal Variable(var:hasTransactionType) "Transfer"^^xsd:string)
+ )
+ Head(
+  ClassAtom(:TxTypeTransfer Variable(var:t))
+ )
+)
+
+Declaration(Class(:Transfer))
+DLSafeRule(
+  Annotation(rdfs:comment "Client request Transaction")
+  Body(
+    ClassAtom(:Client Variable(var:c))
+    DataPropertyAtom(:hasMoney Variable(var:c) Variable(var:money))
+    ObjectPropertyAtom(:TransferRequest Variable(var:c) Variable(var:other))
+    BuiltInAtom(swrlb:greaterThanOrEqual Variable(var:money) "5000"^^xsd:integer)
+  )
+  Head(
+    ClassAtom(:Transfer Variable(var:c))
+  )
+)
+
+)

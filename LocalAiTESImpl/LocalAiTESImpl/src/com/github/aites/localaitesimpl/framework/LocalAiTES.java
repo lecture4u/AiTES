@@ -34,6 +34,8 @@ import Communicate.DataTransfer;
 import Framework.LocalAiTESManager;
 import LocalPropertyConnect.ConnectionStarter;
 import LocalPropertyConnect.DBConnector;
+
+
 import com.github.aites.ruleset.*;
 
 public class LocalAiTES extends LocalAiTESManager{
@@ -71,9 +73,10 @@ public class LocalAiTES extends LocalAiTESManager{
 		}
 		df.subscription("Effector/#");
 		
-		
-		//ruleloader.setRuleSetURL("SHlocalRuleSet.xml");
-		//ruleloader.ruleSetLoad();
+		OWLExamManager owlexm = new OWLExamManager("SHlocalRuleSet.xml");
+		owlexm.loadOntology("Client1");
+		ruleloader.setRuleSetURL("SHlocalRuleSet.xml");
+		ruleloader.ruleSetLoad();
 	
 		
 	}

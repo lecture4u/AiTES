@@ -29,7 +29,7 @@ public class MonitorManager extends Manager{
 	@Override
 	public void run() {
 		log.logInput("---------------MonitorManager: Monitoring IoT env data from"+deviceName+"---------------");
-		log.logInput("Topic:"+clientID);
+		log.logInput("ClientID"+clientID);
 		log.logInput("Message:"+mqttMessage);
 		log.logInput("deviceName:"+deviceName);
 		

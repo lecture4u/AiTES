@@ -59,6 +59,18 @@ Message:{"Oven":[{"address":"192.168.0.55","modelCode":"JC00A121601","status":"r
 @@@@@DeviceConnection: Parsed Json Data@@@@@
 address:192.168.0.55, modelCode:JC00A121601, status:ready
 @@@@@Currrent Participants in Smart HomeLocal AiTES@@@@@
+Air_Conditioner
+TV
+Lamp
+Robotic_Vacuum_Cleaner
+FlowerPot
+Washing_Machine
+Lamp2
+Smart_Cook_Pot
+CCTV
+Mixer
+AI_Speaker
+Oven
 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 ----------Get IoT environment Data from IoT gateway----------
 Topic:Local/Global1/Local1/Gateway1/envData
@@ -85,7 +97,9 @@ data:180, name:Oven
 data:37.19.24.416:127.07.43.44, name:Position
 data:23.6, name:Temperture
 *****Smart Home Environment Data Heuristic funtion*****
+#####individual Assertion#####
 Power consumtion:1140.0500000000002
+#####Reasoing from OWL ruleset: false#####
 ----------------------------------------------------------------
 Read current monitoring data
 collectDate:2017.7.17 0:00,mreult:normal,position:37.19.24.416:127.07.43.44,temperture:23.6
@@ -217,10 +231,12 @@ psResult:over
 position37.19.24.482:127.07.43.59
 temperture29.4
 clientID:Global1/Local1
-*****Start Position State Reasoning*****
+#####Start Position State Reasoning#####
 resoning user position state:inHome
-*****Start Home Temperture State Reasoning*****
+inHome:true
+#####Start Home Temperture State Reasoning#####
 29.4
+hot:true
 *****state combiner start*****
 Analyze Result:over,inHome,hot, needPlan?:no
 ------------------------------------------------------------------------------------

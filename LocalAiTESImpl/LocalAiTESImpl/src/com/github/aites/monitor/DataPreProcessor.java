@@ -19,7 +19,7 @@ public class DataPreProcessor implements PreProcessor{
     
 	LogWritter log = LogWritter.getInstance();
 	@Override
-	public void dataPreprocess() {
+ 	public void dataPreprocess() {
 		// TODO Auto-generated method stub
 		
 	}
