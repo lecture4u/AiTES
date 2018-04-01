@@ -19,6 +19,8 @@ import org.semanticweb.owlapi.vocab.PrefixOWLOntologyFormat;
 
 import com.clarkparsia.pellet.owlapiv3.PelletReasonerFactory;
 import com.github.aites.shlocalaites.log.LogWritter;
+import com.github.aites.shlocalaites.rule.RuleManager;
+import com.github.aites.shlocalaites.ruleset.RuleSetManager;
 
 import uk.ac.manchester.cs.owlapi.dlsyntax.DLSyntaxObjectRenderer;
 
@@ -54,10 +56,21 @@ public class MonitorHRAlgorithm {
 		}
 		log.logInput("Power consumtion:"+hresult);
 		
-		if(hresult < 600){
+		String dpValue = hresult.toString();
+		String feedBackInd = "SHEdata"+envData.getCollectDate().replaceAll("[.: ]", "");
+		log.logInput("#####Reasoing rule about individual:"+feedBackInd+" and dataProperty:"+dpValue+"#####");
+		RuleSetManager ruleSetManager = new RuleSetManager("smartHome.xml");
+	    ruleSetManager.assertDataProperty("hasPS", feedBackInd, dpValue, "double");
+		ruleSetManager.saveRuleSet();
+		
+		RuleManager ruleManager2 = new RuleManager("smartHome.xml");
+		ruleManager2.loadOntology(); 
+		boolean isOverPS = ruleManager2.reasoningRule(feedBackInd, "PSoverRule");
+		boolean isUnderPS = ruleManager2.reasoningRule(feedBackInd, "PSunderRule");
+		if(isUnderPS){
 			return "under";
 		}
-		else if(hresult>1300){
+		else if(isOverPS){
 			return "over";
 		}
 		return "normal";

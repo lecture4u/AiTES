@@ -33,6 +33,7 @@ import com.github.aites.shlocalaites.gkconnect.MonitorEnvDataWriter;
 import com.github.aites.shlocalaites.gkconnect.PlannerPlanReader;
 import com.github.aites.shlocalaites.log.LogWritter;
 import com.github.aites.shlocalaites.palnner.Plan;
+import com.github.aites.shlocalaites.rule.RuleManager;
 import com.github.aites.shlocalaites.ruleset.*;
 import com.github.aitest.shlocalaites.executor.Timer;
 
@@ -41,7 +42,7 @@ public class LocalAiTES extends LocalAiTESManager{
 	Timer timer = Timer.getInstance();
 	LogWritter log = LogWritter.getInstance();
 	Participants participants = Participants.getInstance();
-	RuleSetLoader ruleloader = RuleSetLoader.getInstance();
+
 	DBConnector dc;
 	public LocalAiTES(){
 		
@@ -71,11 +72,29 @@ public class LocalAiTES extends LocalAiTESManager{
 		}
 		df.subscription("Effector/#");
 		
-		OWLExamManager owlexm = new OWLExamManager("SHlocalRuleSet.xml");
-		owlexm.loadOntology("Client1");
-		ruleloader.setRuleSetURL("SHlocalRuleSet.xml");
-		ruleloader.ruleSetLoad();
+		//OWLExamManager owlexm = new OWLExamManager("SHlocalRuleSet.xml");
+		//owlexm.loadOntology("Client1");
+		
+	//	RuleSetManager ruleSetManager = new RuleSetManager("SHlocalRuleSet.xml");
+		//ruleSetManager.assertInd("Client3", "Client");
+		//ruleSetManager.assertDataProperty("hasMoney", "Client3", "5000", "integer");
+		//ruleSetManager.saveRuleSet();
+		
+		RuleManager ruleManager = new RuleManager("smartHome.xml");
+		ruleManager.loadOntology(); 
+		boolean isOverPS = ruleManager.reasoningRule("SHEdata1", "PSoverRule");
+		System.out.println(isOverPS);
+		
+		//RuleSetManager ruleSetManager2 = new RuleSetManager("smartHome.xml");
+		//ruleSetManager2.assertInd("SHEdata2017", "SHEdata");
+		//ruleSetManager2.assertDataProperty("hasPS", "SHEdata2017", "1200", "integer");
+		//ruleSetManager2.saveRuleSet();
 	
+		RuleManager ruleManager2 = new RuleManager("smartHome.xml");
+		ruleManager2.loadOntology(); 
+		boolean isOverPS2 = ruleManager2.reasoningRule("SHEdata2017", "PSoverRule");
+		System.out.println(isOverPS2);
+		
 		
 	}
 	@Override
@@ -109,7 +128,15 @@ public class LocalAiTES extends LocalAiTESManager{
 		log.logInput("Topic:"+topic);
 		log.logInput("Message:"+mqttMessage);
 		log.logInput("deviceName:"+deviceName);
+		log.logInput("Current System Time:"+timer.getWholeTime());
 		log.logInput("-------------------------------------------------------------");
+		
+	
+		String feedBackInd  ="SHEdata"+timer.getAbbTime();
+		log.logInput("#####Assertion individual to ruleSet:"+feedBackInd+"#####");
+		RuleSetManager ruleSetManager = new RuleSetManager("smartHome.xml");
+	    ruleSetManager.assertInd(feedBackInd, "SHEdata");
+		ruleSetManager.saveRuleSet();
 		
 		Manager af = ManagerAF.getManager(new Monitor(mqttMessage,deviceName,clientID));
 		af.run();

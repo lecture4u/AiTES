@@ -65,4 +65,8 @@ public class Timer {
 	public String getWholeTime(){
 		return systemTime;
 	}
+	public String getAbbTime(){
+		String abbTime= systemTime.replaceAll("[.: ]","");
+		return abbTime;
+	}
 }

@@ -59,26 +59,16 @@ Message:{"Oven":[{"address":"192.168.0.55","modelCode":"JC00A121601","status":"r
 @@@@@DeviceConnection: Parsed Json Data@@@@@
 address:192.168.0.55, modelCode:JC00A121601, status:ready
 @@@@@Currrent Participants in Smart HomeLocal AiTES@@@@@
-Air_Conditioner
-TV
-Lamp
-Robotic_Vacuum_Cleaner
-FlowerPot
-Washing_Machine
-Lamp2
-Smart_Cook_Pot
-CCTV
-Mixer
-AI_Speaker
-Oven
 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 ----------Get IoT environment Data from IoT gateway----------
 Topic:Local/Global1/Local1/Gateway1/envData
 Message:{"2017.7.17 0:00":[{"data":"665","name":"Air_conditioner"},{"data":"38.25","name":"TV"},{"data":"2.5","name":"Lamp"},{"data":"2.5","name":"Robotic Vacuum Cleaner"},{"data":"2.2","name":"flowerPot"},{"data":"220","name":"Washing Machine"},{"data":"11.25","name":"Lamp2"},{"data":"6.7","name":"Smart Cooking pot"},{"data":"1.5","name":"CCTV"},{"data":"1.4","name":"mixer"},{"data":"8.75","name":"AI Speaker"},{"data":"180","name":"Oven"},{"data":"37.19.24.416:127.07.43.44","name":"Position"},{"data":"23.6","name":"Temperture"}]}
 deviceName:Gateway1
+Current System Time:2017.7.17 0:00
 -------------------------------------------------------------
+#####Assertion individual to ruleSet:SHEdata2017717000#####
 ---------------MonitorManager: Monitoring IoT env data fromGateway1---------------
-Topic:Global1/Local1
+ClientIDGlobal1/Local1
 Message:{"2017.7.17 0:00":[{"data":"665","name":"Air_conditioner"},{"data":"38.25","name":"TV"},{"data":"2.5","name":"Lamp"},{"data":"2.5","name":"Robotic Vacuum Cleaner"},{"data":"2.2","name":"flowerPot"},{"data":"220","name":"Washing Machine"},{"data":"11.25","name":"Lamp2"},{"data":"6.7","name":"Smart Cooking pot"},{"data":"1.5","name":"CCTV"},{"data":"1.4","name":"mixer"},{"data":"8.75","name":"AI Speaker"},{"data":"180","name":"Oven"},{"data":"37.19.24.416:127.07.43.44","name":"Position"},{"data":"23.6","name":"Temperture"}]}
 deviceName:Gateway1
 *****PreProcessing: Parsed Json Data*****
@@ -97,9 +87,8 @@ data:180, name:Oven
 data:37.19.24.416:127.07.43.44, name:Position
 data:23.6, name:Temperture
 *****Smart Home Environment Data Heuristic funtion*****
-#####individual Assertion#####
 Power consumtion:1140.0500000000002
-#####Reasoing from OWL ruleset: false#####
+#####Reasoing rule about individual:SHEdata2017717000 and dataProperty:1140.0500000000002#####
 ----------------------------------------------------------------
 Read current monitoring data
 collectDate:2017.7.17 0:00,mreult:normal,position:37.19.24.416:127.07.43.44,temperture:23.6
@@ -113,9 +102,11 @@ system time:2017.7.17 0:00
 Topic:Local/Global1/Local1/Gateway1/envData
 Message:{"2017.7.17 1:00":[{"data":"498.75","name":"Air_conditioner"},{"data":"15.3","name":"TV"},{"data":"1","name":"Lamp"},{"data":"2.5","name":"Robotic Vacuum Cleaner"},{"data":"2.2","name":"flowerPot"},{"data":"220","name":"Washing Machine"},{"data":"3.75","name":"Lamp2"},{"data":"6.7","name":"Smart Cooking pot"},{"data":"1.5","name":"CCTV"},{"data":"1.4","name":"mixer"},{"data":"3.5","name":"AI Speaker"},{"data":"180","name":"Oven"},{"data":"37.19.24.416:127.07.43.44","name":"Position"},{"data":"23.6","name":"Temperture"}]}
 deviceName:Gateway1
+Current System Time:2017.7.17 1:00
 -------------------------------------------------------------
+#####Assertion individual to ruleSet:SHEdata2017717100#####
 ---------------MonitorManager: Monitoring IoT env data fromGateway1---------------
-Topic:Global1/Local1
+ClientIDGlobal1/Local1
 Message:{"2017.7.17 1:00":[{"data":"498.75","name":"Air_conditioner"},{"data":"15.3","name":"TV"},{"data":"1","name":"Lamp"},{"data":"2.5","name":"Robotic Vacuum Cleaner"},{"data":"2.2","name":"flowerPot"},{"data":"220","name":"Washing Machine"},{"data":"3.75","name":"Lamp2"},{"data":"6.7","name":"Smart Cooking pot"},{"data":"1.5","name":"CCTV"},{"data":"1.4","name":"mixer"},{"data":"3.5","name":"AI Speaker"},{"data":"180","name":"Oven"},{"data":"37.19.24.416:127.07.43.44","name":"Position"},{"data":"23.6","name":"Temperture"}]}
 deviceName:Gateway1
 *****PreProcessing: Parsed Json Data*****
@@ -135,6 +126,7 @@ data:37.19.24.416:127.07.43.44, name:Position
 data:23.6, name:Temperture
 *****Smart Home Environment Data Heuristic funtion*****
 Power consumtion:936.6
+#####Reasoing rule about individual:SHEdata2017717100 and dataProperty:936.6#####
 ----------------------------------------------------------------
 Read current monitoring data
 collectDate:2017.7.17 1:00,mreult:normal,position:37.19.24.416:127.07.43.44,temperture:23.6
@@ -148,9 +140,11 @@ system time:2017.7.17 1:00
 Topic:Local/Global1/Local1/Gateway1/envData
 Message:{"2017.7.17 2:00":[{"data":"166.25","name":"Air_conditioner"},{"data":"15.3","name":"TV"},{"data":"1","name":"Lamp"},{"data":"2.5","name":"Robotic Vacuum Cleaner"},{"data":"2.2","name":"flowerPot"},{"data":"110","name":"Washing Machine"},{"data":"1.5","name":"Lamp2"},{"data":"6.7","name":"Smart Cooking pot"},{"data":"1.5","name":"CCTV"},{"data":"1.4","name":"mixer"},{"data":"3.5","name":"AI Speaker"},{"data":"180","name":"Oven"},{"data":"37.19.24.955:127.07.45.717","name":"Position"},{"data":"17.5","name":"Temperture"}]}
 deviceName:Gateway1
+Current System Time:2017.7.17 2:00
 -------------------------------------------------------------
+#####Assertion individual to ruleSet:SHEdata2017717200#####
 ---------------MonitorManager: Monitoring IoT env data fromGateway1---------------
-Topic:Global1/Local1
+ClientIDGlobal1/Local1
 Message:{"2017.7.17 2:00":[{"data":"166.25","name":"Air_conditioner"},{"data":"15.3","name":"TV"},{"data":"1","name":"Lamp"},{"data":"2.5","name":"Robotic Vacuum Cleaner"},{"data":"2.2","name":"flowerPot"},{"data":"110","name":"Washing Machine"},{"data":"1.5","name":"Lamp2"},{"data":"6.7","name":"Smart Cooking pot"},{"data":"1.5","name":"CCTV"},{"data":"1.4","name":"mixer"},{"data":"3.5","name":"AI Speaker"},{"data":"180","name":"Oven"},{"data":"37.19.24.955:127.07.45.717","name":"Position"},{"data":"17.5","name":"Temperture"}]}
 deviceName:Gateway1
 *****PreProcessing: Parsed Json Data*****
@@ -170,13 +164,14 @@ data:37.19.24.955:127.07.45.717, name:Position
 data:17.5, name:Temperture
 *****Smart Home Environment Data Heuristic funtion*****
 Power consumtion:491.84999999999997
+#####Reasoing rule about individual:SHEdata2017717200 and dataProperty:491.84999999999997#####
 ----------------------------------------------------------------
 Read current monitoring data
-collectDate:2017.7.17 2:00,mreult:under,position:37.19.24.955:127.07.45.717,temperture:17.5
+collectDate:2017.7.17 2:00,mreult:over,position:37.19.24.955:127.07.45.717,temperture:17.5
 Situation Occured
 ---------------Analyze IoT Environment when Problem Situation ocuured---------------
 collectDate2017.7.17 2:00
-psResult:under
+psResult:over
 position37.19.24.955:127.07.45.717
 temperture17.5
 clientID:Global1/Local1
@@ -185,10 +180,10 @@ resoning user position state:outHome
 *****Start Home Temperture State Reasoning*****
 17.5
 *****state combiner start*****
-Analyze Result:under,outHome,cold, needPlan?:no
+Analyze Result:over,outHome,cold, needPlan?:no
 ------------------------------------------------------------------------------------
 read Analyzer stateset need plaining
-stateSet:under,outHome,cold,collectDate:2017.7.17 2:00,pneed:no
+stateSet:over,outHome,cold,collectDate:2017.7.17 2:00,pneed:no
 read paln must extcuted in system time:2017.7.17 2:00
 ---------------run executor for execute module---------------
 system time:2017.7.17 2:00
@@ -199,9 +194,11 @@ system time:2017.7.17 2:00
 Topic:Local/Global1/Local1/Gateway1/envData
 Message:{"2017.7.17 3:00":[{"data":"498.75","name":"Air_conditioner"},{"data":"15.3","name":"TV"},{"data":"1","name":"Lamp"},{"data":"2.5","name":"Robotic Vacuum Cleaner"},{"data":"2.2","name":"flowerPot"},{"data":"550","name":"Washing Machine"},{"data":"1.5","name":"Lamp2"},{"data":"67","name":"Smart Cooking pot"},{"data":"15","name":"CCTV"},{"data":"1.4","name":"mixer"},{"data":"3.5","name":"AI Speaker"},{"data":"180","name":"Oven"},{"data":"37.19.24.482:127.07.43.59","name":"Position"},{"data":"29.4","name":"Temperture"}]}
 deviceName:Gateway1
+Current System Time:2017.7.17 3:00
 -------------------------------------------------------------
+#####Assertion individual to ruleSet:SHEdata2017717300#####
 ---------------MonitorManager: Monitoring IoT env data fromGateway1---------------
-Topic:Global1/Local1
+ClientIDGlobal1/Local1
 Message:{"2017.7.17 3:00":[{"data":"498.75","name":"Air_conditioner"},{"data":"15.3","name":"TV"},{"data":"1","name":"Lamp"},{"data":"2.5","name":"Robotic Vacuum Cleaner"},{"data":"2.2","name":"flowerPot"},{"data":"550","name":"Washing Machine"},{"data":"1.5","name":"Lamp2"},{"data":"67","name":"Smart Cooking pot"},{"data":"15","name":"CCTV"},{"data":"1.4","name":"mixer"},{"data":"3.5","name":"AI Speaker"},{"data":"180","name":"Oven"},{"data":"37.19.24.482:127.07.43.59","name":"Position"},{"data":"29.4","name":"Temperture"}]}
 deviceName:Gateway1
 *****PreProcessing: Parsed Json Data*****
@@ -221,6 +218,7 @@ data:37.19.24.482:127.07.43.59, name:Position
 data:29.4, name:Temperture
 *****Smart Home Environment Data Heuristic funtion*****
 Power consumtion:1338.15
+#####Reasoing rule about individual:SHEdata2017717300 and dataProperty:1338.15#####
 ----------------------------------------------------------------
 Read current monitoring data
 collectDate:2017.7.17 3:00,mreult:over,position:37.19.24.482:127.07.43.59,temperture:29.4
@@ -231,12 +229,10 @@ psResult:over
 position37.19.24.482:127.07.43.59
 temperture29.4
 clientID:Global1/Local1
-#####Start Position State Reasoning#####
+*****Start Position State Reasoning*****
 resoning user position state:inHome
-inHome:true
-#####Start Home Temperture State Reasoning#####
+*****Start Home Temperture State Reasoning*****
 29.4
-hot:true
 *****state combiner start*****
 Analyze Result:over,inHome,hot, needPlan?:no
 ------------------------------------------------------------------------------------
@@ -252,9 +248,11 @@ system time:2017.7.17 3:00
 Topic:Local/Global1/Local1/Gateway1/envData
 Message:{"2017.7.17 4:00":[{"data":"66.5","name":"Air_conditioner"},{"data":"38.25","name":"TV"},{"data":"1","name":"Lamp"},{"data":"2.5","name":"Robotic Vacuum Cleaner"},{"data":"2.2","name":"flowerPot"},{"data":"330","name":"Washing Machine"},{"data":"1.5","name":"Lamp2"},{"data":"67","name":"Smart Cooking pot"},{"data":"15","name":"CCTV"},{"data":"1.4","name":"mixer"},{"data":"3.5","name":"AI Speaker"},{"data":"180","name":"Oven"},{"data":"37.19.24.416:127.07.43.46","name":"Position"},{"data":"23.4","name":"Temperture"}]}
 deviceName:Gateway1
+Current System Time:2017.7.17 4:00
 -------------------------------------------------------------
+#####Assertion individual to ruleSet:SHEdata2017717400#####
 ---------------MonitorManager: Monitoring IoT env data fromGateway1---------------
-Topic:Global1/Local1
+ClientIDGlobal1/Local1
 Message:{"2017.7.17 4:00":[{"data":"66.5","name":"Air_conditioner"},{"data":"38.25","name":"TV"},{"data":"1","name":"Lamp"},{"data":"2.5","name":"Robotic Vacuum Cleaner"},{"data":"2.2","name":"flowerPot"},{"data":"330","name":"Washing Machine"},{"data":"1.5","name":"Lamp2"},{"data":"67","name":"Smart Cooking pot"},{"data":"15","name":"CCTV"},{"data":"1.4","name":"mixer"},{"data":"3.5","name":"AI Speaker"},{"data":"180","name":"Oven"},{"data":"37.19.24.416:127.07.43.46","name":"Position"},{"data":"23.4","name":"Temperture"}]}
 deviceName:Gateway1
 *****PreProcessing: Parsed Json Data*****
@@ -274,6 +272,7 @@ data:37.19.24.416:127.07.43.46, name:Position
 data:23.4, name:Temperture
 *****Smart Home Environment Data Heuristic funtion*****
 Power consumtion:708.85
+#####Reasoing rule about individual:SHEdata2017717400 and dataProperty:708.85#####
 ----------------------------------------------------------------
 Read current monitoring data
 collectDate:2017.7.17 4:00,mreult:normal,position:37.19.24.416:127.07.43.46,temperture:23.4
@@ -287,9 +286,11 @@ system time:2017.7.17 4:00
 Topic:Local/Global1/Local1/Gateway1/envData
 Message:{"2017.7.17 5:00":[{"data":"498.75","name":"Air_conditioner"},{"data":"114.75","name":"TV"},{"data":"25","name":"Lamp"},{"data":"25","name":"Robotic Vacuum Cleaner"},{"data":"25","name":"flowerPot"},{"data":"330","name":"Washing Machine"},{"data":"15","name":"Lamp2"},{"data":"67","name":"Smart Cooking pot"},{"data":"15","name":"CCTV"},{"data":"1.4","name":"mixer"},{"data":"26.36","name":"AI Speaker"},{"data":"180","name":"Oven"},{"data":"37.19.27.868:127.07.48.768","name":"Position"},{"data":"23.4","name":"Temperture"}]}
 deviceName:Gateway1
+Current System Time:2017.7.17 5:00
 -------------------------------------------------------------
+#####Assertion individual to ruleSet:SHEdata2017717500#####
 ---------------MonitorManager: Monitoring IoT env data fromGateway1---------------
-Topic:Global1/Local1
+ClientIDGlobal1/Local1
 Message:{"2017.7.17 5:00":[{"data":"498.75","name":"Air_conditioner"},{"data":"114.75","name":"TV"},{"data":"25","name":"Lamp"},{"data":"25","name":"Robotic Vacuum Cleaner"},{"data":"25","name":"flowerPot"},{"data":"330","name":"Washing Machine"},{"data":"15","name":"Lamp2"},{"data":"67","name":"Smart Cooking pot"},{"data":"15","name":"CCTV"},{"data":"1.4","name":"mixer"},{"data":"26.36","name":"AI Speaker"},{"data":"180","name":"Oven"},{"data":"37.19.27.868:127.07.48.768","name":"Position"},{"data":"23.4","name":"Temperture"}]}
 deviceName:Gateway1
 *****PreProcessing: Parsed Json Data*****
@@ -309,6 +310,7 @@ data:37.19.27.868:127.07.48.768, name:Position
 data:23.4, name:Temperture
 *****Smart Home Environment Data Heuristic funtion*****
 Power consumtion:1323.26
+#####Reasoing rule about individual:SHEdata2017717500 and dataProperty:1323.26#####
 ----------------------------------------------------------------
 Read current monitoring data
 collectDate:2017.7.17 5:00,mreult:over,position:37.19.27.868:127.07.48.768,temperture:23.4
@@ -358,9 +360,11 @@ Execute plannTarget:TVand action:turnStanby
 Topic:Local/Global1/Local1/Gateway1/envData
 Message:{"2017.7.17 6:00":[{"data":"498.75","name":"Air_conditioner"},{"data":"153","name":"TV"},{"data":"7.5","name":"Lamp"},{"data":"2.5","name":"Robotic Vacuum Cleaner"},{"data":"5.5","name":"flowerPot"},{"data":"220","name":"Washing Machine"},{"data":"1.5","name":"Lamp2"},{"data":"6.7","name":"Smart Cooking pot"},{"data":"1.5","name":"CCTV"},{"data":"3.75","name":"mixer"},{"data":"26.25","name":"AI Speaker"},{"data":"180","name":"Oven"},{"data":"37.19.24.414:127.07.43.47","name":"Position"},{"data":"24.8","name":"Temperture"}]}
 deviceName:Gateway1
+Current System Time:2017.7.17 6:00
 -------------------------------------------------------------
+#####Assertion individual to ruleSet:SHEdata2017717600#####
 ---------------MonitorManager: Monitoring IoT env data fromGateway1---------------
-Topic:Global1/Local1
+ClientIDGlobal1/Local1
 Message:{"2017.7.17 6:00":[{"data":"498.75","name":"Air_conditioner"},{"data":"153","name":"TV"},{"data":"7.5","name":"Lamp"},{"data":"2.5","name":"Robotic Vacuum Cleaner"},{"data":"5.5","name":"flowerPot"},{"data":"220","name":"Washing Machine"},{"data":"1.5","name":"Lamp2"},{"data":"6.7","name":"Smart Cooking pot"},{"data":"1.5","name":"CCTV"},{"data":"3.75","name":"mixer"},{"data":"26.25","name":"AI Speaker"},{"data":"180","name":"Oven"},{"data":"37.19.24.414:127.07.43.47","name":"Position"},{"data":"24.8","name":"Temperture"}]}
 deviceName:Gateway1
 *****PreProcessing: Parsed Json Data*****
@@ -380,6 +384,7 @@ data:37.19.24.414:127.07.43.47, name:Position
 data:24.8, name:Temperture
 *****Smart Home Environment Data Heuristic funtion*****
 Power consumtion:1106.95
+#####Reasoing rule about individual:SHEdata2017717600 and dataProperty:1106.95#####
 ----------------------------------------------------------------
 Read current monitoring data
 collectDate:2017.7.17 6:00,mreult:normal,position:37.19.24.414:127.07.43.47,temperture:24.8
@@ -399,9 +404,11 @@ Execute plannTarget:TVand action:turnReady
 Topic:Local/Global1/Local1/Gateway1/envData
 Message:{"2017.7.17 7:00":[{"data":"166.26","name":"Air_conditioner"},{"data":"153","name":"TV"},{"data":"10","name":"Lamp"},{"data":"6.25","name":"Robotic Vacuum Cleaner"},{"data":"16.5","name":"flowerPot"},{"data":"220","name":"Washing Machine"},{"data":"3.75","name":"Lamp2"},{"data":"6.7","name":"Smart Cooking pot"},{"data":"3.75","name":"CCTV"},{"data":"11.25","name":"mixer"},{"data":"35","name":"AI Speaker"},{"data":"180","name":"Oven"},{"data":"37.19.24.416:127.07.43.48","name":"Position"},{"data":"25.5","name":"Temperture"}]}
 deviceName:Gateway1
+Current System Time:2017.7.17 7:00
 -------------------------------------------------------------
+#####Assertion individual to ruleSet:SHEdata2017717700#####
 ---------------MonitorManager: Monitoring IoT env data fromGateway1---------------
-Topic:Global1/Local1
+ClientIDGlobal1/Local1
 Message:{"2017.7.17 7:00":[{"data":"166.26","name":"Air_conditioner"},{"data":"153","name":"TV"},{"data":"10","name":"Lamp"},{"data":"6.25","name":"Robotic Vacuum Cleaner"},{"data":"16.5","name":"flowerPot"},{"data":"220","name":"Washing Machine"},{"data":"3.75","name":"Lamp2"},{"data":"6.7","name":"Smart Cooking pot"},{"data":"3.75","name":"CCTV"},{"data":"11.25","name":"mixer"},{"data":"35","name":"AI Speaker"},{"data":"180","name":"Oven"},{"data":"37.19.24.416:127.07.43.48","name":"Position"},{"data":"25.5","name":"Temperture"}]}
 deviceName:Gateway1
 *****PreProcessing: Parsed Json Data*****
@@ -421,6 +428,7 @@ data:37.19.24.416:127.07.43.48, name:Position
 data:25.5, name:Temperture
 *****Smart Home Environment Data Heuristic funtion*****
 Power consumtion:812.46
+#####Reasoing rule about individual:SHEdata2017717700 and dataProperty:812.46#####
 ----------------------------------------------------------------
 Read current monitoring data
 collectDate:2017.7.17 7:00,mreult:normal,position:37.19.24.416:127.07.43.48,temperture:25.5
@@ -437,9 +445,11 @@ Execute plannTarget:TVand action:turnUReady
 Topic:Local/Global1/Local1/Gateway1/envData
 Message:{"2017.7.17 8:00":[{"data":"66.5","name":"Air_conditioner"},{"data":"153","name":"TV"},{"data":"10","name":"Lamp"},{"data":"2.5","name":"Robotic Vacuum Cleaner"},{"data":"22","name":"flowerPot"},{"data":"110","name":"Washing Machine"},{"data":"1.5","name":"Lamp2"},{"data":"6.7","name":"Smart Cooking pot"},{"data":"1.5","name":"CCTV"},{"data":"1.5","name":"mixer"},{"data":"3.5","name":"AI Speaker"},{"data":"180","name":"Oven"},{"data":"37.19.24.217:127.07.43.123","name":"Position"},{"data":"16.5","name":"Temperture"}]}
 deviceName:Gateway1
+Current System Time:2017.7.17 8:00
 -------------------------------------------------------------
+#####Assertion individual to ruleSet:SHEdata2017717800#####
 ---------------MonitorManager: Monitoring IoT env data fromGateway1---------------
-Topic:Global1/Local1
+ClientIDGlobal1/Local1
 Message:{"2017.7.17 8:00":[{"data":"66.5","name":"Air_conditioner"},{"data":"153","name":"TV"},{"data":"10","name":"Lamp"},{"data":"2.5","name":"Robotic Vacuum Cleaner"},{"data":"22","name":"flowerPot"},{"data":"110","name":"Washing Machine"},{"data":"1.5","name":"Lamp2"},{"data":"6.7","name":"Smart Cooking pot"},{"data":"1.5","name":"CCTV"},{"data":"1.5","name":"mixer"},{"data":"3.5","name":"AI Speaker"},{"data":"180","name":"Oven"},{"data":"37.19.24.217:127.07.43.123","name":"Position"},{"data":"16.5","name":"Temperture"}]}
 deviceName:Gateway1
 *****PreProcessing: Parsed Json Data*****
@@ -459,13 +469,14 @@ data:37.19.24.217:127.07.43.123, name:Position
 data:16.5, name:Temperture
 *****Smart Home Environment Data Heuristic funtion*****
 Power consumtion:558.7
+#####Reasoing rule about individual:SHEdata2017717800 and dataProperty:558.7#####
 ----------------------------------------------------------------
 Read current monitoring data
-collectDate:2017.7.17 8:00,mreult:under,position:37.19.24.217:127.07.43.123,temperture:16.5
+collectDate:2017.7.17 8:00,mreult:over,position:37.19.24.217:127.07.43.123,temperture:16.5
 Situation Occured
 ---------------Analyze IoT Environment when Problem Situation ocuured---------------
 collectDate2017.7.17 8:00
-psResult:under
+psResult:over
 position37.19.24.217:127.07.43.123
 temperture16.5
 clientID:Global1/Local1
@@ -474,18 +485,10 @@ resoning user position state:inHome
 *****Start Home Temperture State Reasoning*****
 16.5
 *****state combiner start*****
-StateSet Need plan:under,cold,inHome
-Analyze Result:under,inHome,cold, needPlan?:yes
+Analyze Result:over,inHome,cold, needPlan?:no
 ------------------------------------------------------------------------------------
 read Analyzer stateset need plaining
-stateSet:under,inHome,cold,collectDate:2017.7.17 8:00,pneed:yes
-Situation need plaining
----------------run Planner for Response Plan---------------
-stateSet:under,inHome,cold
-collectDate2017.7.17 8:00
-*****manage Plan*****
-need Plan for under ps and inHome and cold
-------------------------------------------------------------------------------------
+stateSet:over,inHome,cold,collectDate:2017.7.17 8:00,pneed:no
 read paln must extcuted in system time:2017.7.17 8:00
 ---------------run executor for execute module---------------
 system time:2017.7.17 8:00
@@ -508,9 +511,11 @@ Execute plannTarget:Robotic Vacuum Cleanerand action:turnPS
 Topic:Local/Global1/Local1/Gateway1/envData
 Message:{"2017.7.17 9:00":[{"data":"665","name":"Air_conditioner"},{"data":"114.75","name":"TV"},{"data":"7.5","name":"Lamp"},{"data":"25","name":"Robotic Vacuum Cleaner"},{"data":"22","name":"flowerPot"},{"data":"220","name":"Washing Machine"},{"data":"15","name":"Lamp2"},{"data":"6.7","name":"Smart Cooking pot"},{"data":"15","name":"CCTV"},{"data":"11.25","name":"mixer"},{"data":"35","name":"AI Speaker"},{"data":"180","name":"Oven"},{"data":"37.19.24.324:127.07.43.115","name":"Position"},{"data":"25.7","name":"Temperture"}]}
 deviceName:Gateway1
+Current System Time:2017.7.17 9:00
 -------------------------------------------------------------
+#####Assertion individual to ruleSet:SHEdata2017717900#####
 ---------------MonitorManager: Monitoring IoT env data fromGateway1---------------
-Topic:Global1/Local1
+ClientIDGlobal1/Local1
 Message:{"2017.7.17 9:00":[{"data":"665","name":"Air_conditioner"},{"data":"114.75","name":"TV"},{"data":"7.5","name":"Lamp"},{"data":"25","name":"Robotic Vacuum Cleaner"},{"data":"22","name":"flowerPot"},{"data":"220","name":"Washing Machine"},{"data":"15","name":"Lamp2"},{"data":"6.7","name":"Smart Cooking pot"},{"data":"15","name":"CCTV"},{"data":"11.25","name":"mixer"},{"data":"35","name":"AI Speaker"},{"data":"180","name":"Oven"},{"data":"37.19.24.324:127.07.43.115","name":"Position"},{"data":"25.7","name":"Temperture"}]}
 deviceName:Gateway1
 *****PreProcessing: Parsed Json Data*****
@@ -530,6 +535,7 @@ data:37.19.24.324:127.07.43.115, name:Position
 data:25.7, name:Temperture
 *****Smart Home Environment Data Heuristic funtion*****
 Power consumtion:1317.2
+#####Reasoing rule about individual:SHEdata2017717900 and dataProperty:1317.2#####
 ----------------------------------------------------------------
 Read current monitoring data
 collectDate:2017.7.17 9:00,mreult:over,position:37.19.24.324:127.07.43.115,temperture:25.7
@@ -582,9 +588,11 @@ Execute plannTarget:Smart Cooking Potand action:turnReady
 Topic:Local/Global1/Local1/Gateway1/envData
 Message:{"2017.7.17 10:00":[{"data":"498.75","name":"Air_conditioner"},{"data":"38.25","name":"TV"},{"data":"2.5","name":"Lamp"},{"data":"25","name":"Robotic Vacuum Cleaner"},{"data":"22","name":"flowerPot"},{"data":"220","name":"Washing Machine"},{"data":"15","name":"Lamp2"},{"data":"6.7","name":"Smart Cooking pot"},{"data":"15","name":"CCTV"},{"data":"3.75","name":"mixer"},{"data":"35","name":"AI Speaker"},{"data":"180","name":"Oven"},{"data":"37.19.26.434:127.07.44.167","name":"Position"},{"data":"26.2","name":"Temperture"}]}
 deviceName:Gateway1
+Current System Time:2017.7.17 10:00
 -------------------------------------------------------------
+#####Assertion individual to ruleSet:SHEdata20177171000#####
 ---------------MonitorManager: Monitoring IoT env data fromGateway1---------------
-Topic:Global1/Local1
+ClientIDGlobal1/Local1
 Message:{"2017.7.17 10:00":[{"data":"498.75","name":"Air_conditioner"},{"data":"38.25","name":"TV"},{"data":"2.5","name":"Lamp"},{"data":"25","name":"Robotic Vacuum Cleaner"},{"data":"22","name":"flowerPot"},{"data":"220","name":"Washing Machine"},{"data":"15","name":"Lamp2"},{"data":"6.7","name":"Smart Cooking pot"},{"data":"15","name":"CCTV"},{"data":"3.75","name":"mixer"},{"data":"35","name":"AI Speaker"},{"data":"180","name":"Oven"},{"data":"37.19.26.434:127.07.44.167","name":"Position"},{"data":"26.2","name":"Temperture"}]}
 deviceName:Gateway1
 *****PreProcessing: Parsed Json Data*****
@@ -604,6 +612,7 @@ data:37.19.26.434:127.07.44.167, name:Position
 data:26.2, name:Temperture
 *****Smart Home Environment Data Heuristic funtion*****
 Power consumtion:1061.95
+#####Reasoing rule about individual:SHEdata20177171000 and dataProperty:1061.95#####
 ----------------------------------------------------------------
 Read current monitoring data
 collectDate:2017.7.17 10:00,mreult:normal,position:37.19.26.434:127.07.44.167,temperture:26.2
@@ -617,3 +626,39 @@ Execute plannTarget:Smart Cooking Potand action:turnStanby
 ******Find Jar File About action:turnStanby*****
 Execute plannTarget:Air_conditionerand action:turnStanby
 ******Find Jar File About action:turnStanby*****
+@@@@@Get disConnection Data from IoT gateway@@@@@
+Topic:Local/Global1/Local1/Gateway1/disconnection
+Message:Air_Conditioner
+@@@@@Get disConnection Data from IoT gateway@@@@@
+Topic:Local/Global1/Local1/Gateway1/disconnection
+Message:TV
+@@@@@Get disConnection Data from IoT gateway@@@@@
+Topic:Local/Global1/Local1/Gateway1/disconnection
+Message:Lamp
+@@@@@Get disConnection Data from IoT gateway@@@@@
+Topic:Local/Global1/Local1/Gateway1/disconnection
+Message:Robotic_Vaccum_Cleaner
+@@@@@Get disConnection Data from IoT gateway@@@@@
+Topic:Local/Global1/Local1/Gateway1/disconnection
+Message:FlowerPot
+@@@@@Get disConnection Data from IoT gateway@@@@@
+Topic:Local/Global1/Local1/Gateway1/disconnection
+Message:Washing_Machine
+@@@@@Get disConnection Data from IoT gateway@@@@@
+Topic:Local/Global1/Local1/Gateway1/disconnection
+Message:Lamp2
+@@@@@Get disConnection Data from IoT gateway@@@@@
+Topic:Local/Global1/Local1/Gateway1/disconnection
+Message:Smart_Cook_Pot
+@@@@@Get disConnection Data from IoT gateway@@@@@
+Topic:Local/Global1/Local1/Gateway1/disconnection
+Message:CCTV
+@@@@@Get disConnection Data from IoT gateway@@@@@
+Topic:Local/Global1/Local1/Gateway1/disconnection
+Message:Mixer
+@@@@@Get disConnection Data from IoT gateway@@@@@
+Topic:Local/Global1/Local1/Gateway1/disconnection
+Message:AI_Speaker
+@@@@@Get disConnection Data from IoT gateway@@@@@
+Topic:Local/Global1/Local1/Gateway1/disconnection
+Message:Oven
