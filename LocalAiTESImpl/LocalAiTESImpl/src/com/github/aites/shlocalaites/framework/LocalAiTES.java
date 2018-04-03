@@ -85,15 +85,15 @@ public class LocalAiTES extends LocalAiTESManager{
 		boolean isOverPS = ruleManager.reasoningRule("SHEdata1", "PSoverRule");
 		System.out.println(isOverPS);
 		
-		//RuleSetManager ruleSetManager2 = new RuleSetManager("smartHome.xml");
-		//ruleSetManager2.assertInd("SHEdata2017", "SHEdata");
-		//ruleSetManager2.assertDataProperty("hasPS", "SHEdata2017", "1200", "integer");
-		//ruleSetManager2.saveRuleSet();
+		RuleSetManager ruleSetManager2 = new RuleSetManager("smartHome.xml");
+		ruleSetManager2.assertInd("SHEdata2017", "SHEdata");
+		ruleSetManager2.assertDataProperty("hasPS", "SHEdata2017", "1200", "double");
+		ruleSetManager2.saveRuleSet();
 	
-		RuleManager ruleManager2 = new RuleManager("smartHome.xml");
-		ruleManager2.loadOntology(); 
-		boolean isOverPS2 = ruleManager2.reasoningRule("SHEdata2017", "PSoverRule");
-		System.out.println(isOverPS2);
+		//RuleManager ruleManager2 = new RuleManager("smartHome.xml");
+		//ruleManager2.loadOntology(); 
+		//boolean isOverPS2 = ruleManager2.reasoningRule("SHEdata2017", "PSoverRule");
+		//System.out.println(isOverPS2);
 		
 		
 	}

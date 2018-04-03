@@ -9,10 +9,10 @@ public class RuleSetManager {
 	private String ruleSetName;
 	private String ruleSet;
 	RuleSetParser ruleSetLoader = new RuleSetParser();
-	
+	private RuleSetBody ruleSetBody;
 	
 	private String ruleSetHead;
-	private String ruleBody;
+	
 	private final String ruleSetTail = ")";
 	
 	public RuleSetManager(String ruleSetName){
@@ -20,21 +20,27 @@ public class RuleSetManager {
 		ruleSetLoader.loadRuleSet(ruleSetName);
 		
 		ruleSetHead = ruleSetLoader.getRuleSetHeader();
-		ruleBody = ruleSetLoader.getRuleSetBody();
+		ruleSetBody = ruleSetLoader.getRuleSetBody();
+		
 	}
 	public void assertInd(String indName, String className){
-		String indAxiom = "    Declaration(NamedIndividual(:" + indName + "))\r\n" + 
-    			            "    ClassAssertion(:"+className+" :" + indName + ")\r\n";
+		String indAxiom = "    Declaration(NamedIndividual(:" + indName + "))\r\n";
+		ruleSetBody.addIndDeclaration(indAxiom);
+		String classAxiom = "    ClassAssertion(:"+className+" :" + indName + ")\r\n";
+	    ruleSetBody.addAssertion(classAxiom);        
 		
-		ruleBody = ruleBody+indAxiom;
 	}
 	public void assertDataProperty(String dpName, String indName, String dpValue, String dpType){
 		String dpAxiom = "    DataPropertyAssertion(:"+dpName+" :" + indName + " \"" + dpValue + "\"^^xsd:"+dpType+")\r\n";
-		ruleBody = ruleBody+dpAxiom;
+		ruleSetBody.addAssertion(dpAxiom);
 	}
-	
+	public void assertObjectProperty(String opName, String ind1Name, String ind2Name){
+		String opAxiom = "    ObjectPropertyAssertion(:"+opName+" :" + ind1Name + ":"+ind2Name+")\r\n";
+		ruleSetBody.addAssertion(opAxiom);
+	}
 	public void saveRuleSet(){
-		ruleSet = ruleSetHead+ ruleBody + ruleSetTail;
+		String ruleBodyValue = ruleSetBody.getRuleSetBody();
+		ruleSet = ruleSetHead+ ruleBodyValue + ruleSetTail;
 		System.out.println(ruleSet);
 		
 		try {
@@ -51,7 +57,5 @@ public class RuleSetManager {
 	public void printRuleSetHeader(){
 		System.out.println(ruleSetHead);
 	}
-	public void printRuleSetBody(){
-		System.out.println(ruleBody);
-	}
+	
 }

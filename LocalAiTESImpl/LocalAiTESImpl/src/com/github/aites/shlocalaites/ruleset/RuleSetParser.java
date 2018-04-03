@@ -10,11 +10,16 @@ import java.io.IOException;
 public class RuleSetParser {
 	private String ruleset = "";
 	private String ruleSetHeader ="";
-	private String ruleSetBody = "";
+	
+	
+	private RuleSetBody ruleSetBody = new RuleSetBody();
 	
 	private boolean headTrigger = false;
+	private boolean declartionTrigger = false;
+	private boolean assertionTrigger = false;
 	public void loadRuleSet(String rulesetName){
 		String ruleString = "";
+	
 		try{
         	BufferedReader br = new BufferedReader(new FileReader(new File(rulesetName)));
 
@@ -23,12 +28,38 @@ public class RuleSetParser {
 					ruleSetHeader = ruleset = ruleset+ ruleString + "\r\n";
 					headTrigger = true;
 				}
+				
+				
+				else if(headTrigger && ruleString.contains("Assertion")){
+					ruleSetBody.addAssertion(ruleString);
+					declartionTrigger = true;
+				}
+				else if(declartionTrigger && ruleString.contains("Sub")){
+					ruleSetBody.addExAxiom(ruleString);
+					assertionTrigger = true;
+				}
+				else if(assertionTrigger){
+					ruleSetBody.addExAxiom(ruleString);
+				}
 				else if(headTrigger){
-					ruleSetBody =  ruleSetBody+ ruleString + "\r\n";
+					if(ruleString.contains("Class")){
+						ruleSetBody.addClassDeclaration(ruleString);
+					}
+					else if(ruleString.contains("DataProperty")){
+						ruleSetBody.addDpDeclaration(ruleString);
+					}
+					else if(ruleString.contains("ObjectProperty")){
+						ruleSetBody.addOpDeclaration(ruleString);
+					}
+					else if(ruleString.contains("NamedIndividual")){
+						ruleSetBody.addIndDeclaration(ruleString);
+					}
+					
 				}
 				ruleset = ruleset+ ruleString + "\r\n";						
 			}
         	br.close();
+        
 		}catch(FileNotFoundException e){
         	e.printStackTrace();
         } catch (IOException e) {
@@ -40,8 +71,8 @@ public class RuleSetParser {
 	public String getRuleSetHeader(){
 		return ruleSetHeader;
 	}
-	public String getRuleSetBody(){
-		ruleSetBody = ruleSetBody.substring(0, ruleSetBody.length()-3); // - ")/r/n"
+	
+	public RuleSetBody getRuleSetBody(){
 		return ruleSetBody;
 	}
 }

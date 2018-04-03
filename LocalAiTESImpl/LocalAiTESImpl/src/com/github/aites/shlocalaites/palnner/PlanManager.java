@@ -3,6 +3,7 @@ package com.github.aites.shlocalaites.palnner;
 import java.util.ArrayList;
 import java.util.Collections;
 
+import com.github.aites.shlocalaites.device.Participants;
 import com.github.aites.shlocalaites.log.LogWritter;
 
 public class PlanManager {
@@ -10,6 +11,7 @@ public class PlanManager {
 	ArrayList<String> stateList = new ArrayList<String>();
 	ArrayList<Plan> palnList = new ArrayList<Plan>();
 	LogWritter log = LogWritter.getInstance();
+	Participants participants = Participants.getInstance();
 	public PlanManager(String stateSet){
 		this.stateSet  = stateSet;
 	}

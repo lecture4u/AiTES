@@ -12,15 +12,28 @@ Prefix(rdfs:=<http://www.w3.org/2000/01/rdf-schema#>)
 
 
 Ontology(<http://com.github.aites/ontologies/smarthome.owl>
-
+    Declaration(Class(:IoTEnvdata))
     Declaration(Class(:SHEdata))
+    Declaration(Class(:PSoverRule))
+    Declaration(Class(:PSunderRule))
+    Declaration(Class(:TempertureHotRule))
+    Declaration(Class(:TempertureColdRule))
+    Declaration(Class(:PositionOutRule))
+    Declaration(Class(:PositionInRule))
+    
     Declaration(DataProperty(:hasPS))
-
+    Declaration(DataProperty(:hasTemperture))
+    Declaration(DataProperty(:hasPosition))
+    
+    Declaration(ObjectProperty(:hasUser))
+    Declaration(ObjectProperty(:isUser))
     Declaration(NamedIndividual(:SHEdata1))
+    
     ClassAssertion(:SHEdata :SHEdata1)
     DataPropertyAssertion(:hasPS :SHEdata1 "2400"^^xsd:double)
-   
-    Declaration(Class(:PSoverRule))
+    SubClassOf(:SHEdata :IoTEnvdata)
+    InverseObjectProperties(:hasUser :isUser)   
+    
     DLSafeRule(
         Annotation(rdfs:comment "smart home environment power consumtion is over?")
         Body(
@@ -32,7 +45,7 @@ Ontology(<http://com.github.aites/ontologies/smarthome.owl>
             ClassAtom(:PSoverRule Variable(var:c))
         )
     )
-    Declaration(Class(:PSunderRule))
+
     DLSafeRule(
         Annotation(rdfs:comment "smart home environment power consumtion is under?")
         Body(
@@ -44,38 +57,48 @@ Ontology(<http://com.github.aites/ontologies/smarthome.owl>
             ClassAtom(:PSunderRule Variable(var:c))
         )
     )
-   
-    Declaration(NamedIndividual(:SHEdata2017717000))
-    ClassAssertion(:SHEdata :SHEdata2017717000)
-    DataPropertyAssertion(:hasPS :SHEdata2017717000 "1140.0500000000002"^^xsd:double)
-    Declaration(NamedIndividual(:SHEdata2017717100))
-    ClassAssertion(:SHEdata :SHEdata2017717100)
-    DataPropertyAssertion(:hasPS :SHEdata2017717100 "936.6"^^xsd:double)
-    Declaration(NamedIndividual(:SHEdata2017717200))
-    ClassAssertion(:SHEdata :SHEdata2017717200)
-    DataPropertyAssertion(:hasPS :SHEdata2017717200 "491.84999999999997"^^xsd:double)
-    Declaration(NamedIndividual(:SHEdata2017717300))
-    ClassAssertion(:SHEdata :SHEdata2017717300)
-    DataPropertyAssertion(:hasPS :SHEdata2017717300 "1338.15"^^xsd:double)
-    Declaration(NamedIndividual(:SHEdata2017717400))
-    ClassAssertion(:SHEdata :SHEdata2017717400)
-    DataPropertyAssertion(:hasPS :SHEdata2017717400 "708.85"^^xsd:double)
-    Declaration(NamedIndividual(:SHEdata2017717500))
-    ClassAssertion(:SHEdata :SHEdata2017717500)
-    DataPropertyAssertion(:hasPS :SHEdata2017717500 "1323.26"^^xsd:double)
-    Declaration(NamedIndividual(:SHEdata2017717600))
-    ClassAssertion(:SHEdata :SHEdata2017717600)
-    DataPropertyAssertion(:hasPS :SHEdata2017717600 "1106.95"^^xsd:double)
-    Declaration(NamedIndividual(:SHEdata2017717700))
-    ClassAssertion(:SHEdata :SHEdata2017717700)
-    DataPropertyAssertion(:hasPS :SHEdata2017717700 "812.46"^^xsd:double)
-    Declaration(NamedIndividual(:SHEdata2017717800))
-    ClassAssertion(:SHEdata :SHEdata2017717800)
-    DataPropertyAssertion(:hasPS :SHEdata2017717800 "558.7"^^xsd:double)
-    Declaration(NamedIndividual(:SHEdata2017717900))
-    ClassAssertion(:SHEdata :SHEdata2017717900)
-    DataPropertyAssertion(:hasPS :SHEdata2017717900 "1317.2"^^xsd:double)
-    Declaration(NamedIndividual(:SHEdata20177171000))
-    ClassAssertion(:SHEdata :SHEdata20177171000)
-    DataPropertyAssertion(:hasPS :SHEdata20177171000 "1061.95"^^xsd:double)
+    DLSafeRule(
+        Annotation(rdfs:comment "smart home environment temperture is hot?")
+        Body(
+            ClassAtom(:SHEdata Variable(var:c))
+            DataPropertyAtom(:hasTemperture Variable(var:c) Variable(var:tem))
+            BuiltInAtom(swrlb:greaterThan Variable(var:tem) "28"^^xsd:int)
+        )
+        Head(
+            ClassAtom(:TempertureHotRule Variable(var:c))
+        )
+    )
+    DLSafeRule(
+        Annotation(rdfs:comment "smart home environment temperture is cold?")
+        Body(
+            ClassAtom(:SHEdata Variable(var:c))
+            DataPropertyAtom(:hasTemperture Variable(var:c) Variable(var:tem))
+            BuiltInAtom(swrlb:lessThan Variable(var:tem) "18"^^xsd:int)
+        )
+        Head(
+            ClassAtom(:TempertureColdRule Variable(var:c))
+        )
+    )
+    DLSafeRule(
+        Annotation(rdfs:comment "User GPS Data is outHome?")
+        Body(
+            ClassAtom(:SHEdata Variable(var:c))
+            DataPropertyAtom(:hasPosition Variable(var:c) Variable(var:po))
+            BuiltInAtom(swrlb:lessThan Variable(var:po) "18"^^xsd:int)
+        )
+        Head(
+            ClassAtom(:PositionOutRule Variable(var:c))
+        )
+    )
+    DLSafeRule(
+        Annotation(rdfs:comment "User GPS Data is inHome?")
+        Body(
+            ClassAtom(:SHEdata Variable(var:c))
+            DataPropertyAtom(:hasPosition Variable(var:c) Variable(var:po))
+            BuiltInAtom(swrlb:lessThan Variable(var:po) "18"^^xsd:int)
+        )
+        Head(
+            ClassAtom(:PositionInRule Variable(var:c))
+        )
+    )
 )
