@@ -18,27 +18,37 @@ import org.semanticweb.owlapi.vocab.PrefixOWLOntologyFormat;
 
 import com.clarkparsia.pellet.owlapiv3.PelletReasonerFactory;
 import com.github.aites.shlocalaites.log.LogWritter;
+import com.github.aites.shlocalaites.rule.RuleManager;
+import com.github.aites.shlocalaites.ruleset.RuleSetManager;
 
 import uk.ac.manchester.cs.owlapi.dlsyntax.DLSyntaxObjectRenderer;
 
 public class TempertureStateResoner {
 	String tempertureState;
-	String tempIndname = "envData1";
+	
 	LogWritter log = LogWritter.getInstance();
-	public String stateResoning(String temperture){
+	public String stateResoning(String temperture, String collectDate){
 		log.logInput("*****Start Home Temperture State Reasoning*****");
 		log.logInput(temperture);
 		
-		double temp = Double.parseDouble(temperture);
+		String feedBackInd = "SHEdata"+collectDate.replaceAll("[.: ]", "");
+		log.logInput("#####Reasoing rule about individual:"+feedBackInd+" and dataProperty:"+tempertureState+"#####");
+		RuleSetManager ruleSetManager = new RuleSetManager("smartHome.xml");
+	    ruleSetManager.assertDataProperty("hasPS", feedBackInd, tempertureState, "double");
+		ruleSetManager.saveRuleSet();
 		
-		if(temp > 28){
+		RuleManager ruleManager2 = new RuleManager("smartHome.xml");
+		ruleManager2.loadOntology(); 
+		boolean isHotTem= ruleManager2.reasoningRule(feedBackInd, "TempertureHotRule");
+		boolean isColdTem = ruleManager2.reasoningRule(feedBackInd, "TempertureColdRule");
+		if(isHotTem){
 			tempertureState = "hot";
 		}
-		else if(temp < 18){
+		else if(isColdTem){
 			tempertureState = "cold";
 		}
 		else{
-			tempertureState = "normal";
+			tempertureState = "warm";
 		}
 		
 		return tempertureState;

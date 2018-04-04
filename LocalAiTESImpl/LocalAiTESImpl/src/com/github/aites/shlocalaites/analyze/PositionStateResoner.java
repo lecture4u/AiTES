@@ -38,7 +38,7 @@ public class PositionStateResoner {
 		
 	}
 	
-	public String stateResoning(String position){
+	public String stateResoning(String position, String collectDate){
 		log.logInput("*****Start Position State Reasoning*****");
 		processedPosition(position);
 		log.logInput("resoning user position state:"+positionState);

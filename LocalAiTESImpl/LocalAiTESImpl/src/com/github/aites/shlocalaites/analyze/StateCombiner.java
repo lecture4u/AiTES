@@ -17,17 +17,17 @@ public class StateCombiner {
 	}
 	public String combinestateSetReasoing(){
 		log.logInput("*****state combiner start*****");
-		if(psState.equals("under")&&tempertureState.equals("normal") && positionState.equals("outHome")){
+		if(psState.equals("under")&&tempertureState.equals("warm") && positionState.equals("outHome")){
 			log.logInput("StateSet Don't Need plan:"+psState+","+tempertureState+","+positionState);
 			needPlan = "no";
 			stateCombine();
 		}
-		else if(psState.equals("over")&&tempertureState.equals("over") && positionState.equals("inHome")){
+		else if(psState.equals("over")&&tempertureState.equals("hot") && positionState.equals("inHome")){
 			log.logInput("StateSet Don't Need plan:"+psState+","+tempertureState+","+positionState);
 			needPlan = "no";
 			stateCombine();
 		}
-		else if(psState.equals("over")&&tempertureState.equals("normal") && positionState.equals("outHome")){
+		else if(psState.equals("over")&&tempertureState.equals("warm") && positionState.equals("outHome")){
 			log.logInput("StateSet Need plan:"+psState+","+tempertureState+","+positionState);
 			needPlan = "yes";
 			stateCombine();
@@ -37,7 +37,7 @@ public class StateCombiner {
 			needPlan = "yes";
 			stateCombine();
 		}
-		else if(psState.equals("over")&&tempertureState.equals("normal") && positionState.equals("inHome")){
+		else if(psState.equals("over")&&tempertureState.equals("warm") && positionState.equals("inHome")){
 			log.logInput("StateSet Need plan:"+psState+","+tempertureState+","+positionState);
 			needPlan = "yes";
 			stateCombine();

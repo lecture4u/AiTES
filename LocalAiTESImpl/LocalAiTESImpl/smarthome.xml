@@ -20,17 +20,17 @@ Ontology(<http://com.github.aites/ontologies/smarthome.owl>
     Declaration(Class(:TempertureColdRule))
     Declaration(Class(:PositionOutRule))
     Declaration(Class(:PositionInRule))
-    
     Declaration(DataProperty(:hasPS))
     Declaration(DataProperty(:hasTemperture))
     Declaration(DataProperty(:hasPosition))
-    
     Declaration(ObjectProperty(:hasUser))
     Declaration(ObjectProperty(:isUser))
     Declaration(NamedIndividual(:SHEdata1))
-    
+   
+
     ClassAssertion(:SHEdata :SHEdata1)
     DataPropertyAssertion(:hasPS :SHEdata1 "2400"^^xsd:double)
+    
     SubClassOf(:SHEdata :IoTEnvdata)
     InverseObjectProperties(:hasUser :isUser)   
     
@@ -45,7 +45,6 @@ Ontology(<http://com.github.aites/ontologies/smarthome.owl>
             ClassAtom(:PSoverRule Variable(var:c))
         )
     )
-
     DLSafeRule(
         Annotation(rdfs:comment "smart home environment power consumtion is under?")
         Body(

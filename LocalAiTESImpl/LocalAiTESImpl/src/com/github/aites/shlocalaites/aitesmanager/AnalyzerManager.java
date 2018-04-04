@@ -40,8 +40,8 @@ public class AnalyzerManager extends Manager{
 		String position = monitorInfo.get(2);
 		String temperture = monitorInfo.get(3);
 	
-		String positionState = pr.stateResoning(position);
-		String tempertureState = tr.stateResoning(temperture);
+		String positionState = pr.stateResoning(position,monitorInfo.get(0));
+		String tempertureState = tr.stateResoning(temperture,monitorInfo.get(0));
 	
 		sc = new StateCombiner(tempertureState, positionState, monitorInfo.get(1));
 		String stateSet = sc.combinestateSetReasoing();
