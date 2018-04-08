@@ -2,6 +2,8 @@ package com.github.aites.shlocalaites.ruleset;
 
 import java.util.ArrayList;
 
+import com.github.aites.shlocalaites.rule.SWRLrule;
+
 public class RuleSetBody {
 	private String ruleSetBody = "";
 	

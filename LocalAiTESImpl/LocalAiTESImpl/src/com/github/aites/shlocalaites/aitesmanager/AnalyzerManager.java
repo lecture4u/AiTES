@@ -2,9 +2,9 @@ package com.github.aites.shlocalaites.aitesmanager;
 
 import java.util.ArrayList;
 
-import com.github.aites.shlocalaites.analyze.PositionStateResoner;
+import com.github.aites.shlocalaites.analyze.PositionStateReasoner;
 import com.github.aites.shlocalaites.analyze.StateCombiner;
-import com.github.aites.shlocalaites.analyze.TempertureStateResoner;
+import com.github.aites.shlocalaites.analyze.TemperatureStateReasoner;
 import com.github.aites.shlocalaites.gkconnect.AnalyzerStateSetWriter;
 import com.github.aites.shlocalaites.gkconnect.MonitorEnvDataReader;
 import com.github.aites.shlocalaites.gkconnect.MonitorEnvDataWriter;
@@ -19,8 +19,8 @@ public class AnalyzerManager extends Manager{
 	private String clientID;
 
 	LogWritter log = LogWritter.getInstance();
-	PositionStateResoner pr = new PositionStateResoner();
-	TempertureStateResoner tr = new TempertureStateResoner();
+	PositionStateReasoner pr = new PositionStateReasoner();
+	TemperatureStateReasoner tr = new TemperatureStateReasoner();
 	StateCombiner sc; 
 	public AnalyzerManager(ArrayList<String> monitorInfo, String clientID){
 		this.monitorInfo = monitorInfo;

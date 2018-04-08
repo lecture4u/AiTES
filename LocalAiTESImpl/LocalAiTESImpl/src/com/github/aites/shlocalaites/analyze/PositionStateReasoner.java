@@ -7,7 +7,7 @@ import com.github.aites.shlocalaites.log.LogWritter;
 import com.github.aites.shlocalaites.rule.RuleManager;
 import com.github.aites.shlocalaites.ruleset.RuleSetManager;
 
-public class PositionStateResoner {
+public class PositionStateReasoner {
 	ArrayList<String> latitudeList = new ArrayList<String>();
 	ArrayList<String> rongitudeList = new ArrayList<String>();
 	LogWritter log = LogWritter.getInstance();

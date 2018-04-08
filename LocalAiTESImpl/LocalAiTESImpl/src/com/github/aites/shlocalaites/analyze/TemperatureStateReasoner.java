@@ -23,7 +23,7 @@ import com.github.aites.shlocalaites.ruleset.RuleSetManager;
 
 import uk.ac.manchester.cs.owlapi.dlsyntax.DLSyntaxObjectRenderer;
 
-public class TempertureStateResoner {
+public class TemperatureStateReasoner {
 	String tempertureState;
 	
 	LogWritter log = LogWritter.getInstance();

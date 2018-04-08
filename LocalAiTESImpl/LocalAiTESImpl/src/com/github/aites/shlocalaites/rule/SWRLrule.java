@@ -1,4 +1,4 @@
-package com.github.aites.shlocalaites.ruleset;
+package com.github.aites.shlocalaites.rule;
 
 import java.util.ArrayList;
 
