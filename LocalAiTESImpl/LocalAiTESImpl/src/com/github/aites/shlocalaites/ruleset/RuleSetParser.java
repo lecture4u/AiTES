@@ -66,6 +66,9 @@ public class RuleSetParser {
 										System.out.println("#####DLSafeRule end#####");
 										System.out.println(swrlRule);
 										ruleList.add(swrlRule);
+										
+										SWRLrule rule = new SWRLrule(swrlRule);
+										ruleSetBody.addSWRLRule(rule);
 										swrlRule = "";
 										
 									}

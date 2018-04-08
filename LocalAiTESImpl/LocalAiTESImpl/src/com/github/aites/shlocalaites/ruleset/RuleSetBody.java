@@ -17,6 +17,8 @@ public class RuleSetBody {
 	private ArrayList<String>  assertions;
 	private ArrayList<String>  exAxioms;
 	
+	private ArrayList<SWRLrule> swrlRuleList = new ArrayList<SWRLrule>();
+	
 	public RuleSetBody(){
 		
 		assertions = new ArrayList<String>();
@@ -48,7 +50,9 @@ public class RuleSetBody {
 	public void addExAxiom(String exAxiom){
 		exAxioms.add(exAxiom);
 	}
-    
+    public void addSWRLRule(SWRLrule rule){
+    	swrlRuleList.add(rule);
+    }
 	
 	private void combineDeclartion(){
 		for(String c : classDeclarations){

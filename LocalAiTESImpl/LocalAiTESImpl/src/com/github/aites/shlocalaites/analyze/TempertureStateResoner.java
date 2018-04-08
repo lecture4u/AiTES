@@ -37,10 +37,10 @@ public class TempertureStateResoner {
 	    ruleSetManager.assertDataProperty("hasPS", feedBackInd, tempertureState, "double");
 		ruleSetManager.saveRuleSet();
 		
-		RuleManager ruleManager2 = new RuleManager("smartHome.xml");
-		ruleManager2.loadOntology(); 
-		boolean isHotTem= ruleManager2.reasoningRule(feedBackInd, "TempertureHotRule");
-		boolean isColdTem = ruleManager2.reasoningRule(feedBackInd, "TempertureColdRule");
+		RuleManager ruleManager = new RuleManager("smartHome.xml");
+		ruleManager.loadOntology(); 
+		boolean isHotTem= ruleManager.reasoningRule(feedBackInd, "TempertureHotRule");
+		boolean isColdTem = ruleManager.reasoningRule(feedBackInd, "TempertureColdRule");
 		if(isHotTem){
 			tempertureState = "hot";
 		}

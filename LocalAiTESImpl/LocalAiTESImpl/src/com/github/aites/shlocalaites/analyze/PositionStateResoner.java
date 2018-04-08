@@ -4,12 +4,15 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 import com.github.aites.shlocalaites.log.LogWritter;
+import com.github.aites.shlocalaites.rule.RuleManager;
+import com.github.aites.shlocalaites.ruleset.RuleSetManager;
 
 public class PositionStateResoner {
 	ArrayList<String> latitudeList = new ArrayList<String>();
 	ArrayList<String> rongitudeList = new ArrayList<String>();
 	LogWritter log = LogWritter.getInstance();
 	String positionState;
+	String collectDate;
  	private void processedPosition(String position){
 		String[] positionParser = position.split(":");
 		String delims = "[ .,?!]+";
@@ -18,18 +21,37 @@ public class PositionStateResoner {
 		
 		Collections.addAll(latitudeList, latitudeParser);
 		Collections.addAll(rongitudeList, rongitudeParser);
+
+		String feedBackInd = "SHEdata"+collectDate.replaceAll("[.: ]", "");
+		RuleSetManager ruleSetManager = new RuleSetManager("smartHome.xml");
+		
+		String otla = latitudeParser[0]+"."+latitudeParser[1];
+		String otro = rongitudeParser[0]+"."+rongitudeParser[1];
+		String thridla = latitudeParser[2];
+		String thridro = rongitudeParser[2];
+		String forthla = latitudeParser[2];
+		String forthro = rongitudeParser[2];
+	    ruleSetManager.assertDataProperty("otLa", feedBackInd, otla, "string");
+	    ruleSetManager.assertDataProperty("otRo", feedBackInd, otro, "string");
+	    ruleSetManager.assertDataProperty("thridLa", feedBackInd, thridla, "integer");
+	    ruleSetManager.assertDataProperty("thridRo", feedBackInd, thridro, "integer");
+	    ruleSetManager.assertDataProperty("forthLa", feedBackInd, forthla, "integer");
+	    ruleSetManager.assertDataProperty("forthRo", feedBackInd, forthro, "integer");
+		ruleSetManager.saveRuleSet();
+		
+
+		
+		RuleManager ruleManager = new RuleManager("smartHome.xml");
+		ruleManager.loadOntology(); 
+		boolean isNearHome= ruleManager.reasoningRule(feedBackInd, "PositionNearRule");
+		boolean isInHome = ruleManager.reasoningRule(feedBackInd, "PositionInRule");
 		
 		
-		
-		double thirdLa = Double.parseDouble(latitudeList.get(2));
-		double thirdRo = Double.parseDouble(rongitudeList.get(2));
-		
-		System.out.println(thirdLa + "," +thirdRo);
 		//여기 부분이 온톨로지 리조닝이여야함.
-		if((thirdLa >= 24.0 && thirdLa<=26) && (thirdRo>=42 && thirdRo <=44)){
+		if(isInHome){
 			positionState = "inHome";
 		}
-		else if(((thirdLa >=22.0 && thirdLa <24.0) || (thirdLa>26 && thirdLa<=28)) && ((thirdRo>=40 && thirdRo<42) || (thirdRo>46 && thirdRo <44))){
+		else if(isNearHome){
 			positionState = "nearHome";
 		}
 		else{
@@ -39,6 +61,7 @@ public class PositionStateResoner {
 	}
 	
 	public String stateResoning(String position, String collectDate){
+		this.collectDate = collectDate;
 		log.logInput("*****Start Position State Reasoning*****");
 		processedPosition(position);
 		log.logInput("resoning user position state:"+positionState);
