@@ -28,3 +28,11 @@
 #### Bugfixes
 
 #### Other
+
+
+### Version 3.0.1 - April 9, 2018
+Framework version upgrade due to architectural changes. The major changes are as follows:
+  -Complete ontology rule set parsing and inference integration
+  -Modularization of each feedback loop component.
+  -Analyzer, Planner improvement theory applied.
+  -Topic supports member orchestration function.
