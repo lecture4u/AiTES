@@ -45,14 +45,14 @@ public class SWRLrule {
 				}
 			}
 			else if(parsedRule[i].contains("Head")){
-				//System.out.println(parsedRule[i] +" ["+i+"] - HeadAtoms");
+				
 				headAtom = parsedRule[i+1];
 			
 				headClassAtom = parseClassAtom(headAtom);
-				//headClassAtom = new ClassAtom();
+				
 			}
 			else if(parsedRule[i].contains("Annotation")){
-				//System.out.println(parsedRule[i] +" ["+i+"] - Annotation");
+		
 				annotation = parsedRule[i];
 			}
 			
