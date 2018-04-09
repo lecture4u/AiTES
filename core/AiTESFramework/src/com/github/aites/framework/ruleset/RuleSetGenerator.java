@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import com.github.aites.framework.dbcomponent.DBForeignKey;
 import com.github.aites.framework.dbcomponent.DBProperty;
 import com.github.aites.framework.dbcomponent.DBTable;
-import com.github.aites.framework.rule.Rule;
+
 public class RuleSetGenerator {
 	private static String head;
 	private static final String tail = ")";
@@ -35,11 +35,7 @@ public class RuleSetGenerator {
 		String className = stringFirstUpper(table.getTableName());
 		body = body  + owlclassg.owlClassGener(className);
 	}
-	public void addRuleToRuleSet(Rule rule){
-		String ruleClassAssertion = "Declaration(Class(:"+rule.getRuleName()+"))\n";
-		body = body + ruleClassAssertion;
-		body = body + rule.generateRule() + "\n";
-	}
+	
     public void generateRuleOntology(){
     	for(int i=0; i<tableList.size(); i++){
       	  DBTable tempDT = tableList.get(i);

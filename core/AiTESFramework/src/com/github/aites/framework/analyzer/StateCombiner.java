@@ -1,5 +1,6 @@
 package com.github.aites.framework.analyzer;
 
-public class StateCombiner {
-
+public interface StateCombiner {
+	public String combinestateSetReasoing();
+	public String getNeedPlan();
 }

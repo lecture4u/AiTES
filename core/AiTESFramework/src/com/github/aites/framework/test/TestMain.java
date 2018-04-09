@@ -5,8 +5,7 @@ import java.util.ArrayList;
 
 import com.github.aites.framework.globalknowledge.ConnectionStarter;
 import com.github.aites.framework.globalknowledge.DBConnector;
-import com.github.aites.framework.rule.Rule;
-import com.github.aites.framework.rule.RuleSetParser;
+
 import com.github.aites.framework.ruleset.DBSchemaLoader;
 import com.github.aites.framework.ruleset.RuleSetGenerator;
 
@@ -14,7 +13,7 @@ public class TestMain {
 	 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		ArrayList<Rule> ruleList = new ArrayList<Rule>();
+	
 		System.out.println("Hello Test");
 		try{
 			  DBConnector db = new ConnectionStarter("jdbc:mysql://220.149.235.85:3306/globalknowledge","root","1213");
@@ -33,32 +32,32 @@ public class TestMain {
 	          String[] ruleBody3BuiltVariable = {"stat"};
 	          
 	         
-	          Rule rule1 = new Rule("OverPower","Cctv","p","\"Rule for judge CCTV overpower condition\"");
-	          rule1.addPropertyAtom("DataProperty", "power_consumtion", ruleBody1Variable);
-	          rule1.addBuiltInAtom("greaterThan",ruleBody1BuiltVariable, "\"120\"^^xsd:integer");         
-	          ruleList.add(rule1);
+	      //    Rule rule1 = new Rule("OverPower","Cctv","p","\"Rule for judge CCTV overpower condition\"");
+	       //   rule1.addPropertyAtom("DataProperty", "power_consumtion", ruleBody1Variable);
+	       //   rule1.addBuiltInAtom("greaterThan",ruleBody1BuiltVariable, "\"120\"^^xsd:integer");         
+	       //   ruleList.add(rule1);
 	          
-	          Rule rule2 = new Rule("UnderPower","Cctv","p","\"Rule for judge CCTV underpower condition\"");
-	          rule2.addPropertyAtom("DataProperty", "power_consumtion", ruleBody1Variable);
-	          rule2.addBuiltInAtom("lessTan", ruleBody1BuiltVariable, "\"20\"^^xsd:integer");
-	          ruleList.add(rule2);
+	         // Rule rule2 = new Rule("UnderPower","Cctv","p","\"Rule for judge CCTV underpower condition\"");
+	        //  rule2.addPropertyAtom("DataProperty", "power_consumtion", ruleBody1Variable);
+	        //  rule2.addBuiltInAtom("lessTan", ruleBody1BuiltVariable, "\"20\"^^xsd:integer");
+	        //  ruleList.add(rule2);
 	          
-	          Rule rule3 = new Rule("StatusEqualAct","Device","p","\"Rule about status act \"");
-	          rule3.addPropertyAtom("DataPropertyAtom", "power_consumtion", ruleBody1Variable);
-	          rule3.addBuiltInAtom("equal", ruleBody3BuiltVariable, "\"act\"^^xsd:string");
-	          ruleList.add(rule3);
+	        //  Rule rule3 = new Rule("StatusEqualAct","Device","p","\"Rule about status act \"");
+	        //  rule3.addPropertyAtom("DataPropertyAtom", "power_consumtion", ruleBody1Variable);
+	        //  rule3.addBuiltInAtom("equal", ruleBody3BuiltVariable, "\"act\"^^xsd:string");
+	        //  ruleList.add(rule3);
 	          
-	          for(int i=0; i<ruleList.size(); i++){
-	        	  ruleList.get(i).makeRuleBody();
-	        	  ruleSetGener.addRuleToRuleSet(ruleList.get(i));
-	          }
+	       //   for(int i=0; i<ruleList.size(); i++){
+	        //	  ruleList.get(i).makeRuleBody();
+	        //	  ruleSetGener.addRuleToRuleSet(ruleList.get(i));
+	        //  }
 	    	 String fileName = "testRuleSet.xml";
 	          ruleSetGener.rulesetGen("./",fileName);
 	          
 	          File ruleSet = ruleSetGener.getRuleSetFile();
 	          
-	          RuleSetParser rulesetParser = new RuleSetParser();
-	          rulesetParser.ruleSetParsing(fileName);
+	        //  RuleSetParser rulesetParser = new RuleSetParser();
+	          //rulesetParser.ruleSetParsing(fileName);
 	          
 	          TestMqttClient mqttClient = new TestMqttClient();
 	          mqttClient.runClient();
