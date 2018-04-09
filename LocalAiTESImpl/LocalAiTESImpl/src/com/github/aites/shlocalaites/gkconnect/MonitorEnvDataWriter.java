@@ -2,9 +2,8 @@ package com.github.aites.shlocalaites.gkconnect;
 
 import java.sql.SQLException;
 
-import com.github.aites.shlocalaites.monitor.EnvData;
+import com.github.aites.framework.globalknowledge.DBConnector;
 
-import LocalPropertyConnect.*;
 public class MonitorEnvDataWriter extends DBConnector{
 	private String date;
 	private String clientName;

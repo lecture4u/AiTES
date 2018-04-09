@@ -2,7 +2,9 @@ package com.github.aites.shlocalaites.gkconnect;
 
 import java.sql.SQLException;
 
-import LocalPropertyConnect.DBConnector;
+import com.github.aites.framework.globalknowledge.DBConnector;
+
+
 
 public class PlannerPlanWriter extends DBConnector{
 	private String planTime;

@@ -22,7 +22,6 @@ import org.semanticweb.owlapi.reasoner.SimpleConfiguration;
 import org.semanticweb.owlapi.vocab.PrefixOWLOntologyFormat;
 
 import com.clarkparsia.pellet.owlapiv3.PelletReasonerFactory;
-import com.github.aites.shlocalaites.ruleset.RuleSetParser;
 
 
 import uk.ac.manchester.cs.owlapi.dlsyntax.DLSyntaxObjectRenderer;

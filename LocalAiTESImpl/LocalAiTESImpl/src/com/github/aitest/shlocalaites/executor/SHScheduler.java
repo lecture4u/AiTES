@@ -2,16 +2,20 @@ package com.github.aitest.shlocalaites.executor;
 
 import java.util.ArrayList;
 
+import com.github.aites.framework.executor.Effector;
+import com.github.aites.framework.executor.Scheduler;
+import com.github.aites.framework.globalknowledge.DBConnector;
+import com.github.aites.framework.log.LogWritter;
+import com.github.aites.framework.planner.Plan;
 import com.github.aites.shlocalaites.gkconnect.ExecutorActionWriter;
-import com.github.aites.shlocalaites.log.LogWritter;
-import com.github.aites.shlocalaites.palnner.Plan;
 
-import Communicate.DataTransfer;
-import LocalPropertyConnect.DBConnector;
 
-public class Scheduler{
+
+public class SHScheduler extends Scheduler{
 	static ArrayList<Plan> planList = new ArrayList<Plan>();
-	
+	private String moduleName;
+	private String moduleTopic;
+	private String systemTime;
 	Effector effector = new Effector();
 	LogWritter log = LogWritter.getInstance();
 	public void inputPlan(Plan plan){
@@ -19,7 +23,7 @@ public class Scheduler{
 		planList.add(plan);
 	}
 	public void execute(String systemTime){
-
+		this.systemTime = systemTime;
 		log.logInput("**********execute scheduled plan***************");
 		
 		for(int i=0; i<planList.size(); i++){
@@ -27,12 +31,11 @@ public class Scheduler{
 			
 			if(p.getPlanTime().equals(systemTime)){
 				log.logInput("Execute plannTarget:"+p.getTarget()+"and action:"+p.getAction());
-				String moduleName = effector.findModuleAboutAction(p.getAction());
+			    moduleName = effector.findModuleAboutAction(p.getAction());
 			
-				String moduleTopic = effector.getTopic();
+				moduleTopic = effector.getTopic();
 				
-				DBConnector dc = new ExecutorActionWriter(systemTime,moduleTopic,moduleName);
-				dc.dbConnect();
+				
 			
 			}
 		}
@@ -44,6 +47,12 @@ public class Scheduler{
 			log.logInput("index:"+i+",plantime:"+p.getPlanTime()+",planTarget:"+p.getTarget()+",planAction:"+p.getAction());
 			i++;
 		}
+	}
+	@Override
+	public void writeGlobalKnowledge() {
+		// TODO Auto-generated method stub
+		DBConnector dc = new ExecutorActionWriter(systemTime,moduleTopic,moduleName);
+		dc.dbConnect();
 	}
 	
 		

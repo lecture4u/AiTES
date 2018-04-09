@@ -1,41 +1,34 @@
 package com.github.aites.shlocalaites.framework;
 
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
+
 import java.util.ArrayList;
 import java.util.Iterator;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
-import org.semanticweb.owlapi.model.OWLOntologyCreationException;
 
-import AiTESConnector.ManagerAF;
-import AiTESManager.Manager;
-import Communicate.DataTransfer;
-import Framework.LocalAiTESManager;
-import LocalPropertyConnect.ConnectionStarter;
-import LocalPropertyConnect.DBConnector;
+import com.github.aites.framework.aitesconnector.*;
+import com.github.aites.framework.aitesmanager.Manager;
+import com.github.aites.framework.communicate.DataTransfer;
+import com.github.aites.framework.framework.LocalAiTESManager;
+import com.github.aites.framework.framework.Timer;
+import com.github.aites.framework.globalknowledge.ConnectionStarter;
+import com.github.aites.framework.globalknowledge.DBConnector;
+import com.github.aites.framework.log.LogWritter;
+import com.github.aites.framework.orchestration.Device;
+import com.github.aites.framework.orchestration.Participants;
+import com.github.aites.framework.planner.Plan;
+import com.github.aites.framework.ruleset.RuleSetManager;
+import com.github.aites.shlocalaites.aitesconnector.*;
 
-import com.github.aites.shlocalaites.aitesconnector.Analyzer;
-import com.github.aites.shlocalaites.aitesconnector.Executor;
-import com.github.aites.shlocalaites.aitesconnector.Monitor;
-import com.github.aites.shlocalaites.aitesconnector.Planner;
-import com.github.aites.shlocalaites.device.Device;
-import com.github.aites.shlocalaites.device.Participants;
-import com.github.aites.shlocalaites.gkconnect.AnalyzerStateSetReader;
-import com.github.aites.shlocalaites.gkconnect.AnalyzerStateSetWriter;
-import com.github.aites.shlocalaites.gkconnect.DeviceDataWriter;
-import com.github.aites.shlocalaites.gkconnect.MonitorEnvDataReader;
-import com.github.aites.shlocalaites.gkconnect.MonitorEnvDataWriter;
-import com.github.aites.shlocalaites.gkconnect.PlannerPlanReader;
-import com.github.aites.shlocalaites.log.LogWritter;
-import com.github.aites.shlocalaites.palnner.Plan;
+
+import com.github.aites.shlocalaites.gkconnect.*;
+
+
 import com.github.aites.shlocalaites.rule.RuleManager;
 import com.github.aites.shlocalaites.ruleset.*;
-import com.github.aitest.shlocalaites.executor.Timer;
+
 
 public class LocalAiTES extends LocalAiTESManager{
 	DataTransfer df = DataTransfer.getInstance();

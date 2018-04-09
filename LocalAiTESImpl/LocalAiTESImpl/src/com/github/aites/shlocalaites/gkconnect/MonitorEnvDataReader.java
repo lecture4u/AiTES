@@ -3,9 +3,9 @@ package com.github.aites.shlocalaites.gkconnect;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import com.github.aites.shlocalaites.log.LogWritter;
+import com.github.aites.framework.globalknowledge.DBConnector;
+import com.github.aites.framework.log.LogWritter;
 
-import LocalPropertyConnect.DBConnector;
 
 public class MonitorEnvDataReader extends DBConnector{
 	private String collectDate;

@@ -2,9 +2,11 @@ package com.github.aites.shlocalaites.gkconnect;
 
 import java.sql.SQLException;
 
-import com.github.aites.shlocalaites.device.Device;
+import com.github.aites.framework.globalknowledge.DBConnector;
+import com.github.aites.framework.orchestration.Device;
 
-import LocalPropertyConnect.DBConnector;
+
+
 
 public class DeviceDataWriter extends DBConnector{
 	private Device device;

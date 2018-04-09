@@ -2,14 +2,15 @@ package com.github.aites.shlocalaites.aitesmanager;
 
 import java.util.ArrayList;
 
-import com.github.aites.shlocalaites.gkconnect.AnalyzerStateSetWriter;
+import com.github.aites.framework.aitesmanager.Manager;
+import com.github.aites.framework.globalknowledge.DBConnector;
+import com.github.aites.framework.log.LogWritter;
+import com.github.aites.framework.planner.Plan;
 import com.github.aites.shlocalaites.gkconnect.PlannerPlanWriter;
-import com.github.aites.shlocalaites.log.LogWritter;
-import com.github.aites.shlocalaites.palnner.Plan;
+
 import com.github.aites.shlocalaites.palnner.SHPlanManager;
 
-import AiTESManager.Manager;
-import LocalPropertyConnect.DBConnector;
+
 
 public class PlannerManager extends Manager{
 	String stateSet;

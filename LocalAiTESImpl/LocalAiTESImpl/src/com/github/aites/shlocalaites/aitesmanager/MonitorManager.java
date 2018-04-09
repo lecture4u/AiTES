@@ -1,18 +1,18 @@
 package com.github.aites.shlocalaites.aitesmanager;
 
-import com.github.aites.shlocalaites.aitesconnector.Analyzer;
-import com.github.aites.shlocalaites.aitesconnector.Monitor;
-import com.github.aites.shlocalaites.gkconnect.MonitorEnvDataReader;
+import com.github.aites.framework.aitesmanager.Manager;
+import com.github.aites.framework.globalknowledge.DBConnector;
+import com.github.aites.framework.log.LogWritter;
+import com.github.aites.framework.monitor.EnvData;
+import com.github.aites.framework.monitor.PreProcessor;
+
 import com.github.aites.shlocalaites.gkconnect.MonitorEnvDataWriter;
-import com.github.aites.shlocalaites.log.LogWritter;
+
 import com.github.aites.shlocalaites.monitor.DataPreProcessor;
-import com.github.aites.shlocalaites.monitor.EnvData;
+
 import com.github.aites.shlocalaites.monitor.MonitorHRAlgorithm;
 
-import AiTESConnector.ManagerAF;
-import AiTESManager.Manager;
-import LocalPropertyConnect.DBConnector;
-import Monitor.PreProcessor;
+
 
 public class MonitorManager extends Manager{
 	private String mqttMessage;

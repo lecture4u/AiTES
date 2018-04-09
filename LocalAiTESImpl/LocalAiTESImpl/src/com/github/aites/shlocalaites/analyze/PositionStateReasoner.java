@@ -3,11 +3,13 @@ package com.github.aites.shlocalaites.analyze;
 import java.util.ArrayList;
 import java.util.Collections;
 
-import com.github.aites.shlocalaites.log.LogWritter;
+import com.github.aites.framework.analyzer.StateReasoner;
+import com.github.aites.framework.log.LogWritter;
+import com.github.aites.framework.ruleset.RuleSetManager;
 import com.github.aites.shlocalaites.rule.RuleManager;
-import com.github.aites.shlocalaites.ruleset.RuleSetManager;
 
-public class PositionStateReasoner {
+
+public class PositionStateReasoner implements StateReasoner{
 	ArrayList<String> latitudeList = new ArrayList<String>();
 	ArrayList<String> rongitudeList = new ArrayList<String>();
 	LogWritter log = LogWritter.getInstance();
@@ -59,7 +61,7 @@ public class PositionStateReasoner {
 		}
 		
 	}
-	
+ 	@Override
 	public String stateResoning(String position, String collectDate){
 		this.collectDate = collectDate;
 		log.logInput("*****Start Position State Reasoning*****");

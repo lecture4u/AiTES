@@ -1,30 +1,13 @@
 package com.github.aites.shlocalaites.monitor;
 
-import java.io.File;
-
-import org.semanticweb.owlapi.apibinding.OWLManager;
-import org.semanticweb.owlapi.io.OWLObjectRenderer;
-import org.semanticweb.owlapi.model.OWLClass;
-import org.semanticweb.owlapi.model.OWLClassAssertionAxiom;
-import org.semanticweb.owlapi.model.OWLDataFactory;
-import org.semanticweb.owlapi.model.OWLNamedIndividual;
-import org.semanticweb.owlapi.model.OWLObjectProperty;
-import org.semanticweb.owlapi.model.OWLOntology;
-import org.semanticweb.owlapi.model.OWLOntologyCreationException;
-import org.semanticweb.owlapi.model.OWLOntologyManager;
-import org.semanticweb.owlapi.reasoner.OWLReasoner;
-import org.semanticweb.owlapi.reasoner.OWLReasonerFactory;
-import org.semanticweb.owlapi.reasoner.SimpleConfiguration;
-import org.semanticweb.owlapi.vocab.PrefixOWLOntologyFormat;
-
-import com.clarkparsia.pellet.owlapiv3.PelletReasonerFactory;
-import com.github.aites.shlocalaites.log.LogWritter;
+import com.github.aites.framework.log.LogWritter;
+import com.github.aites.framework.monitor.EnvData;
+import com.github.aites.framework.monitor.HRAlgorithm;
+import com.github.aites.framework.ruleset.RuleSetManager;
 import com.github.aites.shlocalaites.rule.RuleManager;
-import com.github.aites.shlocalaites.ruleset.RuleSetManager;
 
-import uk.ac.manchester.cs.owlapi.dlsyntax.DLSyntaxObjectRenderer;
 
-public class MonitorHRAlgorithm {
+public class MonitorHRAlgorithm implements HRAlgorithm{
 	EnvData envData;
 	
 	LogWritter log = LogWritter.getInstance();
@@ -45,6 +28,7 @@ public class MonitorHRAlgorithm {
 		
 		return envResult;
 	}
+	@Override
 	public String envDataHRAlgorithm(){
 		log.logInput("*****Smart Home Environment Data Heuristic funtion*****");
 	

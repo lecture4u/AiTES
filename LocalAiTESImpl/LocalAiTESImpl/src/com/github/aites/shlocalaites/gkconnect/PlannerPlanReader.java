@@ -3,10 +3,12 @@ package com.github.aites.shlocalaites.gkconnect;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import com.github.aites.shlocalaites.log.LogWritter;
-import com.github.aites.shlocalaites.palnner.Plan;
+import com.github.aites.framework.globalknowledge.DBConnector;
+import com.github.aites.framework.log.LogWritter;
+import com.github.aites.framework.planner.Plan;
 
-import LocalPropertyConnect.DBConnector;
+
+
 
 public class PlannerPlanReader extends DBConnector{
 	String systemtime;

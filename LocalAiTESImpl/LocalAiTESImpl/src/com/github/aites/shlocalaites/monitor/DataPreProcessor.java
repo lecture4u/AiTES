@@ -1,15 +1,17 @@
 package com.github.aites.shlocalaites.monitor;
 
-import Monitor.PreProcessor;
+
 
 import java.util.Iterator;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
-import org.json.simple.parser.ParseException;
 
-import com.github.aites.shlocalaites.log.LogWritter;
+import com.github.aites.framework.log.LogWritter;
+import com.github.aites.framework.monitor.EnvData;
+import com.github.aites.framework.monitor.PreProcessor;
+
 public class DataPreProcessor implements PreProcessor{
 	private EnvData envData;
 	private static int dayCounter = 0;

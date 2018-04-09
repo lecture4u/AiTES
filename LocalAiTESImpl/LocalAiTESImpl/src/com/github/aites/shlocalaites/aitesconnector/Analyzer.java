@@ -2,11 +2,9 @@ package com.github.aites.shlocalaites.aitesconnector;
 
 import java.util.ArrayList;
 
+import com.github.aites.framework.aitesconnector.Factory;
 import com.github.aites.shlocalaites.aitesmanager.AnalyzerManager;
-import com.github.aitest.shlocalaites.executor.Scheduler;
 
-import AiTESConnector.Factory;
-import AiTESManager.Manager;
 
 public class Analyzer implements Factory{
 	private ArrayList<String> monitorInfo;

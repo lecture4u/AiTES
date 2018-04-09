@@ -2,12 +2,15 @@ package com.github.aites.shlocalaites.aitesconnector;
 
 import java.util.ArrayList;
 
+import com.github.aites.framework.aitesconnector.Factory;
+import com.github.aites.framework.framework.Timer;
+import com.github.aites.framework.planner.Plan;
 import com.github.aites.shlocalaites.aitesmanager.ExecutorManager;
-import com.github.aites.shlocalaites.log.LogWritter;
-import com.github.aites.shlocalaites.palnner.Plan;
-import com.github.aitest.shlocalaites.executor.Timer;
 
-import AiTESConnector.Factory;
+
+
+
+
 
 
 public class Executor implements Factory{

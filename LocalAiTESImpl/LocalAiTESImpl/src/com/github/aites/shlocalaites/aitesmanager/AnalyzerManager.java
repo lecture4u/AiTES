@@ -2,17 +2,17 @@ package com.github.aites.shlocalaites.aitesmanager;
 
 import java.util.ArrayList;
 
+import com.github.aites.framework.aitesmanager.Manager;
+import com.github.aites.framework.globalknowledge.DBConnector;
+import com.github.aites.framework.log.LogWritter;
 import com.github.aites.shlocalaites.analyze.PositionStateReasoner;
-import com.github.aites.shlocalaites.analyze.StateCombiner;
+import com.github.aites.shlocalaites.analyze.SHStateCombiner;
 import com.github.aites.shlocalaites.analyze.TemperatureStateReasoner;
 import com.github.aites.shlocalaites.gkconnect.AnalyzerStateSetWriter;
-import com.github.aites.shlocalaites.gkconnect.MonitorEnvDataReader;
-import com.github.aites.shlocalaites.gkconnect.MonitorEnvDataWriter;
-import com.github.aites.shlocalaites.log.LogWritter;
-import com.github.aites.shlocalaites.monitor.DataPreProcessor;
 
-import AiTESManager.Manager;
-import LocalPropertyConnect.DBConnector;
+
+
+
 
 public class AnalyzerManager extends Manager{
 	private ArrayList<String> monitorInfo;
@@ -21,7 +21,7 @@ public class AnalyzerManager extends Manager{
 	LogWritter log = LogWritter.getInstance();
 	PositionStateReasoner pr = new PositionStateReasoner();
 	TemperatureStateReasoner tr = new TemperatureStateReasoner();
-	StateCombiner sc; 
+	SHStateCombiner sc; 
 	public AnalyzerManager(ArrayList<String> monitorInfo, String clientID){
 		this.monitorInfo = monitorInfo;
 		
@@ -43,7 +43,7 @@ public class AnalyzerManager extends Manager{
 		String positionState = pr.stateResoning(position,monitorInfo.get(0));
 		String tempertureState = tr.stateResoning(temperture,monitorInfo.get(0));
 	
-		sc = new StateCombiner(tempertureState, positionState, monitorInfo.get(1));
+		sc = new SHStateCombiner(tempertureState, positionState, monitorInfo.get(1));
 		String stateSet = sc.combinestateSetReasoing();
 		String needPlanResult = sc.getNeedPlan();
 

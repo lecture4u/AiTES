@@ -3,8 +3,11 @@ package com.github.aites.shlocalaites.palnner;
 import java.util.ArrayList;
 import java.util.Collections;
 
-import com.github.aites.shlocalaites.device.Participants;
-import com.github.aites.shlocalaites.log.LogWritter;
+import com.github.aites.framework.log.LogWritter;
+import com.github.aites.framework.orchestration.Participants;
+import com.github.aites.framework.planner.Plan;
+
+
 
 public class SHPlanManager {
 	private String stateSet;

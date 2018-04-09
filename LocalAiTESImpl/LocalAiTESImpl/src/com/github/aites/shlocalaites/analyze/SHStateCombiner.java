@@ -1,8 +1,9 @@
 package com.github.aites.shlocalaites.analyze;
 
-import com.github.aites.shlocalaites.log.LogWritter;
+import com.github.aites.framework.analyzer.StateCombiner;
+import com.github.aites.framework.log.LogWritter;
 
-public class StateCombiner {
+public class SHStateCombiner implements StateCombiner{
 	private String tempertureState;
 	private String positionState;
 	private String psState;
@@ -10,7 +11,7 @@ public class StateCombiner {
 	private String stateSet;
 	private String needPlan;
 	LogWritter log = LogWritter.getInstance();
-	public StateCombiner(String tempertureState, String positionState, String psState){
+	public SHStateCombiner(String tempertureState, String positionState, String psState){
 		this.tempertureState = tempertureState;
 		this.positionState = positionState;
 		this.psState = psState;
