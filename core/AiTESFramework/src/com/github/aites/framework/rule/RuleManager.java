@@ -28,6 +28,12 @@ import com.clarkparsia.pellet.owlapiv3.PelletReasonerFactory;
 import uk.ac.manchester.cs.owlapi.dlsyntax.DLSyntaxObjectRenderer;
 
 public class RuleManager {
+	/**
+	 * Class for load ontology and reasoning SWRL rule.
+	 * @author JungHyun An
+	 * @version 3.0.1
+	 * @see com.github.aites.framework.ruleset.RuleSetBody
+	 */
 	OWLOntologyManager manager; 
 	OWLReasonerFactory resonerFactory;
 	OWLDataFactory dataFactory;
@@ -42,7 +48,14 @@ public class RuleManager {
 		manager = OWLManager.createOWLOntologyManager();
 		resonerFactory = PelletReasonerFactory.getInstance();
 	}
-	
+	/**
+	 * Method for load ontology
+	 * current version only load ontology from local file. 
+	 * @param none
+	 * @return none
+	 * @exception OWLOntologyCreationException
+	 *     failed load ontology.
+	 */
 	public void loadOntology() {
 		
 		try{
@@ -63,10 +76,15 @@ public class RuleManager {
 		}
 		
 	}
+	/**
+	 * Method for reasoning SWRL rule.
+	 * reasoning rule and return result.
+	 * @param individual name, rule name
+	 * @return boolean
+	 */
 	public boolean reasoningRule(String indName, String ruleName){
 		OWLNamedIndividual ind = dataFactory.getOWLNamedIndividual(":" + indName, pm);
-		
-		
+				
 		OWLClass ruleClass = dataFactory.getOWLClass(":"+ruleName, pm);
 		OWLClassAssertionAxiom axoimToExplain = dataFactory.getOWLClassAssertionAxiom(ruleClass, ind);
 		if(reasoner.isEntailed(axoimToExplain)){
@@ -76,6 +94,12 @@ public class RuleManager {
 			return false;
 		}
 	}
+	/**
+	 * Method for explain axiom SWRL rule.
+	 * user can see how SWRL rule judged individual. 
+	 * @param individual, ontology, reasoner
+	 * @return none
+	 */
 	public static void listAllDataPropertyValues(OWLNamedIndividual individual,OWLOntology ontology,OWLReasoner reasoner) { 
         OWLObjectRenderer renderer = new DLSyntaxObjectRenderer(); 
         Map<OWLDataPropertyExpression, Set<OWLLiteral>> assertedValues = individual.getDataPropertyValues(ontology); 

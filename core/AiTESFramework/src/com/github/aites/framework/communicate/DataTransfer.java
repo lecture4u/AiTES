@@ -62,25 +62,25 @@ public class DataTransfer implements MqttCallback{
 		System.out.println("Message Publish Complete");
 	}
 	/** publish message to broker server*/
-	public void publish(File sendModule, String device)throws IOException{ 
+	public void publish(File sendModule, String pubTopic)throws IOException{ 
 	    String fileName = sendModule.getName();
-		String deviceTopic = "Effector/"+device+"/"+fileName;
-		MqttTopic new_Topic = myClient.getTopic(deviceTopic);
+	
+		MqttTopic new_Topic = myClient.getTopic(pubTopic);
 		
-		System.out.println("publish message "+fileName + " to Topic: "+deviceTopic);
+		System.out.println("publish message "+fileName + " to Topic: "+pubTopic);
 		byte[] fileByte = getBytesFromFile(sendModule);	
 		int pubQoS = 0; 
 		
 		MqttMessage message = new MqttMessage(fileByte);
 		
 		
-		message.setQos(pubQoS);//QoS ����
+		message.setQos(pubQoS);
 		message.setRetained(false);
 		
 		MqttDeliveryToken token = null;
 	
 		try{
-			token = new_Topic.publish(message); // ��ū���� �޼����� ���Ŀ ������ �����ϰ� �˴ϴ�.
+			token = new_Topic.publish(message); 
 			
 		}catch(Exception e){
 			e.printStackTrace();

@@ -1,9 +1,12 @@
 package com.github.aites.framework.rule;
 
 import java.util.ArrayList;
-
-
-
+/**
+ * Class for parse and configure SWRL rule in ontology ruleset.
+ * @author JungHyun An
+ * @version 3.0.1
+ * @see com.github.aites.framework.ruleset.RuleSetBody
+ */
 public class SWRLrule {
 	private String swrlRule;
     private ArrayList<String> bodyAtoms = new ArrayList<String>();
@@ -19,7 +22,7 @@ public class SWRLrule {
     	this.swrlRule = swrlRule;
     	ruleParsing();
     }
-	private void ruleParsing(){
+	private void ruleParsing(){ // parsing rule body, head.
 		String dataPropertyString = "DataProperty";
 		String[] parsedRule = swrlRule.split("\r\n");
 		for(int i=0; i<parsedRule.length; i++){

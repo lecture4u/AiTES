@@ -1,5 +1,6 @@
 package com.github.aites.framework.executor;
 
+import java.io.File;
 import java.util.ArrayList;
 
 import com.github.aites.framework.log.LogWritter;
@@ -10,8 +11,13 @@ import com.github.aites.framework.planner.Plan;
 public abstract class Scheduler{
 	static ArrayList<Plan> planList = new ArrayList<Plan>();
 	
-	Effector effector = new Effector();
+	Effector effector;
 	LogWritter log = LogWritter.getInstance();
+    private String moduleFolder;
+    private File currentFile;
+    public Scheduler(String moduleFolder){
+    	effector = new Effector(moduleFolder);
+    }
 	public void inputPlan(Plan plan){
 		log.logInput("Input plan to scheduler");
 		planList.add(plan);
@@ -25,9 +31,7 @@ public abstract class Scheduler{
 			
 			if(p.getPlanTime().equals(systemTime)){
 				log.logInput("Execute plannTarget:"+p.getTarget()+"and action:"+p.getAction());
-				String moduleName = effector.findModuleAboutAction(p.getAction());
-			
-				String moduleTopic = effector.getTopic();
+				
 				
 				writeGlobalKnowledge();
 			
