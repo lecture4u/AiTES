@@ -41,3 +41,21 @@ Framework version upgrade due to architectural changes. The major changes are as
   -Topic supports member orchestration function.
   
 The new version of the framework can be downloaded from the core forder of github.
+
+#### Framework changes
+
+- [Commit 8f6b5] (https://github.com/lecture4u/AiTES/commit/8f6b58b4aca5ee034221c3e507512b62a644c91d): swrl rule parser implements
+- [Commit a135b] (https://github.com/lecture4u/AiTES/commit/a135bbd592d5651008654226aae27d68390730eb): rule set spelling check implement
+- [Commit 39fba] (https://github.com/lecture4u/AiTES/commit/39e6adaa30da0ae616c4d35101633f636ad8826d):farmwork update
+
+#### Documentation changes
+
+  -AiTES Tutorial Scenario updates.
+  
+  -Smart Home Local AiTES feedback loops implement tutorial update.
+  
+  -tutorial codes addded
+ 
+#### Bugfixes
+
+#### Other
