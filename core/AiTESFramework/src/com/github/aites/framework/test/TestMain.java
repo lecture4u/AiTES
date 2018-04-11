@@ -5,15 +5,62 @@ import java.util.ArrayList;
 
 import com.github.aites.framework.globalknowledge.ConnectionStarter;
 import com.github.aites.framework.globalknowledge.DBConnector;
-
+import com.github.aites.framework.rule.RuleManager;
+import com.github.aites.framework.rule.SWRLrule;
 import com.github.aites.framework.ruleset.DBSchemaLoader;
 import com.github.aites.framework.ruleset.RuleSetGenerator;
+import com.github.aites.framework.ruleset.RuleSetManager;
 
 public class TestMain {
 	 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-	
+		RuleSetManager ruleSetManager2 = new RuleSetManager("smartHome.xml");
+		
+		System.out.println("-----SWRLRule add test-----");
+		SWRLrule testRule = new SWRLrule("TestRule", "SHEdata", "c", "rule for test");
+		String variables[]  = {"c","tem"};
+		String variable = "tem";
+		String dataValue= "12";
+		String dataType= "int";
+		testRule.addPropertyAtom("DataProperty", "hasTemperture", variables);
+		testRule.addBuiltInAtom("greaterThen", variable, dataValue, dataType);
+		testRule.addBuiltInAtom("lessThen", variable, dataValue, dataType);
+		testRule.updateBulitInAtom(0, "24");
+		testRule.makeSWRLrule();
+		
+	    ruleSetManager2.assertSWRLrule(testRule);
+	    ruleSetManager2.updateSWRLBulitInRule("TestRule", 1, "64");
+		ruleSetManager2.saveRuleSet();
+		
+		
+		//ruleSetManager2.saveRuleSet();
+		
+		
+		
+		
+		/*
+		RuleManager ruleManager = new RuleManager("smartHome.xml");
+		ruleManager.loadOntology(); 
+		boolean isOverPS = ruleManager.reasoningRule("SHEdata1", "PSoverRule");
+		System.out.println("testIsOverPS?:"+isOverPS);
+		boolean isHot = ruleManager.reasoningRule("SHEdata1", "TempertureHotRule");
+		System.out.println("testIsHot?:"+isHot);
+		boolean isNearHome = ruleManager.reasoningRule("SHEdata1", "PositionNearRule");
+		System.out.println("testIsNearHome?:"+isNearHome);
+		*/
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		/*
 		System.out.println("Hello Test");
 		try{
 			  DBConnector db = new ConnectionStarter("jdbc:mysql://220.149.235.85:3306/globalknowledge","root","1213");
@@ -30,7 +77,7 @@ public class TestMain {
 	              
 	       
 	          String[] ruleBody3BuiltVariable = {"stat"};
-	          
+	      */    
 	         
 	      //    Rule rule1 = new Rule("OverPower","Cctv","p","\"Rule for judge CCTV overpower condition\"");
 	       //   rule1.addPropertyAtom("DataProperty", "power_consumtion", ruleBody1Variable);
@@ -51,19 +98,19 @@ public class TestMain {
 	        //	  ruleList.get(i).makeRuleBody();
 	        //	  ruleSetGener.addRuleToRuleSet(ruleList.get(i));
 	        //  }
-	    	 String fileName = "testRuleSet.xml";
-	          ruleSetGener.rulesetGen("./",fileName);
+	    	// String fileName = "testRuleSet.xml";
+	        //  ruleSetGener.rulesetGen("./",fileName);
 	          
-	          File ruleSet = ruleSetGener.getRuleSetFile();
+	         // File ruleSet = ruleSetGener.getRuleSetFile();
 	          
 	        //  RuleSetParser rulesetParser = new RuleSetParser();
 	          //rulesetParser.ruleSetParsing(fileName);
 	          
-	          TestMqttClient mqttClient = new TestMqttClient();
-	          mqttClient.runClient();
-		}catch(Exception e){
-			e.printStackTrace();
-		}
+	          //TestMqttClient mqttClient = new TestMqttClient();
+	          //mqttClient.runClient();
+		//}catch(Exception e){
+		//	e.printStackTrace();
+		//}
 	}
 
 }

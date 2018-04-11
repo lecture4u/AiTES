@@ -1,6 +1,7 @@
 package com.github.aites.framework.ruleset;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 import com.github.aites.framework.rule.SWRLrule;
 /**
@@ -16,7 +17,7 @@ public class RuleSetBody {
 	private String declaration = "";
 	private String assertion = "";
 	private String exAxiom = "";
-	
+	private String allSWRLrule ="";
 	
 	private ArrayList<String> classDeclarations;
 	private ArrayList<String> dpDeclarations;
@@ -50,18 +51,51 @@ public class RuleSetBody {
 	public void addIndDeclaration(String indDeclaration){
 		indDclarations.add(indDeclaration);
 	}
-	
-	
+	public void deleteIndDeclaration(String indDeclaration){	
+		for(Iterator<String> it = indDclarations.iterator() ; it.hasNext() ; )
+		{
+			String value = it.next();
+			
+			if(value.contains(indDeclaration))
+			{
+				it.remove();
+			}
+		}
+	}
+
 	public void addAssertion(String assertion){
 		assertions.add(assertion);
+	}
+	public void deleteAssertion(String axiomKeyword){	
+		for(Iterator<String> it = assertions.iterator() ; it.hasNext() ; )
+		{
+			String value = it.next();
+			
+			if(value.contains(axiomKeyword))
+			{
+				it.remove();
+			}
+		}
 	}
 	public void addExAxiom(String exAxiom){
 		exAxioms.add(exAxiom);
 	}
+    
     public void addSWRLRule(SWRLrule rule){
     	swrlRuleList.add(rule);
     }
-	
+    public void updateSWRLRule(String ruleName, int bulitInIndex, String newValue){
+        for(int i=0; i<swrlRuleList.size(); i++){
+        	if(swrlRuleList.get(i).getHeadClassAtom().getClassAtom().equals(ruleName)){
+    			System.out.println("find rule, update axiom.");
+    			SWRLrule updaterule = swrlRuleList.get(i);
+    			updaterule.updateBulitInAtom(bulitInIndex, newValue);
+    			
+    			swrlRuleList.set(i, updaterule);
+    		}
+        }   	
+    	
+    }
 	private void combineDeclartion(){
 		for(String c : classDeclarations){
 			declaration = declaration +c+"\r\n";
@@ -86,12 +120,19 @@ public class RuleSetBody {
 			exAxiom = exAxiom +exAxioms.get(i)+"\r\n";
 		}
 	}
-	
+	private void combineSWRLRules(){
+		
+		for(SWRLrule rule :swrlRuleList ){
+			allSWRLrule = allSWRLrule+rule.getSWRLrule();
+		}
+		
+	}
 	public String getRuleSetBody(){
 		combineDeclartion();
 		combineAssertion();
 		combineExAxiom();
-		ruleSetBody = declaration+assertion+exAxiom;
+		combineSWRLRules();
+		ruleSetBody = declaration+assertion+exAxiom+allSWRLrule;
 		
 		return ruleSetBody;
 	}

@@ -22,6 +22,12 @@ public class SWRLrule {
     	this.swrlRule = swrlRule;
     	ruleParsing();
     }
+    public SWRLrule(String ruleName, String classAtom, String classVar, String annotation){
+    	this.annotation = makeAnnotation(annotation);
+    	headClassAtom = new ClassAtom(ruleName,classVar);
+    	bodyClassAtom = new ClassAtom(classAtom, classVar);
+    }
+    
 	private void ruleParsing(){ // parsing rule body, head.
 		String dataPropertyString = "DataProperty";
 		String[] parsedRule = swrlRule.split("\r\n");
@@ -41,8 +47,10 @@ public class SWRLrule {
 					}else if(bodyAtomType.equals(dataPropertyString)){
 						PropertyAtom pa = parsePropertyAtom(parsedRule[j],dataPropertyString);
 						rulePropertyAtoms.add(pa);
-					}else if(bodyAtomType.equals("BuiltInAtom")){
+					}else if(bodyAtomType.equals("BuiltIn")){
 						
+						BuiltInAtom ba = parseBuiltInAtom(parsedRule[j]);
+						ruleBulitInAtoms.add(ba);
 					}
 					
 				}
@@ -56,23 +64,57 @@ public class SWRLrule {
 			}
 			else if(parsedRule[i].contains("Annotation")){
 		
-				annotation = parsedRule[i];
+				annotation = parsedRule[i]+"\r\n";
 			}
 			
 			
 		}
 	}
-	public void parsedRule(){
-		System.out.println("####Parsed SWRL rule#####");
-		System.out.println("Rule annotation:"+annotation);
-		System.out.println("Rule headAtom:"+headAtom+", classAtom:"+headClassAtom.classAtom+", headVariable:"+headClassAtom.variable);
-		for(String b : bodyAtoms){
-			System.out.println("Rule bodyAtom:"+b);
-		}
+	public ClassAtom getHeadClassAtom(){
+		return headClassAtom;
+	}
+	public void updateBulitInAtom(int bulitInIndex, String newValue){
+		BuiltInAtom bulitIn = ruleBulitInAtoms.get(bulitInIndex);
+		System.out.println("update BuiltInCondition:"+newValue);
+		bulitIn.setDataValue(newValue);
+	    
+		ruleBulitInAtoms.set(bulitInIndex, bulitIn);
+		makeSWRLrule();
 	}
 	public void makeSWRLrule(){
-		
+		System.out.println("####Making SWRL rule#####");
+		swrlRule = "    DLSafeRule(\r\n"+annotation+
+				   "        Body(\r\n";
+		swrlRule = swrlRule+bodyClassAtom.makeClassAtom();
+		for(PropertyAtom p:rulePropertyAtoms){
+			swrlRule = swrlRule+p.makePropertyAtom();
+		}
+		for(BuiltInAtom b : ruleBulitInAtoms){
+			swrlRule = swrlRule+b.makeBultInAtom();
+		}
+		swrlRule = swrlRule +"        )\r\n";
+		swrlRule = swrlRule +"        Head(\r\n";
+		swrlRule = swrlRule +headClassAtom.makeClassAtom();
+		swrlRule = swrlRule +"        )\r\n";
+		swrlRule = swrlRule +"    )\r\n";
+		System.out.println(swrlRule);
 	}
+	public void addPropertyAtom(String type, String property, String[] variables){
+		PropertyAtom propertyAtom = new PropertyAtom(type,property,variables);
+		rulePropertyAtoms.add(propertyAtom);
+	}
+    public void addBuiltInAtom(String swrlAtom,String variable,String dataValue, String dataType){
+    	BuiltInAtom builtInAtom = new BuiltInAtom(swrlAtom,variable, dataValue, dataType);
+    	ruleBulitInAtoms.add(builtInAtom);
+	}
+    public String getSWRLrule(){
+    	return swrlRule;
+    }
+    private String makeAnnotation(String annotation){
+  
+    	annotation = "        Annotation(rdfs:comment \""+annotation+"\")\r\n";
+    	return annotation;
+    }
 	private ClassAtom parseClassAtom(String atomBody){
 		
 		String bcap = atomBody.substring(23, atomBody.length());
@@ -103,10 +145,27 @@ public class SWRLrule {
 		
 		return propertyAtom;
 	}
-    /*private BuiltInAtom parseBuiltInAtom(String atomBody, String type){
-		
-	}*/
-	class ClassAtom{
+    private BuiltInAtom parseBuiltInAtom(String atomBody){
+    	String bbap = atomBody.substring(30, atomBody.length());
+    	int bbapEndIndex = bbap.indexOf(" ");
+    	bbap = bbap.substring(0,bbapEndIndex); // equals, graaterThen, etc... 
+    	
+    	String bpvps = atomBody.substring(31+bbapEndIndex,atomBody.length()-1);
+    	int bbvpsIndex = bpvps.indexOf(")");
+    	bpvps = bpvps.substring(13,bbvpsIndex); // var:v
+    	
+    	
+    	int bargusIndex = atomBody.indexOf("\"");
+    	int bargueIndex = atomBody.indexOf("^");
+    	String bargu = atomBody.substring(bargusIndex+1,bargueIndex-1);
+    	String bartype = atomBody.substring(bargueIndex+6, atomBody.length()-1);
+        	
+    	
+    	BuiltInAtom builtInAtom = new BuiltInAtom(bbap,bpvps, bargu, bartype);
+    	
+    	return builtInAtom;
+	}
+	public class ClassAtom{
 		private String classAtom;
 		private String variable;
 		ClassAtom(String classAtom, String variable){
@@ -119,8 +178,11 @@ public class SWRLrule {
 		void variable(String variable){
 			this.variable = variable;
 		}
+		public String getClassAtom(){
+			return classAtom;
+		}
 		public String makeClassAtom(){
-			String classAtomStr = "        ClassAtom(:"+classAtom+" Variable(var:"+variable+")) ";
+			String classAtomStr = "            ClassAtom(:"+classAtom+" Variable(var:"+variable+"))\r\n";
 			return classAtomStr;
 		}
 	}
@@ -145,42 +207,43 @@ public class SWRLrule {
 			this.property = property;
 		}
 		String makePropertyAtom(){
-			String propertyAtom = "        "+type+"(:"+property;
+			String propertyAtom = "            "+type+"Atom(:"+property;
 			for(int i=0; i<variables.length; i++){
 				propertyAtom = propertyAtom + " Variable(var:"+variables[i]+")";
 			}
-			propertyAtom = propertyAtom + ") ";
+			propertyAtom = propertyAtom + ")\r\n";
 			
 			return propertyAtom;
 		}
 		
 	}
 	class BuiltInAtom{
-		private String[] variables;
-		private String atom;
-		private String property;
-		BuiltInAtom(String propertyName,String[] variables, String atom){
-			
-			this.variables = variables;
-			this.atom = atom;
-			this.property = propertyName;
+		private String variable;
+		private String dataType;
+		private String swrlAtom;
+		private String dataValue;
+		BuiltInAtom(String swrlAtom,String variable,String dataValue, String dataType){
+			this.dataValue =dataValue;
+			this.variable = variable;
+			this.swrlAtom = swrlAtom;
+			this.dataType = dataType;
 		}
-		void setAtom(String atom){
-			this.atom = atom;
+		void setAtom(String swrlAtom){
+			this.swrlAtom = swrlAtom;
 		}
-		void setPorerty(String property){
-			this.property = property;
+		void setPorerty(String dataType){
+			this.dataType = dataType;
 		}
-		void setVariables(String[] variables){
-			this.variables = variables;
+		void setVariables(String variable){
+			this.variable = variable;
+		}
+		void setDataValue(String dataValue){
+			this.dataValue = dataValue;
 		}
 		String makeBultInAtom(){
-			String propertyAtom = "        BuiltInAtom(swrlb:"+property;
-			for(int i=0; i<variables.length; i++){
-				propertyAtom = propertyAtom + " Variable(var:"+variables[i]+")";
-			}
-			propertyAtom = propertyAtom+" "+ atom;
-			propertyAtom = propertyAtom + ") ";
+			String propertyAtom = "            BuiltInAtom(swrlb:"+swrlAtom+" Variable(var:"+variable+")";						 			
+			propertyAtom = propertyAtom+" \"" + dataValue + "\"^^xsd:"+dataType+")\r\n";
+			
 			
 			return propertyAtom;
 		}

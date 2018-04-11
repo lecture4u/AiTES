@@ -5,6 +5,8 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
+
+import com.github.aites.framework.rule.SWRLrule;
 /**
  * Class for manage ontology rule set
  * parsing rule set File, update rule, delete rule.
@@ -44,6 +46,10 @@ public class RuleSetManager {
 	    ruleSetBody.addAssertion(classAxiom);        
 		
 	}
+	public void deleteInd(String indName){
+		ruleSetBody.deleteIndDeclaration(indName);
+		ruleSetBody.deleteAssertion(indName);
+	}
 	/**
 	 * Method for assertion data property axiom
 	 * asserted to rulest form DataPropertyAssertion(:dpname :individual "dpvaule"^^dptype)
@@ -72,11 +78,17 @@ public class RuleSetManager {
 	 * @exception IOException
 	 *     rule set save failed
 	 */
+	public void assertSWRLrule(SWRLrule rule){		
+		ruleSetBody.addSWRLRule(rule);
+	}
+	public void updateSWRLBulitInRule(String ruleName, int bulitInIndex, String newValue){
+		ruleSetBody.updateSWRLRule(ruleName, bulitInIndex, newValue);
+	}
 	public void saveRuleSet(){
 		String ruleBodyValue = ruleSetBody.getRuleSetBody();
 		ruleSet = ruleSetHead+ ruleBodyValue + ruleSetTail;
 		System.out.println(ruleSet);
-		
+		/*
 		try {
 			BufferedWriter bw = new BufferedWriter(new FileWriter(new File(ruleSetName)));
 			bw.write(ruleSet);
@@ -85,7 +97,7 @@ public class RuleSetManager {
 		} catch (IOException e) {
 	
 			e.printStackTrace();
-	    }
+	    }*/
 	}
 
 	public void printRuleSetHeader(){

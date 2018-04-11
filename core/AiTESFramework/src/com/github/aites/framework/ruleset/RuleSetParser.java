@@ -25,7 +25,7 @@ public class RuleSetParser {
 	
 	private Stack ruleParsingStack = new Stack();
 	private String swrlRule="";
-	private ArrayList<String>ruleList = new ArrayList<String>();
+	private ArrayList<SWRLrule> swrlRuleList = new ArrayList<SWRLrule>();
 	
 	private boolean headTrigger = false;
 	private boolean declartionTrigger = false;
@@ -62,7 +62,7 @@ public class RuleSetParser {
 					assertionTrigger = true;
 				}
 				else if(assertionTrigger){ // ruleset body ontology DL-Safe Ruleset part parsing
-					ruleSetBody.addExAxiom(ruleString);
+					
 					if(ruleString.contains("DLSafeRule")){ // DL-sate rule first syntax	 				
 						swrlRule = swrlRule+ruleString+"\r\n";
 						showpush(ruleParsingStack);
@@ -80,23 +80,26 @@ public class RuleSetParser {
 									showpop(ruleParsingStack);
 									if(ruleParsingStack.isEmpty()){										
 										System.out.println(swrlRule);
-										ruleList.add(swrlRule);
+										
 										
 										SWRLrule rule = new SWRLrule(swrlRule);
+										swrlRuleList.add(rule);
 										ruleSetBody.addSWRLRule(rule);
 										swrlRule = "";
 										
 									}
 								}catch(EmptyStackException e){									
-									for(String r: ruleList){
-										SWRLrule swrlRule = new SWRLrule(r);
-										swrlRule.parsedRule();
+									for(SWRLrule rule : swrlRuleList){
+										rule.makeSWRLrule();
+										//System.out.println(rule.getSWRLrule());
 									}
 								}	
 							}
 						}
 					}
-					
+					else{
+						ruleSetBody.addExAxiom(ruleString);
+					}
 				}
 				else if(headTrigger){ // declaration parsing
 					if(ruleString.contains("Class")){
