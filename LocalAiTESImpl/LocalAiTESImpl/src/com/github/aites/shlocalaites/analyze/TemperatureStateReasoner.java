@@ -2,8 +2,9 @@ package com.github.aites.shlocalaites.analyze;
 
 import com.github.aites.framework.analyzer.StateReasoner;
 import com.github.aites.framework.log.LogWritter;
+import com.github.aites.framework.rule.RuleManager;
 import com.github.aites.framework.ruleset.RuleSetManager;
-import com.github.aites.shlocalaites.rule.RuleManager;
+
 
 
 public class TemperatureStateReasoner implements StateReasoner{

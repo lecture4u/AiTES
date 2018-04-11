@@ -1,6 +1,12 @@
 package com.github.aites.framework.framework;
 
-
+/**
+ * Class for control AiTES Time step.
+ * singleton pattern.
+ * @author JungHyun An
+ * @version 3.0.1
+ * 
+ */
 
 public class Timer {
 	private static String systemTime = "";
@@ -48,6 +54,13 @@ public class Timer {
 	public String getCurrentTime(){
 		return time;
 	}
+
+/**
+ * Method for processed time step 
+ * steped by 1 hour, need method for judged time step
+ * @param none
+ * @return none
+ */
 	public void processedTime(){
 		System.out.println("*******processed System time*******");
 		int timeData = Integer.parseInt(time);

@@ -5,8 +5,8 @@ import java.util.Collections;
 
 import com.github.aites.framework.analyzer.StateReasoner;
 import com.github.aites.framework.log.LogWritter;
+import com.github.aites.framework.rule.RuleManager;
 import com.github.aites.framework.ruleset.RuleSetManager;
-import com.github.aites.shlocalaites.rule.RuleManager;
 
 
 public class PositionStateReasoner implements StateReasoner{

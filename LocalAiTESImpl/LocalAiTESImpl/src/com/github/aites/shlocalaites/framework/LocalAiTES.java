@@ -19,6 +19,7 @@ import com.github.aites.framework.log.LogWritter;
 import com.github.aites.framework.orchestration.Device;
 import com.github.aites.framework.orchestration.Participants;
 import com.github.aites.framework.planner.Plan;
+import com.github.aites.framework.rule.RuleManager;
 import com.github.aites.framework.ruleset.RuleSetManager;
 import com.github.aites.shlocalaites.aitesconnector.*;
 
@@ -26,7 +27,7 @@ import com.github.aites.shlocalaites.aitesconnector.*;
 import com.github.aites.shlocalaites.gkconnect.*;
 
 
-import com.github.aites.shlocalaites.rule.RuleManager;
+
 import com.github.aites.shlocalaites.ruleset.*;
 
 
@@ -78,11 +79,11 @@ public class LocalAiTES extends LocalAiTESManager{
 		///boolean isOverPS = ruleManager.reasoningRule("SHEdata1", "PSoverRule");
 		//System.out.println(isOverPS);
 		
-	//	RuleSetManager ruleSetManager2 = new RuleSetManager("smartHome.xml");
-	//	ruleSetManager2.assertInd("SHEdata201703", "SHEdata");
-	//	ruleSetManager2.assertDataProperty("hasPS", "SHEdata201703", "1200", "double");
-	//	ruleSetManager2.assertDataProperty("hasTemperture", "SHEdata201703", "30", "int");
-	//	ruleSetManager2.saveRuleSet();
+		RuleSetManager ruleSetManager2 = new RuleSetManager("smartHome.xml");
+		ruleSetManager2.assertInd("SHEdata201703", "SHEdata");
+		ruleSetManager2.assertDataProperty("hasPS", "SHEdata201703", "1200", "double");
+		ruleSetManager2.assertDataProperty("hasTemperture", "SHEdata201703", "30", "int");
+		ruleSetManager2.saveRuleSet();
 		
 		
 		

@@ -3,8 +3,9 @@ package com.github.aites.shlocalaites.monitor;
 import com.github.aites.framework.log.LogWritter;
 import com.github.aites.framework.monitor.EnvData;
 import com.github.aites.framework.monitor.HRAlgorithm;
+import com.github.aites.framework.rule.RuleManager;
 import com.github.aites.framework.ruleset.RuleSetManager;
-import com.github.aites.shlocalaites.rule.RuleManager;
+
 
 
 public class MonitorHRAlgorithm implements HRAlgorithm{
