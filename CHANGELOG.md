@@ -58,4 +58,6 @@ The new version of the framework can be downloaded from the core forder of githu
  
 #### Bugfixes
 
+- [Commit e4382] (https://github.com/lecture4u/AiTES/commit/e438259b1c7d4e2a9b4fd8caf15060046a230f66):removed unsuable class
+
 #### Other
