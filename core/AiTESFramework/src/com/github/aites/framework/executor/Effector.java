@@ -23,9 +23,11 @@ public class Effector {
 		
 		File module = findModuleAboutAction(action);
 		String pubTopic = makeTopic(target, action);
+		System.out.println(module.getAbsolutePath());
 		
 		try {
-			df.publish(module, pubTopic);
+			System.out.println(this.pubTopic);
+			df.publish(module, this.pubTopic);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -36,7 +38,7 @@ public class Effector {
 	private File findModuleAboutAction(String action){
 		log.logInput("******Find Jar File About action:"+action+"*****");
 		String moduleURL =moduleFolder+"/"+action+".jar";
-		File module = new File(moduleURL);
+		File module = new File(moduleFolder,action+".jar");
 		fileName = module.getName();
 		return module;
 	}

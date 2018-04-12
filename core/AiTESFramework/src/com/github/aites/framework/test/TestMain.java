@@ -3,6 +3,8 @@ package com.github.aites.framework.test;
 import java.io.File;
 import java.util.ArrayList;
 
+import com.github.aites.framework.communicate.DataTransfer;
+import com.github.aites.framework.executor.Effector;
 import com.github.aites.framework.globalknowledge.ConnectionStarter;
 import com.github.aites.framework.globalknowledge.DBConnector;
 import com.github.aites.framework.rule.RuleManager;
@@ -15,14 +17,16 @@ public class TestMain {
 	 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		RuleSetManager ruleSetManager2 = new RuleSetManager("smartHome.xml");
+		/*RuleSetManager ruleSetManager2 = new RuleSetManager("smartHome.xml");
 		
 		System.out.println("-----SWRLRule add test-----");
 		SWRLrule testRule = new SWRLrule("TestRule", "SHEdata", "c", "rule for test");
+		
 		String variables[]  = {"c","tem"};
 		String variable = "tem";
 		String dataValue= "12";
 		String dataType= "int";
+		
 		testRule.addPropertyAtom("DataProperty", "hasTemperture", variables);
 		testRule.addBuiltInAtom("greaterThen", variable, dataValue, dataType);
 		testRule.addBuiltInAtom("lessThen", variable, dataValue, dataType);
@@ -33,8 +37,11 @@ public class TestMain {
 	    ruleSetManager2.updateSWRLBulitInRule("TestRule", 1, "64");
 		ruleSetManager2.saveRuleSet();
 		
+		ruleSetManager2.deleteInd("SHEData1");
+		//ruleSetManager2.saveRuleSet();*/
 		
-		//ruleSetManager2.saveRuleSet();
+		Effector effector = new Effector("/Users/srsok/AiTES/core/AiTESFramework/modules");
+		effector.effectIoTgateway("Air_conditioner", "active");
 		
 		
 		

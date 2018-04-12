@@ -88,7 +88,7 @@ public class RuleSetManager {
 		String ruleBodyValue = ruleSetBody.getRuleSetBody();
 		ruleSet = ruleSetHead+ ruleBodyValue + ruleSetTail;
 		System.out.println(ruleSet);
-		/*
+		
 		try {
 			BufferedWriter bw = new BufferedWriter(new FileWriter(new File(ruleSetName)));
 			bw.write(ruleSet);
@@ -97,7 +97,7 @@ public class RuleSetManager {
 		} catch (IOException e) {
 	
 			e.printStackTrace();
-	    }*/
+	    }
 	}
 
 	public void printRuleSetHeader(){
