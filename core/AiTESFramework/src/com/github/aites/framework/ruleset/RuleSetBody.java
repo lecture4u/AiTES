@@ -55,7 +55,6 @@ public class RuleSetBody {
 		for(Iterator<String> it = indDclarations.iterator() ; it.hasNext() ; )
 		{
 			String value = it.next();
-			
 			if(value.contains(indDeclaration))
 			{
 				it.remove();

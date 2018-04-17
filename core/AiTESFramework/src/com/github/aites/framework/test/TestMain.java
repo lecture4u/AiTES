@@ -2,7 +2,9 @@ package com.github.aites.framework.test;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.HashMap;
 
+import com.github.aites.framework.analyzer.StateCombiner;
 import com.github.aites.framework.communicate.DataTransfer;
 import com.github.aites.framework.executor.Effector;
 import com.github.aites.framework.globalknowledge.ConnectionStarter;
@@ -16,6 +18,25 @@ import com.github.aites.framework.ruleset.RuleSetManager;
 public class TestMain {
 	 
 	public static void main(String[] args) {
+		//RuleSetManager ruleSetManager2 = new RuleSetManager("smartHome.xml");
+		//ruleSetManager2.deleteInd("SHEdata2");
+		//ruleSetManager2.saveRuleSet();
+		ArrayList<String> testStateSet = new ArrayList<String>();
+		testStateSet.add("over");
+		testStateSet.add("cold");
+		testStateSet.add("out");	
+		
+		HashMap<Integer, String> hashmap = new HashMap<Integer, String>();
+		hashmap.put(2, "position");
+		hashmap.put(1, "temperture");
+		hashmap.put(0, "ps");
+		StateCombiner testCombiner = new StateCombiner(testStateSet,"2018 09 14",hashmap);
+		String pneed = testCombiner.reasoningStateSetNeedPlan();
+		String stateSet = testCombiner.getStateSet();
+		
+		System.out.println("pnned: " + pneed + ",StateSet: "+stateSet);
+		
+		
 		// TODO Auto-generated method stub
 		/*RuleSetManager ruleSetManager2 = new RuleSetManager("smartHome.xml");
 		
@@ -40,8 +61,8 @@ public class TestMain {
 		ruleSetManager2.deleteInd("SHEData1");
 		//ruleSetManager2.saveRuleSet();*/
 		
-		Effector effector = new Effector("/Users/srsok/AiTES/core/AiTESFramework/modules");
-		effector.effectIoTgateway("Air_conditioner", "active");
+		//Effector effector = new Effector("/Users/srsok/AiTES/core/AiTESFramework/modules");
+		//effector.effectIoTgateway("Air_conditioner", "active");
 		
 		
 		

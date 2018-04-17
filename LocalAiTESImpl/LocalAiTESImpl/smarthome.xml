@@ -32,8 +32,10 @@ Ontology(<http://com.github.aites/ontologies/smarthome.owl>
     Declaration(ObjectProperty(:hasUser))
     Declaration(ObjectProperty(:isUser))
     Declaration(NamedIndividual(:SHEdata1))
-
+    Declaration(NamedIndividual(:SHEdata2))
     ClassAssertion(:SHEdata :SHEdata1)
+    ClassAssertion(:SHEdata :SHEdata2)
+    DataPropertyAssertion(:hasPS :SHEdata2 "1200"^^xsd:double)
     DataPropertyAssertion(:hasPS :SHEdata1 "2400"^^xsd:double)
     DataPropertyAssertion(:otLa :SHEdata1 "127.07"^^xsd:string)
     DataPropertyAssertion(:otRo :SHEdata1 "37.19"^^xsd:string)
