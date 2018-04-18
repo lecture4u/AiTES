@@ -19,6 +19,7 @@ This framework development by Artificial Intelligence & information architecture
 ## Full Documentation
 
 -[Wiki](https://github.com/lecture4u/AiTES/wiki).
+-[YouTube Tutorial Guide](https://www.youtube.com/channel/UChx4sQOn5lEVXXeNDrPOMlw/featured?disable_polymer=1).
 
 ## Bugs and Feedback
 
