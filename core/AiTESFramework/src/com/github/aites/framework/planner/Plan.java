@@ -2,6 +2,13 @@ package com.github.aites.framework.planner;
 
 import java.io.File;
 
+/**
+ * Class defined plan in AiTES.
+ * have plan execute time, target, plan action, moduleName.
+ * @author JungHyun An
+ * @version 3.0.1
+ * 
+ */
 public class Plan {
 	private String planTime;
 	private String target;
@@ -12,10 +19,11 @@ public class Plan {
 		this.target = target;
 		this.action = action;
 	}
-	public File findModule(){
-		File file = new File("");
-		return file;
-	}
+	/**
+     * Method print Plan information
+	 * @param  none
+	 * @return none
+	 */
 	public void printPlan(){
 		System.out.println("planTime:"+planTime+",target:"+target+",action:"+action);
 	}

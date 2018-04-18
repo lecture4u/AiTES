@@ -7,7 +7,13 @@ import com.github.aites.framework.log.LogWritter;
 import com.github.aites.framework.planner.Plan;
 
 
-
+/**
+ * Class for manage feedback loop schedule.
+ * input plan, and execute.
+ * @author JungHyun An
+ * @version 3.0.1
+ * 
+ */
 public abstract class Scheduler{
 	static ArrayList<Plan> planList = new ArrayList<Plan>();
 	
@@ -18,10 +24,22 @@ public abstract class Scheduler{
     public Scheduler(String moduleFolder){
     	effector = new Effector(moduleFolder);
     }
+    /**
+	 * Method for execute schedule
+	 * plan loaded global knowledge
+	 * @param  plan
+	 * @return none
+	 */
 	public void inputPlan(Plan plan){
 		log.logInput("Input plan to scheduler");
 		planList.add(plan);
 	}
+	/**
+	 * Method for execute schedule
+	 * plan execute every time step.
+	 * @param systemTime
+	 * @return none
+	 */
 	public void execute(String systemTime){
 
 		log.logInput("**********execute scheduled plan***************");

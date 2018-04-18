@@ -96,13 +96,13 @@ public class DataTransfer implements MqttCallback{
 		
 		MqttMessage mqttMessage = new MqttMessage(fileByte);
 		
-		mqttMessage.setQos(pubQoS);//QoS ����
+		mqttMessage.setQos(pubQoS);
 		mqttMessage.setRetained(false);
 		
 		MqttDeliveryToken token = null;
 		
 		try{
-			token = new_Topic.publish(mqttMessage); // ��ū���� �޼����� ���Ŀ ������ �����ϰ� �˴ϴ�.
+			token = new_Topic.publish(mqttMessage); 
 			
 		}catch(Exception e){
 			e.printStackTrace();

@@ -27,9 +27,7 @@ public class StateCombiner {
 		for(int i=0; i<setOrderMap.size(); i++){
 			ruleSetManager.assertDataProperty(setOrderMap.get(i)+"State", feedBackInd, stateList.get(i), "string");
 		}
-		//ruleSetManager.assertDataProperty("positionState", feedBackInd, stateList.get(2), "string");
-		//ruleSetManager.assertDataProperty("tempertureState", feedBackInd, stateList.get(1), "string");
-		//ruleSetManager.assertDataProperty("psState", feedBackInd, stateList.get(0), "string");
+	
 		ruleSetManager.saveRuleSet();
 		
 		RuleManager ruleManager = new RuleManager("smartHome.xml");
