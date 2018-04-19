@@ -56,7 +56,12 @@ public abstract class Scheduler{
 			}
 		}
 
-	}
+	}/**
+	 * Method for print all plan information
+	 * still this time step
+	 * @param systemTime
+	 * @return none
+	 */
 	public void printAllPlan(){
 		int i=0;
 		for(Plan p : planList){

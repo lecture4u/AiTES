@@ -1,5 +1,11 @@
 package com.github.aites.framework.orchestration;
-
+/**
+ * Class for define device information
+ * Device name, status, address, model code
+ * @author JungHyun An
+ * @version 3.0.1
+ * 
+ */
 public class Device {
 	private String deviceName;
 	private String status;
@@ -10,7 +16,11 @@ public class Device {
 		this.status = status;
 		this.address = address;
 		this.modelCode = modelCode;
-	}
+	}  /**
+	 * Method for print device information
+	 * @param  none
+	 * @return none
+	 */
 	public void printDevice(){
 		System.out.println("Device:"+deviceName+","+status+","+address+","+modelCode);
 	}
