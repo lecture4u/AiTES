@@ -1,0 +1,16 @@
+com.github.aites.framework.aitesconnector
+com.github.aites.framework.aitesmanager
+com.github.aites.framework.analyzer
+com.github.aites.framework.communicate
+com.github.aites.framework.dbcomponent
+com.github.aites.framework.executor
+com.github.aites.framework.framework
+com.github.aites.framework.globalknowledge
+com.github.aites.framework.log
+com.github.aites.framework.monitor
+com.github.aites.framework.orchestration
+com.github.aites.framework.planner
+com.github.aites.framework.rule
+com.github.aites.framework.ruleset
+com.github.aites.framework.smartmodule
+com.github.aites.framework.test
