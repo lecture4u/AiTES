@@ -12,11 +12,15 @@ import com.github.aites.shlocalaites.gkconnect.ExecutorActionWriter;
 
 
 public class SHScheduler extends Scheduler{
+	public SHScheduler(String moduleFolder) {
+		super(moduleFolder);
+		// TODO Auto-generated constructor stub
+	}
 	static ArrayList<Plan> planList = new ArrayList<Plan>();
 	private String moduleName;
 	private String moduleTopic;
 	private String systemTime;
-	Effector effector = new Effector();
+	Effector effector = new Effector(moduleName);
 	LogWritter log = LogWritter.getInstance();
 	public void inputPlan(Plan plan){
 		log.logInput("Input plan to scheduler");
@@ -31,7 +35,7 @@ public class SHScheduler extends Scheduler{
 			
 			if(p.getPlanTime().equals(systemTime)){
 				log.logInput("Execute plannTarget:"+p.getTarget()+"and action:"+p.getAction());
-			    moduleName = effector.findModuleAboutAction(p.getAction());
+			    //moduleName = effector.findModuleAboutAction(p.getAction());
 			
 				moduleTopic = effector.getTopic();
 				

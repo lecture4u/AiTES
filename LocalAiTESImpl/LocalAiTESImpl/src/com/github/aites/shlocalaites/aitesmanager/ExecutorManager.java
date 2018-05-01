@@ -24,7 +24,8 @@ public class ExecutorManager extends Manager{
 	public void run() {
 		log.logInput("---------------run executor for execute module---------------");
 		log.logInput("system time:"+systemTime.getWholeTime());
-		scheduler = new SHScheduler();
+		String moduleFolderName ="";
+		scheduler = new SHScheduler(moduleFolderName);
 		for(Plan p:planList){
 			scheduler.inputPlan(p);
 		}
