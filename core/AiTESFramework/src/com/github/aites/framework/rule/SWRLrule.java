@@ -4,7 +4,7 @@ import java.util.ArrayList;
 /**
  * Class for parse and configure SWRL rule in ontology ruleset.
  * @author JungHyun An
- * @version 3.0.1
+ * @version 3.0.2
  * @see com.github.aites.framework.ruleset.RuleSetBody
  */
 public class SWRLrule {
@@ -18,6 +18,7 @@ public class SWRLrule {
 	private ClassAtom bodyClassAtom;
 	private ArrayList<PropertyAtom> rulePropertyAtoms = new ArrayList<PropertyAtom>();
 	private ArrayList<BuiltInAtom> ruleBulitInAtoms = new ArrayList<BuiltInAtom>();
+	private ArrayList<DataRangeAtom> ruleDataRangeAtoms = new ArrayList<DataRangeAtom>();
     public SWRLrule(String swrlRule){
     	this.swrlRule = swrlRule;
     	ruleParsing();
@@ -29,7 +30,10 @@ public class SWRLrule {
     }
     
 	private void ruleParsing(){ // parsing rule body, head.
+		String classString = "Class";
 		String dataPropertyString = "DataProperty";
+		String builtInString ="BuiltIn";
+		String dataRangeString = "DataRange";
 		String[] parsedRule = swrlRule.split("\r\n");
 		for(int i=0; i<parsedRule.length; i++){
 			if(parsedRule[i].contains("Body")){
@@ -40,17 +44,20 @@ public class SWRLrule {
 					bodyAtoms.add(parsedRule[j]);
 					int bodyAtomTypeEndIndex = parsedRule[j].indexOf("Atom"); 
 					String bodyAtomType = parsedRule[j].substring(12, bodyAtomTypeEndIndex);
-					System.out.println("abcd:"+bodyAtomType);
-					if(bodyAtomType.equals("Class")){
+				
+					if(bodyAtomType.equals(classString)){
 						bodyClassAtom = parseClassAtom(parsedRule[j]);
 					
 					}else if(bodyAtomType.equals(dataPropertyString)){
 						PropertyAtom pa = parsePropertyAtom(parsedRule[j],dataPropertyString);
 						rulePropertyAtoms.add(pa);
-					}else if(bodyAtomType.equals("BuiltIn")){
+					}else if(bodyAtomType.equals(builtInString)){
 						
 						BuiltInAtom ba = parseBuiltInAtom(parsedRule[j]);
 						ruleBulitInAtoms.add(ba);
+					}else if(bodyAtomType.equals(dataRangeString)){
+						DataRangeAtom da = parseDataRangeAtom(parsedRule[j]);
+						ruleDataRangeAtoms.add(da);
 					}
 					
 				}
@@ -75,29 +82,36 @@ public class SWRLrule {
 	}
 	public void updateBulitInAtom(int bulitInIndex, String newValue){
 		BuiltInAtom bulitIn = ruleBulitInAtoms.get(bulitInIndex);
-		System.out.println("update BuiltInCondition:"+newValue);
+		
 		bulitIn.setDataValue(newValue);
 	    
 		ruleBulitInAtoms.set(bulitInIndex, bulitIn);
 		makeSWRLrule();
 	}
 	public void makeSWRLrule(){
-		System.out.println("####Making SWRL rule#####");
 		swrlRule = "    DLSafeRule(\r\n"+annotation+
 				   "        Body(\r\n";
 		swrlRule = swrlRule+bodyClassAtom.makeClassAtom();
-		for(PropertyAtom p:rulePropertyAtoms){
-			swrlRule = swrlRule+p.makePropertyAtom();
+		if(!rulePropertyAtoms.isEmpty()){
+			for(PropertyAtom p:rulePropertyAtoms){
+				swrlRule = swrlRule+p.makePropertyAtom();
+			}
 		}
-		for(BuiltInAtom b : ruleBulitInAtoms){
-			swrlRule = swrlRule+b.makeBultInAtom();
+	    if(!ruleBulitInAtoms.isEmpty()){
+	    	for(BuiltInAtom b : ruleBulitInAtoms){
+				swrlRule = swrlRule+b.makeBultInAtom();
+			}
+	    }
+		if(!ruleDataRangeAtoms.isEmpty()){
+			for(DataRangeAtom d : ruleDataRangeAtoms){
+				swrlRule = swrlRule+d.makeDataRangeAtom();
+			}
 		}
 		swrlRule = swrlRule +"        )\r\n";
 		swrlRule = swrlRule +"        Head(\r\n";
 		swrlRule = swrlRule +headClassAtom.makeClassAtom();
 		swrlRule = swrlRule +"        )\r\n";
 		swrlRule = swrlRule +"    )\r\n";
-		System.out.println(swrlRule);
 	}
 	public void addPropertyAtom(String type, String property, String[] variables){
 		PropertyAtom propertyAtom = new PropertyAtom(type,property,variables);
@@ -134,7 +148,7 @@ public class SWRLrule {
 		
 		String bpvps = atomBody.substring(31+bpapEndIndex,atomBody.length()-1);
 		String variables[] = bpvps.split(" ");
-		System.out.println(bpvps);
+
 		for(int i=0; i<variables.length; i++){
 			String var = variables[i].substring(13, variables[i].length()-1);
 			variables[i] = var;
@@ -165,7 +179,42 @@ public class SWRLrule {
     	
     	return builtInAtom;
 	}
-	public class ClassAtom{
+    private DataRangeAtom parseDataRangeAtom(String atomBody){
+    	
+    		
+    	String atomexceptblankBody = atomBody.substring(13);
+    	String[] atomBodyParsing = atomexceptblankBody.split(" ");
+    	
+    	int dataTypeStart = 37;
+    	int dataTypeEnd = atomBodyParsing[0].length();
+    	String dataType = atomBodyParsing[0].substring(dataTypeStart, dataTypeEnd);
+    	
+    	int minnmaxStart = 1;
+    	int minEnd= atomBodyParsing[2].indexOf("^")-1;
+    	int maxEnd= atomBodyParsing[4].indexOf("^")-1;
+    	String minValue = atomBodyParsing[2].substring(minnmaxStart, minEnd);
+    	String maxValue = atomBodyParsing[4].substring(minnmaxStart, maxEnd);
+    	
+    	int varStart = 13;
+    	int varEnd = atomBodyParsing[5].indexOf(")");
+    	String variable = atomBodyParsing[5].substring(varStart, varEnd);
+    	
+    	DataRangeAtom da = new DataRangeAtom(dataType,minValue,maxValue,variable);
+    	return da;
+ 
+    }
+	public void printSWRLruleInfo(){
+		System.out.println("#####Print SWRL Rule information");
+		System.out.println("HeadAtom:"+headAtom);
+		System.out.println("Annotation:"+annotation);
+		for(int i=0; i<bodyAtoms.size(); i++){
+			System.out.println("BodyAtom:"+bodyAtoms.get(i));
+		}
+	}
+    
+    
+    
+    public class ClassAtom{
 		private String classAtom;
 		private String variable;
 		ClassAtom(String classAtom, String variable){
@@ -245,6 +294,36 @@ public class SWRLrule {
 			propertyAtom = propertyAtom+" \"" + dataValue + "\"^^xsd:"+dataType+")\r\n";
 			
 			
+			return propertyAtom;
+		}
+		
+	}
+	class DataRangeAtom{
+		private String dataType;
+		private String minValue;
+		private String maxValue;
+		private String variable;
+	
+		DataRangeAtom(String dataType,String minValue,String maxValue, String variable){
+			this.dataType =dataType;
+			this.minValue = minValue;
+			this.maxValue = maxValue;
+			this.variable = variable;
+		}
+		void setDataType(String dataType){
+			this.dataType = dataType;
+		}
+		void setMinValue(String minValue){
+			this.minValue = minValue;
+		}
+		void setMaxValue(String maxValue){
+			this.maxValue = maxValue;
+		}
+		void setVariable(String variable){
+			this.variable = variable;
+		}
+		String makeDataRangeAtom(){
+			String propertyAtom = "            DataRangeAtom(DatatypeRestriction(xsd:"+dataType+" xsd:minInclusive \"" + minValue + "\"^^xsd:"+dataType+" xsd:maxInclusive \"" + maxValue + "\"^^xsd:"+dataType+") Variable(var:"+variable+"))\r\n";						 												
 			return propertyAtom;
 		}
 		

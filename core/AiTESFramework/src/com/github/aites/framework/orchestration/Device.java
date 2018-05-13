@@ -11,18 +11,21 @@ public class Device {
 	private String status;
 	private String address;
 	private String modelCode;
+	private String softwareAction="";
 	public Device(String deviceName, String status, String address, String modelCode){
 		this.deviceName = deviceName;
 		this.status = status;
 		this.address = address;
 		this.modelCode = modelCode;
+		
 	}  /**
 	 * Method for print device information
 	 * @param  none
 	 * @return none
 	 */
-	public void printDevice(){
-		System.out.println("Device:"+deviceName+","+status+","+address+","+modelCode);
+	public String printDevice(){
+		String printDeviceInfo = "Name:"+deviceName+", Status:"+status+", Address:"+address+", modelCode:"+modelCode+", SWaction:"+softwareAction;
+		return printDeviceInfo;
 	}
 	public void setStatus(String status){
 		this.status = status;
@@ -38,5 +41,11 @@ public class Device {
 	}
 	public String getModelCode(){
 		return modelCode;
+	}
+	public String getSoftwareAction(){
+		return softwareAction;
+	}
+	public void setSoftwareAction(String softwareAction){
+		this.softwareAction = softwareAction;
 	}
 }

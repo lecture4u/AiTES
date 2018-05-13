@@ -7,7 +7,7 @@ public class PropReader {
 	private String clientID;
 	private String brokerIP;
 	private String moduleURL;
-
+    private String csvURL;
 	public void propReader(){
 		try{
 			String propFile = "./config.properties";
@@ -19,6 +19,7 @@ public class PropReader {
 			clientID = props.getProperty("clientID");
 			brokerIP = props.getProperty("brokerIP");
 			moduleURL = props.getProperty("moduleURL");
+			csvURL = props.getProperty("csvURL");
 		}catch(Exception e){
 			e.printStackTrace();
 		}
@@ -31,5 +32,8 @@ public class PropReader {
 	}
 	public String getModuleURL(){
 		return moduleURL;
+	}
+	public String getCsvURL(){
+		return csvURL;
 	}
 }

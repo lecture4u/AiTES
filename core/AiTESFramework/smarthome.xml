@@ -7,13 +7,11 @@ Prefix(xsd:=<http://www.w3.org/2001/XMLSchema#>)
 Prefix(swrlb:=<http://www.w3.org/2003/11/swrlb#>)
 Prefix(:=<http://com.github.aites/ontologies/smarthome.owl#>)
 Prefix(xml:=<http://www.w3.org/XML/1998/namespace>)
-
 Prefix(rdfs:=<http://www.w3.org/2000/01/rdf-schema#>)
-
-
 Ontology(<http://com.github.aites/ontologies/smarthome.owl>
     Declaration(Class(:IoTEnvdata))
     Declaration(Class(:SHEdata))
+    Declaration(Class(:Rule))
     Declaration(Class(:PSoverRule))
     Declaration(Class(:PSunderRule))
     Declaration(Class(:TempertureHotRule))
@@ -39,11 +37,9 @@ Ontology(<http://com.github.aites/ontologies/smarthome.owl>
     Declaration(ObjectProperty(:isUser))
     Declaration(NamedIndividual(:SHEdata1))
     Declaration(NamedIndividual(:SHEdata2))
-    Declaration(NamedIndividual(:SHEdata20180914))
     ClassAssertion(:SHEdata :SHEdata1)
     ClassAssertion(:SHEdata :SHEdata2)
-    ClassAssertion(:SHEdata :SHEdata20180914)
-    DataPropertyAssertion(:hasPS :SHEdata2 "2400"^^xsd:double)
+    DataPropertyAssertion(:hasPS :SHEdata2 "1200"^^xsd:double)
     DataPropertyAssertion(:hasPS :SHEdata1 "2400"^^xsd:double)
     DataPropertyAssertion(:otLa :SHEdata1 "127.07"^^xsd:string)
     DataPropertyAssertion(:otRo :SHEdata1 "37.19"^^xsd:string)
@@ -51,13 +47,9 @@ Ontology(<http://com.github.aites/ontologies/smarthome.owl>
     DataPropertyAssertion(:thridRo :SHEdata1 "24"^^xsd:int)
     DataPropertyAssertion(:forthLa :SHEdata1 "235"^^xsd:int)
     DataPropertyAssertion(:forthRo :SHEdata1 "211"^^xsd:int)
-    DataPropertyAssertion(:psState :SHEdata20180914 "over"^^xsd:string)
-
-    DataPropertyAssertion(:tempertureState :SHEdata20180914 "cold"^^xsd:string)
-
-    DataPropertyAssertion(:positionState :SHEdata20180914 "out"^^xsd:string)
-
     SubClassOf(:SHEdata :IoTEnvdata)
+    SubClassOf(:PSoverRule :Rule)
+    InverseObjectProperties(:hasUser :isUser)   
     DLSafeRule(
         Annotation(rdfs:comment "smart home environment power consumtion is over?")
         Body(
@@ -114,6 +106,10 @@ Ontology(<http://com.github.aites/ontologies/smarthome.owl>
             DataPropertyAtom(:forthRo Variable(var:c) Variable(var:fr))
             BuiltInAtom(swrlb:equal Variable(var:otl) "127.07"^^xsd:string)
             BuiltInAtom(swrlb:equal Variable(var:otr) "37.19"^^xsd:string)
+            DataRangeAtom(DatatypeRestriction(xsd:integer xsd:minInclusive "42"^^xsd:integer xsd:maxInclusive "43"^^xsd:integer) Variable(var:tl))
+            DataRangeAtom(DatatypeRestriction(xsd:integer xsd:minInclusive "22"^^xsd:integer xsd:maxInclusive "24"^^xsd:integer) Variable(var:tr))
+            DataRangeAtom(DatatypeRestriction(xsd:integer xsd:minInclusive "149"^^xsd:integer xsd:maxInclusive "649"^^xsd:integer) Variable(var:fl))
+            DataRangeAtom(DatatypeRestriction(xsd:integer xsd:minInclusive "45"^^xsd:integer xsd:maxInclusive "886"^^xsd:integer) Variable(var:fr))
         )
         Head(
             ClassAtom(:PositionNearRule Variable(var:c))
@@ -133,6 +129,8 @@ Ontology(<http://com.github.aites/ontologies/smarthome.owl>
             BuiltInAtom(swrlb:equal Variable(var:otr) "37.19"^^xsd:string)
             BuiltInAtom(swrlb:equal Variable(var:tl) "43"^^xsd:int)
             BuiltInAtom(swrlb:equal Variable(var:tr) "24"^^xsd:int)
+            DataRangeAtom(DatatypeRestriction(xsd:integer xsd:minInclusive "49"^^xsd:integer xsd:maxInclusive "349"^^xsd:integer) Variable(var:fl))
+            DataRangeAtom(DatatypeRestriction(xsd:integer xsd:minInclusive "116"^^xsd:integer xsd:maxInclusive "416"^^xsd:integer) Variable(var:fr))
         )
         Head(
             ClassAtom(:PositionInRule Variable(var:c))

@@ -2,6 +2,7 @@ package com.github.aitest.shlocalaites.executor;
 
 import java.util.ArrayList;
 
+import com.github.aites.framework.communicate.DataTransfer;
 import com.github.aites.framework.executor.Effector;
 import com.github.aites.framework.executor.Scheduler;
 import com.github.aites.framework.globalknowledge.DBConnector;
@@ -22,6 +23,7 @@ public class SHScheduler extends Scheduler{
 	private String systemTime;
 	Effector effector = new Effector(moduleName);
 	LogWritter log = LogWritter.getInstance();
+	DataTransfer df = DataTransfer.getInstance();
 	public void inputPlan(Plan plan){
 		log.logInput("Input plan to scheduler");
 		planList.add(plan);

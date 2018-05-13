@@ -5,6 +5,7 @@ public class Device {
 	private String status;
 	private String address;
 	private String modelCode;
+	private String actionLevel;
 	public Device(String deviceName, String status, String address, String modelCode){
 		this.deviceName = deviceName;
 		this.status = status;
@@ -28,5 +29,11 @@ public class Device {
 	}
 	public String getModelCode(){
 		return modelCode;
+	}
+	public void setActionLevel(String actionLevel){
+		this.actionLevel = actionLevel;
+	}
+	public String getActionLevel(){
+		return actionLevel;
 	}
 }

@@ -11,13 +11,13 @@ import com.github.aites.framework.rule.SWRLrule;
  * Class for manage ontology rule set
  * parsing rule set File, update rule, delete rule.
  * @author JungHyun An
- * @version 3.0.1
+ * @version 3.0.2
  * 
  */
 public class RuleSetManager {
 	private String ruleSetName;
 	private String ruleSet;
-	RuleSetParser ruleSetLoader = new RuleSetParser();
+	RuleSetParser ruleSetParser = new RuleSetParser();
 	private RuleSetBody ruleSetBody;
 	
 	private String ruleSetHead;
@@ -26,10 +26,10 @@ public class RuleSetManager {
 	
 	public RuleSetManager(String ruleSetName){
 		this.ruleSetName = ruleSetName;
-		ruleSetLoader.loadRuleSet(ruleSetName);
+		ruleSetParser.loadRuleSet(ruleSetName);
 		
-		ruleSetHead = ruleSetLoader.getRuleSetHeader();
-		ruleSetBody = ruleSetLoader.getRuleSetBody();
+		ruleSetHead = ruleSetParser.getRuleSetHeader();
+		ruleSetBody = ruleSetParser.getRuleSetBody();
 		
 	}
 	/**
@@ -87,8 +87,6 @@ public class RuleSetManager {
 	public void saveRuleSet(){
 		String ruleBodyValue = ruleSetBody.getRuleSetBody();
 		ruleSet = ruleSetHead+ ruleBodyValue + ruleSetTail;
-		System.out.println(ruleSet);
-		
 		try {
 			BufferedWriter bw = new BufferedWriter(new FileWriter(new File(ruleSetName)));
 			bw.write(ruleSet);
@@ -100,8 +98,12 @@ public class RuleSetManager {
 	    }
 	}
 
-	public void printRuleSetHeader(){
-		System.out.println(ruleSetHead);
-	}
+	 public void printRuleSetInformation(){
+	    	System.out.println("#####Print RuleSetName:"+this.ruleSetName+"'s information#####");
+	    	System.out.println("*****RuleSet Header*****");
+	    	System.out.println(ruleSetHead);
+	    	System.out.println("*****RuleSet Body*****");
+	    	ruleSetBody.printRuleSetBodyInformation();
+	    }
 	
 }

@@ -1,11 +1,6 @@
 package com.github.aites.framework.framework;
 import java.lang.reflect.Method;
-
-import org.eclipse.paho.client.mqttv3.MqttMessage;
-import org.semanticweb.owlapi.model.OWLOntologyCreationException;
-
-import com.github.aites.framework.aitesconnector.*;
-import com.github.aites.framework.globalknowledge.*;
+import java.util.ArrayList;
 /**
  * Class run main local AiTES and managed feedback loops
  * @author JungHyun An
@@ -19,6 +14,9 @@ public abstract class LocalAiTESManager {
 	public Object clsInstance;
 	public String ruleName;
     public static String clientID;
+    public String gkURL;
+    public ArrayList<String> adaptiveActionList;
+    public static String ruleSetURL;
     
    
     /**
@@ -30,12 +28,5 @@ public abstract class LocalAiTESManager {
 	 *     failed class load from DataTransfer.
 	 */
 	public abstract void manageAiTES(String mqttMessage, String topic, String deviceName) throws Exception;
-
-	/**
-	 * Method for load main ontology rule set
-	 * Global knowledge is controlled.
-	 * @param moduleName
-	 * @return none
-	 */
-	public abstract void changeRule(String ruleName);
+	
 }

@@ -8,7 +8,7 @@ import com.github.aites.framework.rule.SWRLrule;
  * Class for define and make object about ontology rule set body.
  * 
  * @author JungHyun An
- * @version 3.0.1
+ * @version 3.0.2
  * 
  */
 public class RuleSetBody {
@@ -115,7 +115,7 @@ public class RuleSetBody {
 		}
 	}
 	private void combineExAxiom(){
-		for(int i=0; i<exAxioms.size() -1; i++){
+		for(int i=0; i<exAxioms.size(); i++){
 			exAxiom = exAxiom +exAxioms.get(i)+"\r\n";
 		}
 	}
@@ -134,6 +134,37 @@ public class RuleSetBody {
 		ruleSetBody = declaration+assertion+exAxiom+allSWRLrule;
 		
 		return ruleSetBody;
+	}
+	public void printRuleSetBodyInformation(){
+		System.out.println("*****Print RuleSet Body Information*****");
+		System.out.println("Class Declaration Atoms:"+classDeclarations.size());
+		for(int i=0; i<classDeclarations.size(); i++){
+			System.out.println(classDeclarations.get(i));
+		}
+		System.out.println("Data Property Atoms:"+dpDeclarations.size());
+		for(int i=0; i<dpDeclarations.size(); i++){
+			System.out.println(dpDeclarations.get(i));
+		}
+		System.out.println("Object Property Atoms:"+opDclarations.size());
+		for(int i=0; i<opDclarations.size(); i++){
+			System.out.println(opDclarations.get(i));
+		}
+		System.out.println("Individual Atoms:"+indDclarations.size());
+		for(int i=0; i<indDclarations.size(); i++){
+			System.out.println(indDclarations.get(i));
+		}
+		System.out.println("Assertion Atoms:"+assertions.size());
+		for(int i=0; i<assertions.size(); i++){
+			System.out.println(assertions.get(i));
+		}
+		System.out.println("Extra Atoms:"+exAxioms.size());
+		for(int i=0; i<exAxioms.size(); i++){
+			System.out.println(exAxioms.get(i));
+		}
+		System.out.println("SWRL Rules:"+swrlRuleList.size());
+		for(int i=0; i<swrlRuleList.size(); i++){
+			swrlRuleList.get(i).printSWRLruleInfo();
+		}
 	}
 }
 

@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 public class Participants {
-	public static ArrayList<Device> deviceList = new ArrayList<Device>();
-	
+	private static ArrayList<Device> deviceList = new ArrayList<Device>();
+	private ArrayList<String> deviceSoftwareActionList;
 	
 	private static class ParticipantsSingleton{
 		private static final Participants instance = new Participants();
@@ -18,7 +18,48 @@ public class Participants {
 	public void addDevice(Device device){
 		deviceList.add(device);
 	}
-	
+	public void setSoftwareActionList(ArrayList<String> deviceSoftwareActionList){
+		this.deviceSoftwareActionList = deviceSoftwareActionList;
+	}
+	public ArrayList<String> getSoftwareActionList(){
+		return deviceSoftwareActionList;
+	}
+	public void setDeviceActionLevel(String deviceName, int actionLevel){
+		for(Iterator<Device> it = deviceList.iterator(); it.hasNext();)
+		{
+			Device value = it.next();
+			
+			if(value.getDeviceName().equals(deviceName))
+			{
+				value.setSoftwareAction(deviceSoftwareActionList.get(actionLevel));
+			}
+		}
+		
+	}
+	public String getDeviceAction(String deviceName){
+		for(Iterator<Device> it = deviceList.iterator(); it.hasNext();)
+		{
+			Device value = it.next();
+			
+			if(value.getDeviceName().equals(deviceName))
+			{
+				return value.getSoftwareAction();
+			}
+		}
+		return null;
+	}
+	public int getDeviceActionLevel(String deviceName){
+		for(Iterator<Device> it = deviceList.iterator(); it.hasNext();)
+		{
+			Device value = it.next();
+			
+			if(value.getDeviceName().equals(deviceName))
+			{
+				return deviceSoftwareActionList.indexOf(value.getSoftwareAction());
+			}
+		}
+		return 99;
+	}
 	public void deleteDevice(String deviceName){
 		for(Iterator<Device> it = deviceList.iterator(); it.hasNext();)
 		{
@@ -30,12 +71,14 @@ public class Participants {
 			}
 		}
 	}
-	public void printParticipantsList(){
+	public String printParticipantsList(){
+		String deviceInfo="";
 		for(Device d:deviceList){
-			d.printDevice();
+			deviceInfo = deviceInfo + d.printDevice()+"\n";
 		}
+		return deviceInfo;
 	}
-	public Device getDeiceFromName(String deviceName){
+	public Device getDeviceFromName(String deviceName){
 		for(Iterator<Device> it = deviceList.iterator(); it.hasNext();)
 		{
 			Device value = it.next();
@@ -47,7 +90,7 @@ public class Participants {
 		}
 		return null;
 	}
-	public Device getDeiceFromStatus(String status){
+	public Device getDeviceFromStatus(String status){
 		for(Iterator<Device> it = deviceList.iterator(); it.hasNext();)
 		{
 			Device value = it.next();
