@@ -2,8 +2,11 @@ package com.github.aites.framework.executor;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 import com.github.aites.framework.log.LogWritter;
+
+
 import com.github.aites.framework.planner.Plan;
 
 
@@ -14,24 +17,32 @@ import com.github.aites.framework.planner.Plan;
  * @version 3.0.1
  * 
  */
-public abstract class Scheduler{
+public class Scheduler{
 	static ArrayList<Plan> planList = new ArrayList<Plan>();
 	
 	Effector effector;
 	LogWritter log = LogWritter.getInstance();
     private String moduleFolder;
     private File currentFile;
-    public Scheduler(String moduleFolder){
-    	effector = new Effector(moduleFolder);
+    
+    private static class SchedulerSingleton{
+		private static final Scheduler instance = new Scheduler();
+	}
+	
+	public static Scheduler getInstance(){
+		return SchedulerSingleton.instance;
+	}
+    public void setModuleFolder(String mudleFolder){
+    	this.moduleFolder = moduleFolder;
     }
+  
     /**
 	 * Method for execute schedule
 	 * plan loaded global knowledge
 	 * @param  plan
 	 * @return none
 	 */
-	public void inputPlan(Plan plan){
-		log.logInput("Input plan to scheduler");
+	public void inputPlan(Plan plan){		
 		planList.add(plan);
 	}
 	/**
@@ -44,15 +55,14 @@ public abstract class Scheduler{
 
 		log.logInput("**********execute scheduled plan***************");
 		
-		for(int i=0; i<planList.size(); i++){
-			Plan p = planList.get(i);
+		for(Iterator<Plan> it = planList.iterator() ; it.hasNext() ; )
+		{
+			Plan p  = it.next();
 			
-			if(p.getPlanTime().equals(systemTime)){
-				log.logInput("Execute plannTarget:"+p.getTarget()+"and action:"+p.getAction());
-				
-				
-				writeGlobalKnowledge();
-			
+			if(p.getPlanTime().equals(systemTime))
+			{
+				log.logInput("Execute plann Target:"+p.getTarget()+"and action:"+p.getAction());		
+				it.remove();
 			}
 		}
 
@@ -64,13 +74,10 @@ public abstract class Scheduler{
 	 */
 	public void printAllPlan(){
 		int i=0;
+		log.logInput("*****Print current remain plan*****");
 		for(Plan p : planList){
 			log.logInput("index:"+i+",plantime:"+p.getPlanTime()+",planTarget:"+p.getTarget()+",planAction:"+p.getAction());
 			i++;
 		}
-	}
-	public abstract void writeGlobalKnowledge();
-		
-		
-	
+	}						
 }

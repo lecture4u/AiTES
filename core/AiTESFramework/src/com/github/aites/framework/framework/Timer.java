@@ -62,7 +62,7 @@ public class Timer {
 		String time = paserdMinit[0];
 	
 		cal.set(Calendar.YEAR, Integer.parseInt(year));
-		cal.set(Calendar.MONTH, Integer.parseInt(month));
+		cal.set(Calendar.MONTH, Integer.parseInt(month)-1);
 		cal.set(Calendar.DATE, Integer.parseInt(day));
 		cal.set(Calendar.HOUR_OF_DAY, Integer.parseInt(time));
 		cal.set(Calendar.MINUTE, 00);
@@ -99,7 +99,7 @@ public class Timer {
 		}
 		time = cal.get(Calendar.HOUR_OF_DAY)+"";
 		year= cal.get(Calendar.YEAR)+"";
-		month= cal.get(Calendar.MONTH)+"";
+		month= cal.get(Calendar.MONTH)+1+"";
 		day= cal.get(Calendar.DATE)+"";
 		systemTime = year+"."+month+"."+day+" "+time+":00"; 
 	}
@@ -111,7 +111,13 @@ public class Timer {
 		return abbTime;
 	}
 	public String makeCalendarAddTime(String time){
-		String calendarAddedTime = year+"."+month+"."+day+" "+time+":00";
+		int currentTime = cal.get(Calendar.HOUR_OF_DAY);
+		currentTime = currentTime + Integer.parseInt(time);
+		if(currentTime > 23){
+			currentTime = currentTime - 24;
+		}
+		
+		String calendarAddedTime = year+"."+month+"."+day+" "+currentTime+":00";
 		return calendarAddedTime;
 	}
 }

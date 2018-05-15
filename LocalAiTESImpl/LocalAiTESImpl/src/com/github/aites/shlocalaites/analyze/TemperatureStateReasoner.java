@@ -13,7 +13,7 @@ public class TemperatureStateReasoner implements StateReasoner{
 	LogWritter log = LogWritter.getInstance();
 	@Override
 	public String stateResoning(String temperture, String collectDate){
-		log.logInput("*****Start Home Temperture State Reasoning*****");
+		log.logInput("*****Reasoning Home Temperture State Reasoning*****");
 		log.logInput(temperture);
 		
 		String feedBackInd = "SHEdata"+collectDate.replaceAll("[.: ]", "");

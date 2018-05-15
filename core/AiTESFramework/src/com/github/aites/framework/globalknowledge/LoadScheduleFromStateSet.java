@@ -34,12 +34,12 @@ public class LoadScheduleFromStateSet extends DBConnector{
 		rs = ps.executeQuery();
 		
 		while(rs.next()){		
-			time = rs.getString("shlocalschedule_time");
-			target= rs.getString("shlocalschedule_target");
-			action= rs.getString("shlocalschedule_action");
+			time = rs.getString(schemName+"localschedule_time");
+			target= rs.getString(schemName+"localschedule_target");
+			action= rs.getString(schemName+"localschedule_action");
 			convertTime();
 			convertAction();
-			System.out.println("Load matching plan about "+occurState+":"+time+","+target+","+action);
+			schedule.add(new Plan(time,target, action));
 	          
 		 }	
 		
@@ -55,12 +55,16 @@ public class LoadScheduleFromStateSet extends DBConnector{
     	System.out.println("DeviceTarget: "+target + ", currentAction:"+participants.getDeviceAction(target));
     	if(actionControl[0].equals("down")){
     		afterActionLevel = participants.getDeviceActionLevel(target) - Integer.parseInt(actionControl[1]);
+    		action = participants.getSoftwareActionList().get(afterActionLevel);
     		
     	}
     	else{
     	     afterActionLevel = participants.getDeviceActionLevel(target) + Integer.parseInt(actionControl[1]);
+    	     action = participants.getSoftwareActionList().get(afterActionLevel);
     	}
-    	participants.setDeviceActionLevel(target, afterActionLevel);
-    	System.out.println("Change");
+    	
+    }
+    public ArrayList<Plan> getSchedule(){
+    	return schedule;
     }
 }

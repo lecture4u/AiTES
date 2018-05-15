@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 import com.github.aites.framework.analyzer.StateReasoner;
+import com.github.aites.framework.framework.Timer;
 import com.github.aites.framework.log.LogWritter;
 import com.github.aites.framework.rule.RuleManager;
 import com.github.aites.framework.ruleset.RuleSetManager;
@@ -15,7 +16,9 @@ public class PositionStateReasoner implements StateReasoner{
 	LogWritter log = LogWritter.getInstance();
 	String positionState;
 	String collectDate;
+	Timer timer = Timer.getInstance();
  	private void processedPosition(String position){
+ 		
 		String[] positionParser = position.split(":");
 		String delims = "[ .,?!]+";
 		String[] latitudeParser = positionParser[0].split(delims);
@@ -24,7 +27,7 @@ public class PositionStateReasoner implements StateReasoner{
 		Collections.addAll(latitudeList, latitudeParser);
 		Collections.addAll(rongitudeList, rongitudeParser);
 
-		String feedBackInd = "SHEdata"+collectDate.replaceAll("[.: ]", "");
+		String feedBackInd = "SHEdata"+timer.getAbbTime();
 		RuleSetManager ruleSetManager = new RuleSetManager("smartHome.xml");
 		
 		String otla = latitudeParser[0]+"."+latitudeParser[1];
@@ -33,6 +36,7 @@ public class PositionStateReasoner implements StateReasoner{
 		String thridro = rongitudeParser[2];
 		String forthla = latitudeParser[2];
 		String forthro = rongitudeParser[2];
+		log.logInput("#####Reasoing rule about individual:"+feedBackInd+" and dataProperty:"+otla+","+otro+","+thridla+","+thridro+","+forthla+","+forthro+"#####");
 	    ruleSetManager.assertDataProperty("otLa", feedBackInd, otla, "string");
 	    ruleSetManager.assertDataProperty("otRo", feedBackInd, otro, "string");
 	    ruleSetManager.assertDataProperty("thridLa", feedBackInd, thridla, "integer");
@@ -48,8 +52,6 @@ public class PositionStateReasoner implements StateReasoner{
 		boolean isNearHome= ruleManager.reasoningRule(feedBackInd, "PositionNearRule");
 		boolean isInHome = ruleManager.reasoningRule(feedBackInd, "PositionInRule");
 		
-		
-		//여기 부분이 온톨로지 리조닝이여야함.
 		if(isInHome){
 			positionState = "inHome";
 		}
@@ -64,7 +66,7 @@ public class PositionStateReasoner implements StateReasoner{
  	@Override
 	public String stateResoning(String position, String collectDate){
 		this.collectDate = collectDate;
-		log.logInput("*****Start Position State Reasoning*****");
+		log.logInput("*****Reasoning Home User Position State  d*****");
 		processedPosition(position);
 		log.logInput("resoning user position state:"+positionState);
 		return positionState;

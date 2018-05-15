@@ -13,6 +13,9 @@ import com.github.aites.framework.globalknowledge.DBConnector;
 import com.github.aites.framework.globalknowledge.LoadScheduleFromStateSet;
 import com.github.aites.framework.orchestration.Device;
 import com.github.aites.framework.orchestration.Participants;
+import com.github.aites.framework.planner.Plan;
+import com.github.aites.framework.planner.PlanManager;
+import com.github.aites.framework.planner.StateCombinationCalculator;
 import com.github.aites.framework.rule.RuleManager;
 import com.github.aites.framework.rule.SWRLrule;
 import com.github.aites.framework.ruleset.DBSchemaLoader;
@@ -23,24 +26,15 @@ public class TestMain {
 	 
 	public static void main(String[] args) {
 		Timer timer = Timer.getInstance();
-		timer.setSystemTime("2017.12.30 0:00");
+		timer.setSystemTime("2017.1.07 23:00");
+		timer.processedTime();
+		System.out.println(timer.getWholeTime());
 		RuleSetManager ruleSetManager;	
 	    
-		
-		for(int i=0; i<=5; i++){
-			ruleSetManager = new RuleSetManager("smarthome.xml");
-			ruleSetManager.assertInd("SHEdata"+i, "SHEdata");
-			ruleSetManager.assertDataProperty("hasPS", "SHEdata"+i, "1100.00", "double");
-			ruleSetManager.saveRuleSet();
-			ruleSetManager = new RuleSetManager("smarthome.xml");
-			ruleSetManager.deleteInd("SHEdata3");
-			ruleSetManager.saveRuleSet();
-		}
-		
-		
-		ruleSetManager = new RuleSetManager("smarthome.xml");
-		ruleSetManager.printRuleSetInformation();	
-		/*Participants participants = Participants.getInstance();
+	
+		//ruleSetManager = new RuleSetManager("smarthome.xml");
+		//ruleSetManager.printRuleSetInformation();	
+		Participants participants = Participants.getInstance();
 		ArrayList<String> actionList = new ArrayList<String>();
 		actionList.add("power_saving");
 		actionList.add("ready");
@@ -72,34 +66,23 @@ public class TestMain {
 	    participants.setDeviceActionLevel("CCTV", 2);
 	    participants.setDeviceActionLevel("Mixer", 2);
 	    participants.setDeviceActionLevel("AI_Speaker", 2);
-	    participants.setDeviceActionLevel("Oven", 2);*/
-		
-		
-		
-		/*
+	    participants.setDeviceActionLevel("Oven", 2);
+		String stateSet = "over,par,normal";
 		try{
 			DBConnector db = new ConnectionStarter("jdbc:mysql://220.149.235.85:3306/globalknowledge","root","1234");
 			db.dbConnect();
-			
-			String stateSet = "over,par,normal";
-			System.out.println("Start StateCombinationCalculator");
-			StateCombinationCalculator scc = new StateCombinationCalculator(stateSet);
-			for(int i=1; i<=scc.getStateSetLength(); i++){
-				scc.CalstateCombinateion(scc.getStateSetLength(), i, 0);
-				//db = new LoadScheduleFromStateSet();
-				System.out.println("");
-			}
-			ArrayList<String> allOccurStateSet = scc.getAllOccurStateSet();
-			
-			for(int i=0; i<allOccurStateSet.size(); i++){
-				System.out.println(allOccurStateSet.get(i));
-				db = new LoadScheduleFromStateSet(allOccurStateSet.get(i),timer,"sh");
-				db.dbConnect();
-			}
-			
 		}catch(Exception e){
 			e.printStackTrace();
-		}*/
+		}
+		PlanManager pm = new PlanManager(stateSet);
+		pm.planing();
+		ArrayList<Plan> schedule = pm.getSchedule();
+		
+		for(int i=0; i<schedule.size(); i++){
+			schedule.get(i).printPlan();
+		}
+		
+	
 		//RuleSetManager ruleSetManager2 = new RuleSetManager("smartHome.xml");
 		//ruleSetManager2.deleteInd("SHEdata2");
 		//ruleSetManager2.saveRuleSet();

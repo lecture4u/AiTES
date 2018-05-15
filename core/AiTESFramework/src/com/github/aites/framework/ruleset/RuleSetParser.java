@@ -79,7 +79,7 @@ public class RuleSetParser {
 								try{
 									showpop(ruleParsingStack);
 									if(ruleParsingStack.isEmpty()){										
-										System.out.println(swrlRule);
+										
 										
 										
 										SWRLrule rule = new SWRLrule(swrlRule);
