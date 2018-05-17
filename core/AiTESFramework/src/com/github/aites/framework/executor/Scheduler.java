@@ -1,8 +1,12 @@
 package com.github.aites.framework.executor;
 
 import java.io.File;
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Iterator;
+
+import org.eclipse.paho.client.mqttv3.MqttDeliveryToken;
+import org.eclipse.paho.client.mqttv3.MqttTopic;
 
 import com.github.aites.framework.log.LogWritter;
 
@@ -24,6 +28,10 @@ public class Scheduler{
 	LogWritter log = LogWritter.getInstance();
     private String moduleFolder;
     private File currentFile;
+    private Class invokeClass;
+    
+    private String currentPubTopic;
+    private String currentPubModuleName;
     
     private static class SchedulerSingleton{
 		private static final Scheduler instance = new Scheduler();
@@ -35,7 +43,11 @@ public class Scheduler{
     public void setModuleFolder(String mudleFolder){
     	this.moduleFolder = moduleFolder;
     }
-  
+    public void setExecutuInfo(Class invokeClass, String pubTopic, String moduleFolder){
+    	this.invokeClass = invokeClass;
+    	
+    	effector = new Effector(moduleFolder, pubTopic);
+    }
     /**
 	 * Method for execute schedule
 	 * plan loaded global knowledge
@@ -61,7 +73,12 @@ public class Scheduler{
 			
 			if(p.getPlanTime().equals(systemTime))
 			{
-				log.logInput("Execute plann Target:"+p.getTarget()+"and action:"+p.getAction());		
+				log.logInput("Execute plan Target:"+p.getTarget()+" and action:"+p.getAction());
+				//effector.effectIoTgateway(p.getTarget(), p.getAction());
+				
+				currentPubTopic = "TestEffector";
+				currentPubModuleName = "TestPubTopic";
+				invokeExecuteResult();
 				it.remove();
 			}
 		}
@@ -79,5 +96,17 @@ public class Scheduler{
 			log.logInput("index:"+i+",plantime:"+p.getPlanTime()+",planTarget:"+p.getTarget()+",planAction:"+p.getAction());
 			i++;
 		}
-	}						
+	}
+	public void invokeExecuteResult(){
+		
+	    Class[] methodParamClass = new Class[] {String.class, String.class};	 	 
+	    
+	    try{
+		    Method method = invokeClass.getMethod("writeExecuteResult",methodParamClass);     
+		    Object clsInstance = invokeClass.newInstance();
+			method.invoke(clsInstance, currentPubTopic, currentPubModuleName);
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+	}
 }

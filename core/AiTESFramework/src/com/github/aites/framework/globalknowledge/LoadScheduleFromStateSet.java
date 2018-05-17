@@ -52,14 +52,20 @@ public class LoadScheduleFromStateSet extends DBConnector{
     	String[] actionControl = action.split(","); // 0:control , 1:level
     	int afterActionLevel = 0;
     	String currentActionLevel = participants.getDeviceAction(target);
-    	System.out.println("DeviceTarget: "+target + ", currentAction:"+participants.getDeviceAction(target));
+    	System.out.println("DeviceTarget: "+target + ", currentAction:"+participants.getDeviceAction(target)+", currentLevel:"+currentActionLevel+" updateAction:"+actionControl[1]);
     	if(actionControl[0].equals("down")){
     		afterActionLevel = participants.getDeviceActionLevel(target) - Integer.parseInt(actionControl[1]);
+    		if(afterActionLevel < 0 ){
+    			afterActionLevel = 0;
+    		}
     		action = participants.getSoftwareActionList().get(afterActionLevel);
-    		
+    		    		    	  	   		
     	}
     	else{
     	     afterActionLevel = participants.getDeviceActionLevel(target) + Integer.parseInt(actionControl[1]);
+    	     if(afterActionLevel > participants.getSoftwareActionList().size()-1){
+    	    	 afterActionLevel = participants.getSoftwareActionList().size()-1;
+    	     }
     	     action = participants.getSoftwareActionList().get(afterActionLevel);
     	}
     	

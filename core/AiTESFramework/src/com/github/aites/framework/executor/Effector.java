@@ -17,10 +17,12 @@ public class Effector {
 	String pubTopic = "IoTgateway/Local1/Gateway1/Air_conditioner/turnOn";
 	private String moduleFolder;
 	private String fileName;
+	private String afillPubtopic;
 	LogWritter log = LogWritter.getInstance();
-	public Effector(String moduleFolder){
+	public Effector(String moduleFolder, String pubTopic){
 		//ModuleForder명
 		this.moduleFolder = moduleFolder;
+		afillPubtopic = pubTopic;
 	}
 	 /**
 		 * Method for effect moduleFile
@@ -68,7 +70,7 @@ public class Effector {
 		 * @return String
 		 */
 	private String makeTopic(String target, String action){
-		pubTopic = "IoTgateway/Local1/Gateway1/"+target+"/"+action;
+		pubTopic = afillPubtopic+"/"+target+"/"+action;
 		
 		return pubTopic;
 	}

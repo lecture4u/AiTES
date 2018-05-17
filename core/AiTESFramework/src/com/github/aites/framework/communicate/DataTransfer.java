@@ -127,9 +127,9 @@ public class DataTransfer implements MqttCallback{
 	
 			deviceName =topicSplit[3];
 			method.invoke(clsInstance, mqttMessage, topic, deviceName);
-			}catch(Exception e){
-					e.printStackTrace();
-			}
+		}catch(Exception e){
+			e.printStackTrace();
+		}
 	}
 	
 	private MqttMessage setMqttMessage(String message){
