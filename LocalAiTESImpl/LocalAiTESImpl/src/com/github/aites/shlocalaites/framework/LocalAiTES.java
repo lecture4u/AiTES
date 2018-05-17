@@ -1,6 +1,6 @@
 package com.github.aites.shlocalaites.framework;
 
-
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -8,7 +8,7 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
-import com.github.aites.framework.aitesconnector.*;
+import com.github.aites.framework.aitesconnector.ManagerAF;
 import com.github.aites.framework.aitesmanager.Manager;
 import com.github.aites.framework.communicate.DataTransfer;
 import com.github.aites.framework.framework.LocalAiTESManager;
@@ -18,64 +18,88 @@ import com.github.aites.framework.globalknowledge.DBConnector;
 import com.github.aites.framework.log.LogWritter;
 import com.github.aites.framework.orchestration.Device;
 import com.github.aites.framework.orchestration.Participants;
-import com.github.aites.framework.planner.Plan;
 import com.github.aites.framework.rule.RuleManager;
 import com.github.aites.framework.ruleset.RuleSetManager;
-import com.github.aites.shlocalaites.aitesconnector.*;
+import com.github.aites.shlocalaites.aitesconnector.Analyzer;
+import com.github.aites.shlocalaites.aitesconnector.Executor;
+import com.github.aites.shlocalaites.aitesconnector.Monitor;
+import com.github.aites.shlocalaites.aitesconnector.Planner;
+import com.github.aites.shlocalaites.gkconnect.AnalyzerStateSetReader;
+import com.github.aites.shlocalaites.gkconnect.MonitorEnvDataReader;
 
-
-import com.github.aites.shlocalaites.gkconnect.*;
-
-
-
-import com.github.aites.shlocalaites.ruleset.*;
 
 
 public class LocalAiTES extends LocalAiTESManager{
 	DataTransfer df = DataTransfer.getInstance();
-	Timer timer = Timer.getInstance();
+    Timer timer = Timer.getInstance();
 	LogWritter log = LogWritter.getInstance();
 	Participants participants = Participants.getInstance();
-
 	DBConnector dc;
-	public LocalAiTES(){
-		
-	}
-	public void runAiTES(){
-		timer.setSystemTime("2017.7.17 0:00");
-		
-		try{
-			DBConnector db = new ConnectionStarter("jdbc:mysql://220.149.235.85:3306/globalknowledge","root","1234");
-			db.dbConnect();
-		}catch(Exception e){
-			e.printStackTrace();
-		}
-		
-		brokerURL = "tcp://127.0.0.1:1883";
-		clientID = "Global1/Local1";
-		
-		LocalAiTES smd = new LocalAiTES();
-		Class cl = smd.getClass();
-		
-		try{
-			df.setMQTTConnection(brokerURL, cl, clientID);
-			df.setAfficationMode("Local");
-			df.runClient();
-		}catch(Exception e){
-			e.printStackTrace();
-		}
-		df.subscription("Effector/#");
 	
-	}
-	@Override
-	public void changeRule(String arg0) {
-		// TODO Auto-generated method stub
+	
+	public void runAiTES(){
+		// Set initialize variables.
+		timer.setSystemTime("2017.7.17 0:00");
+		gkURL = "jdbc:mysql://220.149.235.85:3306/globalknowledge";
+		adaptiveActionList = new ArrayList<String>(){{
+		    add("powersaving");
+		    add("ready");
+		    add("stanby");
+		    add("activity");	
+		}};
+		ruleSetURL = "smarthome.xml";
+		dymoduleFolder = "modules";
+		participants.setSoftwareActionList(adaptiveActionList);
 		
-	}
+		//Connect global knowledge server.
+    	try{
+    		DBConnector db = new ConnectionStarter(gkURL,"root","1234");
+    		db.dbConnect();
+    	}catch(Exception e){
+    		e.printStackTrace();
+    	}
+    	//Connect collaborative communication server.
+    	brokerURL = "tcp://127.0.0.1:1883";
+    	clientID = "Global1/Local1";
+    	
+    	LocalAiTES smd = new LocalAiTES();
+    	Class cl = smd.getClass();
+    	
+    	try{
+    		df.setMQTTConnection(brokerURL, cl, clientID);
+    		df.setAfficationMode("Local");
+    		df.runClient();
+    	}catch(Exception e){
+    		e.printStackTrace();
+    	}
+    	log.logInput("~~~~~~~~Smart Home Local AiTES init Setting~~~~~~~~");
+    	log.logInput("Init System time: "+timer.getWholeTime());
+    	log.logInput("Connected Global Knowledge URL: " +gkURL);
+    	log.logInput("Collaborative Communication Server URL: "+brokerURL);
+    	String actionList="[";
+    	for(int i=0; i<adaptiveActionList.size(); i++){
+    		 if(i == adaptiveActionList.size()-1){
+    			 actionList = actionList+"action"+i+":"+adaptiveActionList.get(i);
+        	 }
+        	 else{
+        		 actionList = actionList+"action"+i+":"+adaptiveActionList.get(i)+", ";
+        	 }	
+    	}
+    	actionList = actionList+"]";
+    	log.logInput("SmartHome Environment Action List: "+actionList);
+    	log.logInput("Local AiTES RuleSet URL:"+ruleSetURL);
+    	log.logInput("Local AiTES dynamic module URL:"+dymoduleFolder);
+    	log.logInput("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+    	log.logFileCreate();
+    	
+    	File file = new File(dymoduleFolder+"/powersaving.jar");
+    	System.out.println(file.getAbsolutePath());
+    	System.out.println(file.getName());
 
+    }
 	@Override
 	public void manageAiTES(String mqttMessage, String topic, String deviceName) throws Exception {
-		String[] topicSpliter = topic.split("/");
+        String[] topicSpliter = topic.split("/");
 		
 		if(topicSpliter[4].equals("envData")){
 			processFeedBackLoops(mqttMessage, topic, deviceName);
@@ -86,79 +110,77 @@ public class LocalAiTES extends LocalAiTESManager{
 		else if(topicSpliter[4].equals("disconnection")){
 			manageConnection(mqttMessage, topic, "disconnect");
 		}
-		
-		
-		
+		System.out.println("Meessage Processing Complete");
+		log.logFileCreate();
 	}
 	private void processFeedBackLoops(String mqttMessage, String topic, String deviceName){
-		log.logInput("@@@@@Currrent Participants in Smart HomeLocal AiTES@@@@@");
-		participants.printParticipantsList();
-		log.logInput("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
+		// Receive probe data.
 		log.logInput("----------Get IoT environment Data from IoT gateway----------");
 		log.logInput("Topic:"+topic);
 		log.logInput("Message:"+mqttMessage);
 		log.logInput("deviceName:"+deviceName);
 		log.logInput("Current System Time:"+timer.getWholeTime());
-		log.logInput("-------------------------------------------------------------");
+		log.logInput("Current connected IoT Env participants:");
+		log.logInput(participants.printParticipantsList());
 		
-	
+		// Rule configuration before process feedback loops, assert individual;
 		String feedBackInd  ="SHEdata"+timer.getAbbTime();
 		log.logInput("#####Assertion individual to ruleSet:"+feedBackInd+"#####");
 		RuleSetManager ruleSetManager = new RuleSetManager("smartHome.xml");
 	    ruleSetManager.assertInd(feedBackInd, "SHEdata");
 		ruleSetManager.saveRuleSet();
 		
-		Manager af = ManagerAF.getManager(new Monitor(mqttMessage,deviceName,clientID));
+		//Monitor: preprocessing, reasoning call analyzer
+		Manager af = ManagerAF.getManager(new Monitor(mqttMessage,ruleSetURL,clientID));
 		af.run();
 		
+		//Analyzer:reasoing entire environment when monitoring factor is over limited.
 		dc = new MonitorEnvDataReader();
 		dc.dbConnect();
-		
-		ArrayList<String> monitorInfo = ((MonitorEnvDataReader)dc).getMonitorInfo(); // 0:collectDate, 1:mresult, 2:position, 3:temperture
+        ArrayList<String> monitorInfo = ((MonitorEnvDataReader)dc).getMonitorInfo(); // 0:collectDate, 1:mresult, 2:position, 3:temperture
 	    
 	    String monitorTime = timer.parseTime(monitorInfo.get(0));
-	    
 		if(timer.getCurrentTime().equals(monitorTime) && (monitorInfo.get(1).equals("under")||monitorInfo.get(1).equals("over"))){
-			log.logInput("Situation Occured");
+            log.logInput("Monitoring factor is over limited, call analyzer.");
 			
-			af = ManagerAF.getManager(new Analyzer(monitorInfo, clientID));
+			af = ManagerAF.getManager(new Analyzer(monitorInfo, clientID,ruleSetURL));
 			af.run();
 			
 			dc = new AnalyzerStateSetReader();
 			dc.dbConnect();
+			
+			//Plaing: organizing plan for solution about situation
 			String analyedDate = ((AnalyzerStateSetReader)dc).getCollectDate();
 			String stateSet = ((AnalyzerStateSetReader)dc).getStateSet();
 			String pneed = ((AnalyzerStateSetReader)dc).getPneed();
 
 			if(pneed.equals("yes")){
-				log.logInput("Situation need plaining");
+				log.logInput("Analyzed State Set need plaining, call planner");
 				af = ManagerAF.getManager(new Planner(stateSet,analyedDate));
 				af.run();
 			}
 		}
-		
-	
-		
-		dc = new PlannerPlanReader(timer.getWholeTime());
-		dc.dbConnect();
-		ArrayList<Plan> planList =  ((PlannerPlanReader)dc).getPlanList();
-		
-		af = ManagerAF.getManager(new Executor(planList,timer));
+		//Executor: Execute Current Time plans
+		af = ManagerAF.getManager(new Executor(clientID,deviceName,dymoduleFolder));
 		af.run();
+		// Rule configuration after process feedback loops, delete individual assertion;
+		log.logInput("#####Delete individual to ruleSet:"+feedBackInd+"#####");
+		ruleSetManager = new RuleSetManager("smartHome.xml");
+	    ruleSetManager.deleteInd(feedBackInd);
+		ruleSetManager.saveRuleSet();
+		
 		timer.processedTime();
-		log.logFileCreate();
+		log.logInput("-------------------------------------------------------------");
 	}
 	private void manageConnection(String mqttMessage, String topic, String connectionFlag){
 		if(connectionFlag.equals("connect")){
-			log.logInput("@@@@@Get Connection Data from IoT gateway@@@@@");
+			log.logInput("++++++++Get Connection Signal from IoT gateway++++++++");
 			log.logInput("Topic:"+topic);
 			log.logInput("Message:"+mqttMessage);
-			log.logInput("@@@@@DeviceConnection: Parsed Json Data@@@@@");
+			log.logInput("*****Parse connected device data*****");
 			int dnStartIndex = mqttMessage.indexOf("{") +2;
 			int dnEndIndex = mqttMessage.indexOf("[")-2;
-			String deviceName =mqttMessage.substring(dnStartIndex, dnEndIndex); 
-			
-			System.out.println(deviceName);
+			String deviceName =mqttMessage.substring(dnStartIndex, dnEndIndex);
 			try{
 				JSONParser parser = new JSONParser();
 				Object jsonObj = parser.parse(mqttMessage);
@@ -173,57 +195,22 @@ public class LocalAiTES extends LocalAiTESManager{
 					
 					log.logInput("address:"+innerObj.get("address")+", modelCode:"+innerObj.get("modelCode")+", status:"+innerObj.get("status"));
 					Device newDevice = new Device(deviceName ,innerObj.get("status").toString(), innerObj.get("address").toString(), innerObj.get("modelCode").toString());
-					participants.addDevice(newDevice);
-					DBConnector dc = new DeviceDataWriter(newDevice);
-					dc.dbConnect();
+					participants.addDevice(newDevice);			
 					
 				}
 			}catch(Exception e){
 				e.printStackTrace();
 			}
-			
-	
+			log.logInput("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
 		}
 		else if(connectionFlag.equals("disconnect")){
-			log.logInput("@@@@@Get disConnection Data from IoT gateway@@@@@");
+			log.logInput("++++++++Get Disconnection Signal from IoT gateway++++++++");
 			log.logInput("Topic:"+topic);
 			log.logInput("Message:"+mqttMessage);
-			
-			participants.deleteDevice(mqttMessage);
-
+			log.logInput("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
 		}
-		log.logFileCreate();
+	
 	}
 	
-	
-	/*if(topic.equals("Global1")){
-	System.out.println("----------Get RuleSet from Global AiTES----------");
-	System.out.println("Topic:"+topic);
-	System.out.println("Message:"+mqttMessage);
-	
-	
-	String[] topicSplit = topic.split("/");
-	System.out.println(topicSplit[3]);
-	try {
-	      
-	      BufferedWriter out = new BufferedWriter(new FileWriter(topicSplit[3]));
-		      
-	      out.write(mqttMessage); out.newLine();			 			      
-	      out.close();			    			   			     
-	    } catch (IOException e) {
-	        System.err.println(e);
-	        System.exit(1);
-	    }
-	RuleSetLoader ruleloader = new RuleSetLoader(topicSplit[3]);
-	try {
-		ruleloader.resonOntologyFromFile();
-	} catch (OWLOntologyCreationException e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
-	}
-}
-else{
-	
-	
-}*/
+
 }

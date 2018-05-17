@@ -8,17 +8,17 @@ import com.github.aites.shlocalaites.aitesmanager.MonitorManager;
 
 public class Monitor implements Factory{
 	private String mqttMessage;
-	private String deviceName;
 	private String clientID;
-	public Monitor(String mqttMessage, String deviceName, String clientID){
+	private String ruleSetURL;
+	public Monitor(String mqttMessage, String clientID, String ruleSetURL){
 		this.mqttMessage = mqttMessage;
-		this.deviceName = deviceName;
 		this.clientID = clientID;
+		this.ruleSetURL = ruleSetURL;
 	}
 	@Override
 	public Manager createManager() {
 		
-		return new MonitorManager(mqttMessage,deviceName,clientID);
+		return new MonitorManager(mqttMessage,clientID,ruleSetURL);
 	}
 
 }

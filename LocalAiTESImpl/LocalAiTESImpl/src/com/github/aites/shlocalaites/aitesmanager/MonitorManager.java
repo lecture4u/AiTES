@@ -5,51 +5,50 @@ import com.github.aites.framework.globalknowledge.DBConnector;
 import com.github.aites.framework.log.LogWritter;
 import com.github.aites.framework.monitor.EnvData;
 import com.github.aites.framework.monitor.PreProcessor;
-
 import com.github.aites.shlocalaites.gkconnect.MonitorEnvDataWriter;
-
 import com.github.aites.shlocalaites.monitor.DataPreProcessor;
-
 import com.github.aites.shlocalaites.monitor.MonitorHRAlgorithm;
-
 
 
 public class MonitorManager extends Manager{
 	private String mqttMessage;
-	private String deviceName;
 	private String clientID;
+	private String ruleSetURL;
 	
 	private EnvData envdata;
 	LogWritter log = LogWritter.getInstance();
-	public MonitorManager(String mqttMessage, String deviceName, String clientID){
+	public MonitorManager(String mqttMessage, String ruleSetURL, String clientID){
 		this.mqttMessage = mqttMessage;
-		this.deviceName = deviceName;
 		this.clientID = clientID;
+		this.ruleSetURL = ruleSetURL;
 	}
 	@Override
 	public void run() {
-		log.logInput("---------------MonitorManager: Monitoring IoT env data from"+deviceName+"---------------");
+		log.logInput("---------------MonitorManager: Monitoring IoT env data and reasoning monitoring factor exceed the threshold.---------------");
 		log.logInput("ClientID"+clientID);
 		log.logInput("Message:"+mqttMessage);
-		log.logInput("deviceName:"+deviceName);
+		log.logInput("RuleSetURL:"+ruleSetURL);
+		DataPreProcessor dpp = new DataPreProcessor();
+		dpp.processData(mqttMessage);
 		
+        envdata = (EnvData)dpp.getProcessedData();
 		
+		MonitorHRAlgorithm mh = new MonitorHRAlgorithm(envdata, ruleSetURL);
+	
+		String ps = mh.envDataHRAlgorithm();
+		String position = ((DataPreProcessor)dpp).getPosition();
+		String temperture = ((DataPreProcessor)dpp).getTemperture();
+		log.logInput("#####Rasoning result - Smart Home's entire Power consumtion state is:"+ps+"#####");
 		
-		PreProcessor pr = new DataPreProcessor();
-		pr.processData(mqttMessage);
-		
-		envdata = (EnvData)pr.getProcessedData();
-		
-		MonitorHRAlgorithm mh = new MonitorHRAlgorithm(envdata);
-		
-		String mReult = mh.envDataHRAlgorithm();
-		String position = ((DataPreProcessor)pr).getPosition();
-		String temperture = ((DataPreProcessor)pr).getTemperture();
-		
-		DBConnector dc = new MonitorEnvDataWriter(envdata.getCollectDate(),clientID,mh.getAllEnvData(),mReult,position,temperture);
+		DBConnector dc = new MonitorEnvDataWriter(envdata.getCollectDate(),clientID,mh.getAllEnvData(),ps,position,temperture);
+		log.logInput("&&&&&Write monitoring process to global knowledge&&&&&");
+		log.logInput("monitoring date:"+envdata.getCollectDate());
+		log.logInput("wirte local collaborative ID:"+clientID);
+		log.logInput("Device sensor data:"+mh.getAllEnvData());
+		log.logInput("Power consumtion state:"+ps);
+		log.logInput("Position Data:"+position);
+		log.logInput("Temperture Data:"+temperture);
 		dc.dbConnect();
-		
-		log.logInput("----------------------------------------------------------------");
 	}
 	
 }

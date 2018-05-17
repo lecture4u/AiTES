@@ -74,10 +74,10 @@ public class Scheduler{
 			if(p.getPlanTime().equals(systemTime))
 			{
 				log.logInput("Execute plan Target:"+p.getTarget()+" and action:"+p.getAction());
-				//effector.effectIoTgateway(p.getTarget(), p.getAction());
+				effector.effectIoTgateway(p.getTarget(), p.getAction());
 				
-				currentPubTopic = "TestEffector";
-				currentPubModuleName = "TestPubTopic";
+				currentPubTopic = effector.getTopic();
+				currentPubModuleName = effector.getFileName();
 				invokeExecuteResult();
 				it.remove();
 			}

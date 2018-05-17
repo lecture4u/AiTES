@@ -88,7 +88,7 @@ public class MQTTClient implements MqttCallback{
 	}
 
 	public void runClient(){
-		subDevice = "Gateway/"+affiliateLocalName+"/"+affiliateName+"/#";
+		subDevice = "IoTgateway/"+affiliateLocalName+"/"+affiliateName+"/#";
 		System.out.println("affiliate:"+subDevice);
 		String logTopic= "$SYS/broker/log/N";
 		connOpt = new MqttConnectOptions();

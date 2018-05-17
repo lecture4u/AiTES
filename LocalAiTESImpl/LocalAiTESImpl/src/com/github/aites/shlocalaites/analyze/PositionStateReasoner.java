@@ -16,9 +16,12 @@ public class PositionStateReasoner implements StateReasoner{
 	LogWritter log = LogWritter.getInstance();
 	String positionState;
 	String collectDate;
+	String ruleSetURL;
 	Timer timer = Timer.getInstance();
+	public PositionStateReasoner(String ruleSetURL){
+		this.ruleSetURL = ruleSetURL;
+	}
  	private void processedPosition(String position){
- 		
 		String[] positionParser = position.split(":");
 		String delims = "[ .,?!]+";
 		String[] latitudeParser = positionParser[0].split(delims);
@@ -28,15 +31,14 @@ public class PositionStateReasoner implements StateReasoner{
 		Collections.addAll(rongitudeList, rongitudeParser);
 
 		String feedBackInd = "SHEdata"+timer.getAbbTime();
-		RuleSetManager ruleSetManager = new RuleSetManager("smartHome.xml");
+		RuleSetManager ruleSetManager = new RuleSetManager(ruleSetURL);
 		
-		String otla = latitudeParser[0]+"."+latitudeParser[1];
-		String otro = rongitudeParser[0]+"."+rongitudeParser[1];
-		String thridla = latitudeParser[2];
-		String thridro = rongitudeParser[2];
-		String forthla = latitudeParser[2];
-		String forthro = rongitudeParser[2];
-		log.logInput("#####Reasoing rule about individual:"+feedBackInd+" and dataProperty:"+otla+","+otro+","+thridla+","+thridro+","+forthla+","+forthro+"#####");
+		String otro = latitudeParser[0]+"."+latitudeParser[1];
+		String otla = rongitudeParser[0]+"."+rongitudeParser[1];
+		String thridro = latitudeParser[2];
+		String thridla = rongitudeParser[2];
+		String forthro = latitudeParser[3];
+		String forthla = rongitudeParser[3];
 	    ruleSetManager.assertDataProperty("otLa", feedBackInd, otla, "string");
 	    ruleSetManager.assertDataProperty("otRo", feedBackInd, otro, "string");
 	    ruleSetManager.assertDataProperty("thridLa", feedBackInd, thridla, "integer");
@@ -46,12 +48,18 @@ public class PositionStateReasoner implements StateReasoner{
 		ruleSetManager.saveRuleSet();
 		
 
-		
-		RuleManager ruleManager = new RuleManager("smartHome.xml");
+		log.logInput("#####Reasoing rule about individual#####");
+		log.logInput("otla:"+otla);
+		log.logInput("otro:"+otro);
+		log.logInput("thridla:"+thridla);
+		log.logInput("thridro:"+thridro);
+		log.logInput("forthla:"+forthla);
+		log.logInput("forthro:"+forthro);
+		RuleManager ruleManager = new RuleManager(ruleSetURL);
 		ruleManager.loadOntology(); 
 		boolean isNearHome= ruleManager.reasoningRule(feedBackInd, "PositionNearRule");
 		boolean isInHome = ruleManager.reasoningRule(feedBackInd, "PositionInRule");
-		
+	
 		if(isInHome){
 			positionState = "inHome";
 		}
@@ -66,7 +74,7 @@ public class PositionStateReasoner implements StateReasoner{
  	@Override
 	public String stateResoning(String position, String collectDate){
 		this.collectDate = collectDate;
-		log.logInput("*****Reasoning Home User Position State  d*****");
+		log.logInput("*****Start Position State Reasoning*****");
 		processedPosition(position);
 		log.logInput("resoning user position state:"+positionState);
 		return positionState;

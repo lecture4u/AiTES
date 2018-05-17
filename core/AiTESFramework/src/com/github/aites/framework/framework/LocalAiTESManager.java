@@ -17,6 +17,7 @@ public abstract class LocalAiTESManager {
     public String gkURL;
     public ArrayList<String> adaptiveActionList;
     public static String ruleSetURL;
+    public static String dymoduleFolder;
     
    
     /**

@@ -16,24 +16,28 @@ import com.github.aites.shlocalaites.gkconnect.AnalyzerStateSetWriter;
 public class AnalyzerManager extends Manager{
 	private ArrayList<String> monitorInfo;
 	private String clientID;
-
+    private String ruleSetURL;
 	LogWritter log = LogWritter.getInstance();
-	PositionStateReasoner pr = new PositionStateReasoner();
-	TemperatureStateReasoner tr = new TemperatureStateReasoner();
+	PositionStateReasoner pr;
+	TemperatureStateReasoner tr;
 	
-	public AnalyzerManager(ArrayList<String> monitorInfo, String clientID){
+	public AnalyzerManager(ArrayList<String> monitorInfo, String clientID, String ruleSetURL){
 		this.monitorInfo = monitorInfo;
-		
+		this.ruleSetURL = ruleSetURL;
 		this.clientID = clientID;
+		
+		tr = new TemperatureStateReasoner(ruleSetURL);
+		pr= new PositionStateReasoner(ruleSetURL);
 	}
 	@Override
 	public void run() {
-		log.logInput("---------------Analyze IoT Environment when Problem Situation ocuured---------------"); // 0:collectDate, 1:mresult, 2:position, 3:temperture
-		log.logInput("collectDate"+monitorInfo.get(0));
-		log.logInput("psResult:"+monitorInfo.get(1));
-		log.logInput("position"+monitorInfo.get(2));
-		log.logInput("temperture"+monitorInfo.get(3));
+		log.logInput("---------------AnalyzeManager: Reasoing entire environemnt factor and create state set.---------------"); 
+		log.logInput("collectDate"+monitorInfo.get(0)); // 0:collectDate, 1:mresult, 2:position, 3:temperture
+		log.logInput("psResult:"+monitorInfo.get(1)); // 1:mresult
+		log.logInput("position"+monitorInfo.get(2)); // 2:position
+		log.logInput("temperture"+monitorInfo.get(3)); //3:temperture
 		log.logInput("clientID:"+clientID);
+		log.logInput("Rule set URL:"+ruleSetURL);
 		
 		
 		String position = monitorInfo.get(2);
@@ -46,20 +50,26 @@ public class AnalyzerManager extends Manager{
 		testStateSet.add(monitorInfo.get(1));
 		testStateSet.add(positionState);
 		testStateSet.add(tempertureState);
-		
+		log.logInput("#####Rasoning result - Smart Home's user position:"+positionState+" and temperture:"+tempertureState+"#####");
 		HashMap<Integer, String> hashmap = new HashMap<Integer, String>();
 		hashmap.put(1, "position");
 		hashmap.put(2, "temperture");
 		hashmap.put(0, "ps");
-		
-		StateCombiner testCombiner = new StateCombiner(testStateSet,monitorInfo.get(0),hashmap);
+		log.logInput("*****Combine Smart Home State Set.*****");
+		StateCombiner testCombiner = new StateCombiner(testStateSet,hashmap,ruleSetURL);
 		String needPlanResult = testCombiner.reasoningStateSetNeedPlan();
 		String stateSet = testCombiner.getStateSet();
 		
-		log.logInput("Analyze Result:"+stateSet+", needPlan?:"+needPlanResult);
+	
 		DBConnector dc = new AnalyzerStateSetWriter(monitorInfo.get(0),monitorInfo.get(1),tempertureState,positionState,stateSet,needPlanResult);
+		log.logInput("&&&&&Write analyze process to global knowledge&&&&&");
+		log.logInput("Analyze Date:"+monitorInfo.get(0));
+		log.logInput("Power Consumtion State:"+monitorInfo.get(1));
+		log.logInput("Temperture State:"+tempertureState);
+		log.logInput("Position State:"+positionState);
+		log.logInput("State Set Result:"+stateSet+", and this State set is need Planning?:"+needPlanResult);
 		dc.dbConnect();
-		log.logInput("------------------------------------------------------------------------------------");
+		
 	}
 
 }
