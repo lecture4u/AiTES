@@ -1,0 +1,124 @@
+\hypertarget{classcom_1_1github_1_1aites_1_1shlocalaites_1_1monitor_1_1_monitor_h_r_algorithm}{}\section{com.\+github.\+aites.\+shlocalaites.\+monitor.\+Monitor\+H\+R\+Algorithm 클래스 참조}
+\label{classcom_1_1github_1_1aites_1_1shlocalaites_1_1monitor_1_1_monitor_h_r_algorithm}\index{com.\+github.\+aites.\+shlocalaites.\+monitor.\+Monitor\+H\+R\+Algorithm@{com.\+github.\+aites.\+shlocalaites.\+monitor.\+Monitor\+H\+R\+Algorithm}}
+com.\+github.\+aites.\+shlocalaites.\+monitor.\+Monitor\+H\+R\+Algorithm에 대한 상속 다이어그램 \+: \begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classcom_1_1github_1_1aites_1_1shlocalaites_1_1monitor_1_1_monitor_h_r_algorithm}
+\end{center}
+\end{figure}
+\subsection*{Public 멤버 함수}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classcom_1_1github_1_1aites_1_1shlocalaites_1_1monitor_1_1_monitor_h_r_algorithm_a7f58ce878fbdfbaebec96b1bd75316ec}{Monitor\+H\+R\+Algorithm}} (Env\+Data env\+Data, String rule\+Set\+U\+RL)
+\item 
+String \mbox{\hyperlink{classcom_1_1github_1_1aites_1_1shlocalaites_1_1monitor_1_1_monitor_h_r_algorithm_a33bf99dd8b34a44dd2126b71f868dbb1}{get\+All\+Env\+Data}} ()
+\item 
+String \mbox{\hyperlink{classcom_1_1github_1_1aites_1_1shlocalaites_1_1monitor_1_1_monitor_h_r_algorithm_a555e88ef7e71714bf570eecf8588cc41}{env\+Data\+H\+R\+Algorithm}} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{상세한 설명}
+
+
+Monitor\+H\+R\+Algorithm.\+java 파일의 12 번째 라인에서 정의되었습니다.
+
+
+
+\subsection{생성자 \& 소멸자 문서화}
+\mbox{\Hypertarget{classcom_1_1github_1_1aites_1_1shlocalaites_1_1monitor_1_1_monitor_h_r_algorithm_a7f58ce878fbdfbaebec96b1bd75316ec}\label{classcom_1_1github_1_1aites_1_1shlocalaites_1_1monitor_1_1_monitor_h_r_algorithm_a7f58ce878fbdfbaebec96b1bd75316ec}} 
+\index{com\+::github\+::aites\+::shlocalaites\+::monitor\+::\+Monitor\+H\+R\+Algorithm@{com\+::github\+::aites\+::shlocalaites\+::monitor\+::\+Monitor\+H\+R\+Algorithm}!Monitor\+H\+R\+Algorithm@{Monitor\+H\+R\+Algorithm}}
+\index{Monitor\+H\+R\+Algorithm@{Monitor\+H\+R\+Algorithm}!com\+::github\+::aites\+::shlocalaites\+::monitor\+::\+Monitor\+H\+R\+Algorithm@{com\+::github\+::aites\+::shlocalaites\+::monitor\+::\+Monitor\+H\+R\+Algorithm}}
+\subsubsection{\texorpdfstring{Monitor\+H\+R\+Algorithm()}{MonitorHRAlgorithm()}}
+{\footnotesize\ttfamily com.\+github.\+aites.\+shlocalaites.\+monitor.\+Monitor\+H\+R\+Algorithm.\+Monitor\+H\+R\+Algorithm (\begin{DoxyParamCaption}\item[{Env\+Data}]{env\+Data,  }\item[{String}]{rule\+Set\+U\+RL }\end{DoxyParamCaption})}
+
+
+
+Monitor\+H\+R\+Algorithm.\+java 파일의 17 번째 라인에서 정의되었습니다.
+
+
+\begin{DoxyCode}
+17                                                                  \{
+18         this.envData = envData;
+19         this.ruleSetURL = ruleSetURL;
+20     \}
+\end{DoxyCode}
+
+
+\subsection{멤버 함수 문서화}
+\mbox{\Hypertarget{classcom_1_1github_1_1aites_1_1shlocalaites_1_1monitor_1_1_monitor_h_r_algorithm_a555e88ef7e71714bf570eecf8588cc41}\label{classcom_1_1github_1_1aites_1_1shlocalaites_1_1monitor_1_1_monitor_h_r_algorithm_a555e88ef7e71714bf570eecf8588cc41}} 
+\index{com\+::github\+::aites\+::shlocalaites\+::monitor\+::\+Monitor\+H\+R\+Algorithm@{com\+::github\+::aites\+::shlocalaites\+::monitor\+::\+Monitor\+H\+R\+Algorithm}!env\+Data\+H\+R\+Algorithm@{env\+Data\+H\+R\+Algorithm}}
+\index{env\+Data\+H\+R\+Algorithm@{env\+Data\+H\+R\+Algorithm}!com\+::github\+::aites\+::shlocalaites\+::monitor\+::\+Monitor\+H\+R\+Algorithm@{com\+::github\+::aites\+::shlocalaites\+::monitor\+::\+Monitor\+H\+R\+Algorithm}}
+\subsubsection{\texorpdfstring{env\+Data\+H\+R\+Algorithm()}{envDataHRAlgorithm()}}
+{\footnotesize\ttfamily String com.\+github.\+aites.\+shlocalaites.\+monitor.\+Monitor\+H\+R\+Algorithm.\+env\+Data\+H\+R\+Algorithm (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Monitor\+H\+R\+Algorithm.\+java 파일의 36 번째 라인에서 정의되었습니다.
+
+
+\begin{DoxyCode}
+36                                       \{
+37         log.logInput(\textcolor{stringliteral}{"*****Caculate Entire Smart Home PS and reasoning context need call analyzer*****"});
+38     
+39         Double hresult =0.0;
+40         \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} di=0; di<envData.getDeviceData().size(); di++)\{
+41             envData.getDeviceNmae().get(di);
+42             hresult += Double.parseDouble(envData.getDeviceData().get(di));
+43             
+44         \}
+45         log.logInput(\textcolor{stringliteral}{"Power consumtion:"}+hresult);
+46         
+47         String dpValue = hresult.toString();
+48         String feedBackInd = \textcolor{stringliteral}{"SHEdata"}+timer.getAbbTime();
+49         log.logInput(\textcolor{stringliteral}{"#####Reasoing rule about individual:"}+feedBackInd+\textcolor{stringliteral}{" and dataProperty:"}+dpValue+\textcolor{stringliteral}{"#####
+      "});
+50         RuleSetManager ruleSetManager = \textcolor{keyword}{new} RuleSetManager(ruleSetURL);
+51         ruleSetManager.assertDataProperty(\textcolor{stringliteral}{"hasPS"}, feedBackInd, dpValue, \textcolor{stringliteral}{"double"});
+52         ruleSetManager.saveRuleSet();
+53         
+54         RuleManager ruleManager = \textcolor{keyword}{new} RuleManager(ruleSetURL);
+55         ruleManager.loadOntology(); 
+56         \textcolor{keywordtype}{boolean} isOverPS = ruleManager.reasoningRule(feedBackInd, \textcolor{stringliteral}{"PSoverRule"});
+57         \textcolor{keywordtype}{boolean} isUnderPS = ruleManager.reasoningRule(feedBackInd, \textcolor{stringliteral}{"PSunderRule"});
+58         \textcolor{keywordflow}{if}(isUnderPS)\{
+59             \textcolor{keywordflow}{return} \textcolor{stringliteral}{"under"};
+60         \}
+61         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(isOverPS)\{
+62             \textcolor{keywordflow}{return} \textcolor{stringliteral}{"over"};
+63         \}
+64         \textcolor{keywordflow}{return} \textcolor{stringliteral}{"normal"};
+65         
+66     \}
+\end{DoxyCode}
+\mbox{\Hypertarget{classcom_1_1github_1_1aites_1_1shlocalaites_1_1monitor_1_1_monitor_h_r_algorithm_a33bf99dd8b34a44dd2126b71f868dbb1}\label{classcom_1_1github_1_1aites_1_1shlocalaites_1_1monitor_1_1_monitor_h_r_algorithm_a33bf99dd8b34a44dd2126b71f868dbb1}} 
+\index{com\+::github\+::aites\+::shlocalaites\+::monitor\+::\+Monitor\+H\+R\+Algorithm@{com\+::github\+::aites\+::shlocalaites\+::monitor\+::\+Monitor\+H\+R\+Algorithm}!get\+All\+Env\+Data@{get\+All\+Env\+Data}}
+\index{get\+All\+Env\+Data@{get\+All\+Env\+Data}!com\+::github\+::aites\+::shlocalaites\+::monitor\+::\+Monitor\+H\+R\+Algorithm@{com\+::github\+::aites\+::shlocalaites\+::monitor\+::\+Monitor\+H\+R\+Algorithm}}
+\subsubsection{\texorpdfstring{get\+All\+Env\+Data()}{getAllEnvData()}}
+{\footnotesize\ttfamily String com.\+github.\+aites.\+shlocalaites.\+monitor.\+Monitor\+H\+R\+Algorithm.\+get\+All\+Env\+Data (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Monitor\+H\+R\+Algorithm.\+java 파일의 21 번째 라인에서 정의되었습니다.
+
+
+\begin{DoxyCode}
+21                                  \{
+22         String envResult = \textcolor{stringliteral}{""};
+23         \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} di=0; di<envData.getDeviceData().size(); di++)\{
+24             \textcolor{keywordflow}{if}(di==0)\{
+25                 envResult = envResult+envData.getDeviceData().get(di);
+26             \}
+27             \textcolor{keywordflow}{else}\{
+28                 envResult = envResult+\textcolor{stringliteral}{","}+envData.getDeviceData().get(di);
+29             \}
+30             
+31         \}
+32         
+33         \textcolor{keywordflow}{return} envResult;
+34     \}
+\end{DoxyCode}
+
+
+이 클래스에 대한 문서화 페이지는 다음의 파일로부터 생성되었습니다.\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/srsok/\+Ai\+T\+E\+S/\+Local\+Ai\+T\+E\+S\+Impl/\+Local\+Ai\+T\+E\+S\+Impl/src/com/github/aites/shlocalaites/monitor/\mbox{\hyperlink{_monitor_h_r_algorithm_8java}{Monitor\+H\+R\+Algorithm.\+java}}\end{DoxyCompactItemize}

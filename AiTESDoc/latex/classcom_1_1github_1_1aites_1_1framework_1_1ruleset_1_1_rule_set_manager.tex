@@ -1,0 +1,346 @@
+\hypertarget{classcom_1_1github_1_1aites_1_1framework_1_1ruleset_1_1_rule_set_manager}{}\section{com.\+github.\+aites.\+framework.\+ruleset.\+Rule\+Set\+Manager 클래스 참조}
+\label{classcom_1_1github_1_1aites_1_1framework_1_1ruleset_1_1_rule_set_manager}\index{com.\+github.\+aites.\+framework.\+ruleset.\+Rule\+Set\+Manager@{com.\+github.\+aites.\+framework.\+ruleset.\+Rule\+Set\+Manager}}
+
+
+Class for manage ontology rule set parsing rule set File, update rule, delete rule.  
+
+
+\subsection*{Public 멤버 함수}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classcom_1_1github_1_1aites_1_1framework_1_1ruleset_1_1_rule_set_manager_a2c0a81dac3552e5ab1426026efe6c760}{Rule\+Set\+Manager}} (String \mbox{\hyperlink{classcom_1_1github_1_1aites_1_1framework_1_1ruleset_1_1_rule_set_manager_aeb9d61ae7f558514e41f5ed18b00a56e}{rule\+Set\+Name}})
+\item 
+void \mbox{\hyperlink{classcom_1_1github_1_1aites_1_1framework_1_1ruleset_1_1_rule_set_manager_a318aa8ad8be68347f57363e374c429f5}{assert\+Ind}} (String ind\+Name, String class\+Name)
+\begin{DoxyCompactList}\small\item\em Method for declaration Named\+Individual axiom declarted to rulest form Declaration(\+Named\+Individual(\+:individualname)) and asserted to rulest form Class\+Assertion(\+:class\+Name \+:individual\+Name) \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classcom_1_1github_1_1aites_1_1framework_1_1ruleset_1_1_rule_set_manager_ab0ec00173eb4031052115d372aa53f8b}{delete\+Ind}} (String ind\+Name)
+\item 
+void \mbox{\hyperlink{classcom_1_1github_1_1aites_1_1framework_1_1ruleset_1_1_rule_set_manager_ae2e674642095f85bf5a8c14272e35c8a}{assert\+Data\+Property}} (String dp\+Name, String ind\+Name, String dp\+Value, String dp\+Type)
+\begin{DoxyCompactList}\small\item\em Method for assertion data property axiom asserted to rulest form Data\+Property\+Assertion(\+:dpname \+:individual \char`\"{}dpvaule\char`\"{}$^\wedge$$^\wedge$dptype) \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classcom_1_1github_1_1aites_1_1framework_1_1ruleset_1_1_rule_set_manager_ab36ee5e0e957168bb23480a202321f21}{assert\+Object\+Property}} (String op\+Name, String ind1\+Name, String ind2\+Name)
+\begin{DoxyCompactList}\small\item\em Method for assertion object property axiom asserted to rulest form Object\+Property\+Assertion(\+:object\+Name \+:object \+:subject) \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classcom_1_1github_1_1aites_1_1framework_1_1ruleset_1_1_rule_set_manager_afbff0052a67d70fd8023fba9bab1cb39}{assert\+S\+W\+R\+Lrule}} (\mbox{\hyperlink{classcom_1_1github_1_1aites_1_1framework_1_1rule_1_1_s_w_r_lrule}{S\+W\+R\+Lrule}} rule)
+\begin{DoxyCompactList}\small\item\em Method for apply ontology axiom change. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classcom_1_1github_1_1aites_1_1framework_1_1ruleset_1_1_rule_set_manager_ab43e7407d6c856bfd5adbccd71a39b8a}{update\+S\+W\+R\+L\+Bulit\+In\+Rule}} (String rule\+Name, int bulit\+In\+Index, String new\+Value)
+\item 
+void \mbox{\hyperlink{classcom_1_1github_1_1aites_1_1framework_1_1ruleset_1_1_rule_set_manager_adc237e185bea2444b990ed25875477c9}{save\+Rule\+Set}} ()
+\item 
+void \mbox{\hyperlink{classcom_1_1github_1_1aites_1_1framework_1_1ruleset_1_1_rule_set_manager_a5d1463747adac54f4fd1285e476a7344}{print\+Rule\+Set\+Information}} ()
+\end{DoxyCompactItemize}
+\subsection*{Private 속성}
+\begin{DoxyCompactItemize}
+\item 
+String \mbox{\hyperlink{classcom_1_1github_1_1aites_1_1framework_1_1ruleset_1_1_rule_set_manager_aeb9d61ae7f558514e41f5ed18b00a56e}{rule\+Set\+Name}}
+\item 
+String \mbox{\hyperlink{classcom_1_1github_1_1aites_1_1framework_1_1ruleset_1_1_rule_set_manager_a91929018d0cdd9df1eed93f8f07cb77e}{rule\+Set}}
+\item 
+\mbox{\hyperlink{classcom_1_1github_1_1aites_1_1framework_1_1ruleset_1_1_rule_set_body}{Rule\+Set\+Body}} \mbox{\hyperlink{classcom_1_1github_1_1aites_1_1framework_1_1ruleset_1_1_rule_set_manager_a2218521e8abc1048bd369c7ed1c14c60}{rule\+Set\+Body}}
+\item 
+String \mbox{\hyperlink{classcom_1_1github_1_1aites_1_1framework_1_1ruleset_1_1_rule_set_manager_ae9d272c4520c18f269ac835e83be526f}{rule\+Set\+Head}}
+\item 
+final String \mbox{\hyperlink{classcom_1_1github_1_1aites_1_1framework_1_1ruleset_1_1_rule_set_manager_a6696dfa261a4ccc23236373f8d33b316}{rule\+Set\+Tail}} = \char`\"{})\char`\"{}
+\end{DoxyCompactItemize}
+
+
+\subsection{상세한 설명}
+Class for manage ontology rule set parsing rule set File, update rule, delete rule. 
+
+\begin{DoxyAuthor}{작성자}
+Jung\+Hyun An 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{버전}
+3.\+0.\+2 
+\end{DoxyVersion}
+
+
+Rule\+Set\+Manager.\+java 파일의 17 번째 라인에서 정의되었습니다.
+
+
+
+\subsection{생성자 \& 소멸자 문서화}
+\mbox{\Hypertarget{classcom_1_1github_1_1aites_1_1framework_1_1ruleset_1_1_rule_set_manager_a2c0a81dac3552e5ab1426026efe6c760}\label{classcom_1_1github_1_1aites_1_1framework_1_1ruleset_1_1_rule_set_manager_a2c0a81dac3552e5ab1426026efe6c760}} 
+\index{com\+::github\+::aites\+::framework\+::ruleset\+::\+Rule\+Set\+Manager@{com\+::github\+::aites\+::framework\+::ruleset\+::\+Rule\+Set\+Manager}!Rule\+Set\+Manager@{Rule\+Set\+Manager}}
+\index{Rule\+Set\+Manager@{Rule\+Set\+Manager}!com\+::github\+::aites\+::framework\+::ruleset\+::\+Rule\+Set\+Manager@{com\+::github\+::aites\+::framework\+::ruleset\+::\+Rule\+Set\+Manager}}
+\subsubsection{\texorpdfstring{Rule\+Set\+Manager()}{RuleSetManager()}}
+{\footnotesize\ttfamily com.\+github.\+aites.\+framework.\+ruleset.\+Rule\+Set\+Manager.\+Rule\+Set\+Manager (\begin{DoxyParamCaption}\item[{String}]{rule\+Set\+Name }\end{DoxyParamCaption})}
+
+
+
+Rule\+Set\+Manager.\+java 파일의 27 번째 라인에서 정의되었습니다.
+
+
+\begin{DoxyCode}
+27                                              \{
+28         this.\mbox{\hyperlink{classcom_1_1github_1_1aites_1_1framework_1_1ruleset_1_1_rule_set_manager_aeb9d61ae7f558514e41f5ed18b00a56e}{ruleSetName}} = \mbox{\hyperlink{classcom_1_1github_1_1aites_1_1framework_1_1ruleset_1_1_rule_set_manager_aeb9d61ae7f558514e41f5ed18b00a56e}{ruleSetName}};
+29         ruleSetParser.\mbox{\hyperlink{classcom_1_1github_1_1aites_1_1framework_1_1ruleset_1_1_rule_set_parser_ae85e70ba4e18d5d98a4dd9a8bdb01b0b}{loadRuleSet}}(\mbox{\hyperlink{classcom_1_1github_1_1aites_1_1framework_1_1ruleset_1_1_rule_set_manager_aeb9d61ae7f558514e41f5ed18b00a56e}{ruleSetName}});
+30         
+31         \mbox{\hyperlink{classcom_1_1github_1_1aites_1_1framework_1_1ruleset_1_1_rule_set_manager_ae9d272c4520c18f269ac835e83be526f}{ruleSetHead}} = ruleSetParser.\mbox{\hyperlink{classcom_1_1github_1_1aites_1_1framework_1_1ruleset_1_1_rule_set_parser_a0ae3dffb9369fb6ff4e1a1f2fdede15f}{getRuleSetHeader}}();
+32         \mbox{\hyperlink{classcom_1_1github_1_1aites_1_1framework_1_1ruleset_1_1_rule_set_manager_a2218521e8abc1048bd369c7ed1c14c60}{ruleSetBody}} = ruleSetParser.\mbox{\hyperlink{classcom_1_1github_1_1aites_1_1framework_1_1ruleset_1_1_rule_set_parser_a27e7145cb2cea6ccbd8996b907c6db0a}{getRuleSetBody}}();
+33         
+34     \}
+\end{DoxyCode}
+
+
+\subsection{멤버 함수 문서화}
+\mbox{\Hypertarget{classcom_1_1github_1_1aites_1_1framework_1_1ruleset_1_1_rule_set_manager_ae2e674642095f85bf5a8c14272e35c8a}\label{classcom_1_1github_1_1aites_1_1framework_1_1ruleset_1_1_rule_set_manager_ae2e674642095f85bf5a8c14272e35c8a}} 
+\index{com\+::github\+::aites\+::framework\+::ruleset\+::\+Rule\+Set\+Manager@{com\+::github\+::aites\+::framework\+::ruleset\+::\+Rule\+Set\+Manager}!assert\+Data\+Property@{assert\+Data\+Property}}
+\index{assert\+Data\+Property@{assert\+Data\+Property}!com\+::github\+::aites\+::framework\+::ruleset\+::\+Rule\+Set\+Manager@{com\+::github\+::aites\+::framework\+::ruleset\+::\+Rule\+Set\+Manager}}
+\subsubsection{\texorpdfstring{assert\+Data\+Property()}{assertDataProperty()}}
+{\footnotesize\ttfamily void com.\+github.\+aites.\+framework.\+ruleset.\+Rule\+Set\+Manager.\+assert\+Data\+Property (\begin{DoxyParamCaption}\item[{String}]{dp\+Name,  }\item[{String}]{ind\+Name,  }\item[{String}]{dp\+Value,  }\item[{String}]{dp\+Type }\end{DoxyParamCaption})}
+
+
+
+Method for assertion data property axiom asserted to rulest form Data\+Property\+Assertion(\+:dpname \+:individual \char`\"{}dpvaule\char`\"{}$^\wedge$$^\wedge$dptype) 
+
+
+\begin{DoxyParams}{매개변수}
+{\em dp\+Name,ind\+Name,dp\+Value,dp\+Type} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{반환값}
+none 
+\end{DoxyReturn}
+
+
+Rule\+Set\+Manager.\+java 파일의 59 번째 라인에서 정의되었습니다.
+
+
+\begin{DoxyCode}
+59                                                                                                 \{
+60         String dpAxiom = \textcolor{stringliteral}{"    DataPropertyAssertion(:"}+dpName+\textcolor{stringliteral}{" :"} + indName + \textcolor{stringliteral}{" \(\backslash\)""} + dpValue + \textcolor{stringliteral}{"\(\backslash\)"^^xsd:"}
+      +dpType+\textcolor{stringliteral}{")\(\backslash\)r\(\backslash\)n"};
+61         \mbox{\hyperlink{classcom_1_1github_1_1aites_1_1framework_1_1ruleset_1_1_rule_set_manager_a2218521e8abc1048bd369c7ed1c14c60}{ruleSetBody}}.\mbox{\hyperlink{classcom_1_1github_1_1aites_1_1framework_1_1ruleset_1_1_rule_set_body_ab9c0acf9f356fb04a249b1ea492b65c4}{addAssertion}}(dpAxiom);
+62     \}
+\end{DoxyCode}
+\mbox{\Hypertarget{classcom_1_1github_1_1aites_1_1framework_1_1ruleset_1_1_rule_set_manager_a318aa8ad8be68347f57363e374c429f5}\label{classcom_1_1github_1_1aites_1_1framework_1_1ruleset_1_1_rule_set_manager_a318aa8ad8be68347f57363e374c429f5}} 
+\index{com\+::github\+::aites\+::framework\+::ruleset\+::\+Rule\+Set\+Manager@{com\+::github\+::aites\+::framework\+::ruleset\+::\+Rule\+Set\+Manager}!assert\+Ind@{assert\+Ind}}
+\index{assert\+Ind@{assert\+Ind}!com\+::github\+::aites\+::framework\+::ruleset\+::\+Rule\+Set\+Manager@{com\+::github\+::aites\+::framework\+::ruleset\+::\+Rule\+Set\+Manager}}
+\subsubsection{\texorpdfstring{assert\+Ind()}{assertInd()}}
+{\footnotesize\ttfamily void com.\+github.\+aites.\+framework.\+ruleset.\+Rule\+Set\+Manager.\+assert\+Ind (\begin{DoxyParamCaption}\item[{String}]{ind\+Name,  }\item[{String}]{class\+Name }\end{DoxyParamCaption})}
+
+
+
+Method for declaration Named\+Individual axiom declarted to rulest form Declaration(\+Named\+Individual(\+:individualname)) and asserted to rulest form Class\+Assertion(\+:class\+Name \+:individual\+Name) 
+
+
+\begin{DoxyParams}{매개변수}
+{\em ind\+Name,class\+Name} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{반환값}
+none 
+\end{DoxyReturn}
+
+
+Rule\+Set\+Manager.\+java 파일의 42 번째 라인에서 정의되었습니다.
+
+
+\begin{DoxyCode}
+42                                                            \{
+43         String indAxiom = \textcolor{stringliteral}{"    Declaration(NamedIndividual(:"} + indName + \textcolor{stringliteral}{"))\(\backslash\)r\(\backslash\)n"};
+44         \mbox{\hyperlink{classcom_1_1github_1_1aites_1_1framework_1_1ruleset_1_1_rule_set_manager_a2218521e8abc1048bd369c7ed1c14c60}{ruleSetBody}}.\mbox{\hyperlink{classcom_1_1github_1_1aites_1_1framework_1_1ruleset_1_1_rule_set_body_ae179183b8a1b94076bedcb6c0cc178d5}{addIndDeclaration}}(indAxiom);
+45         String classAxiom = \textcolor{stringliteral}{"    ClassAssertion(:"}+className+\textcolor{stringliteral}{" :"} + indName + \textcolor{stringliteral}{")\(\backslash\)r\(\backslash\)n"};
+46         \mbox{\hyperlink{classcom_1_1github_1_1aites_1_1framework_1_1ruleset_1_1_rule_set_manager_a2218521e8abc1048bd369c7ed1c14c60}{ruleSetBody}}.\mbox{\hyperlink{classcom_1_1github_1_1aites_1_1framework_1_1ruleset_1_1_rule_set_body_ab9c0acf9f356fb04a249b1ea492b65c4}{addAssertion}}(classAxiom);        
+47         
+48     \}
+\end{DoxyCode}
+\mbox{\Hypertarget{classcom_1_1github_1_1aites_1_1framework_1_1ruleset_1_1_rule_set_manager_ab36ee5e0e957168bb23480a202321f21}\label{classcom_1_1github_1_1aites_1_1framework_1_1ruleset_1_1_rule_set_manager_ab36ee5e0e957168bb23480a202321f21}} 
+\index{com\+::github\+::aites\+::framework\+::ruleset\+::\+Rule\+Set\+Manager@{com\+::github\+::aites\+::framework\+::ruleset\+::\+Rule\+Set\+Manager}!assert\+Object\+Property@{assert\+Object\+Property}}
+\index{assert\+Object\+Property@{assert\+Object\+Property}!com\+::github\+::aites\+::framework\+::ruleset\+::\+Rule\+Set\+Manager@{com\+::github\+::aites\+::framework\+::ruleset\+::\+Rule\+Set\+Manager}}
+\subsubsection{\texorpdfstring{assert\+Object\+Property()}{assertObjectProperty()}}
+{\footnotesize\ttfamily void com.\+github.\+aites.\+framework.\+ruleset.\+Rule\+Set\+Manager.\+assert\+Object\+Property (\begin{DoxyParamCaption}\item[{String}]{op\+Name,  }\item[{String}]{ind1\+Name,  }\item[{String}]{ind2\+Name }\end{DoxyParamCaption})}
+
+
+
+Method for assertion object property axiom asserted to rulest form Object\+Property\+Assertion(\+:object\+Name \+:object \+:subject) 
+
+
+\begin{DoxyParams}{매개변수}
+{\em op\+Name,ind1\+Name,ind2\+Name} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{반환값}
+none 
+\end{DoxyReturn}
+
+
+Rule\+Set\+Manager.\+java 파일의 69 번째 라인에서 정의되었습니다.
+
+
+\begin{DoxyCode}
+69                                                                                      \{
+70         String opAxiom = \textcolor{stringliteral}{"    ObjectPropertyAssertion(:"}+opName+\textcolor{stringliteral}{" :"} + ind1Name + \textcolor{stringliteral}{":"}+ind2Name+\textcolor{stringliteral}{")\(\backslash\)r\(\backslash\)n"};
+71         \mbox{\hyperlink{classcom_1_1github_1_1aites_1_1framework_1_1ruleset_1_1_rule_set_manager_a2218521e8abc1048bd369c7ed1c14c60}{ruleSetBody}}.\mbox{\hyperlink{classcom_1_1github_1_1aites_1_1framework_1_1ruleset_1_1_rule_set_body_ab9c0acf9f356fb04a249b1ea492b65c4}{addAssertion}}(opAxiom);
+72     \}
+\end{DoxyCode}
+\mbox{\Hypertarget{classcom_1_1github_1_1aites_1_1framework_1_1ruleset_1_1_rule_set_manager_afbff0052a67d70fd8023fba9bab1cb39}\label{classcom_1_1github_1_1aites_1_1framework_1_1ruleset_1_1_rule_set_manager_afbff0052a67d70fd8023fba9bab1cb39}} 
+\index{com\+::github\+::aites\+::framework\+::ruleset\+::\+Rule\+Set\+Manager@{com\+::github\+::aites\+::framework\+::ruleset\+::\+Rule\+Set\+Manager}!assert\+S\+W\+R\+Lrule@{assert\+S\+W\+R\+Lrule}}
+\index{assert\+S\+W\+R\+Lrule@{assert\+S\+W\+R\+Lrule}!com\+::github\+::aites\+::framework\+::ruleset\+::\+Rule\+Set\+Manager@{com\+::github\+::aites\+::framework\+::ruleset\+::\+Rule\+Set\+Manager}}
+\subsubsection{\texorpdfstring{assert\+S\+W\+R\+Lrule()}{assertSWRLrule()}}
+{\footnotesize\ttfamily void com.\+github.\+aites.\+framework.\+ruleset.\+Rule\+Set\+Manager.\+assert\+S\+W\+R\+Lrule (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classcom_1_1github_1_1aites_1_1framework_1_1rule_1_1_s_w_r_lrule}{S\+W\+R\+Lrule}}}]{rule }\end{DoxyParamCaption})}
+
+
+
+Method for apply ontology axiom change. 
+
+save rule set File to file system where program located. 
+\begin{DoxyParams}{매개변수}
+{\em none} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{반환값}
+none 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{예외}
+{\em I\+O\+Exception} & rule set save failed \\
+\hline
+\end{DoxyExceptions}
+
+
+Rule\+Set\+Manager.\+java 파일의 81 번째 라인에서 정의되었습니다.
+
+
+\begin{DoxyCode}
+81                                              \{      
+82         \mbox{\hyperlink{classcom_1_1github_1_1aites_1_1framework_1_1ruleset_1_1_rule_set_manager_a2218521e8abc1048bd369c7ed1c14c60}{ruleSetBody}}.\mbox{\hyperlink{classcom_1_1github_1_1aites_1_1framework_1_1ruleset_1_1_rule_set_body_af7c9f7420cf0b177887893bd6d6f0618}{addSWRLRule}}(rule);
+83     \}
+\end{DoxyCode}
+\mbox{\Hypertarget{classcom_1_1github_1_1aites_1_1framework_1_1ruleset_1_1_rule_set_manager_ab0ec00173eb4031052115d372aa53f8b}\label{classcom_1_1github_1_1aites_1_1framework_1_1ruleset_1_1_rule_set_manager_ab0ec00173eb4031052115d372aa53f8b}} 
+\index{com\+::github\+::aites\+::framework\+::ruleset\+::\+Rule\+Set\+Manager@{com\+::github\+::aites\+::framework\+::ruleset\+::\+Rule\+Set\+Manager}!delete\+Ind@{delete\+Ind}}
+\index{delete\+Ind@{delete\+Ind}!com\+::github\+::aites\+::framework\+::ruleset\+::\+Rule\+Set\+Manager@{com\+::github\+::aites\+::framework\+::ruleset\+::\+Rule\+Set\+Manager}}
+\subsubsection{\texorpdfstring{delete\+Ind()}{deleteInd()}}
+{\footnotesize\ttfamily void com.\+github.\+aites.\+framework.\+ruleset.\+Rule\+Set\+Manager.\+delete\+Ind (\begin{DoxyParamCaption}\item[{String}]{ind\+Name }\end{DoxyParamCaption})}
+
+
+
+Rule\+Set\+Manager.\+java 파일의 49 번째 라인에서 정의되었습니다.
+
+
+\begin{DoxyCode}
+49                                          \{
+50         \mbox{\hyperlink{classcom_1_1github_1_1aites_1_1framework_1_1ruleset_1_1_rule_set_manager_a2218521e8abc1048bd369c7ed1c14c60}{ruleSetBody}}.\mbox{\hyperlink{classcom_1_1github_1_1aites_1_1framework_1_1ruleset_1_1_rule_set_body_a660eccdac94de7432cdb2fee1326c826}{deleteIndDeclaration}}(indName);
+51         \mbox{\hyperlink{classcom_1_1github_1_1aites_1_1framework_1_1ruleset_1_1_rule_set_manager_a2218521e8abc1048bd369c7ed1c14c60}{ruleSetBody}}.\mbox{\hyperlink{classcom_1_1github_1_1aites_1_1framework_1_1ruleset_1_1_rule_set_body_a966a05a55349d58f1ca2d56a423f1370}{deleteAssertion}}(indName);
+52     \}
+\end{DoxyCode}
+\mbox{\Hypertarget{classcom_1_1github_1_1aites_1_1framework_1_1ruleset_1_1_rule_set_manager_a5d1463747adac54f4fd1285e476a7344}\label{classcom_1_1github_1_1aites_1_1framework_1_1ruleset_1_1_rule_set_manager_a5d1463747adac54f4fd1285e476a7344}} 
+\index{com\+::github\+::aites\+::framework\+::ruleset\+::\+Rule\+Set\+Manager@{com\+::github\+::aites\+::framework\+::ruleset\+::\+Rule\+Set\+Manager}!print\+Rule\+Set\+Information@{print\+Rule\+Set\+Information}}
+\index{print\+Rule\+Set\+Information@{print\+Rule\+Set\+Information}!com\+::github\+::aites\+::framework\+::ruleset\+::\+Rule\+Set\+Manager@{com\+::github\+::aites\+::framework\+::ruleset\+::\+Rule\+Set\+Manager}}
+\subsubsection{\texorpdfstring{print\+Rule\+Set\+Information()}{printRuleSetInformation()}}
+{\footnotesize\ttfamily void com.\+github.\+aites.\+framework.\+ruleset.\+Rule\+Set\+Manager.\+print\+Rule\+Set\+Information (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Rule\+Set\+Manager.\+java 파일의 101 번째 라인에서 정의되었습니다.
+
+
+\begin{DoxyCode}
+101                                           \{
+102             System.out.println(\textcolor{stringliteral}{"#####Print RuleSetName:"}+this.\mbox{\hyperlink{classcom_1_1github_1_1aites_1_1framework_1_1ruleset_1_1_rule_set_manager_aeb9d61ae7f558514e41f5ed18b00a56e}{ruleSetName}}+\textcolor{stringliteral}{"'s information#####"})
+      ;
+103             System.out.println(\textcolor{stringliteral}{"*****RuleSet Header*****"});
+104             System.out.println(\mbox{\hyperlink{classcom_1_1github_1_1aites_1_1framework_1_1ruleset_1_1_rule_set_manager_ae9d272c4520c18f269ac835e83be526f}{ruleSetHead}});
+105             System.out.println(\textcolor{stringliteral}{"*****RuleSet Body*****"});
+106             \mbox{\hyperlink{classcom_1_1github_1_1aites_1_1framework_1_1ruleset_1_1_rule_set_manager_a2218521e8abc1048bd369c7ed1c14c60}{ruleSetBody}}.\mbox{\hyperlink{classcom_1_1github_1_1aites_1_1framework_1_1ruleset_1_1_rule_set_body_af029b953064b2ad419f13f6aee1ab89f}{printRuleSetBodyInformation}}();
+107         \}
+\end{DoxyCode}
+\mbox{\Hypertarget{classcom_1_1github_1_1aites_1_1framework_1_1ruleset_1_1_rule_set_manager_adc237e185bea2444b990ed25875477c9}\label{classcom_1_1github_1_1aites_1_1framework_1_1ruleset_1_1_rule_set_manager_adc237e185bea2444b990ed25875477c9}} 
+\index{com\+::github\+::aites\+::framework\+::ruleset\+::\+Rule\+Set\+Manager@{com\+::github\+::aites\+::framework\+::ruleset\+::\+Rule\+Set\+Manager}!save\+Rule\+Set@{save\+Rule\+Set}}
+\index{save\+Rule\+Set@{save\+Rule\+Set}!com\+::github\+::aites\+::framework\+::ruleset\+::\+Rule\+Set\+Manager@{com\+::github\+::aites\+::framework\+::ruleset\+::\+Rule\+Set\+Manager}}
+\subsubsection{\texorpdfstring{save\+Rule\+Set()}{saveRuleSet()}}
+{\footnotesize\ttfamily void com.\+github.\+aites.\+framework.\+ruleset.\+Rule\+Set\+Manager.\+save\+Rule\+Set (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Rule\+Set\+Manager.\+java 파일의 87 번째 라인에서 정의되었습니다.
+
+
+\begin{DoxyCode}
+87                              \{
+88         String ruleBodyValue = \mbox{\hyperlink{classcom_1_1github_1_1aites_1_1framework_1_1ruleset_1_1_rule_set_manager_a2218521e8abc1048bd369c7ed1c14c60}{ruleSetBody}}.\mbox{\hyperlink{classcom_1_1github_1_1aites_1_1framework_1_1ruleset_1_1_rule_set_body_a1dc9e518f7c37c11345a96eeff9136fc}{getRuleSetBody}}();
+89         \mbox{\hyperlink{classcom_1_1github_1_1aites_1_1framework_1_1ruleset_1_1_rule_set_manager_a91929018d0cdd9df1eed93f8f07cb77e}{ruleSet}} = \mbox{\hyperlink{classcom_1_1github_1_1aites_1_1framework_1_1ruleset_1_1_rule_set_manager_ae9d272c4520c18f269ac835e83be526f}{ruleSetHead}}+ ruleBodyValue + \mbox{\hyperlink{classcom_1_1github_1_1aites_1_1framework_1_1ruleset_1_1_rule_set_manager_a6696dfa261a4ccc23236373f8d33b316}{ruleSetTail}};
+90         \textcolor{keywordflow}{try} \{
+91             BufferedWriter bw = \textcolor{keyword}{new} BufferedWriter(\textcolor{keyword}{new} FileWriter(\textcolor{keyword}{new} File(
+      \mbox{\hyperlink{classcom_1_1github_1_1aites_1_1framework_1_1ruleset_1_1_rule_set_manager_aeb9d61ae7f558514e41f5ed18b00a56e}{ruleSetName}})));
+92             bw.write(\mbox{\hyperlink{classcom_1_1github_1_1aites_1_1framework_1_1ruleset_1_1_rule_set_manager_a91929018d0cdd9df1eed93f8f07cb77e}{ruleSet}});
+93             bw.flush();
+94             bw.close();
+95         \} \textcolor{keywordflow}{catch} (IOException e) \{
+96     
+97             e.printStackTrace();
+98         \}
+99     \}
+\end{DoxyCode}
+\mbox{\Hypertarget{classcom_1_1github_1_1aites_1_1framework_1_1ruleset_1_1_rule_set_manager_ab43e7407d6c856bfd5adbccd71a39b8a}\label{classcom_1_1github_1_1aites_1_1framework_1_1ruleset_1_1_rule_set_manager_ab43e7407d6c856bfd5adbccd71a39b8a}} 
+\index{com\+::github\+::aites\+::framework\+::ruleset\+::\+Rule\+Set\+Manager@{com\+::github\+::aites\+::framework\+::ruleset\+::\+Rule\+Set\+Manager}!update\+S\+W\+R\+L\+Bulit\+In\+Rule@{update\+S\+W\+R\+L\+Bulit\+In\+Rule}}
+\index{update\+S\+W\+R\+L\+Bulit\+In\+Rule@{update\+S\+W\+R\+L\+Bulit\+In\+Rule}!com\+::github\+::aites\+::framework\+::ruleset\+::\+Rule\+Set\+Manager@{com\+::github\+::aites\+::framework\+::ruleset\+::\+Rule\+Set\+Manager}}
+\subsubsection{\texorpdfstring{update\+S\+W\+R\+L\+Bulit\+In\+Rule()}{updateSWRLBulitInRule()}}
+{\footnotesize\ttfamily void com.\+github.\+aites.\+framework.\+ruleset.\+Rule\+Set\+Manager.\+update\+S\+W\+R\+L\+Bulit\+In\+Rule (\begin{DoxyParamCaption}\item[{String}]{rule\+Name,  }\item[{int}]{bulit\+In\+Index,  }\item[{String}]{new\+Value }\end{DoxyParamCaption})}
+
+
+
+Rule\+Set\+Manager.\+java 파일의 84 번째 라인에서 정의되었습니다.
+
+
+\begin{DoxyCode}
+84                                                                                          \{
+85         \mbox{\hyperlink{classcom_1_1github_1_1aites_1_1framework_1_1ruleset_1_1_rule_set_manager_a2218521e8abc1048bd369c7ed1c14c60}{ruleSetBody}}.\mbox{\hyperlink{classcom_1_1github_1_1aites_1_1framework_1_1ruleset_1_1_rule_set_body_a64c55afee8f8bd5cfef407bbc11bd405}{updateSWRLRule}}(ruleName, bulitInIndex, newValue);
+86     \}
+\end{DoxyCode}
+
+
+\subsection{멤버 데이터 문서화}
+\mbox{\Hypertarget{classcom_1_1github_1_1aites_1_1framework_1_1ruleset_1_1_rule_set_manager_a91929018d0cdd9df1eed93f8f07cb77e}\label{classcom_1_1github_1_1aites_1_1framework_1_1ruleset_1_1_rule_set_manager_a91929018d0cdd9df1eed93f8f07cb77e}} 
+\index{com\+::github\+::aites\+::framework\+::ruleset\+::\+Rule\+Set\+Manager@{com\+::github\+::aites\+::framework\+::ruleset\+::\+Rule\+Set\+Manager}!rule\+Set@{rule\+Set}}
+\index{rule\+Set@{rule\+Set}!com\+::github\+::aites\+::framework\+::ruleset\+::\+Rule\+Set\+Manager@{com\+::github\+::aites\+::framework\+::ruleset\+::\+Rule\+Set\+Manager}}
+\subsubsection{\texorpdfstring{rule\+Set}{ruleSet}}
+{\footnotesize\ttfamily String com.\+github.\+aites.\+framework.\+ruleset.\+Rule\+Set\+Manager.\+rule\+Set\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Rule\+Set\+Manager.\+java 파일의 19 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{classcom_1_1github_1_1aites_1_1framework_1_1ruleset_1_1_rule_set_manager_a2218521e8abc1048bd369c7ed1c14c60}\label{classcom_1_1github_1_1aites_1_1framework_1_1ruleset_1_1_rule_set_manager_a2218521e8abc1048bd369c7ed1c14c60}} 
+\index{com\+::github\+::aites\+::framework\+::ruleset\+::\+Rule\+Set\+Manager@{com\+::github\+::aites\+::framework\+::ruleset\+::\+Rule\+Set\+Manager}!rule\+Set\+Body@{rule\+Set\+Body}}
+\index{rule\+Set\+Body@{rule\+Set\+Body}!com\+::github\+::aites\+::framework\+::ruleset\+::\+Rule\+Set\+Manager@{com\+::github\+::aites\+::framework\+::ruleset\+::\+Rule\+Set\+Manager}}
+\subsubsection{\texorpdfstring{rule\+Set\+Body}{ruleSetBody}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classcom_1_1github_1_1aites_1_1framework_1_1ruleset_1_1_rule_set_body}{Rule\+Set\+Body}} com.\+github.\+aites.\+framework.\+ruleset.\+Rule\+Set\+Manager.\+rule\+Set\+Body\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Rule\+Set\+Manager.\+java 파일의 21 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{classcom_1_1github_1_1aites_1_1framework_1_1ruleset_1_1_rule_set_manager_ae9d272c4520c18f269ac835e83be526f}\label{classcom_1_1github_1_1aites_1_1framework_1_1ruleset_1_1_rule_set_manager_ae9d272c4520c18f269ac835e83be526f}} 
+\index{com\+::github\+::aites\+::framework\+::ruleset\+::\+Rule\+Set\+Manager@{com\+::github\+::aites\+::framework\+::ruleset\+::\+Rule\+Set\+Manager}!rule\+Set\+Head@{rule\+Set\+Head}}
+\index{rule\+Set\+Head@{rule\+Set\+Head}!com\+::github\+::aites\+::framework\+::ruleset\+::\+Rule\+Set\+Manager@{com\+::github\+::aites\+::framework\+::ruleset\+::\+Rule\+Set\+Manager}}
+\subsubsection{\texorpdfstring{rule\+Set\+Head}{ruleSetHead}}
+{\footnotesize\ttfamily String com.\+github.\+aites.\+framework.\+ruleset.\+Rule\+Set\+Manager.\+rule\+Set\+Head\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Rule\+Set\+Manager.\+java 파일의 23 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{classcom_1_1github_1_1aites_1_1framework_1_1ruleset_1_1_rule_set_manager_aeb9d61ae7f558514e41f5ed18b00a56e}\label{classcom_1_1github_1_1aites_1_1framework_1_1ruleset_1_1_rule_set_manager_aeb9d61ae7f558514e41f5ed18b00a56e}} 
+\index{com\+::github\+::aites\+::framework\+::ruleset\+::\+Rule\+Set\+Manager@{com\+::github\+::aites\+::framework\+::ruleset\+::\+Rule\+Set\+Manager}!rule\+Set\+Name@{rule\+Set\+Name}}
+\index{rule\+Set\+Name@{rule\+Set\+Name}!com\+::github\+::aites\+::framework\+::ruleset\+::\+Rule\+Set\+Manager@{com\+::github\+::aites\+::framework\+::ruleset\+::\+Rule\+Set\+Manager}}
+\subsubsection{\texorpdfstring{rule\+Set\+Name}{ruleSetName}}
+{\footnotesize\ttfamily String com.\+github.\+aites.\+framework.\+ruleset.\+Rule\+Set\+Manager.\+rule\+Set\+Name\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Rule\+Set\+Manager.\+java 파일의 18 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{classcom_1_1github_1_1aites_1_1framework_1_1ruleset_1_1_rule_set_manager_a6696dfa261a4ccc23236373f8d33b316}\label{classcom_1_1github_1_1aites_1_1framework_1_1ruleset_1_1_rule_set_manager_a6696dfa261a4ccc23236373f8d33b316}} 
+\index{com\+::github\+::aites\+::framework\+::ruleset\+::\+Rule\+Set\+Manager@{com\+::github\+::aites\+::framework\+::ruleset\+::\+Rule\+Set\+Manager}!rule\+Set\+Tail@{rule\+Set\+Tail}}
+\index{rule\+Set\+Tail@{rule\+Set\+Tail}!com\+::github\+::aites\+::framework\+::ruleset\+::\+Rule\+Set\+Manager@{com\+::github\+::aites\+::framework\+::ruleset\+::\+Rule\+Set\+Manager}}
+\subsubsection{\texorpdfstring{rule\+Set\+Tail}{ruleSetTail}}
+{\footnotesize\ttfamily final String com.\+github.\+aites.\+framework.\+ruleset.\+Rule\+Set\+Manager.\+rule\+Set\+Tail = \char`\"{})\char`\"{}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Rule\+Set\+Manager.\+java 파일의 25 번째 라인에서 정의되었습니다.
+
+
+
+이 클래스에 대한 문서화 페이지는 다음의 파일로부터 생성되었습니다.\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/srsok/\+Ai\+T\+E\+S/core/\+Ai\+T\+E\+S\+Framework/src/com/github/aites/framework/ruleset/\mbox{\hyperlink{_rule_set_manager_8java}{Rule\+Set\+Manager.\+java}}\end{DoxyCompactItemize}

@@ -1,0 +1,4 @@
+var classcom_1_1github_1_1aites_1_1framework_1_1orchestration_1_1_participants_1_1_participants_singleton =
+[
+    [ "instance", "classcom_1_1github_1_1aites_1_1framework_1_1orchestration_1_1_participants_1_1_participants_singleton.html#ac04f38a0188a8df9ea8e5e5303f3d4d9", null ]
+];

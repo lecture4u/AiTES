@@ -1,0 +1,84 @@
+\hypertarget{classcom_1_1github_1_1aites_1_1shlocalaites_1_1aitesmanager_1_1_planner_manager}{}\section{com.\+github.\+aites.\+shlocalaites.\+aitesmanager.\+Planner\+Manager 클래스 참조}
+\label{classcom_1_1github_1_1aites_1_1shlocalaites_1_1aitesmanager_1_1_planner_manager}\index{com.\+github.\+aites.\+shlocalaites.\+aitesmanager.\+Planner\+Manager@{com.\+github.\+aites.\+shlocalaites.\+aitesmanager.\+Planner\+Manager}}
+com.\+github.\+aites.\+shlocalaites.\+aitesmanager.\+Planner\+Manager에 대한 상속 다이어그램 \+: \begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classcom_1_1github_1_1aites_1_1shlocalaites_1_1aitesmanager_1_1_planner_manager}
+\end{center}
+\end{figure}
+\subsection*{Public 멤버 함수}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classcom_1_1github_1_1aites_1_1shlocalaites_1_1aitesmanager_1_1_planner_manager_a9a75c98ac376285ae905764489ec2637}{Planner\+Manager}} (String state\+Set, String collect\+Date)
+\item 
+void \mbox{\hyperlink{classcom_1_1github_1_1aites_1_1shlocalaites_1_1aitesmanager_1_1_planner_manager_a1f82642f05240aeac42eabfb3f650e26}{run}} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{상세한 설명}
+
+
+Planner\+Manager.\+java 파일의 16 번째 라인에서 정의되었습니다.
+
+
+
+\subsection{생성자 \& 소멸자 문서화}
+\mbox{\Hypertarget{classcom_1_1github_1_1aites_1_1shlocalaites_1_1aitesmanager_1_1_planner_manager_a9a75c98ac376285ae905764489ec2637}\label{classcom_1_1github_1_1aites_1_1shlocalaites_1_1aitesmanager_1_1_planner_manager_a9a75c98ac376285ae905764489ec2637}} 
+\index{com\+::github\+::aites\+::shlocalaites\+::aitesmanager\+::\+Planner\+Manager@{com\+::github\+::aites\+::shlocalaites\+::aitesmanager\+::\+Planner\+Manager}!Planner\+Manager@{Planner\+Manager}}
+\index{Planner\+Manager@{Planner\+Manager}!com\+::github\+::aites\+::shlocalaites\+::aitesmanager\+::\+Planner\+Manager@{com\+::github\+::aites\+::shlocalaites\+::aitesmanager\+::\+Planner\+Manager}}
+\subsubsection{\texorpdfstring{Planner\+Manager()}{PlannerManager()}}
+{\footnotesize\ttfamily com.\+github.\+aites.\+shlocalaites.\+aitesmanager.\+Planner\+Manager.\+Planner\+Manager (\begin{DoxyParamCaption}\item[{String}]{state\+Set,  }\item[{String}]{collect\+Date }\end{DoxyParamCaption})}
+
+
+
+Planner\+Manager.\+java 파일의 23 번째 라인에서 정의되었습니다.
+
+
+\begin{DoxyCode}
+23                                                               \{
+24         this.stateSet = stateSet;
+25         this.collectDate = collectDate;
+26     
+27     \}
+\end{DoxyCode}
+
+
+\subsection{멤버 함수 문서화}
+\mbox{\Hypertarget{classcom_1_1github_1_1aites_1_1shlocalaites_1_1aitesmanager_1_1_planner_manager_a1f82642f05240aeac42eabfb3f650e26}\label{classcom_1_1github_1_1aites_1_1shlocalaites_1_1aitesmanager_1_1_planner_manager_a1f82642f05240aeac42eabfb3f650e26}} 
+\index{com\+::github\+::aites\+::shlocalaites\+::aitesmanager\+::\+Planner\+Manager@{com\+::github\+::aites\+::shlocalaites\+::aitesmanager\+::\+Planner\+Manager}!run@{run}}
+\index{run@{run}!com\+::github\+::aites\+::shlocalaites\+::aitesmanager\+::\+Planner\+Manager@{com\+::github\+::aites\+::shlocalaites\+::aitesmanager\+::\+Planner\+Manager}}
+\subsubsection{\texorpdfstring{run()}{run()}}
+{\footnotesize\ttfamily void com.\+github.\+aites.\+shlocalaites.\+aitesmanager.\+Planner\+Manager.\+run (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Planner\+Manager.\+java 파일의 29 번째 라인에서 정의되었습니다.
+
+
+\begin{DoxyCode}
+29                       \{
+30         log.logInput(\textcolor{stringliteral}{"---------------run Planner for organization Plan Schedule---------------"});
+31         log.logInput(\textcolor{stringliteral}{"stateSet:"}+stateSet);
+32         log.logInput(\textcolor{stringliteral}{"collectDate"}+collectDate);
+33     
+34         PlanManager pm = \textcolor{keyword}{new} PlanManager(stateSet);
+35         pm.setSchedulePrefix(\textcolor{stringliteral}{"sh"});
+36         pm.planing();
+37         ArrayList<Plan> schedule = pm.getSchedule();
+38         log.logInput(\textcolor{stringliteral}{"&&&&&Write planning process to global knowledge&&&&&"});
+39         log.logInput(\textcolor{stringliteral}{"planning date:"}+collectDate);
+40         \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i=0; i<schedule.size(); i++)\{
+41             log.logInput(\textcolor{stringliteral}{"Planning for state set:"}+stateSet+\textcolor{stringliteral}{" planTime:"}+schedule.get(i).getPlanTime()+\textcolor{stringliteral}{"
+       ,action:"}+schedule.get(i).getAction()+\textcolor{stringliteral}{" ,target:"}+schedule.get(i).getTarget());
+42             DBConnector dc = \textcolor{keyword}{new} PlannerPlanWriter(schedule.get(i).getPlanTime(),schedule.get(i).getTarget(
+      ),schedule.get(i).getAction());
+43             dc.dbConnect();
+44         \}
+45         
+46     \}
+\end{DoxyCode}
+
+
+이 클래스에 대한 문서화 페이지는 다음의 파일로부터 생성되었습니다.\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/srsok/\+Ai\+T\+E\+S/\+Local\+Ai\+T\+E\+S\+Impl/\+Local\+Ai\+T\+E\+S\+Impl/src/com/github/aites/shlocalaites/aitesmanager/\mbox{\hyperlink{_planner_manager_8java}{Planner\+Manager.\+java}}\end{DoxyCompactItemize}

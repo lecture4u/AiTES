@@ -1,0 +1,187 @@
+\hypertarget{classcom_1_1github_1_1aites_1_1framework_1_1framework_1_1_local_ai_t_e_s_manager}{}\section{com.\+github.\+aites.\+framework.\+framework.\+Local\+Ai\+T\+E\+S\+Manager 클래스 참조}
+\label{classcom_1_1github_1_1aites_1_1framework_1_1framework_1_1_local_ai_t_e_s_manager}\index{com.\+github.\+aites.\+framework.\+framework.\+Local\+Ai\+T\+E\+S\+Manager@{com.\+github.\+aites.\+framework.\+framework.\+Local\+Ai\+T\+E\+S\+Manager}}
+
+
+Class run main local Ai\+T\+ES and managed feedback loops  
+
+
+\subsection*{Public 멤버 함수}
+\begin{DoxyCompactItemize}
+\item 
+abstract void \mbox{\hyperlink{classcom_1_1github_1_1aites_1_1framework_1_1framework_1_1_local_ai_t_e_s_manager_a2bc882848bd635b1a807bb1441df999b}{manage\+Ai\+T\+ES}} (String mqtt\+Message, String topic, String device\+Name)  throws Exception
+\begin{DoxyCompactList}\small\item\em Method for Managing A\+I\+T\+ES Module, String M\+Q\+T\+T\+Message, String Topic, String device\+Name Called from the Data\+Transfer class. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public 속성}
+\begin{DoxyCompactItemize}
+\item 
+Method \mbox{\hyperlink{classcom_1_1github_1_1aites_1_1framework_1_1framework_1_1_local_ai_t_e_s_manager_a90f88498d6d48bfe43e6a5d6c0eff3a4}{module}}
+\item 
+Object \mbox{\hyperlink{classcom_1_1github_1_1aites_1_1framework_1_1framework_1_1_local_ai_t_e_s_manager_ab8984b4b213b234e0e055c289cc842c5}{cls\+Instance}}
+\item 
+String \mbox{\hyperlink{classcom_1_1github_1_1aites_1_1framework_1_1framework_1_1_local_ai_t_e_s_manager_a0b3260e3179b31185fce93254a9039c8}{rule\+Name}}
+\item 
+String \mbox{\hyperlink{classcom_1_1github_1_1aites_1_1framework_1_1framework_1_1_local_ai_t_e_s_manager_a63f2cc45a25395cea15a5840d9a0fbad}{gk\+U\+RL}}
+\item 
+Array\+List$<$ String $>$ \mbox{\hyperlink{classcom_1_1github_1_1aites_1_1framework_1_1framework_1_1_local_ai_t_e_s_manager_a150010229fa99dbac302843f2801b963}{adaptive\+Action\+List}}
+\end{DoxyCompactItemize}
+\subsection*{정적 Public 속성}
+\begin{DoxyCompactItemize}
+\item 
+static String \mbox{\hyperlink{classcom_1_1github_1_1aites_1_1framework_1_1framework_1_1_local_ai_t_e_s_manager_a479caac5cbf611b89738b88e7978c615}{broker\+U\+RL}}
+\item 
+static Class \mbox{\hyperlink{classcom_1_1github_1_1aites_1_1framework_1_1framework_1_1_local_ai_t_e_s_manager_a540298711c4e1c659aaf1f4bdd90c41d}{main\+Class}}
+\item 
+static String \mbox{\hyperlink{classcom_1_1github_1_1aites_1_1framework_1_1framework_1_1_local_ai_t_e_s_manager_a8a35353b5b0725d6c560935e892b66a6}{client\+ID}}
+\item 
+static String \mbox{\hyperlink{classcom_1_1github_1_1aites_1_1framework_1_1framework_1_1_local_ai_t_e_s_manager_ab0bf73d6d36ea00b62b70e9544a0e6b4}{rule\+Set\+U\+RL}}
+\item 
+static String \mbox{\hyperlink{classcom_1_1github_1_1aites_1_1framework_1_1framework_1_1_local_ai_t_e_s_manager_ab732a58aeff4bc92c2385f98a417fe3a}{dymodule\+Folder}}
+\end{DoxyCompactItemize}
+
+
+\subsection{상세한 설명}
+Class run main local Ai\+T\+ES and managed feedback loops 
+
+\begin{DoxyAuthor}{작성자}
+Jung\+Hyun An 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{버전}
+3.\+0.\+1 
+\end{DoxyVersion}
+
+
+Local\+Ai\+T\+E\+S\+Manager.\+java 파일의 10 번째 라인에서 정의되었습니다.
+
+
+
+\subsection{멤버 함수 문서화}
+\mbox{\Hypertarget{classcom_1_1github_1_1aites_1_1framework_1_1framework_1_1_local_ai_t_e_s_manager_a2bc882848bd635b1a807bb1441df999b}\label{classcom_1_1github_1_1aites_1_1framework_1_1framework_1_1_local_ai_t_e_s_manager_a2bc882848bd635b1a807bb1441df999b}} 
+\index{com\+::github\+::aites\+::framework\+::framework\+::\+Local\+Ai\+T\+E\+S\+Manager@{com\+::github\+::aites\+::framework\+::framework\+::\+Local\+Ai\+T\+E\+S\+Manager}!manage\+Ai\+T\+ES@{manage\+Ai\+T\+ES}}
+\index{manage\+Ai\+T\+ES@{manage\+Ai\+T\+ES}!com\+::github\+::aites\+::framework\+::framework\+::\+Local\+Ai\+T\+E\+S\+Manager@{com\+::github\+::aites\+::framework\+::framework\+::\+Local\+Ai\+T\+E\+S\+Manager}}
+\subsubsection{\texorpdfstring{manage\+Ai\+T\+E\+S()}{manageAiTES()}}
+{\footnotesize\ttfamily abstract void com.\+github.\+aites.\+framework.\+framework.\+Local\+Ai\+T\+E\+S\+Manager.\+manage\+Ai\+T\+ES (\begin{DoxyParamCaption}\item[{String}]{mqtt\+Message,  }\item[{String}]{topic,  }\item[{String}]{device\+Name }\end{DoxyParamCaption}) throws Exception\hspace{0.3cm}{\ttfamily [abstract]}}
+
+
+
+Method for Managing A\+I\+T\+ES Module, String M\+Q\+T\+T\+Message, String Topic, String device\+Name Called from the Data\+Transfer class. 
+
+
+\begin{DoxyParams}{매개변수}
+{\em mqtt\+Message,topic,device\+Name} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{반환값}
+none 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{예외}
+{\em Class\+Not\+Found\+Exception} & failed class load from Data\+Transfer. \\
+\hline
+\end{DoxyExceptions}
+
+
+\subsection{멤버 데이터 문서화}
+\mbox{\Hypertarget{classcom_1_1github_1_1aites_1_1framework_1_1framework_1_1_local_ai_t_e_s_manager_a150010229fa99dbac302843f2801b963}\label{classcom_1_1github_1_1aites_1_1framework_1_1framework_1_1_local_ai_t_e_s_manager_a150010229fa99dbac302843f2801b963}} 
+\index{com\+::github\+::aites\+::framework\+::framework\+::\+Local\+Ai\+T\+E\+S\+Manager@{com\+::github\+::aites\+::framework\+::framework\+::\+Local\+Ai\+T\+E\+S\+Manager}!adaptive\+Action\+List@{adaptive\+Action\+List}}
+\index{adaptive\+Action\+List@{adaptive\+Action\+List}!com\+::github\+::aites\+::framework\+::framework\+::\+Local\+Ai\+T\+E\+S\+Manager@{com\+::github\+::aites\+::framework\+::framework\+::\+Local\+Ai\+T\+E\+S\+Manager}}
+\subsubsection{\texorpdfstring{adaptive\+Action\+List}{adaptiveActionList}}
+{\footnotesize\ttfamily Array\+List$<$String$>$ com.\+github.\+aites.\+framework.\+framework.\+Local\+Ai\+T\+E\+S\+Manager.\+adaptive\+Action\+List}
+
+
+
+Local\+Ai\+T\+E\+S\+Manager.\+java 파일의 18 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{classcom_1_1github_1_1aites_1_1framework_1_1framework_1_1_local_ai_t_e_s_manager_a479caac5cbf611b89738b88e7978c615}\label{classcom_1_1github_1_1aites_1_1framework_1_1framework_1_1_local_ai_t_e_s_manager_a479caac5cbf611b89738b88e7978c615}} 
+\index{com\+::github\+::aites\+::framework\+::framework\+::\+Local\+Ai\+T\+E\+S\+Manager@{com\+::github\+::aites\+::framework\+::framework\+::\+Local\+Ai\+T\+E\+S\+Manager}!broker\+U\+RL@{broker\+U\+RL}}
+\index{broker\+U\+RL@{broker\+U\+RL}!com\+::github\+::aites\+::framework\+::framework\+::\+Local\+Ai\+T\+E\+S\+Manager@{com\+::github\+::aites\+::framework\+::framework\+::\+Local\+Ai\+T\+E\+S\+Manager}}
+\subsubsection{\texorpdfstring{broker\+U\+RL}{brokerURL}}
+{\footnotesize\ttfamily String com.\+github.\+aites.\+framework.\+framework.\+Local\+Ai\+T\+E\+S\+Manager.\+broker\+U\+RL\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Local\+Ai\+T\+E\+S\+Manager.\+java 파일의 11 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{classcom_1_1github_1_1aites_1_1framework_1_1framework_1_1_local_ai_t_e_s_manager_a8a35353b5b0725d6c560935e892b66a6}\label{classcom_1_1github_1_1aites_1_1framework_1_1framework_1_1_local_ai_t_e_s_manager_a8a35353b5b0725d6c560935e892b66a6}} 
+\index{com\+::github\+::aites\+::framework\+::framework\+::\+Local\+Ai\+T\+E\+S\+Manager@{com\+::github\+::aites\+::framework\+::framework\+::\+Local\+Ai\+T\+E\+S\+Manager}!client\+ID@{client\+ID}}
+\index{client\+ID@{client\+ID}!com\+::github\+::aites\+::framework\+::framework\+::\+Local\+Ai\+T\+E\+S\+Manager@{com\+::github\+::aites\+::framework\+::framework\+::\+Local\+Ai\+T\+E\+S\+Manager}}
+\subsubsection{\texorpdfstring{client\+ID}{clientID}}
+{\footnotesize\ttfamily String com.\+github.\+aites.\+framework.\+framework.\+Local\+Ai\+T\+E\+S\+Manager.\+client\+ID\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Local\+Ai\+T\+E\+S\+Manager.\+java 파일의 16 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{classcom_1_1github_1_1aites_1_1framework_1_1framework_1_1_local_ai_t_e_s_manager_ab8984b4b213b234e0e055c289cc842c5}\label{classcom_1_1github_1_1aites_1_1framework_1_1framework_1_1_local_ai_t_e_s_manager_ab8984b4b213b234e0e055c289cc842c5}} 
+\index{com\+::github\+::aites\+::framework\+::framework\+::\+Local\+Ai\+T\+E\+S\+Manager@{com\+::github\+::aites\+::framework\+::framework\+::\+Local\+Ai\+T\+E\+S\+Manager}!cls\+Instance@{cls\+Instance}}
+\index{cls\+Instance@{cls\+Instance}!com\+::github\+::aites\+::framework\+::framework\+::\+Local\+Ai\+T\+E\+S\+Manager@{com\+::github\+::aites\+::framework\+::framework\+::\+Local\+Ai\+T\+E\+S\+Manager}}
+\subsubsection{\texorpdfstring{cls\+Instance}{clsInstance}}
+{\footnotesize\ttfamily Object com.\+github.\+aites.\+framework.\+framework.\+Local\+Ai\+T\+E\+S\+Manager.\+cls\+Instance}
+
+
+
+Local\+Ai\+T\+E\+S\+Manager.\+java 파일의 14 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{classcom_1_1github_1_1aites_1_1framework_1_1framework_1_1_local_ai_t_e_s_manager_ab732a58aeff4bc92c2385f98a417fe3a}\label{classcom_1_1github_1_1aites_1_1framework_1_1framework_1_1_local_ai_t_e_s_manager_ab732a58aeff4bc92c2385f98a417fe3a}} 
+\index{com\+::github\+::aites\+::framework\+::framework\+::\+Local\+Ai\+T\+E\+S\+Manager@{com\+::github\+::aites\+::framework\+::framework\+::\+Local\+Ai\+T\+E\+S\+Manager}!dymodule\+Folder@{dymodule\+Folder}}
+\index{dymodule\+Folder@{dymodule\+Folder}!com\+::github\+::aites\+::framework\+::framework\+::\+Local\+Ai\+T\+E\+S\+Manager@{com\+::github\+::aites\+::framework\+::framework\+::\+Local\+Ai\+T\+E\+S\+Manager}}
+\subsubsection{\texorpdfstring{dymodule\+Folder}{dymoduleFolder}}
+{\footnotesize\ttfamily String com.\+github.\+aites.\+framework.\+framework.\+Local\+Ai\+T\+E\+S\+Manager.\+dymodule\+Folder\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Local\+Ai\+T\+E\+S\+Manager.\+java 파일의 20 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{classcom_1_1github_1_1aites_1_1framework_1_1framework_1_1_local_ai_t_e_s_manager_a63f2cc45a25395cea15a5840d9a0fbad}\label{classcom_1_1github_1_1aites_1_1framework_1_1framework_1_1_local_ai_t_e_s_manager_a63f2cc45a25395cea15a5840d9a0fbad}} 
+\index{com\+::github\+::aites\+::framework\+::framework\+::\+Local\+Ai\+T\+E\+S\+Manager@{com\+::github\+::aites\+::framework\+::framework\+::\+Local\+Ai\+T\+E\+S\+Manager}!gk\+U\+RL@{gk\+U\+RL}}
+\index{gk\+U\+RL@{gk\+U\+RL}!com\+::github\+::aites\+::framework\+::framework\+::\+Local\+Ai\+T\+E\+S\+Manager@{com\+::github\+::aites\+::framework\+::framework\+::\+Local\+Ai\+T\+E\+S\+Manager}}
+\subsubsection{\texorpdfstring{gk\+U\+RL}{gkURL}}
+{\footnotesize\ttfamily String com.\+github.\+aites.\+framework.\+framework.\+Local\+Ai\+T\+E\+S\+Manager.\+gk\+U\+RL}
+
+
+
+Local\+Ai\+T\+E\+S\+Manager.\+java 파일의 17 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{classcom_1_1github_1_1aites_1_1framework_1_1framework_1_1_local_ai_t_e_s_manager_a540298711c4e1c659aaf1f4bdd90c41d}\label{classcom_1_1github_1_1aites_1_1framework_1_1framework_1_1_local_ai_t_e_s_manager_a540298711c4e1c659aaf1f4bdd90c41d}} 
+\index{com\+::github\+::aites\+::framework\+::framework\+::\+Local\+Ai\+T\+E\+S\+Manager@{com\+::github\+::aites\+::framework\+::framework\+::\+Local\+Ai\+T\+E\+S\+Manager}!main\+Class@{main\+Class}}
+\index{main\+Class@{main\+Class}!com\+::github\+::aites\+::framework\+::framework\+::\+Local\+Ai\+T\+E\+S\+Manager@{com\+::github\+::aites\+::framework\+::framework\+::\+Local\+Ai\+T\+E\+S\+Manager}}
+\subsubsection{\texorpdfstring{main\+Class}{mainClass}}
+{\footnotesize\ttfamily Class com.\+github.\+aites.\+framework.\+framework.\+Local\+Ai\+T\+E\+S\+Manager.\+main\+Class\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Local\+Ai\+T\+E\+S\+Manager.\+java 파일의 12 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{classcom_1_1github_1_1aites_1_1framework_1_1framework_1_1_local_ai_t_e_s_manager_a90f88498d6d48bfe43e6a5d6c0eff3a4}\label{classcom_1_1github_1_1aites_1_1framework_1_1framework_1_1_local_ai_t_e_s_manager_a90f88498d6d48bfe43e6a5d6c0eff3a4}} 
+\index{com\+::github\+::aites\+::framework\+::framework\+::\+Local\+Ai\+T\+E\+S\+Manager@{com\+::github\+::aites\+::framework\+::framework\+::\+Local\+Ai\+T\+E\+S\+Manager}!module@{module}}
+\index{module@{module}!com\+::github\+::aites\+::framework\+::framework\+::\+Local\+Ai\+T\+E\+S\+Manager@{com\+::github\+::aites\+::framework\+::framework\+::\+Local\+Ai\+T\+E\+S\+Manager}}
+\subsubsection{\texorpdfstring{module}{module}}
+{\footnotesize\ttfamily Method com.\+github.\+aites.\+framework.\+framework.\+Local\+Ai\+T\+E\+S\+Manager.\+module}
+
+
+
+Local\+Ai\+T\+E\+S\+Manager.\+java 파일의 13 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{classcom_1_1github_1_1aites_1_1framework_1_1framework_1_1_local_ai_t_e_s_manager_a0b3260e3179b31185fce93254a9039c8}\label{classcom_1_1github_1_1aites_1_1framework_1_1framework_1_1_local_ai_t_e_s_manager_a0b3260e3179b31185fce93254a9039c8}} 
+\index{com\+::github\+::aites\+::framework\+::framework\+::\+Local\+Ai\+T\+E\+S\+Manager@{com\+::github\+::aites\+::framework\+::framework\+::\+Local\+Ai\+T\+E\+S\+Manager}!rule\+Name@{rule\+Name}}
+\index{rule\+Name@{rule\+Name}!com\+::github\+::aites\+::framework\+::framework\+::\+Local\+Ai\+T\+E\+S\+Manager@{com\+::github\+::aites\+::framework\+::framework\+::\+Local\+Ai\+T\+E\+S\+Manager}}
+\subsubsection{\texorpdfstring{rule\+Name}{ruleName}}
+{\footnotesize\ttfamily String com.\+github.\+aites.\+framework.\+framework.\+Local\+Ai\+T\+E\+S\+Manager.\+rule\+Name}
+
+
+
+Local\+Ai\+T\+E\+S\+Manager.\+java 파일의 15 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{classcom_1_1github_1_1aites_1_1framework_1_1framework_1_1_local_ai_t_e_s_manager_ab0bf73d6d36ea00b62b70e9544a0e6b4}\label{classcom_1_1github_1_1aites_1_1framework_1_1framework_1_1_local_ai_t_e_s_manager_ab0bf73d6d36ea00b62b70e9544a0e6b4}} 
+\index{com\+::github\+::aites\+::framework\+::framework\+::\+Local\+Ai\+T\+E\+S\+Manager@{com\+::github\+::aites\+::framework\+::framework\+::\+Local\+Ai\+T\+E\+S\+Manager}!rule\+Set\+U\+RL@{rule\+Set\+U\+RL}}
+\index{rule\+Set\+U\+RL@{rule\+Set\+U\+RL}!com\+::github\+::aites\+::framework\+::framework\+::\+Local\+Ai\+T\+E\+S\+Manager@{com\+::github\+::aites\+::framework\+::framework\+::\+Local\+Ai\+T\+E\+S\+Manager}}
+\subsubsection{\texorpdfstring{rule\+Set\+U\+RL}{ruleSetURL}}
+{\footnotesize\ttfamily String com.\+github.\+aites.\+framework.\+framework.\+Local\+Ai\+T\+E\+S\+Manager.\+rule\+Set\+U\+RL\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Local\+Ai\+T\+E\+S\+Manager.\+java 파일의 19 번째 라인에서 정의되었습니다.
+
+
+
+이 클래스에 대한 문서화 페이지는 다음의 파일로부터 생성되었습니다.\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/srsok/\+Ai\+T\+E\+S/core/\+Ai\+T\+E\+S\+Framework/src/com/github/aites/framework/framework/\mbox{\hyperlink{_local_ai_t_e_s_manager_8java}{Local\+Ai\+T\+E\+S\+Manager.\+java}}\end{DoxyCompactItemize}

@@ -43,22 +43,6 @@ public class PlannerManager extends Manager{
 			dc.dbConnect();
 		}
 		
-		
-		/*
-		pm = new SHPlanManager(stateSet);
-		planList = pm.managePlan();
-		
-		
-		for(int i=0; i<planList.size(); i++){
-			Plan plan = planList.get(i);
-			plan.printPlan();
-			DBConnector dc = new PlannerPlanWriter(plan.getPlanTime(),plan.getTarget(),plan.getAction());
-			dc.dbConnect();
-		
-		}*/
-	
-
-		
 	}
 
 }

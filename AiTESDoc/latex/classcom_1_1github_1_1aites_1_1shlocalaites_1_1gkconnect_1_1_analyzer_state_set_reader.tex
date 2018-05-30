@@ -1,0 +1,127 @@
+\hypertarget{classcom_1_1github_1_1aites_1_1shlocalaites_1_1gkconnect_1_1_analyzer_state_set_reader}{}\section{com.\+github.\+aites.\+shlocalaites.\+gkconnect.\+Analyzer\+State\+Set\+Reader 클래스 참조}
+\label{classcom_1_1github_1_1aites_1_1shlocalaites_1_1gkconnect_1_1_analyzer_state_set_reader}\index{com.\+github.\+aites.\+shlocalaites.\+gkconnect.\+Analyzer\+State\+Set\+Reader@{com.\+github.\+aites.\+shlocalaites.\+gkconnect.\+Analyzer\+State\+Set\+Reader}}
+com.\+github.\+aites.\+shlocalaites.\+gkconnect.\+Analyzer\+State\+Set\+Reader에 대한 상속 다이어그램 \+: \begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classcom_1_1github_1_1aites_1_1shlocalaites_1_1gkconnect_1_1_analyzer_state_set_reader}
+\end{center}
+\end{figure}
+\subsection*{Public 멤버 함수}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classcom_1_1github_1_1aites_1_1shlocalaites_1_1gkconnect_1_1_analyzer_state_set_reader_a3438390e246978cc7c618d41be8b62d5}{execute\+Setting}} ()  throws S\+Q\+L\+Exception 
+\item 
+String \mbox{\hyperlink{classcom_1_1github_1_1aites_1_1shlocalaites_1_1gkconnect_1_1_analyzer_state_set_reader_a50fcbaa6fed19b331c64c4af53ba72ce}{set\+Query}} ()
+\item 
+String \mbox{\hyperlink{classcom_1_1github_1_1aites_1_1shlocalaites_1_1gkconnect_1_1_analyzer_state_set_reader_a1269fceb95b654e22b4eda77039d47d6}{get\+State\+Set}} ()
+\item 
+String \mbox{\hyperlink{classcom_1_1github_1_1aites_1_1shlocalaites_1_1gkconnect_1_1_analyzer_state_set_reader_a90abb13834ad933cc09a1c89ecafdf66}{get\+Collect\+Date}} ()
+\item 
+String \mbox{\hyperlink{classcom_1_1github_1_1aites_1_1shlocalaites_1_1gkconnect_1_1_analyzer_state_set_reader_ae974cbeca920a531e20aba6e7e6963e7}{get\+Pneed}} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{상세한 설명}
+
+
+Analyzer\+State\+Set\+Reader.\+java 파일의 9 번째 라인에서 정의되었습니다.
+
+
+
+\subsection{멤버 함수 문서화}
+\mbox{\Hypertarget{classcom_1_1github_1_1aites_1_1shlocalaites_1_1gkconnect_1_1_analyzer_state_set_reader_a3438390e246978cc7c618d41be8b62d5}\label{classcom_1_1github_1_1aites_1_1shlocalaites_1_1gkconnect_1_1_analyzer_state_set_reader_a3438390e246978cc7c618d41be8b62d5}} 
+\index{com\+::github\+::aites\+::shlocalaites\+::gkconnect\+::\+Analyzer\+State\+Set\+Reader@{com\+::github\+::aites\+::shlocalaites\+::gkconnect\+::\+Analyzer\+State\+Set\+Reader}!execute\+Setting@{execute\+Setting}}
+\index{execute\+Setting@{execute\+Setting}!com\+::github\+::aites\+::shlocalaites\+::gkconnect\+::\+Analyzer\+State\+Set\+Reader@{com\+::github\+::aites\+::shlocalaites\+::gkconnect\+::\+Analyzer\+State\+Set\+Reader}}
+\subsubsection{\texorpdfstring{execute\+Setting()}{executeSetting()}}
+{\footnotesize\ttfamily void com.\+github.\+aites.\+shlocalaites.\+gkconnect.\+Analyzer\+State\+Set\+Reader.\+execute\+Setting (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) throws S\+Q\+L\+Exception}
+
+
+
+Analyzer\+State\+Set\+Reader.\+java 파일의 15 번째 라인에서 정의되었습니다.
+
+
+\begin{DoxyCode}
+15                                                      \{
+16         \textcolor{comment}{// TODO Auto-generated method stub}
+17         log.logInput(\textcolor{stringliteral}{"read Analyzer stateset need plaining"});
+18         rs = ps.executeQuery();
+19         
+20         \textcolor{keywordflow}{while}(rs.next())\{                                
+21             stateSet = rs.getString(\textcolor{stringliteral}{"shlocalanalyzer\_stateset"});
+22             collectDate = rs.getString(\textcolor{stringliteral}{"shlocalanalyzer\_analyzedate"});
+23             pneed = rs.getString(\textcolor{stringliteral}{"shlocalanalyzer\_pneed"});
+24             log.logInput(\textcolor{stringliteral}{"stateSet:"}+stateSet+\textcolor{stringliteral}{",collectDate:"}+collectDate+\textcolor{stringliteral}{",pneed:"}+pneed);
+25          \}  
+26     \}
+\end{DoxyCode}
+\mbox{\Hypertarget{classcom_1_1github_1_1aites_1_1shlocalaites_1_1gkconnect_1_1_analyzer_state_set_reader_a90abb13834ad933cc09a1c89ecafdf66}\label{classcom_1_1github_1_1aites_1_1shlocalaites_1_1gkconnect_1_1_analyzer_state_set_reader_a90abb13834ad933cc09a1c89ecafdf66}} 
+\index{com\+::github\+::aites\+::shlocalaites\+::gkconnect\+::\+Analyzer\+State\+Set\+Reader@{com\+::github\+::aites\+::shlocalaites\+::gkconnect\+::\+Analyzer\+State\+Set\+Reader}!get\+Collect\+Date@{get\+Collect\+Date}}
+\index{get\+Collect\+Date@{get\+Collect\+Date}!com\+::github\+::aites\+::shlocalaites\+::gkconnect\+::\+Analyzer\+State\+Set\+Reader@{com\+::github\+::aites\+::shlocalaites\+::gkconnect\+::\+Analyzer\+State\+Set\+Reader}}
+\subsubsection{\texorpdfstring{get\+Collect\+Date()}{getCollectDate()}}
+{\footnotesize\ttfamily String com.\+github.\+aites.\+shlocalaites.\+gkconnect.\+Analyzer\+State\+Set\+Reader.\+get\+Collect\+Date (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Analyzer\+State\+Set\+Reader.\+java 파일의 36 번째 라인에서 정의되었습니다.
+
+
+\begin{DoxyCode}
+36                                   \{
+37         \textcolor{keywordflow}{return} collectDate;
+38     \}
+\end{DoxyCode}
+\mbox{\Hypertarget{classcom_1_1github_1_1aites_1_1shlocalaites_1_1gkconnect_1_1_analyzer_state_set_reader_ae974cbeca920a531e20aba6e7e6963e7}\label{classcom_1_1github_1_1aites_1_1shlocalaites_1_1gkconnect_1_1_analyzer_state_set_reader_ae974cbeca920a531e20aba6e7e6963e7}} 
+\index{com\+::github\+::aites\+::shlocalaites\+::gkconnect\+::\+Analyzer\+State\+Set\+Reader@{com\+::github\+::aites\+::shlocalaites\+::gkconnect\+::\+Analyzer\+State\+Set\+Reader}!get\+Pneed@{get\+Pneed}}
+\index{get\+Pneed@{get\+Pneed}!com\+::github\+::aites\+::shlocalaites\+::gkconnect\+::\+Analyzer\+State\+Set\+Reader@{com\+::github\+::aites\+::shlocalaites\+::gkconnect\+::\+Analyzer\+State\+Set\+Reader}}
+\subsubsection{\texorpdfstring{get\+Pneed()}{getPneed()}}
+{\footnotesize\ttfamily String com.\+github.\+aites.\+shlocalaites.\+gkconnect.\+Analyzer\+State\+Set\+Reader.\+get\+Pneed (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Analyzer\+State\+Set\+Reader.\+java 파일의 39 번째 라인에서 정의되었습니다.
+
+
+\begin{DoxyCode}
+39                             \{
+40         \textcolor{keywordflow}{return} pneed;
+41     \}
+\end{DoxyCode}
+\mbox{\Hypertarget{classcom_1_1github_1_1aites_1_1shlocalaites_1_1gkconnect_1_1_analyzer_state_set_reader_a1269fceb95b654e22b4eda77039d47d6}\label{classcom_1_1github_1_1aites_1_1shlocalaites_1_1gkconnect_1_1_analyzer_state_set_reader_a1269fceb95b654e22b4eda77039d47d6}} 
+\index{com\+::github\+::aites\+::shlocalaites\+::gkconnect\+::\+Analyzer\+State\+Set\+Reader@{com\+::github\+::aites\+::shlocalaites\+::gkconnect\+::\+Analyzer\+State\+Set\+Reader}!get\+State\+Set@{get\+State\+Set}}
+\index{get\+State\+Set@{get\+State\+Set}!com\+::github\+::aites\+::shlocalaites\+::gkconnect\+::\+Analyzer\+State\+Set\+Reader@{com\+::github\+::aites\+::shlocalaites\+::gkconnect\+::\+Analyzer\+State\+Set\+Reader}}
+\subsubsection{\texorpdfstring{get\+State\+Set()}{getStateSet()}}
+{\footnotesize\ttfamily String com.\+github.\+aites.\+shlocalaites.\+gkconnect.\+Analyzer\+State\+Set\+Reader.\+get\+State\+Set (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Analyzer\+State\+Set\+Reader.\+java 파일의 33 번째 라인에서 정의되었습니다.
+
+
+\begin{DoxyCode}
+33                                \{
+34         \textcolor{keywordflow}{return} stateSet;
+35     \}
+\end{DoxyCode}
+\mbox{\Hypertarget{classcom_1_1github_1_1aites_1_1shlocalaites_1_1gkconnect_1_1_analyzer_state_set_reader_a50fcbaa6fed19b331c64c4af53ba72ce}\label{classcom_1_1github_1_1aites_1_1shlocalaites_1_1gkconnect_1_1_analyzer_state_set_reader_a50fcbaa6fed19b331c64c4af53ba72ce}} 
+\index{com\+::github\+::aites\+::shlocalaites\+::gkconnect\+::\+Analyzer\+State\+Set\+Reader@{com\+::github\+::aites\+::shlocalaites\+::gkconnect\+::\+Analyzer\+State\+Set\+Reader}!set\+Query@{set\+Query}}
+\index{set\+Query@{set\+Query}!com\+::github\+::aites\+::shlocalaites\+::gkconnect\+::\+Analyzer\+State\+Set\+Reader@{com\+::github\+::aites\+::shlocalaites\+::gkconnect\+::\+Analyzer\+State\+Set\+Reader}}
+\subsubsection{\texorpdfstring{set\+Query()}{setQuery()}}
+{\footnotesize\ttfamily String com.\+github.\+aites.\+shlocalaites.\+gkconnect.\+Analyzer\+State\+Set\+Reader.\+set\+Query (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Analyzer\+State\+Set\+Reader.\+java 파일의 29 번째 라인에서 정의되었습니다.
+
+
+\begin{DoxyCode}
+29                              \{
+30         String query = \textcolor{stringliteral}{"SELECT shlocalanalyzer\_analyzedate, shlocalanalyzer\_stateset, shlocalanalyzer\_pneed
+       from shlocalanalyzer order by shlocalanalyzer\_id DESC limit 1  "};
+31         \textcolor{keywordflow}{return} query;
+32     \}
+\end{DoxyCode}
+
+
+이 클래스에 대한 문서화 페이지는 다음의 파일로부터 생성되었습니다.\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/srsok/\+Ai\+T\+E\+S/\+Local\+Ai\+T\+E\+S\+Impl/\+Local\+Ai\+T\+E\+S\+Impl/src/com/github/aites/shlocalaites/gkconnect/\mbox{\hyperlink{_analyzer_state_set_reader_8java}{Analyzer\+State\+Set\+Reader.\+java}}\end{DoxyCompactItemize}

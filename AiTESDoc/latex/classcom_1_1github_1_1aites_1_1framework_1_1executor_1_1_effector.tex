@@ -1,0 +1,247 @@
+\hypertarget{classcom_1_1github_1_1aites_1_1framework_1_1executor_1_1_effector}{}\section{com.\+github.\+aites.\+framework.\+executor.\+Effector 클래스 참조}
+\label{classcom_1_1github_1_1aites_1_1framework_1_1executor_1_1_effector}\index{com.\+github.\+aites.\+framework.\+executor.\+Effector@{com.\+github.\+aites.\+framework.\+executor.\+Effector}}
+
+
+Class for effect taget environment find module file, generate publish topic, effect.\+s  
+
+
+\subsection*{Public 멤버 함수}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classcom_1_1github_1_1aites_1_1framework_1_1executor_1_1_effector_ad2c4c0921965aa0e0aa450e033b25706}{Effector}} (String \mbox{\hyperlink{classcom_1_1github_1_1aites_1_1framework_1_1executor_1_1_effector_abd3712d877c8ff7227be30b6503f2475}{module\+Folder}}, String pub\+Topic)
+\item 
+void \mbox{\hyperlink{classcom_1_1github_1_1aites_1_1framework_1_1executor_1_1_effector_a2d1c773b1c83789a3ffb01cd32bfb276}{effect\+Io\+Tgateway}} (String target, String action)
+\begin{DoxyCompactList}\small\item\em Method for effect module\+File find\+Module\+About\+Action, make\+Topic; publish to M\+Q\+TT broker server pub\+Topic. \end{DoxyCompactList}\item 
+String \mbox{\hyperlink{classcom_1_1github_1_1aites_1_1framework_1_1executor_1_1_effector_a32701bc6b0551ff24afdb6a23f759647}{get\+Topic}} ()
+\item 
+String \mbox{\hyperlink{classcom_1_1github_1_1aites_1_1framework_1_1executor_1_1_effector_adc2b5fde4f917d55b836591376a75e86}{get\+File\+Name}} ()
+\end{DoxyCompactItemize}
+\subsection*{Private 멤버 함수}
+\begin{DoxyCompactItemize}
+\item 
+File \mbox{\hyperlink{classcom_1_1github_1_1aites_1_1framework_1_1executor_1_1_effector_a96119f173f888fdde3f37a3557d6f6ce}{find\+Module\+About\+Action}} (String action)
+\begin{DoxyCompactList}\small\item\em Method for find jar file using action name jar file name is File\+U\+R\+L/action.\+jar \end{DoxyCompactList}\item 
+String \mbox{\hyperlink{classcom_1_1github_1_1aites_1_1framework_1_1executor_1_1_effector_aa41e495f98690fcbed0bd8aded38d52a}{make\+Topic}} (String target, String action)
+\begin{DoxyCompactList}\small\item\em Method for combine pubtopic Io\+Tgateway ~\newline
+Later, it needs to be developed for global use. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private 속성}
+\begin{DoxyCompactItemize}
+\item 
+String \mbox{\hyperlink{classcom_1_1github_1_1aites_1_1framework_1_1executor_1_1_effector_abd3712d877c8ff7227be30b6503f2475}{module\+Folder}}
+\item 
+String \mbox{\hyperlink{classcom_1_1github_1_1aites_1_1framework_1_1executor_1_1_effector_a8df1631ecb6613a1e323f131369cd0b0}{file\+Name}}
+\item 
+String \mbox{\hyperlink{classcom_1_1github_1_1aites_1_1framework_1_1executor_1_1_effector_ada537f3c9fe303eb9503821843b08b30}{afill\+Pubtopic}}
+\end{DoxyCompactItemize}
+
+
+\subsection{상세한 설명}
+Class for effect taget environment find module file, generate publish topic, effect.\+s 
+
+\begin{DoxyAuthor}{작성자}
+Jung\+Hyun An 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{버전}
+3.\+0.\+1 
+\end{DoxyVersion}
+
+
+Effector.\+java 파일의 15 번째 라인에서 정의되었습니다.
+
+
+
+\subsection{생성자 \& 소멸자 문서화}
+\mbox{\Hypertarget{classcom_1_1github_1_1aites_1_1framework_1_1executor_1_1_effector_ad2c4c0921965aa0e0aa450e033b25706}\label{classcom_1_1github_1_1aites_1_1framework_1_1executor_1_1_effector_ad2c4c0921965aa0e0aa450e033b25706}} 
+\index{com\+::github\+::aites\+::framework\+::executor\+::\+Effector@{com\+::github\+::aites\+::framework\+::executor\+::\+Effector}!Effector@{Effector}}
+\index{Effector@{Effector}!com\+::github\+::aites\+::framework\+::executor\+::\+Effector@{com\+::github\+::aites\+::framework\+::executor\+::\+Effector}}
+\subsubsection{\texorpdfstring{Effector()}{Effector()}}
+{\footnotesize\ttfamily com.\+github.\+aites.\+framework.\+executor.\+Effector.\+Effector (\begin{DoxyParamCaption}\item[{String}]{module\+Folder,  }\item[{String}]{pub\+Topic }\end{DoxyParamCaption})}
+
+
+
+Effector.\+java 파일의 22 번째 라인에서 정의되었습니다.
+
+
+\begin{DoxyCode}
+22                                                          \{
+23         \textcolor{comment}{//ModuleForder명}
+24         this.\mbox{\hyperlink{classcom_1_1github_1_1aites_1_1framework_1_1executor_1_1_effector_abd3712d877c8ff7227be30b6503f2475}{moduleFolder}} = \mbox{\hyperlink{classcom_1_1github_1_1aites_1_1framework_1_1executor_1_1_effector_abd3712d877c8ff7227be30b6503f2475}{moduleFolder}};
+25         \mbox{\hyperlink{classcom_1_1github_1_1aites_1_1framework_1_1executor_1_1_effector_ada537f3c9fe303eb9503821843b08b30}{afillPubtopic}} = pubTopic;
+26     \}
+\end{DoxyCode}
+
+
+\subsection{멤버 함수 문서화}
+\mbox{\Hypertarget{classcom_1_1github_1_1aites_1_1framework_1_1executor_1_1_effector_a2d1c773b1c83789a3ffb01cd32bfb276}\label{classcom_1_1github_1_1aites_1_1framework_1_1executor_1_1_effector_a2d1c773b1c83789a3ffb01cd32bfb276}} 
+\index{com\+::github\+::aites\+::framework\+::executor\+::\+Effector@{com\+::github\+::aites\+::framework\+::executor\+::\+Effector}!effect\+Io\+Tgateway@{effect\+Io\+Tgateway}}
+\index{effect\+Io\+Tgateway@{effect\+Io\+Tgateway}!com\+::github\+::aites\+::framework\+::executor\+::\+Effector@{com\+::github\+::aites\+::framework\+::executor\+::\+Effector}}
+\subsubsection{\texorpdfstring{effect\+Io\+Tgateway()}{effectIoTgateway()}}
+{\footnotesize\ttfamily void com.\+github.\+aites.\+framework.\+executor.\+Effector.\+effect\+Io\+Tgateway (\begin{DoxyParamCaption}\item[{String}]{target,  }\item[{String}]{action }\end{DoxyParamCaption})}
+
+
+
+Method for effect module\+File find\+Module\+About\+Action, make\+Topic; publish to M\+Q\+TT broker server pub\+Topic. 
+
+
+\begin{DoxyParams}{매개변수}
+{\em target,action} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{반환값}
+File 
+\end{DoxyReturn}
+
+
+Effector.\+java 파일의 34 번째 라인에서 정의되었습니다.
+
+
+\begin{DoxyCode}
+34                                                               \{
+35         log.\mbox{\hyperlink{classcom_1_1github_1_1aites_1_1framework_1_1log_1_1_log_writter_ad2c412c85ba5932c7fa4f920c50f44c9}{logInput}}(\textcolor{stringliteral}{"****Effect Dynamic Module to IoT gateay"});
+36         log.\mbox{\hyperlink{classcom_1_1github_1_1aites_1_1framework_1_1log_1_1_log_writter_ad2c412c85ba5932c7fa4f920c50f44c9}{logInput}}(\textcolor{stringliteral}{"target:"}+target);
+37         log.\mbox{\hyperlink{classcom_1_1github_1_1aites_1_1framework_1_1log_1_1_log_writter_ad2c412c85ba5932c7fa4f920c50f44c9}{logInput}}(\textcolor{stringliteral}{"action:"}+action);
+38         
+39         File module = \mbox{\hyperlink{classcom_1_1github_1_1aites_1_1framework_1_1executor_1_1_effector_a96119f173f888fdde3f37a3557d6f6ce}{findModuleAboutAction}}(action);
+40         String pubTopic = \mbox{\hyperlink{classcom_1_1github_1_1aites_1_1framework_1_1executor_1_1_effector_aa41e495f98690fcbed0bd8aded38d52a}{makeTopic}}(target, action);
+41         
+42         \textcolor{keywordflow}{try} \{
+43             df.\mbox{\hyperlink{classcom_1_1github_1_1aites_1_1framework_1_1communicate_1_1_data_transfer_a90bd50b85b1d619ef9bcf4720b3a1c27}{publish}}(module, this.pubTopic);
+44         \} \textcolor{keywordflow}{catch} (IOException e) \{
+45             e.printStackTrace();
+46         \}
+47         
+48     \}
+\end{DoxyCode}
+\mbox{\Hypertarget{classcom_1_1github_1_1aites_1_1framework_1_1executor_1_1_effector_a96119f173f888fdde3f37a3557d6f6ce}\label{classcom_1_1github_1_1aites_1_1framework_1_1executor_1_1_effector_a96119f173f888fdde3f37a3557d6f6ce}} 
+\index{com\+::github\+::aites\+::framework\+::executor\+::\+Effector@{com\+::github\+::aites\+::framework\+::executor\+::\+Effector}!find\+Module\+About\+Action@{find\+Module\+About\+Action}}
+\index{find\+Module\+About\+Action@{find\+Module\+About\+Action}!com\+::github\+::aites\+::framework\+::executor\+::\+Effector@{com\+::github\+::aites\+::framework\+::executor\+::\+Effector}}
+\subsubsection{\texorpdfstring{find\+Module\+About\+Action()}{findModuleAboutAction()}}
+{\footnotesize\ttfamily File com.\+github.\+aites.\+framework.\+executor.\+Effector.\+find\+Module\+About\+Action (\begin{DoxyParamCaption}\item[{String}]{action }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Method for find jar file using action name jar file name is File\+U\+R\+L/action.\+jar 
+
+
+\begin{DoxyParams}{매개변수}
+{\em action} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{반환값}
+File 
+\end{DoxyReturn}
+
+
+Effector.\+java 파일의 57 번째 라인에서 정의되었습니다.
+
+
+\begin{DoxyCode}
+57                                                      \{
+58         log.\mbox{\hyperlink{classcom_1_1github_1_1aites_1_1framework_1_1log_1_1_log_writter_ad2c412c85ba5932c7fa4f920c50f44c9}{logInput}}(\textcolor{stringliteral}{"******Find Jar File About action:"}+action+\textcolor{stringliteral}{"*****"});
+59         String moduleURL =\mbox{\hyperlink{classcom_1_1github_1_1aites_1_1framework_1_1executor_1_1_effector_abd3712d877c8ff7227be30b6503f2475}{moduleFolder}}+\textcolor{stringliteral}{"/"}+action+\textcolor{stringliteral}{".jar"};
+60         File module = \textcolor{keyword}{new} File(moduleURL);
+61         \mbox{\hyperlink{classcom_1_1github_1_1aites_1_1framework_1_1executor_1_1_effector_a8df1631ecb6613a1e323f131369cd0b0}{fileName}} = module.getName();
+62         \textcolor{keywordflow}{return} module;
+63     \}
+\end{DoxyCode}
+\mbox{\Hypertarget{classcom_1_1github_1_1aites_1_1framework_1_1executor_1_1_effector_adc2b5fde4f917d55b836591376a75e86}\label{classcom_1_1github_1_1aites_1_1framework_1_1executor_1_1_effector_adc2b5fde4f917d55b836591376a75e86}} 
+\index{com\+::github\+::aites\+::framework\+::executor\+::\+Effector@{com\+::github\+::aites\+::framework\+::executor\+::\+Effector}!get\+File\+Name@{get\+File\+Name}}
+\index{get\+File\+Name@{get\+File\+Name}!com\+::github\+::aites\+::framework\+::executor\+::\+Effector@{com\+::github\+::aites\+::framework\+::executor\+::\+Effector}}
+\subsubsection{\texorpdfstring{get\+File\+Name()}{getFileName()}}
+{\footnotesize\ttfamily String com.\+github.\+aites.\+framework.\+executor.\+Effector.\+get\+File\+Name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Effector.\+java 파일의 78 번째 라인에서 정의되었습니다.
+
+
+\begin{DoxyCode}
+78                                \{
+79         \textcolor{keywordflow}{return} \mbox{\hyperlink{classcom_1_1github_1_1aites_1_1framework_1_1executor_1_1_effector_a8df1631ecb6613a1e323f131369cd0b0}{fileName}};
+80     \}
+\end{DoxyCode}
+\mbox{\Hypertarget{classcom_1_1github_1_1aites_1_1framework_1_1executor_1_1_effector_a32701bc6b0551ff24afdb6a23f759647}\label{classcom_1_1github_1_1aites_1_1framework_1_1executor_1_1_effector_a32701bc6b0551ff24afdb6a23f759647}} 
+\index{com\+::github\+::aites\+::framework\+::executor\+::\+Effector@{com\+::github\+::aites\+::framework\+::executor\+::\+Effector}!get\+Topic@{get\+Topic}}
+\index{get\+Topic@{get\+Topic}!com\+::github\+::aites\+::framework\+::executor\+::\+Effector@{com\+::github\+::aites\+::framework\+::executor\+::\+Effector}}
+\subsubsection{\texorpdfstring{get\+Topic()}{getTopic()}}
+{\footnotesize\ttfamily String com.\+github.\+aites.\+framework.\+executor.\+Effector.\+get\+Topic (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Effector.\+java 파일의 75 번째 라인에서 정의되었습니다.
+
+
+\begin{DoxyCode}
+75                             \{
+76         \textcolor{keywordflow}{return} pubTopic;
+77     \}
+\end{DoxyCode}
+\mbox{\Hypertarget{classcom_1_1github_1_1aites_1_1framework_1_1executor_1_1_effector_aa41e495f98690fcbed0bd8aded38d52a}\label{classcom_1_1github_1_1aites_1_1framework_1_1executor_1_1_effector_aa41e495f98690fcbed0bd8aded38d52a}} 
+\index{com\+::github\+::aites\+::framework\+::executor\+::\+Effector@{com\+::github\+::aites\+::framework\+::executor\+::\+Effector}!make\+Topic@{make\+Topic}}
+\index{make\+Topic@{make\+Topic}!com\+::github\+::aites\+::framework\+::executor\+::\+Effector@{com\+::github\+::aites\+::framework\+::executor\+::\+Effector}}
+\subsubsection{\texorpdfstring{make\+Topic()}{makeTopic()}}
+{\footnotesize\ttfamily String com.\+github.\+aites.\+framework.\+executor.\+Effector.\+make\+Topic (\begin{DoxyParamCaption}\item[{String}]{target,  }\item[{String}]{action }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Method for combine pubtopic Io\+Tgateway ~\newline
+Later, it needs to be developed for global use. 
+
+
+\begin{DoxyParams}{매개변수}
+{\em target,action} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{반환값}
+String 
+\end{DoxyReturn}
+
+
+Effector.\+java 파일의 70 번째 라인에서 정의되었습니다.
+
+
+\begin{DoxyCode}
+70                                                           \{
+71         pubTopic = \mbox{\hyperlink{classcom_1_1github_1_1aites_1_1framework_1_1executor_1_1_effector_ada537f3c9fe303eb9503821843b08b30}{afillPubtopic}}+\textcolor{stringliteral}{"/"}+target+\textcolor{stringliteral}{"/"}+action;
+72         
+73         \textcolor{keywordflow}{return} pubTopic;
+74     \}
+\end{DoxyCode}
+
+
+\subsection{멤버 데이터 문서화}
+\mbox{\Hypertarget{classcom_1_1github_1_1aites_1_1framework_1_1executor_1_1_effector_ada537f3c9fe303eb9503821843b08b30}\label{classcom_1_1github_1_1aites_1_1framework_1_1executor_1_1_effector_ada537f3c9fe303eb9503821843b08b30}} 
+\index{com\+::github\+::aites\+::framework\+::executor\+::\+Effector@{com\+::github\+::aites\+::framework\+::executor\+::\+Effector}!afill\+Pubtopic@{afill\+Pubtopic}}
+\index{afill\+Pubtopic@{afill\+Pubtopic}!com\+::github\+::aites\+::framework\+::executor\+::\+Effector@{com\+::github\+::aites\+::framework\+::executor\+::\+Effector}}
+\subsubsection{\texorpdfstring{afill\+Pubtopic}{afillPubtopic}}
+{\footnotesize\ttfamily String com.\+github.\+aites.\+framework.\+executor.\+Effector.\+afill\+Pubtopic\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Effector.\+java 파일의 20 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{classcom_1_1github_1_1aites_1_1framework_1_1executor_1_1_effector_a8df1631ecb6613a1e323f131369cd0b0}\label{classcom_1_1github_1_1aites_1_1framework_1_1executor_1_1_effector_a8df1631ecb6613a1e323f131369cd0b0}} 
+\index{com\+::github\+::aites\+::framework\+::executor\+::\+Effector@{com\+::github\+::aites\+::framework\+::executor\+::\+Effector}!file\+Name@{file\+Name}}
+\index{file\+Name@{file\+Name}!com\+::github\+::aites\+::framework\+::executor\+::\+Effector@{com\+::github\+::aites\+::framework\+::executor\+::\+Effector}}
+\subsubsection{\texorpdfstring{file\+Name}{fileName}}
+{\footnotesize\ttfamily String com.\+github.\+aites.\+framework.\+executor.\+Effector.\+file\+Name\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Effector.\+java 파일의 19 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{classcom_1_1github_1_1aites_1_1framework_1_1executor_1_1_effector_abd3712d877c8ff7227be30b6503f2475}\label{classcom_1_1github_1_1aites_1_1framework_1_1executor_1_1_effector_abd3712d877c8ff7227be30b6503f2475}} 
+\index{com\+::github\+::aites\+::framework\+::executor\+::\+Effector@{com\+::github\+::aites\+::framework\+::executor\+::\+Effector}!module\+Folder@{module\+Folder}}
+\index{module\+Folder@{module\+Folder}!com\+::github\+::aites\+::framework\+::executor\+::\+Effector@{com\+::github\+::aites\+::framework\+::executor\+::\+Effector}}
+\subsubsection{\texorpdfstring{module\+Folder}{moduleFolder}}
+{\footnotesize\ttfamily String com.\+github.\+aites.\+framework.\+executor.\+Effector.\+module\+Folder\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Effector.\+java 파일의 18 번째 라인에서 정의되었습니다.
+
+
+
+이 클래스에 대한 문서화 페이지는 다음의 파일로부터 생성되었습니다.\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/srsok/\+Ai\+T\+E\+S/core/\+Ai\+T\+E\+S\+Framework/src/com/github/aites/framework/executor/\mbox{\hyperlink{_effector_8java}{Effector.\+java}}\end{DoxyCompactItemize}

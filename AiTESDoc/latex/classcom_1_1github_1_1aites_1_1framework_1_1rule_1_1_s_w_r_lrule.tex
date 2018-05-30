@@ -1,0 +1,587 @@
+\hypertarget{classcom_1_1github_1_1aites_1_1framework_1_1rule_1_1_s_w_r_lrule}{}\section{com.\+github.\+aites.\+framework.\+rule.\+S\+W\+R\+Lrule 클래스 참조}
+\label{classcom_1_1github_1_1aites_1_1framework_1_1rule_1_1_s_w_r_lrule}\index{com.\+github.\+aites.\+framework.\+rule.\+S\+W\+R\+Lrule@{com.\+github.\+aites.\+framework.\+rule.\+S\+W\+R\+Lrule}}
+
+
+Class for parse and configure S\+W\+RL rule in ontology ruleset.  
+
+
+\subsection*{클래스}
+\begin{DoxyCompactItemize}
+\item 
+class {\bfseries Built\+In\+Atom}
+\item 
+class \mbox{\hyperlink{classcom_1_1github_1_1aites_1_1framework_1_1rule_1_1_s_w_r_lrule_1_1_class_atom}{Class\+Atom}}
+\item 
+class {\bfseries Data\+Range\+Atom}
+\item 
+class {\bfseries Property\+Atom}
+\end{DoxyCompactItemize}
+\subsection*{Public 멤버 함수}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classcom_1_1github_1_1aites_1_1framework_1_1rule_1_1_s_w_r_lrule_a984917d455fb3d9bf7aecf46bfef72cd}{S\+W\+R\+Lrule}} (String \mbox{\hyperlink{classcom_1_1github_1_1aites_1_1framework_1_1rule_1_1_s_w_r_lrule_adde1291a731073840a5ac9e535bf6f3f}{swrl\+Rule}})
+\item 
+\mbox{\hyperlink{classcom_1_1github_1_1aites_1_1framework_1_1rule_1_1_s_w_r_lrule_ae70ff52287865719636e6c63ece1fcd2}{S\+W\+R\+Lrule}} (String rule\+Name, String class\+Atom, String class\+Var, String \mbox{\hyperlink{classcom_1_1github_1_1aites_1_1framework_1_1rule_1_1_s_w_r_lrule_af98a0b14045d483b30ad511f0627fe3f}{annotation}})
+\item 
+\mbox{\hyperlink{classcom_1_1github_1_1aites_1_1framework_1_1rule_1_1_s_w_r_lrule_1_1_class_atom}{Class\+Atom}} \mbox{\hyperlink{classcom_1_1github_1_1aites_1_1framework_1_1rule_1_1_s_w_r_lrule_ac1db206d60cb8bea838593d3e0dcfd02}{get\+Head\+Class\+Atom}} ()
+\item 
+void \mbox{\hyperlink{classcom_1_1github_1_1aites_1_1framework_1_1rule_1_1_s_w_r_lrule_a4bdc9396085aa17600949d679657c2ad}{update\+Bulit\+In\+Atom}} (int bulit\+In\+Index, String new\+Value)
+\item 
+void \mbox{\hyperlink{classcom_1_1github_1_1aites_1_1framework_1_1rule_1_1_s_w_r_lrule_a8b6f04d7d532e8150e4be3ba796c28e9}{make\+S\+W\+R\+Lrule}} ()
+\item 
+void \mbox{\hyperlink{classcom_1_1github_1_1aites_1_1framework_1_1rule_1_1_s_w_r_lrule_ac6d5eaf0c61fd53ba7934558557c2f9a}{add\+Property\+Atom}} (String type, String property, String\mbox{[}$\,$\mbox{]} variables)
+\item 
+void \mbox{\hyperlink{classcom_1_1github_1_1aites_1_1framework_1_1rule_1_1_s_w_r_lrule_a59ae07c448962dabb798a34e54b5e72b}{add\+Built\+In\+Atom}} (String swrl\+Atom, String variable, String data\+Value, String data\+Type)
+\item 
+String \mbox{\hyperlink{classcom_1_1github_1_1aites_1_1framework_1_1rule_1_1_s_w_r_lrule_ab194dfde2668dca1f79b533695d71e67}{get\+S\+W\+R\+Lrule}} ()
+\item 
+void \mbox{\hyperlink{classcom_1_1github_1_1aites_1_1framework_1_1rule_1_1_s_w_r_lrule_ac24b01677beb4d4004f41cf1da585497}{print\+S\+W\+R\+Lrule\+Info}} ()
+\end{DoxyCompactItemize}
+\subsection*{Private 멤버 함수}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classcom_1_1github_1_1aites_1_1framework_1_1rule_1_1_s_w_r_lrule_a1521b7ed4a4dc7b19712c12501ffec0c}{rule\+Parsing}} ()
+\item 
+String \mbox{\hyperlink{classcom_1_1github_1_1aites_1_1framework_1_1rule_1_1_s_w_r_lrule_a504b81036fa3b32cede4a4a5a94929d6}{make\+Annotation}} (String \mbox{\hyperlink{classcom_1_1github_1_1aites_1_1framework_1_1rule_1_1_s_w_r_lrule_af98a0b14045d483b30ad511f0627fe3f}{annotation}})
+\item 
+\mbox{\hyperlink{classcom_1_1github_1_1aites_1_1framework_1_1rule_1_1_s_w_r_lrule_1_1_class_atom}{Class\+Atom}} \mbox{\hyperlink{classcom_1_1github_1_1aites_1_1framework_1_1rule_1_1_s_w_r_lrule_ab01ac639c58b1478dc20272002106798}{parse\+Class\+Atom}} (String atom\+Body)
+\item 
+Property\+Atom \mbox{\hyperlink{classcom_1_1github_1_1aites_1_1framework_1_1rule_1_1_s_w_r_lrule_a5d90fa24f6f2a2db3a435905f68bbce2}{parse\+Property\+Atom}} (String atom\+Body, String type)
+\item 
+Built\+In\+Atom \mbox{\hyperlink{classcom_1_1github_1_1aites_1_1framework_1_1rule_1_1_s_w_r_lrule_a7880f0990348da202843776ba08e7514}{parse\+Built\+In\+Atom}} (String atom\+Body)
+\item 
+Data\+Range\+Atom \mbox{\hyperlink{classcom_1_1github_1_1aites_1_1framework_1_1rule_1_1_s_w_r_lrule_a98d9bcca97665200e8459358556d899d}{parse\+Data\+Range\+Atom}} (String atom\+Body)
+\end{DoxyCompactItemize}
+\subsection*{Private 속성}
+\begin{DoxyCompactItemize}
+\item 
+String \mbox{\hyperlink{classcom_1_1github_1_1aites_1_1framework_1_1rule_1_1_s_w_r_lrule_adde1291a731073840a5ac9e535bf6f3f}{swrl\+Rule}}
+\item 
+Array\+List$<$ String $>$ \mbox{\hyperlink{classcom_1_1github_1_1aites_1_1framework_1_1rule_1_1_s_w_r_lrule_a83f3d18acd20dd43b8ade45e8c129123}{body\+Atoms}} = new Array\+List$<$String$>$()
+\item 
+String \mbox{\hyperlink{classcom_1_1github_1_1aites_1_1framework_1_1rule_1_1_s_w_r_lrule_a4ec94c9f7b37610da08df2770f6c6a71}{head\+Atom}}
+\item 
+String \mbox{\hyperlink{classcom_1_1github_1_1aites_1_1framework_1_1rule_1_1_s_w_r_lrule_af98a0b14045d483b30ad511f0627fe3f}{annotation}}
+\item 
+\mbox{\hyperlink{classcom_1_1github_1_1aites_1_1framework_1_1rule_1_1_s_w_r_lrule_1_1_class_atom}{Class\+Atom}} \mbox{\hyperlink{classcom_1_1github_1_1aites_1_1framework_1_1rule_1_1_s_w_r_lrule_a687c4ba8bc9724b6a06ab4bb9301ca86}{head\+Class\+Atom}}
+\item 
+\mbox{\hyperlink{classcom_1_1github_1_1aites_1_1framework_1_1rule_1_1_s_w_r_lrule_1_1_class_atom}{Class\+Atom}} \mbox{\hyperlink{classcom_1_1github_1_1aites_1_1framework_1_1rule_1_1_s_w_r_lrule_a3400b10f602a6a7d7abd42681d7af024}{body\+Class\+Atom}}
+\item 
+Array\+List$<$ Property\+Atom $>$ \mbox{\hyperlink{classcom_1_1github_1_1aites_1_1framework_1_1rule_1_1_s_w_r_lrule_a4236a432610492bb79e3822eec52fea3}{rule\+Property\+Atoms}} = new Array\+List$<$Property\+Atom$>$()
+\item 
+Array\+List$<$ Built\+In\+Atom $>$ \mbox{\hyperlink{classcom_1_1github_1_1aites_1_1framework_1_1rule_1_1_s_w_r_lrule_a1ccff2ed582cdf233f27d0127fa2f1c0}{rule\+Bulit\+In\+Atoms}} = new Array\+List$<$Built\+In\+Atom$>$()
+\item 
+Array\+List$<$ Data\+Range\+Atom $>$ \mbox{\hyperlink{classcom_1_1github_1_1aites_1_1framework_1_1rule_1_1_s_w_r_lrule_a21c0c8ab54dc9ac16131962b01cbea57}{rule\+Data\+Range\+Atoms}} = new Array\+List$<$Data\+Range\+Atom$>$()
+\end{DoxyCompactItemize}
+
+
+\subsection{상세한 설명}
+Class for parse and configure S\+W\+RL rule in ontology ruleset. 
+
+\begin{DoxyAuthor}{작성자}
+Jung\+Hyun An 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{버전}
+3.\+0.\+2 
+\end{DoxyVersion}
+\begin{DoxySeeAlso}{참고}
+\mbox{\hyperlink{classcom_1_1github_1_1aites_1_1framework_1_1ruleset_1_1_rule_set_body}{com.\+github.\+aites.\+framework.\+ruleset.\+Rule\+Set\+Body}} 
+\end{DoxySeeAlso}
+
+
+S\+W\+R\+Lrule.\+java 파일의 10 번째 라인에서 정의되었습니다.
+
+
+
+\subsection{생성자 \& 소멸자 문서화}
+\mbox{\Hypertarget{classcom_1_1github_1_1aites_1_1framework_1_1rule_1_1_s_w_r_lrule_a984917d455fb3d9bf7aecf46bfef72cd}\label{classcom_1_1github_1_1aites_1_1framework_1_1rule_1_1_s_w_r_lrule_a984917d455fb3d9bf7aecf46bfef72cd}} 
+\index{com\+::github\+::aites\+::framework\+::rule\+::\+S\+W\+R\+Lrule@{com\+::github\+::aites\+::framework\+::rule\+::\+S\+W\+R\+Lrule}!S\+W\+R\+Lrule@{S\+W\+R\+Lrule}}
+\index{S\+W\+R\+Lrule@{S\+W\+R\+Lrule}!com\+::github\+::aites\+::framework\+::rule\+::\+S\+W\+R\+Lrule@{com\+::github\+::aites\+::framework\+::rule\+::\+S\+W\+R\+Lrule}}
+\subsubsection{\texorpdfstring{S\+W\+R\+Lrule()}{SWRLrule()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily com.\+github.\+aites.\+framework.\+rule.\+S\+W\+R\+Lrule.\+S\+W\+R\+Lrule (\begin{DoxyParamCaption}\item[{String}]{swrl\+Rule }\end{DoxyParamCaption})}
+
+
+
+S\+W\+R\+Lrule.\+java 파일의 22 번째 라인에서 정의되었습니다.
+
+
+\begin{DoxyCode}
+22                                     \{
+23         this.\mbox{\hyperlink{classcom_1_1github_1_1aites_1_1framework_1_1rule_1_1_s_w_r_lrule_adde1291a731073840a5ac9e535bf6f3f}{swrlRule}} = \mbox{\hyperlink{classcom_1_1github_1_1aites_1_1framework_1_1rule_1_1_s_w_r_lrule_adde1291a731073840a5ac9e535bf6f3f}{swrlRule}};
+24         \mbox{\hyperlink{classcom_1_1github_1_1aites_1_1framework_1_1rule_1_1_s_w_r_lrule_a1521b7ed4a4dc7b19712c12501ffec0c}{ruleParsing}}();
+25     \}
+\end{DoxyCode}
+\mbox{\Hypertarget{classcom_1_1github_1_1aites_1_1framework_1_1rule_1_1_s_w_r_lrule_ae70ff52287865719636e6c63ece1fcd2}\label{classcom_1_1github_1_1aites_1_1framework_1_1rule_1_1_s_w_r_lrule_ae70ff52287865719636e6c63ece1fcd2}} 
+\index{com\+::github\+::aites\+::framework\+::rule\+::\+S\+W\+R\+Lrule@{com\+::github\+::aites\+::framework\+::rule\+::\+S\+W\+R\+Lrule}!S\+W\+R\+Lrule@{S\+W\+R\+Lrule}}
+\index{S\+W\+R\+Lrule@{S\+W\+R\+Lrule}!com\+::github\+::aites\+::framework\+::rule\+::\+S\+W\+R\+Lrule@{com\+::github\+::aites\+::framework\+::rule\+::\+S\+W\+R\+Lrule}}
+\subsubsection{\texorpdfstring{S\+W\+R\+Lrule()}{SWRLrule()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily com.\+github.\+aites.\+framework.\+rule.\+S\+W\+R\+Lrule.\+S\+W\+R\+Lrule (\begin{DoxyParamCaption}\item[{String}]{rule\+Name,  }\item[{String}]{class\+Atom,  }\item[{String}]{class\+Var,  }\item[{String}]{annotation }\end{DoxyParamCaption})}
+
+
+
+S\+W\+R\+Lrule.\+java 파일의 26 번째 라인에서 정의되었습니다.
+
+
+\begin{DoxyCode}
+26                                                                                           \{
+27         this.\mbox{\hyperlink{classcom_1_1github_1_1aites_1_1framework_1_1rule_1_1_s_w_r_lrule_af98a0b14045d483b30ad511f0627fe3f}{annotation}} = \mbox{\hyperlink{classcom_1_1github_1_1aites_1_1framework_1_1rule_1_1_s_w_r_lrule_a504b81036fa3b32cede4a4a5a94929d6}{makeAnnotation}}(\mbox{\hyperlink{classcom_1_1github_1_1aites_1_1framework_1_1rule_1_1_s_w_r_lrule_af98a0b14045d483b30ad511f0627fe3f}{annotation}});
+28         \mbox{\hyperlink{classcom_1_1github_1_1aites_1_1framework_1_1rule_1_1_s_w_r_lrule_a687c4ba8bc9724b6a06ab4bb9301ca86}{headClassAtom}} = \textcolor{keyword}{new} ClassAtom(ruleName,classVar);
+29         \mbox{\hyperlink{classcom_1_1github_1_1aites_1_1framework_1_1rule_1_1_s_w_r_lrule_a3400b10f602a6a7d7abd42681d7af024}{bodyClassAtom}} = \textcolor{keyword}{new} ClassAtom(classAtom, classVar);
+30     \}
+\end{DoxyCode}
+
+
+\subsection{멤버 함수 문서화}
+\mbox{\Hypertarget{classcom_1_1github_1_1aites_1_1framework_1_1rule_1_1_s_w_r_lrule_a59ae07c448962dabb798a34e54b5e72b}\label{classcom_1_1github_1_1aites_1_1framework_1_1rule_1_1_s_w_r_lrule_a59ae07c448962dabb798a34e54b5e72b}} 
+\index{com\+::github\+::aites\+::framework\+::rule\+::\+S\+W\+R\+Lrule@{com\+::github\+::aites\+::framework\+::rule\+::\+S\+W\+R\+Lrule}!add\+Built\+In\+Atom@{add\+Built\+In\+Atom}}
+\index{add\+Built\+In\+Atom@{add\+Built\+In\+Atom}!com\+::github\+::aites\+::framework\+::rule\+::\+S\+W\+R\+Lrule@{com\+::github\+::aites\+::framework\+::rule\+::\+S\+W\+R\+Lrule}}
+\subsubsection{\texorpdfstring{add\+Built\+In\+Atom()}{addBuiltInAtom()}}
+{\footnotesize\ttfamily void com.\+github.\+aites.\+framework.\+rule.\+S\+W\+R\+Lrule.\+add\+Built\+In\+Atom (\begin{DoxyParamCaption}\item[{String}]{swrl\+Atom,  }\item[{String}]{variable,  }\item[{String}]{data\+Value,  }\item[{String}]{data\+Type }\end{DoxyParamCaption})}
+
+
+
+S\+W\+R\+Lrule.\+java 파일의 120 번째 라인에서 정의되었습니다.
+
+
+\begin{DoxyCode}
+120                                                                                                  \{
+121         BuiltInAtom builtInAtom = \textcolor{keyword}{new} BuiltInAtom(swrlAtom,variable, dataValue, dataType);
+122         \mbox{\hyperlink{classcom_1_1github_1_1aites_1_1framework_1_1rule_1_1_s_w_r_lrule_a1ccff2ed582cdf233f27d0127fa2f1c0}{ruleBulitInAtoms}}.add(builtInAtom);
+123     \}
+\end{DoxyCode}
+\mbox{\Hypertarget{classcom_1_1github_1_1aites_1_1framework_1_1rule_1_1_s_w_r_lrule_ac6d5eaf0c61fd53ba7934558557c2f9a}\label{classcom_1_1github_1_1aites_1_1framework_1_1rule_1_1_s_w_r_lrule_ac6d5eaf0c61fd53ba7934558557c2f9a}} 
+\index{com\+::github\+::aites\+::framework\+::rule\+::\+S\+W\+R\+Lrule@{com\+::github\+::aites\+::framework\+::rule\+::\+S\+W\+R\+Lrule}!add\+Property\+Atom@{add\+Property\+Atom}}
+\index{add\+Property\+Atom@{add\+Property\+Atom}!com\+::github\+::aites\+::framework\+::rule\+::\+S\+W\+R\+Lrule@{com\+::github\+::aites\+::framework\+::rule\+::\+S\+W\+R\+Lrule}}
+\subsubsection{\texorpdfstring{add\+Property\+Atom()}{addPropertyAtom()}}
+{\footnotesize\ttfamily void com.\+github.\+aites.\+framework.\+rule.\+S\+W\+R\+Lrule.\+add\+Property\+Atom (\begin{DoxyParamCaption}\item[{String}]{type,  }\item[{String}]{property,  }\item[{String \mbox{[}$\,$\mbox{]}}]{variables }\end{DoxyParamCaption})}
+
+
+
+S\+W\+R\+Lrule.\+java 파일의 116 번째 라인에서 정의되었습니다.
+
+
+\begin{DoxyCode}
+116                                                                                  \{
+117         PropertyAtom propertyAtom = \textcolor{keyword}{new} PropertyAtom(type,property,variables);
+118         \mbox{\hyperlink{classcom_1_1github_1_1aites_1_1framework_1_1rule_1_1_s_w_r_lrule_a4236a432610492bb79e3822eec52fea3}{rulePropertyAtoms}}.add(propertyAtom);
+119     \}
+\end{DoxyCode}
+\mbox{\Hypertarget{classcom_1_1github_1_1aites_1_1framework_1_1rule_1_1_s_w_r_lrule_ac1db206d60cb8bea838593d3e0dcfd02}\label{classcom_1_1github_1_1aites_1_1framework_1_1rule_1_1_s_w_r_lrule_ac1db206d60cb8bea838593d3e0dcfd02}} 
+\index{com\+::github\+::aites\+::framework\+::rule\+::\+S\+W\+R\+Lrule@{com\+::github\+::aites\+::framework\+::rule\+::\+S\+W\+R\+Lrule}!get\+Head\+Class\+Atom@{get\+Head\+Class\+Atom}}
+\index{get\+Head\+Class\+Atom@{get\+Head\+Class\+Atom}!com\+::github\+::aites\+::framework\+::rule\+::\+S\+W\+R\+Lrule@{com\+::github\+::aites\+::framework\+::rule\+::\+S\+W\+R\+Lrule}}
+\subsubsection{\texorpdfstring{get\+Head\+Class\+Atom()}{getHeadClassAtom()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classcom_1_1github_1_1aites_1_1framework_1_1rule_1_1_s_w_r_lrule_1_1_class_atom}{Class\+Atom}} com.\+github.\+aites.\+framework.\+rule.\+S\+W\+R\+Lrule.\+get\+Head\+Class\+Atom (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+S\+W\+R\+Lrule.\+java 파일의 80 번째 라인에서 정의되었습니다.
+
+
+\begin{DoxyCode}
+80                                        \{
+81         \textcolor{keywordflow}{return} \mbox{\hyperlink{classcom_1_1github_1_1aites_1_1framework_1_1rule_1_1_s_w_r_lrule_a687c4ba8bc9724b6a06ab4bb9301ca86}{headClassAtom}};
+82     \}
+\end{DoxyCode}
+\mbox{\Hypertarget{classcom_1_1github_1_1aites_1_1framework_1_1rule_1_1_s_w_r_lrule_ab194dfde2668dca1f79b533695d71e67}\label{classcom_1_1github_1_1aites_1_1framework_1_1rule_1_1_s_w_r_lrule_ab194dfde2668dca1f79b533695d71e67}} 
+\index{com\+::github\+::aites\+::framework\+::rule\+::\+S\+W\+R\+Lrule@{com\+::github\+::aites\+::framework\+::rule\+::\+S\+W\+R\+Lrule}!get\+S\+W\+R\+Lrule@{get\+S\+W\+R\+Lrule}}
+\index{get\+S\+W\+R\+Lrule@{get\+S\+W\+R\+Lrule}!com\+::github\+::aites\+::framework\+::rule\+::\+S\+W\+R\+Lrule@{com\+::github\+::aites\+::framework\+::rule\+::\+S\+W\+R\+Lrule}}
+\subsubsection{\texorpdfstring{get\+S\+W\+R\+Lrule()}{getSWRLrule()}}
+{\footnotesize\ttfamily String com.\+github.\+aites.\+framework.\+rule.\+S\+W\+R\+Lrule.\+get\+S\+W\+R\+Lrule (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+S\+W\+R\+Lrule.\+java 파일의 124 번째 라인에서 정의되었습니다.
+
+
+\begin{DoxyCode}
+124                                \{
+125         \textcolor{keywordflow}{return} \mbox{\hyperlink{classcom_1_1github_1_1aites_1_1framework_1_1rule_1_1_s_w_r_lrule_adde1291a731073840a5ac9e535bf6f3f}{swrlRule}};
+126     \}
+\end{DoxyCode}
+\mbox{\Hypertarget{classcom_1_1github_1_1aites_1_1framework_1_1rule_1_1_s_w_r_lrule_a504b81036fa3b32cede4a4a5a94929d6}\label{classcom_1_1github_1_1aites_1_1framework_1_1rule_1_1_s_w_r_lrule_a504b81036fa3b32cede4a4a5a94929d6}} 
+\index{com\+::github\+::aites\+::framework\+::rule\+::\+S\+W\+R\+Lrule@{com\+::github\+::aites\+::framework\+::rule\+::\+S\+W\+R\+Lrule}!make\+Annotation@{make\+Annotation}}
+\index{make\+Annotation@{make\+Annotation}!com\+::github\+::aites\+::framework\+::rule\+::\+S\+W\+R\+Lrule@{com\+::github\+::aites\+::framework\+::rule\+::\+S\+W\+R\+Lrule}}
+\subsubsection{\texorpdfstring{make\+Annotation()}{makeAnnotation()}}
+{\footnotesize\ttfamily String com.\+github.\+aites.\+framework.\+rule.\+S\+W\+R\+Lrule.\+make\+Annotation (\begin{DoxyParamCaption}\item[{String}]{annotation }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+S\+W\+R\+Lrule.\+java 파일의 127 번째 라인에서 정의되었습니다.
+
+
+\begin{DoxyCode}
+127                                                     \{
+128   
+129         \mbox{\hyperlink{classcom_1_1github_1_1aites_1_1framework_1_1rule_1_1_s_w_r_lrule_af98a0b14045d483b30ad511f0627fe3f}{annotation}} = \textcolor{stringliteral}{"        Annotation(rdfs:comment \(\backslash\)""}+\mbox{\hyperlink{classcom_1_1github_1_1aites_1_1framework_1_1rule_1_1_s_w_r_lrule_af98a0b14045d483b30ad511f0627fe3f}{annotation}}+\textcolor{stringliteral}{"\(\backslash\)")\(\backslash\)r\(\backslash\)n"};
+130         \textcolor{keywordflow}{return} \mbox{\hyperlink{classcom_1_1github_1_1aites_1_1framework_1_1rule_1_1_s_w_r_lrule_af98a0b14045d483b30ad511f0627fe3f}{annotation}};
+131     \}
+\end{DoxyCode}
+\mbox{\Hypertarget{classcom_1_1github_1_1aites_1_1framework_1_1rule_1_1_s_w_r_lrule_a8b6f04d7d532e8150e4be3ba796c28e9}\label{classcom_1_1github_1_1aites_1_1framework_1_1rule_1_1_s_w_r_lrule_a8b6f04d7d532e8150e4be3ba796c28e9}} 
+\index{com\+::github\+::aites\+::framework\+::rule\+::\+S\+W\+R\+Lrule@{com\+::github\+::aites\+::framework\+::rule\+::\+S\+W\+R\+Lrule}!make\+S\+W\+R\+Lrule@{make\+S\+W\+R\+Lrule}}
+\index{make\+S\+W\+R\+Lrule@{make\+S\+W\+R\+Lrule}!com\+::github\+::aites\+::framework\+::rule\+::\+S\+W\+R\+Lrule@{com\+::github\+::aites\+::framework\+::rule\+::\+S\+W\+R\+Lrule}}
+\subsubsection{\texorpdfstring{make\+S\+W\+R\+Lrule()}{makeSWRLrule()}}
+{\footnotesize\ttfamily void com.\+github.\+aites.\+framework.\+rule.\+S\+W\+R\+Lrule.\+make\+S\+W\+R\+Lrule (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+S\+W\+R\+Lrule.\+java 파일의 91 번째 라인에서 정의되었습니다.
+
+
+\begin{DoxyCode}
+91                               \{
+92         \mbox{\hyperlink{classcom_1_1github_1_1aites_1_1framework_1_1rule_1_1_s_w_r_lrule_adde1291a731073840a5ac9e535bf6f3f}{swrlRule}} = \textcolor{stringliteral}{"    DLSafeRule(\(\backslash\)r\(\backslash\)n"}+\mbox{\hyperlink{classcom_1_1github_1_1aites_1_1framework_1_1rule_1_1_s_w_r_lrule_af98a0b14045d483b30ad511f0627fe3f}{annotation}}+
+93                    \textcolor{stringliteral}{"        Body(\(\backslash\)r\(\backslash\)n"};
+94         \mbox{\hyperlink{classcom_1_1github_1_1aites_1_1framework_1_1rule_1_1_s_w_r_lrule_adde1291a731073840a5ac9e535bf6f3f}{swrlRule}} = \mbox{\hyperlink{classcom_1_1github_1_1aites_1_1framework_1_1rule_1_1_s_w_r_lrule_adde1291a731073840a5ac9e535bf6f3f}{swrlRule}}+\mbox{\hyperlink{classcom_1_1github_1_1aites_1_1framework_1_1rule_1_1_s_w_r_lrule_a3400b10f602a6a7d7abd42681d7af024}{bodyClassAtom}}.
+      \mbox{\hyperlink{classcom_1_1github_1_1aites_1_1framework_1_1rule_1_1_s_w_r_lrule_1_1_class_atom_a2eb6b4aa3b5bc678c09da10eae2b9ee7}{makeClassAtom}}();
+95         \textcolor{keywordflow}{if}(!\mbox{\hyperlink{classcom_1_1github_1_1aites_1_1framework_1_1rule_1_1_s_w_r_lrule_a4236a432610492bb79e3822eec52fea3}{rulePropertyAtoms}}.isEmpty())\{
+96             \textcolor{keywordflow}{for}(PropertyAtom p:\mbox{\hyperlink{classcom_1_1github_1_1aites_1_1framework_1_1rule_1_1_s_w_r_lrule_a4236a432610492bb79e3822eec52fea3}{rulePropertyAtoms}})\{
+97                 \mbox{\hyperlink{classcom_1_1github_1_1aites_1_1framework_1_1rule_1_1_s_w_r_lrule_adde1291a731073840a5ac9e535bf6f3f}{swrlRule}} = \mbox{\hyperlink{classcom_1_1github_1_1aites_1_1framework_1_1rule_1_1_s_w_r_lrule_adde1291a731073840a5ac9e535bf6f3f}{swrlRule}}+p.makePropertyAtom();
+98             \}
+99         \}
+100         \textcolor{keywordflow}{if}(!\mbox{\hyperlink{classcom_1_1github_1_1aites_1_1framework_1_1rule_1_1_s_w_r_lrule_a1ccff2ed582cdf233f27d0127fa2f1c0}{ruleBulitInAtoms}}.isEmpty())\{
+101             \textcolor{keywordflow}{for}(BuiltInAtom b : \mbox{\hyperlink{classcom_1_1github_1_1aites_1_1framework_1_1rule_1_1_s_w_r_lrule_a1ccff2ed582cdf233f27d0127fa2f1c0}{ruleBulitInAtoms}})\{
+102                 \mbox{\hyperlink{classcom_1_1github_1_1aites_1_1framework_1_1rule_1_1_s_w_r_lrule_adde1291a731073840a5ac9e535bf6f3f}{swrlRule}} = \mbox{\hyperlink{classcom_1_1github_1_1aites_1_1framework_1_1rule_1_1_s_w_r_lrule_adde1291a731073840a5ac9e535bf6f3f}{swrlRule}}+b.makeBultInAtom();
+103             \}
+104         \}
+105         \textcolor{keywordflow}{if}(!\mbox{\hyperlink{classcom_1_1github_1_1aites_1_1framework_1_1rule_1_1_s_w_r_lrule_a21c0c8ab54dc9ac16131962b01cbea57}{ruleDataRangeAtoms}}.isEmpty())\{
+106             \textcolor{keywordflow}{for}(DataRangeAtom d : \mbox{\hyperlink{classcom_1_1github_1_1aites_1_1framework_1_1rule_1_1_s_w_r_lrule_a21c0c8ab54dc9ac16131962b01cbea57}{ruleDataRangeAtoms}})\{
+107                 \mbox{\hyperlink{classcom_1_1github_1_1aites_1_1framework_1_1rule_1_1_s_w_r_lrule_adde1291a731073840a5ac9e535bf6f3f}{swrlRule}} = \mbox{\hyperlink{classcom_1_1github_1_1aites_1_1framework_1_1rule_1_1_s_w_r_lrule_adde1291a731073840a5ac9e535bf6f3f}{swrlRule}}+d.makeDataRangeAtom();
+108             \}
+109         \}
+110         \mbox{\hyperlink{classcom_1_1github_1_1aites_1_1framework_1_1rule_1_1_s_w_r_lrule_adde1291a731073840a5ac9e535bf6f3f}{swrlRule}} = \mbox{\hyperlink{classcom_1_1github_1_1aites_1_1framework_1_1rule_1_1_s_w_r_lrule_adde1291a731073840a5ac9e535bf6f3f}{swrlRule}} +\textcolor{stringliteral}{"        )\(\backslash\)r\(\backslash\)n"};
+111         \mbox{\hyperlink{classcom_1_1github_1_1aites_1_1framework_1_1rule_1_1_s_w_r_lrule_adde1291a731073840a5ac9e535bf6f3f}{swrlRule}} = \mbox{\hyperlink{classcom_1_1github_1_1aites_1_1framework_1_1rule_1_1_s_w_r_lrule_adde1291a731073840a5ac9e535bf6f3f}{swrlRule}} +\textcolor{stringliteral}{"        Head(\(\backslash\)r\(\backslash\)n"};
+112         \mbox{\hyperlink{classcom_1_1github_1_1aites_1_1framework_1_1rule_1_1_s_w_r_lrule_adde1291a731073840a5ac9e535bf6f3f}{swrlRule}} = \mbox{\hyperlink{classcom_1_1github_1_1aites_1_1framework_1_1rule_1_1_s_w_r_lrule_adde1291a731073840a5ac9e535bf6f3f}{swrlRule}} +\mbox{\hyperlink{classcom_1_1github_1_1aites_1_1framework_1_1rule_1_1_s_w_r_lrule_a687c4ba8bc9724b6a06ab4bb9301ca86}{headClassAtom}}.
+      \mbox{\hyperlink{classcom_1_1github_1_1aites_1_1framework_1_1rule_1_1_s_w_r_lrule_1_1_class_atom_a2eb6b4aa3b5bc678c09da10eae2b9ee7}{makeClassAtom}}();
+113         \mbox{\hyperlink{classcom_1_1github_1_1aites_1_1framework_1_1rule_1_1_s_w_r_lrule_adde1291a731073840a5ac9e535bf6f3f}{swrlRule}} = \mbox{\hyperlink{classcom_1_1github_1_1aites_1_1framework_1_1rule_1_1_s_w_r_lrule_adde1291a731073840a5ac9e535bf6f3f}{swrlRule}} +\textcolor{stringliteral}{"        )\(\backslash\)r\(\backslash\)n"};
+114         \mbox{\hyperlink{classcom_1_1github_1_1aites_1_1framework_1_1rule_1_1_s_w_r_lrule_adde1291a731073840a5ac9e535bf6f3f}{swrlRule}} = \mbox{\hyperlink{classcom_1_1github_1_1aites_1_1framework_1_1rule_1_1_s_w_r_lrule_adde1291a731073840a5ac9e535bf6f3f}{swrlRule}} +\textcolor{stringliteral}{"    )\(\backslash\)r\(\backslash\)n"};
+115     \}
+\end{DoxyCode}
+\mbox{\Hypertarget{classcom_1_1github_1_1aites_1_1framework_1_1rule_1_1_s_w_r_lrule_a7880f0990348da202843776ba08e7514}\label{classcom_1_1github_1_1aites_1_1framework_1_1rule_1_1_s_w_r_lrule_a7880f0990348da202843776ba08e7514}} 
+\index{com\+::github\+::aites\+::framework\+::rule\+::\+S\+W\+R\+Lrule@{com\+::github\+::aites\+::framework\+::rule\+::\+S\+W\+R\+Lrule}!parse\+Built\+In\+Atom@{parse\+Built\+In\+Atom}}
+\index{parse\+Built\+In\+Atom@{parse\+Built\+In\+Atom}!com\+::github\+::aites\+::framework\+::rule\+::\+S\+W\+R\+Lrule@{com\+::github\+::aites\+::framework\+::rule\+::\+S\+W\+R\+Lrule}}
+\subsubsection{\texorpdfstring{parse\+Built\+In\+Atom()}{parseBuiltInAtom()}}
+{\footnotesize\ttfamily Built\+In\+Atom com.\+github.\+aites.\+framework.\+rule.\+S\+W\+R\+Lrule.\+parse\+Built\+In\+Atom (\begin{DoxyParamCaption}\item[{String}]{atom\+Body }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+S\+W\+R\+Lrule.\+java 파일의 162 번째 라인에서 정의되었습니다.
+
+
+\begin{DoxyCode}
+162                                                          \{
+163         String bbap = atomBody.substring(30, atomBody.length());
+164         \textcolor{keywordtype}{int} bbapEndIndex = bbap.indexOf(\textcolor{stringliteral}{" "});
+165         bbap = bbap.substring(0,bbapEndIndex); \textcolor{comment}{// equals, graaterThen, etc... }
+166         
+167         String bpvps = atomBody.substring(31+bbapEndIndex,atomBody.length()-1);
+168         \textcolor{keywordtype}{int} bbvpsIndex = bpvps.indexOf(\textcolor{stringliteral}{")"});
+169         bpvps = bpvps.substring(13,bbvpsIndex); \textcolor{comment}{// var:v}
+170         
+171         
+172         \textcolor{keywordtype}{int} bargusIndex = atomBody.indexOf(\textcolor{stringliteral}{"\(\backslash\)""});
+173         \textcolor{keywordtype}{int} bargueIndex = atomBody.indexOf(\textcolor{stringliteral}{"^"});
+174         String bargu = atomBody.substring(bargusIndex+1,bargueIndex-1);
+175         String bartype = atomBody.substring(bargueIndex+6, atomBody.length()-1);
+176             
+177         
+178         BuiltInAtom builtInAtom = \textcolor{keyword}{new} BuiltInAtom(bbap,bpvps, bargu, bartype);
+179         
+180         \textcolor{keywordflow}{return} builtInAtom;
+181     \}
+\end{DoxyCode}
+\mbox{\Hypertarget{classcom_1_1github_1_1aites_1_1framework_1_1rule_1_1_s_w_r_lrule_ab01ac639c58b1478dc20272002106798}\label{classcom_1_1github_1_1aites_1_1framework_1_1rule_1_1_s_w_r_lrule_ab01ac639c58b1478dc20272002106798}} 
+\index{com\+::github\+::aites\+::framework\+::rule\+::\+S\+W\+R\+Lrule@{com\+::github\+::aites\+::framework\+::rule\+::\+S\+W\+R\+Lrule}!parse\+Class\+Atom@{parse\+Class\+Atom}}
+\index{parse\+Class\+Atom@{parse\+Class\+Atom}!com\+::github\+::aites\+::framework\+::rule\+::\+S\+W\+R\+Lrule@{com\+::github\+::aites\+::framework\+::rule\+::\+S\+W\+R\+Lrule}}
+\subsubsection{\texorpdfstring{parse\+Class\+Atom()}{parseClassAtom()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classcom_1_1github_1_1aites_1_1framework_1_1rule_1_1_s_w_r_lrule_1_1_class_atom}{Class\+Atom}} com.\+github.\+aites.\+framework.\+rule.\+S\+W\+R\+Lrule.\+parse\+Class\+Atom (\begin{DoxyParamCaption}\item[{String}]{atom\+Body }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+S\+W\+R\+Lrule.\+java 파일의 132 번째 라인에서 정의되었습니다.
+
+
+\begin{DoxyCode}
+132                                                      \{
+133         
+134         String bcap = atomBody.substring(23, atomBody.length());
+135         \textcolor{keywordtype}{int} hcapEndIndex = bcap.indexOf(\textcolor{stringliteral}{" "});
+136         bcap = bcap.substring(0,hcapEndIndex);
+137         
+138         \textcolor{keywordtype}{int} bvapStartIndex = atomBody.indexOf(\textcolor{stringliteral}{"var:"});
+139         \textcolor{keywordtype}{int} bvapEndIndex = atomBody.indexOf(\textcolor{stringliteral}{"))"});
+140         String bvap = atomBody.substring(bvapStartIndex+4, bvapEndIndex);
+141         ClassAtom classAtom = \textcolor{keyword}{new} ClassAtom(bcap, bvap);
+142         \textcolor{keywordflow}{return} classAtom;
+143     \}
+\end{DoxyCode}
+\mbox{\Hypertarget{classcom_1_1github_1_1aites_1_1framework_1_1rule_1_1_s_w_r_lrule_a98d9bcca97665200e8459358556d899d}\label{classcom_1_1github_1_1aites_1_1framework_1_1rule_1_1_s_w_r_lrule_a98d9bcca97665200e8459358556d899d}} 
+\index{com\+::github\+::aites\+::framework\+::rule\+::\+S\+W\+R\+Lrule@{com\+::github\+::aites\+::framework\+::rule\+::\+S\+W\+R\+Lrule}!parse\+Data\+Range\+Atom@{parse\+Data\+Range\+Atom}}
+\index{parse\+Data\+Range\+Atom@{parse\+Data\+Range\+Atom}!com\+::github\+::aites\+::framework\+::rule\+::\+S\+W\+R\+Lrule@{com\+::github\+::aites\+::framework\+::rule\+::\+S\+W\+R\+Lrule}}
+\subsubsection{\texorpdfstring{parse\+Data\+Range\+Atom()}{parseDataRangeAtom()}}
+{\footnotesize\ttfamily Data\+Range\+Atom com.\+github.\+aites.\+framework.\+rule.\+S\+W\+R\+Lrule.\+parse\+Data\+Range\+Atom (\begin{DoxyParamCaption}\item[{String}]{atom\+Body }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+S\+W\+R\+Lrule.\+java 파일의 182 번째 라인에서 정의되었습니다.
+
+
+\begin{DoxyCode}
+182                                                              \{
+183         
+184             
+185         String atomexceptblankBody = atomBody.substring(13);
+186         String[] atomBodyParsing = atomexceptblankBody.split(\textcolor{stringliteral}{" "});
+187         
+188         \textcolor{keywordtype}{int} dataTypeStart = 37;
+189         \textcolor{keywordtype}{int} dataTypeEnd = atomBodyParsing[0].length();
+190         String dataType = atomBodyParsing[0].substring(dataTypeStart, dataTypeEnd);
+191         
+192         \textcolor{keywordtype}{int} minnmaxStart = 1;
+193         \textcolor{keywordtype}{int} minEnd= atomBodyParsing[2].indexOf(\textcolor{stringliteral}{"^"})-1;
+194         \textcolor{keywordtype}{int} maxEnd= atomBodyParsing[4].indexOf(\textcolor{stringliteral}{"^"})-1;
+195         String minValue = atomBodyParsing[2].substring(minnmaxStart, minEnd);
+196         String maxValue = atomBodyParsing[4].substring(minnmaxStart, maxEnd);
+197         
+198         \textcolor{keywordtype}{int} varStart = 13;
+199         \textcolor{keywordtype}{int} varEnd = atomBodyParsing[5].indexOf(\textcolor{stringliteral}{")"});
+200         String variable = atomBodyParsing[5].substring(varStart, varEnd);
+201         
+202         DataRangeAtom da = \textcolor{keyword}{new} DataRangeAtom(dataType,minValue,maxValue,variable);
+203         \textcolor{keywordflow}{return} da;
+204  
+205     \}
+\end{DoxyCode}
+\mbox{\Hypertarget{classcom_1_1github_1_1aites_1_1framework_1_1rule_1_1_s_w_r_lrule_a5d90fa24f6f2a2db3a435905f68bbce2}\label{classcom_1_1github_1_1aites_1_1framework_1_1rule_1_1_s_w_r_lrule_a5d90fa24f6f2a2db3a435905f68bbce2}} 
+\index{com\+::github\+::aites\+::framework\+::rule\+::\+S\+W\+R\+Lrule@{com\+::github\+::aites\+::framework\+::rule\+::\+S\+W\+R\+Lrule}!parse\+Property\+Atom@{parse\+Property\+Atom}}
+\index{parse\+Property\+Atom@{parse\+Property\+Atom}!com\+::github\+::aites\+::framework\+::rule\+::\+S\+W\+R\+Lrule@{com\+::github\+::aites\+::framework\+::rule\+::\+S\+W\+R\+Lrule}}
+\subsubsection{\texorpdfstring{parse\+Property\+Atom()}{parsePropertyAtom()}}
+{\footnotesize\ttfamily Property\+Atom com.\+github.\+aites.\+framework.\+rule.\+S\+W\+R\+Lrule.\+parse\+Property\+Atom (\begin{DoxyParamCaption}\item[{String}]{atom\+Body,  }\item[{String}]{type }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+S\+W\+R\+Lrule.\+java 파일의 144 번째 라인에서 정의되었습니다.
+
+
+\begin{DoxyCode}
+144                                                                         \{
+145         String bpap = atomBody.substring(30, atomBody.length());
+146         \textcolor{keywordtype}{int} bpapEndIndex = bpap.indexOf(\textcolor{stringliteral}{" "});
+147         bpap = bpap.substring(0,bpapEndIndex);
+148         
+149         String bpvps = atomBody.substring(31+bpapEndIndex,atomBody.length()-1);
+150         String variables[] = bpvps.split(\textcolor{stringliteral}{" "});
+151 
+152         \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i=0; i<variables.length; i++)\{
+153             String var = variables[i].substring(13, variables[i].length()-1);
+154             variables[i] = var;
+155         \}
+156         
+157         PropertyAtom propertyAtom = \textcolor{keyword}{new} PropertyAtom(type, bpap, variables);
+158         
+159         
+160         \textcolor{keywordflow}{return} propertyAtom;
+161     \}
+\end{DoxyCode}
+\mbox{\Hypertarget{classcom_1_1github_1_1aites_1_1framework_1_1rule_1_1_s_w_r_lrule_ac24b01677beb4d4004f41cf1da585497}\label{classcom_1_1github_1_1aites_1_1framework_1_1rule_1_1_s_w_r_lrule_ac24b01677beb4d4004f41cf1da585497}} 
+\index{com\+::github\+::aites\+::framework\+::rule\+::\+S\+W\+R\+Lrule@{com\+::github\+::aites\+::framework\+::rule\+::\+S\+W\+R\+Lrule}!print\+S\+W\+R\+Lrule\+Info@{print\+S\+W\+R\+Lrule\+Info}}
+\index{print\+S\+W\+R\+Lrule\+Info@{print\+S\+W\+R\+Lrule\+Info}!com\+::github\+::aites\+::framework\+::rule\+::\+S\+W\+R\+Lrule@{com\+::github\+::aites\+::framework\+::rule\+::\+S\+W\+R\+Lrule}}
+\subsubsection{\texorpdfstring{print\+S\+W\+R\+Lrule\+Info()}{printSWRLruleInfo()}}
+{\footnotesize\ttfamily void com.\+github.\+aites.\+framework.\+rule.\+S\+W\+R\+Lrule.\+print\+S\+W\+R\+Lrule\+Info (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+S\+W\+R\+Lrule.\+java 파일의 206 번째 라인에서 정의되었습니다.
+
+
+\begin{DoxyCode}
+206                                    \{
+207         System.out.println(\textcolor{stringliteral}{"#####Print SWRL Rule information"});
+208         System.out.println(\textcolor{stringliteral}{"HeadAtom:"}+\mbox{\hyperlink{classcom_1_1github_1_1aites_1_1framework_1_1rule_1_1_s_w_r_lrule_a4ec94c9f7b37610da08df2770f6c6a71}{headAtom}});
+209         System.out.println(\textcolor{stringliteral}{"Annotation:"}+\mbox{\hyperlink{classcom_1_1github_1_1aites_1_1framework_1_1rule_1_1_s_w_r_lrule_af98a0b14045d483b30ad511f0627fe3f}{annotation}});
+210         \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i=0; i<\mbox{\hyperlink{classcom_1_1github_1_1aites_1_1framework_1_1rule_1_1_s_w_r_lrule_a83f3d18acd20dd43b8ade45e8c129123}{bodyAtoms}}.size(); i++)\{
+211             System.out.println(\textcolor{stringliteral}{"BodyAtom:"}+\mbox{\hyperlink{classcom_1_1github_1_1aites_1_1framework_1_1rule_1_1_s_w_r_lrule_a83f3d18acd20dd43b8ade45e8c129123}{bodyAtoms}}.get(i));
+212         \}
+213     \}
+\end{DoxyCode}
+\mbox{\Hypertarget{classcom_1_1github_1_1aites_1_1framework_1_1rule_1_1_s_w_r_lrule_a1521b7ed4a4dc7b19712c12501ffec0c}\label{classcom_1_1github_1_1aites_1_1framework_1_1rule_1_1_s_w_r_lrule_a1521b7ed4a4dc7b19712c12501ffec0c}} 
+\index{com\+::github\+::aites\+::framework\+::rule\+::\+S\+W\+R\+Lrule@{com\+::github\+::aites\+::framework\+::rule\+::\+S\+W\+R\+Lrule}!rule\+Parsing@{rule\+Parsing}}
+\index{rule\+Parsing@{rule\+Parsing}!com\+::github\+::aites\+::framework\+::rule\+::\+S\+W\+R\+Lrule@{com\+::github\+::aites\+::framework\+::rule\+::\+S\+W\+R\+Lrule}}
+\subsubsection{\texorpdfstring{rule\+Parsing()}{ruleParsing()}}
+{\footnotesize\ttfamily void com.\+github.\+aites.\+framework.\+rule.\+S\+W\+R\+Lrule.\+rule\+Parsing (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+S\+W\+R\+Lrule.\+java 파일의 32 번째 라인에서 정의되었습니다.
+
+
+\begin{DoxyCode}
+32                               \{ \textcolor{comment}{// parsing rule body, head.}
+33         String classString = \textcolor{stringliteral}{"Class"};
+34         String dataPropertyString = \textcolor{stringliteral}{"DataProperty"};
+35         String builtInString =\textcolor{stringliteral}{"BuiltIn"};
+36         String dataRangeString = \textcolor{stringliteral}{"DataRange"};
+37         String[] parsedRule = \mbox{\hyperlink{classcom_1_1github_1_1aites_1_1framework_1_1rule_1_1_s_w_r_lrule_adde1291a731073840a5ac9e535bf6f3f}{swrlRule}}.split(\textcolor{stringliteral}{"\(\backslash\)r\(\backslash\)n"});
+38         \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i=0; i<parsedRule.length; i++)\{
+39             \textcolor{keywordflow}{if}(parsedRule[i].contains(\textcolor{stringliteral}{"Body"}))\{
+40                 \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} j=i+1; i<parsedRule.length; j++)\{
+41                     \textcolor{keywordflow}{if}(parsedRule[j].equals(\textcolor{stringliteral}{"        )"}))\{
+42                         \textcolor{keywordflow}{break};
+43                     \}
+44                     \mbox{\hyperlink{classcom_1_1github_1_1aites_1_1framework_1_1rule_1_1_s_w_r_lrule_a83f3d18acd20dd43b8ade45e8c129123}{bodyAtoms}}.add(parsedRule[j]);
+45                     \textcolor{keywordtype}{int} bodyAtomTypeEndIndex = parsedRule[j].indexOf(\textcolor{stringliteral}{"Atom"}); 
+46                     String bodyAtomType = parsedRule[j].substring(12, bodyAtomTypeEndIndex);
+47                 
+48                     \textcolor{keywordflow}{if}(bodyAtomType.equals(classString))\{
+49                         \mbox{\hyperlink{classcom_1_1github_1_1aites_1_1framework_1_1rule_1_1_s_w_r_lrule_a3400b10f602a6a7d7abd42681d7af024}{bodyClassAtom}} = \mbox{\hyperlink{classcom_1_1github_1_1aites_1_1framework_1_1rule_1_1_s_w_r_lrule_ab01ac639c58b1478dc20272002106798}{parseClassAtom}}(parsedRule[j]);
+50                     
+51                     \}\textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(bodyAtomType.equals(dataPropertyString))\{
+52                         PropertyAtom pa = \mbox{\hyperlink{classcom_1_1github_1_1aites_1_1framework_1_1rule_1_1_s_w_r_lrule_a5d90fa24f6f2a2db3a435905f68bbce2}{parsePropertyAtom}}(parsedRule[j],
+      dataPropertyString);
+53                         \mbox{\hyperlink{classcom_1_1github_1_1aites_1_1framework_1_1rule_1_1_s_w_r_lrule_a4236a432610492bb79e3822eec52fea3}{rulePropertyAtoms}}.add(pa);
+54                     \}\textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(bodyAtomType.equals(builtInString))\{
+55                         
+56                         BuiltInAtom ba = \mbox{\hyperlink{classcom_1_1github_1_1aites_1_1framework_1_1rule_1_1_s_w_r_lrule_a7880f0990348da202843776ba08e7514}{parseBuiltInAtom}}(parsedRule[j]);
+57                         \mbox{\hyperlink{classcom_1_1github_1_1aites_1_1framework_1_1rule_1_1_s_w_r_lrule_a1ccff2ed582cdf233f27d0127fa2f1c0}{ruleBulitInAtoms}}.add(ba);
+58                     \}\textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(bodyAtomType.equals(dataRangeString))\{
+59                         DataRangeAtom da = \mbox{\hyperlink{classcom_1_1github_1_1aites_1_1framework_1_1rule_1_1_s_w_r_lrule_a98d9bcca97665200e8459358556d899d}{parseDataRangeAtom}}(parsedRule[j]);
+60                         \mbox{\hyperlink{classcom_1_1github_1_1aites_1_1framework_1_1rule_1_1_s_w_r_lrule_a21c0c8ab54dc9ac16131962b01cbea57}{ruleDataRangeAtoms}}.add(da);
+61                     \}
+62                     
+63                 \}
+64             \}
+65             \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(parsedRule[i].contains(\textcolor{stringliteral}{"Head"}))\{
+66                 
+67                 \mbox{\hyperlink{classcom_1_1github_1_1aites_1_1framework_1_1rule_1_1_s_w_r_lrule_a4ec94c9f7b37610da08df2770f6c6a71}{headAtom}} = parsedRule[i+1];
+68             
+69                 \mbox{\hyperlink{classcom_1_1github_1_1aites_1_1framework_1_1rule_1_1_s_w_r_lrule_a687c4ba8bc9724b6a06ab4bb9301ca86}{headClassAtom}} = \mbox{\hyperlink{classcom_1_1github_1_1aites_1_1framework_1_1rule_1_1_s_w_r_lrule_ab01ac639c58b1478dc20272002106798}{parseClassAtom}}(
+      \mbox{\hyperlink{classcom_1_1github_1_1aites_1_1framework_1_1rule_1_1_s_w_r_lrule_a4ec94c9f7b37610da08df2770f6c6a71}{headAtom}});
+70                 
+71             \}
+72             \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(parsedRule[i].contains(\textcolor{stringliteral}{"Annotation"}))\{
+73         
+74                 \mbox{\hyperlink{classcom_1_1github_1_1aites_1_1framework_1_1rule_1_1_s_w_r_lrule_af98a0b14045d483b30ad511f0627fe3f}{annotation}} = parsedRule[i]+\textcolor{stringliteral}{"\(\backslash\)r\(\backslash\)n"};
+75             \}
+76             
+77             
+78         \}
+79     \}
+\end{DoxyCode}
+\mbox{\Hypertarget{classcom_1_1github_1_1aites_1_1framework_1_1rule_1_1_s_w_r_lrule_a4bdc9396085aa17600949d679657c2ad}\label{classcom_1_1github_1_1aites_1_1framework_1_1rule_1_1_s_w_r_lrule_a4bdc9396085aa17600949d679657c2ad}} 
+\index{com\+::github\+::aites\+::framework\+::rule\+::\+S\+W\+R\+Lrule@{com\+::github\+::aites\+::framework\+::rule\+::\+S\+W\+R\+Lrule}!update\+Bulit\+In\+Atom@{update\+Bulit\+In\+Atom}}
+\index{update\+Bulit\+In\+Atom@{update\+Bulit\+In\+Atom}!com\+::github\+::aites\+::framework\+::rule\+::\+S\+W\+R\+Lrule@{com\+::github\+::aites\+::framework\+::rule\+::\+S\+W\+R\+Lrule}}
+\subsubsection{\texorpdfstring{update\+Bulit\+In\+Atom()}{updateBulitInAtom()}}
+{\footnotesize\ttfamily void com.\+github.\+aites.\+framework.\+rule.\+S\+W\+R\+Lrule.\+update\+Bulit\+In\+Atom (\begin{DoxyParamCaption}\item[{int}]{bulit\+In\+Index,  }\item[{String}]{new\+Value }\end{DoxyParamCaption})}
+
+
+
+S\+W\+R\+Lrule.\+java 파일의 83 번째 라인에서 정의되었습니다.
+
+
+\begin{DoxyCode}
+83                                                                     \{
+84         BuiltInAtom bulitIn = \mbox{\hyperlink{classcom_1_1github_1_1aites_1_1framework_1_1rule_1_1_s_w_r_lrule_a1ccff2ed582cdf233f27d0127fa2f1c0}{ruleBulitInAtoms}}.get(bulitInIndex);
+85         
+86         bulitIn.setDataValue(newValue);
+87         
+88         \mbox{\hyperlink{classcom_1_1github_1_1aites_1_1framework_1_1rule_1_1_s_w_r_lrule_a1ccff2ed582cdf233f27d0127fa2f1c0}{ruleBulitInAtoms}}.set(bulitInIndex, bulitIn);
+89         \mbox{\hyperlink{classcom_1_1github_1_1aites_1_1framework_1_1rule_1_1_s_w_r_lrule_a8b6f04d7d532e8150e4be3ba796c28e9}{makeSWRLrule}}();
+90     \}
+\end{DoxyCode}
+
+
+\subsection{멤버 데이터 문서화}
+\mbox{\Hypertarget{classcom_1_1github_1_1aites_1_1framework_1_1rule_1_1_s_w_r_lrule_af98a0b14045d483b30ad511f0627fe3f}\label{classcom_1_1github_1_1aites_1_1framework_1_1rule_1_1_s_w_r_lrule_af98a0b14045d483b30ad511f0627fe3f}} 
+\index{com\+::github\+::aites\+::framework\+::rule\+::\+S\+W\+R\+Lrule@{com\+::github\+::aites\+::framework\+::rule\+::\+S\+W\+R\+Lrule}!annotation@{annotation}}
+\index{annotation@{annotation}!com\+::github\+::aites\+::framework\+::rule\+::\+S\+W\+R\+Lrule@{com\+::github\+::aites\+::framework\+::rule\+::\+S\+W\+R\+Lrule}}
+\subsubsection{\texorpdfstring{annotation}{annotation}}
+{\footnotesize\ttfamily String com.\+github.\+aites.\+framework.\+rule.\+S\+W\+R\+Lrule.\+annotation\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+S\+W\+R\+Lrule.\+java 파일의 14 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{classcom_1_1github_1_1aites_1_1framework_1_1rule_1_1_s_w_r_lrule_a83f3d18acd20dd43b8ade45e8c129123}\label{classcom_1_1github_1_1aites_1_1framework_1_1rule_1_1_s_w_r_lrule_a83f3d18acd20dd43b8ade45e8c129123}} 
+\index{com\+::github\+::aites\+::framework\+::rule\+::\+S\+W\+R\+Lrule@{com\+::github\+::aites\+::framework\+::rule\+::\+S\+W\+R\+Lrule}!body\+Atoms@{body\+Atoms}}
+\index{body\+Atoms@{body\+Atoms}!com\+::github\+::aites\+::framework\+::rule\+::\+S\+W\+R\+Lrule@{com\+::github\+::aites\+::framework\+::rule\+::\+S\+W\+R\+Lrule}}
+\subsubsection{\texorpdfstring{body\+Atoms}{bodyAtoms}}
+{\footnotesize\ttfamily Array\+List$<$String$>$ com.\+github.\+aites.\+framework.\+rule.\+S\+W\+R\+Lrule.\+body\+Atoms = new Array\+List$<$String$>$()\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+S\+W\+R\+Lrule.\+java 파일의 12 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{classcom_1_1github_1_1aites_1_1framework_1_1rule_1_1_s_w_r_lrule_a3400b10f602a6a7d7abd42681d7af024}\label{classcom_1_1github_1_1aites_1_1framework_1_1rule_1_1_s_w_r_lrule_a3400b10f602a6a7d7abd42681d7af024}} 
+\index{com\+::github\+::aites\+::framework\+::rule\+::\+S\+W\+R\+Lrule@{com\+::github\+::aites\+::framework\+::rule\+::\+S\+W\+R\+Lrule}!body\+Class\+Atom@{body\+Class\+Atom}}
+\index{body\+Class\+Atom@{body\+Class\+Atom}!com\+::github\+::aites\+::framework\+::rule\+::\+S\+W\+R\+Lrule@{com\+::github\+::aites\+::framework\+::rule\+::\+S\+W\+R\+Lrule}}
+\subsubsection{\texorpdfstring{body\+Class\+Atom}{bodyClassAtom}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classcom_1_1github_1_1aites_1_1framework_1_1rule_1_1_s_w_r_lrule_1_1_class_atom}{Class\+Atom}} com.\+github.\+aites.\+framework.\+rule.\+S\+W\+R\+Lrule.\+body\+Class\+Atom\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+S\+W\+R\+Lrule.\+java 파일의 18 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{classcom_1_1github_1_1aites_1_1framework_1_1rule_1_1_s_w_r_lrule_a4ec94c9f7b37610da08df2770f6c6a71}\label{classcom_1_1github_1_1aites_1_1framework_1_1rule_1_1_s_w_r_lrule_a4ec94c9f7b37610da08df2770f6c6a71}} 
+\index{com\+::github\+::aites\+::framework\+::rule\+::\+S\+W\+R\+Lrule@{com\+::github\+::aites\+::framework\+::rule\+::\+S\+W\+R\+Lrule}!head\+Atom@{head\+Atom}}
+\index{head\+Atom@{head\+Atom}!com\+::github\+::aites\+::framework\+::rule\+::\+S\+W\+R\+Lrule@{com\+::github\+::aites\+::framework\+::rule\+::\+S\+W\+R\+Lrule}}
+\subsubsection{\texorpdfstring{head\+Atom}{headAtom}}
+{\footnotesize\ttfamily String com.\+github.\+aites.\+framework.\+rule.\+S\+W\+R\+Lrule.\+head\+Atom\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+S\+W\+R\+Lrule.\+java 파일의 13 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{classcom_1_1github_1_1aites_1_1framework_1_1rule_1_1_s_w_r_lrule_a687c4ba8bc9724b6a06ab4bb9301ca86}\label{classcom_1_1github_1_1aites_1_1framework_1_1rule_1_1_s_w_r_lrule_a687c4ba8bc9724b6a06ab4bb9301ca86}} 
+\index{com\+::github\+::aites\+::framework\+::rule\+::\+S\+W\+R\+Lrule@{com\+::github\+::aites\+::framework\+::rule\+::\+S\+W\+R\+Lrule}!head\+Class\+Atom@{head\+Class\+Atom}}
+\index{head\+Class\+Atom@{head\+Class\+Atom}!com\+::github\+::aites\+::framework\+::rule\+::\+S\+W\+R\+Lrule@{com\+::github\+::aites\+::framework\+::rule\+::\+S\+W\+R\+Lrule}}
+\subsubsection{\texorpdfstring{head\+Class\+Atom}{headClassAtom}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classcom_1_1github_1_1aites_1_1framework_1_1rule_1_1_s_w_r_lrule_1_1_class_atom}{Class\+Atom}} com.\+github.\+aites.\+framework.\+rule.\+S\+W\+R\+Lrule.\+head\+Class\+Atom\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+S\+W\+R\+Lrule.\+java 파일의 16 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{classcom_1_1github_1_1aites_1_1framework_1_1rule_1_1_s_w_r_lrule_a1ccff2ed582cdf233f27d0127fa2f1c0}\label{classcom_1_1github_1_1aites_1_1framework_1_1rule_1_1_s_w_r_lrule_a1ccff2ed582cdf233f27d0127fa2f1c0}} 
+\index{com\+::github\+::aites\+::framework\+::rule\+::\+S\+W\+R\+Lrule@{com\+::github\+::aites\+::framework\+::rule\+::\+S\+W\+R\+Lrule}!rule\+Bulit\+In\+Atoms@{rule\+Bulit\+In\+Atoms}}
+\index{rule\+Bulit\+In\+Atoms@{rule\+Bulit\+In\+Atoms}!com\+::github\+::aites\+::framework\+::rule\+::\+S\+W\+R\+Lrule@{com\+::github\+::aites\+::framework\+::rule\+::\+S\+W\+R\+Lrule}}
+\subsubsection{\texorpdfstring{rule\+Bulit\+In\+Atoms}{ruleBulitInAtoms}}
+{\footnotesize\ttfamily Array\+List$<$Built\+In\+Atom$>$ com.\+github.\+aites.\+framework.\+rule.\+S\+W\+R\+Lrule.\+rule\+Bulit\+In\+Atoms = new Array\+List$<$Built\+In\+Atom$>$()\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+S\+W\+R\+Lrule.\+java 파일의 20 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{classcom_1_1github_1_1aites_1_1framework_1_1rule_1_1_s_w_r_lrule_a21c0c8ab54dc9ac16131962b01cbea57}\label{classcom_1_1github_1_1aites_1_1framework_1_1rule_1_1_s_w_r_lrule_a21c0c8ab54dc9ac16131962b01cbea57}} 
+\index{com\+::github\+::aites\+::framework\+::rule\+::\+S\+W\+R\+Lrule@{com\+::github\+::aites\+::framework\+::rule\+::\+S\+W\+R\+Lrule}!rule\+Data\+Range\+Atoms@{rule\+Data\+Range\+Atoms}}
+\index{rule\+Data\+Range\+Atoms@{rule\+Data\+Range\+Atoms}!com\+::github\+::aites\+::framework\+::rule\+::\+S\+W\+R\+Lrule@{com\+::github\+::aites\+::framework\+::rule\+::\+S\+W\+R\+Lrule}}
+\subsubsection{\texorpdfstring{rule\+Data\+Range\+Atoms}{ruleDataRangeAtoms}}
+{\footnotesize\ttfamily Array\+List$<$Data\+Range\+Atom$>$ com.\+github.\+aites.\+framework.\+rule.\+S\+W\+R\+Lrule.\+rule\+Data\+Range\+Atoms = new Array\+List$<$Data\+Range\+Atom$>$()\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+S\+W\+R\+Lrule.\+java 파일의 21 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{classcom_1_1github_1_1aites_1_1framework_1_1rule_1_1_s_w_r_lrule_a4236a432610492bb79e3822eec52fea3}\label{classcom_1_1github_1_1aites_1_1framework_1_1rule_1_1_s_w_r_lrule_a4236a432610492bb79e3822eec52fea3}} 
+\index{com\+::github\+::aites\+::framework\+::rule\+::\+S\+W\+R\+Lrule@{com\+::github\+::aites\+::framework\+::rule\+::\+S\+W\+R\+Lrule}!rule\+Property\+Atoms@{rule\+Property\+Atoms}}
+\index{rule\+Property\+Atoms@{rule\+Property\+Atoms}!com\+::github\+::aites\+::framework\+::rule\+::\+S\+W\+R\+Lrule@{com\+::github\+::aites\+::framework\+::rule\+::\+S\+W\+R\+Lrule}}
+\subsubsection{\texorpdfstring{rule\+Property\+Atoms}{rulePropertyAtoms}}
+{\footnotesize\ttfamily Array\+List$<$Property\+Atom$>$ com.\+github.\+aites.\+framework.\+rule.\+S\+W\+R\+Lrule.\+rule\+Property\+Atoms = new Array\+List$<$Property\+Atom$>$()\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+S\+W\+R\+Lrule.\+java 파일의 19 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{classcom_1_1github_1_1aites_1_1framework_1_1rule_1_1_s_w_r_lrule_adde1291a731073840a5ac9e535bf6f3f}\label{classcom_1_1github_1_1aites_1_1framework_1_1rule_1_1_s_w_r_lrule_adde1291a731073840a5ac9e535bf6f3f}} 
+\index{com\+::github\+::aites\+::framework\+::rule\+::\+S\+W\+R\+Lrule@{com\+::github\+::aites\+::framework\+::rule\+::\+S\+W\+R\+Lrule}!swrl\+Rule@{swrl\+Rule}}
+\index{swrl\+Rule@{swrl\+Rule}!com\+::github\+::aites\+::framework\+::rule\+::\+S\+W\+R\+Lrule@{com\+::github\+::aites\+::framework\+::rule\+::\+S\+W\+R\+Lrule}}
+\subsubsection{\texorpdfstring{swrl\+Rule}{swrlRule}}
+{\footnotesize\ttfamily String com.\+github.\+aites.\+framework.\+rule.\+S\+W\+R\+Lrule.\+swrl\+Rule\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+S\+W\+R\+Lrule.\+java 파일의 11 번째 라인에서 정의되었습니다.
+
+
+
+이 클래스에 대한 문서화 페이지는 다음의 파일로부터 생성되었습니다.\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/srsok/\+Ai\+T\+E\+S/core/\+Ai\+T\+E\+S\+Framework/src/com/github/aites/framework/rule/\mbox{\hyperlink{_s_w_r_lrule_8java}{S\+W\+R\+Lrule.\+java}}\end{DoxyCompactItemize}

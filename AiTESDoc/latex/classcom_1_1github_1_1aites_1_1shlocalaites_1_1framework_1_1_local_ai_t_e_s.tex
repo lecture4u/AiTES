@@ -1,0 +1,266 @@
+\hypertarget{classcom_1_1github_1_1aites_1_1shlocalaites_1_1framework_1_1_local_ai_t_e_s}{}\section{com.\+github.\+aites.\+shlocalaites.\+framework.\+Local\+Ai\+T\+ES 클래스 참조}
+\label{classcom_1_1github_1_1aites_1_1shlocalaites_1_1framework_1_1_local_ai_t_e_s}\index{com.\+github.\+aites.\+shlocalaites.\+framework.\+Local\+Ai\+T\+ES@{com.\+github.\+aites.\+shlocalaites.\+framework.\+Local\+Ai\+T\+ES}}
+com.\+github.\+aites.\+shlocalaites.\+framework.\+Local\+Ai\+T\+E\+S에 대한 상속 다이어그램 \+: \begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classcom_1_1github_1_1aites_1_1shlocalaites_1_1framework_1_1_local_ai_t_e_s}
+\end{center}
+\end{figure}
+\subsection*{Public 멤버 함수}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classcom_1_1github_1_1aites_1_1shlocalaites_1_1framework_1_1_local_ai_t_e_s_abc44ebc127ef39aa8e39c690b92d435a}{run\+Ai\+T\+ES}} ()
+\item 
+void \mbox{\hyperlink{classcom_1_1github_1_1aites_1_1shlocalaites_1_1framework_1_1_local_ai_t_e_s_a17c17267d25e98f2e75a54f4032b411f}{manage\+Ai\+T\+ES}} (String mqtt\+Message, String topic, String device\+Name)  throws Exception 
+\end{DoxyCompactItemize}
+\subsection*{Private 멤버 함수}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classcom_1_1github_1_1aites_1_1shlocalaites_1_1framework_1_1_local_ai_t_e_s_a76541bc0beefb5b50d9c6370abff881e}{process\+Feed\+Back\+Loops}} (String mqtt\+Message, String topic, String device\+Name)
+\item 
+void \mbox{\hyperlink{classcom_1_1github_1_1aites_1_1shlocalaites_1_1framework_1_1_local_ai_t_e_s_ab47f54556f1287c55d41da05b315bd54}{manage\+Connection}} (String mqtt\+Message, String topic, String connection\+Flag)
+\end{DoxyCompactItemize}
+
+
+\subsection{상세한 설명}
+
+
+Local\+Ai\+T\+E\+S.\+java 파일의 32 번째 라인에서 정의되었습니다.
+
+
+
+\subsection{멤버 함수 문서화}
+\mbox{\Hypertarget{classcom_1_1github_1_1aites_1_1shlocalaites_1_1framework_1_1_local_ai_t_e_s_a17c17267d25e98f2e75a54f4032b411f}\label{classcom_1_1github_1_1aites_1_1shlocalaites_1_1framework_1_1_local_ai_t_e_s_a17c17267d25e98f2e75a54f4032b411f}} 
+\index{com\+::github\+::aites\+::shlocalaites\+::framework\+::\+Local\+Ai\+T\+ES@{com\+::github\+::aites\+::shlocalaites\+::framework\+::\+Local\+Ai\+T\+ES}!manage\+Ai\+T\+ES@{manage\+Ai\+T\+ES}}
+\index{manage\+Ai\+T\+ES@{manage\+Ai\+T\+ES}!com\+::github\+::aites\+::shlocalaites\+::framework\+::\+Local\+Ai\+T\+ES@{com\+::github\+::aites\+::shlocalaites\+::framework\+::\+Local\+Ai\+T\+ES}}
+\subsubsection{\texorpdfstring{manage\+Ai\+T\+E\+S()}{manageAiTES()}}
+{\footnotesize\ttfamily void com.\+github.\+aites.\+shlocalaites.\+framework.\+Local\+Ai\+T\+E\+S.\+manage\+Ai\+T\+ES (\begin{DoxyParamCaption}\item[{String}]{mqtt\+Message,  }\item[{String}]{topic,  }\item[{String}]{device\+Name }\end{DoxyParamCaption}) throws Exception}
+
+
+
+Local\+Ai\+T\+E\+S.\+java 파일의 101 번째 라인에서 정의되었습니다.
+
+
+\begin{DoxyCode}
+101                                                                                                   \{
+102         String[] topicSpliter = topic.split(\textcolor{stringliteral}{"/"});
+103         
+104         \textcolor{keywordflow}{if}(topicSpliter[4].equals(\textcolor{stringliteral}{"envData"}))\{
+105             \mbox{\hyperlink{classcom_1_1github_1_1aites_1_1shlocalaites_1_1framework_1_1_local_ai_t_e_s_a76541bc0beefb5b50d9c6370abff881e}{processFeedBackLoops}}(mqttMessage, topic, deviceName);
+106         \}
+107         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(topicSpliter[4].equals(\textcolor{stringliteral}{"connection"}))\{
+108             \mbox{\hyperlink{classcom_1_1github_1_1aites_1_1shlocalaites_1_1framework_1_1_local_ai_t_e_s_ab47f54556f1287c55d41da05b315bd54}{manageConnection}}(mqttMessage, topic, \textcolor{stringliteral}{"connect"});
+109         \}
+110         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(topicSpliter[4].equals(\textcolor{stringliteral}{"disconnection"}))\{
+111             \mbox{\hyperlink{classcom_1_1github_1_1aites_1_1shlocalaites_1_1framework_1_1_local_ai_t_e_s_ab47f54556f1287c55d41da05b315bd54}{manageConnection}}(mqttMessage, topic, \textcolor{stringliteral}{"disconnect"});
+112         \}
+113         System.out.println(\textcolor{stringliteral}{"Meessage Processing Complete"});
+114         log.logFileCreate();
+115     \}
+\end{DoxyCode}
+\mbox{\Hypertarget{classcom_1_1github_1_1aites_1_1shlocalaites_1_1framework_1_1_local_ai_t_e_s_ab47f54556f1287c55d41da05b315bd54}\label{classcom_1_1github_1_1aites_1_1shlocalaites_1_1framework_1_1_local_ai_t_e_s_ab47f54556f1287c55d41da05b315bd54}} 
+\index{com\+::github\+::aites\+::shlocalaites\+::framework\+::\+Local\+Ai\+T\+ES@{com\+::github\+::aites\+::shlocalaites\+::framework\+::\+Local\+Ai\+T\+ES}!manage\+Connection@{manage\+Connection}}
+\index{manage\+Connection@{manage\+Connection}!com\+::github\+::aites\+::shlocalaites\+::framework\+::\+Local\+Ai\+T\+ES@{com\+::github\+::aites\+::shlocalaites\+::framework\+::\+Local\+Ai\+T\+ES}}
+\subsubsection{\texorpdfstring{manage\+Connection()}{manageConnection()}}
+{\footnotesize\ttfamily void com.\+github.\+aites.\+shlocalaites.\+framework.\+Local\+Ai\+T\+E\+S.\+manage\+Connection (\begin{DoxyParamCaption}\item[{String}]{mqtt\+Message,  }\item[{String}]{topic,  }\item[{String}]{connection\+Flag }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Local\+Ai\+T\+E\+S.\+java 파일의 175 번째 라인에서 정의되었습니다.
+
+
+\begin{DoxyCode}
+175                                                                                           \{
+176         \textcolor{keywordflow}{if}(connectionFlag.equals(\textcolor{stringliteral}{"connect"}))\{
+177             log.logInput(\textcolor{stringliteral}{"++++++++Get Connection Signal from IoT gateway++++++++"});
+178             log.logInput(\textcolor{stringliteral}{"Topic:"}+topic);
+179             log.logInput(\textcolor{stringliteral}{"Message:"}+mqttMessage);
+180             log.logInput(\textcolor{stringliteral}{"*****Parse connected device data*****"});
+181             \textcolor{keywordtype}{int} dnStartIndex = mqttMessage.indexOf(\textcolor{stringliteral}{"\{"}) +2;
+182             \textcolor{keywordtype}{int} dnEndIndex = mqttMessage.indexOf(\textcolor{stringliteral}{"["})-2;
+183             String deviceName =mqttMessage.substring(dnStartIndex, dnEndIndex);
+184             \textcolor{keywordflow}{try}\{
+185                 JSONParser parser = \textcolor{keyword}{new} JSONParser();
+186                 Object jsonObj = parser.parse(mqttMessage);
+187                 JSONObject jsonObject = (JSONObject)jsonObj; 
+188                 
+189                 JSONArray deviceInfo = (JSONArray)jsonObject.get(deviceName);
+190                 
+191                 Iterator iter = deviceInfo.iterator();
+192                 \textcolor{keywordflow}{while}(iter.hasNext())\{
+193                    
+194                     JSONObject innerObj = (JSONObject) iter.next();
+195                     
+196                     log.logInput(\textcolor{stringliteral}{"address:"}+innerObj.get(\textcolor{stringliteral}{"address"})+\textcolor{stringliteral}{", modelCode:"}+innerObj.get(\textcolor{stringliteral}{"modelCode"}
+      )+\textcolor{stringliteral}{", status:"}+innerObj.get(\textcolor{stringliteral}{"status"}));
+197                     Device newDevice = \textcolor{keyword}{new} Device(deviceName ,innerObj.get(\textcolor{stringliteral}{"status"}).toString(), innerObj.
+      get(\textcolor{stringliteral}{"address"}).toString(), innerObj.get(\textcolor{stringliteral}{"modelCode"}).toString());
+198                     participants.addDevice(newDevice);          
+199                     
+200                 \}
+201             \}\textcolor{keywordflow}{catch}(Exception e)\{
+202                 e.printStackTrace();
+203             \}
+204             log.logInput(\textcolor{stringliteral}{"+++++++++++++++++++++++++++++++++++++++++++++++++++++++++"});
+205         \}
+206         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(connectionFlag.equals(\textcolor{stringliteral}{"disconnect"}))\{
+207             log.logInput(\textcolor{stringliteral}{"++++++++Get Disconnection Signal from IoT gateway++++++++"});
+208             log.logInput(\textcolor{stringliteral}{"Topic:"}+topic);
+209             log.logInput(\textcolor{stringliteral}{"Message:"}+mqttMessage);
+210             log.logInput(\textcolor{stringliteral}{"+++++++++++++++++++++++++++++++++++++++++++++++++++++++++"});
+211         \}
+212     
+213     \}
+\end{DoxyCode}
+\mbox{\Hypertarget{classcom_1_1github_1_1aites_1_1shlocalaites_1_1framework_1_1_local_ai_t_e_s_a76541bc0beefb5b50d9c6370abff881e}\label{classcom_1_1github_1_1aites_1_1shlocalaites_1_1framework_1_1_local_ai_t_e_s_a76541bc0beefb5b50d9c6370abff881e}} 
+\index{com\+::github\+::aites\+::shlocalaites\+::framework\+::\+Local\+Ai\+T\+ES@{com\+::github\+::aites\+::shlocalaites\+::framework\+::\+Local\+Ai\+T\+ES}!process\+Feed\+Back\+Loops@{process\+Feed\+Back\+Loops}}
+\index{process\+Feed\+Back\+Loops@{process\+Feed\+Back\+Loops}!com\+::github\+::aites\+::shlocalaites\+::framework\+::\+Local\+Ai\+T\+ES@{com\+::github\+::aites\+::shlocalaites\+::framework\+::\+Local\+Ai\+T\+ES}}
+\subsubsection{\texorpdfstring{process\+Feed\+Back\+Loops()}{processFeedBackLoops()}}
+{\footnotesize\ttfamily void com.\+github.\+aites.\+shlocalaites.\+framework.\+Local\+Ai\+T\+E\+S.\+process\+Feed\+Back\+Loops (\begin{DoxyParamCaption}\item[{String}]{mqtt\+Message,  }\item[{String}]{topic,  }\item[{String}]{device\+Name }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Local\+Ai\+T\+E\+S.\+java 파일의 116 번째 라인에서 정의되었습니다.
+
+
+\begin{DoxyCode}
+116                                                                                           \{
+117         \textcolor{comment}{// Receive probe data.}
+118         log.logInput(\textcolor{stringliteral}{"----------Get IoT environment Data from IoT gateway----------"});
+119         log.logInput(\textcolor{stringliteral}{"Topic:"}+topic);
+120         log.logInput(\textcolor{stringliteral}{"Message:"}+mqttMessage);
+121         log.logInput(\textcolor{stringliteral}{"deviceName:"}+deviceName);
+122         log.logInput(\textcolor{stringliteral}{"Current System Time:"}+timer.getWholeTime());
+123         log.logInput(\textcolor{stringliteral}{"Current connected IoT Env participants:"});
+124         log.logInput(participants.printParticipantsList());
+125         
+126         \textcolor{comment}{// Rule configuration before process feedback loops, assert individual;}
+127         String feedBackInd  =\textcolor{stringliteral}{"SHEdata"}+timer.getAbbTime();
+128         log.logInput(\textcolor{stringliteral}{"#####Assertion individual to ruleSet:"}+feedBackInd+\textcolor{stringliteral}{"#####"});
+129         RuleSetManager ruleSetManager = \textcolor{keyword}{new} RuleSetManager(\textcolor{stringliteral}{"smartHome.xml"});
+130         ruleSetManager.assertInd(feedBackInd, \textcolor{stringliteral}{"SHEdata"});
+131         ruleSetManager.saveRuleSet();
+132         
+133         \textcolor{comment}{//Monitor: preprocessing, reasoning call analyzer}
+134         Manager af = ManagerAF.getManager(\textcolor{keyword}{new} Monitor(mqttMessage,ruleSetURL,clientID));
+135         af.run();
+136         
+137         \textcolor{comment}{//Analyzer:reasoing entire environment when monitoring factor is over limited.}
+138         dc = \textcolor{keyword}{new} MonitorEnvDataReader();
+139         dc.dbConnect();
+140         ArrayList<String> monitorInfo = ((MonitorEnvDataReader)dc).getMonitorInfo(); \textcolor{comment}{// 0:collectDate,
+       1:mresult, 2:position, 3:temperture}
+141         
+142         String monitorTime = timer.parseTime(monitorInfo.get(0));
+143         \textcolor{keywordflow}{if}(timer.getCurrentTime().equals(monitorTime) && (monitorInfo.get(1).equals(\textcolor{stringliteral}{"under"})||monitorInfo.
+      get(1).equals(\textcolor{stringliteral}{"over"})))\{
+144             log.logInput(\textcolor{stringliteral}{"Monitoring factor is over limited, call analyzer."});
+145             
+146             af = ManagerAF.getManager(\textcolor{keyword}{new} Analyzer(monitorInfo, clientID,ruleSetURL));
+147             af.run();
+148             
+149             dc = \textcolor{keyword}{new} AnalyzerStateSetReader();
+150             dc.dbConnect();
+151             
+152             \textcolor{comment}{//Plaing: organizing plan for solution about situation}
+153             String analyedDate = ((AnalyzerStateSetReader)dc).getCollectDate();
+154             String stateSet = ((AnalyzerStateSetReader)dc).getStateSet();
+155             String pneed = ((AnalyzerStateSetReader)dc).getPneed();
+156 
+157             \textcolor{keywordflow}{if}(pneed.equals(\textcolor{stringliteral}{"yes"}))\{
+158                 log.logInput(\textcolor{stringliteral}{"Analyzed State Set need plaining, call planner"});
+159                 af = ManagerAF.getManager(\textcolor{keyword}{new} Planner(stateSet,analyedDate));
+160                 af.run();
+161             \}
+162         \}
+163         \textcolor{comment}{//Executor: Execute Current Time plans}
+164         af = ManagerAF.getManager(\textcolor{keyword}{new} Executor(clientID,deviceName,dymoduleFolder));
+165         af.run();
+166         \textcolor{comment}{// Rule configuration after process feedback loops, delete individual assertion;}
+167         log.logInput(\textcolor{stringliteral}{"#####Delete individual to ruleSet:"}+feedBackInd+\textcolor{stringliteral}{"#####"});
+168         ruleSetManager = \textcolor{keyword}{new} RuleSetManager(\textcolor{stringliteral}{"smartHome.xml"});
+169         ruleSetManager.deleteInd(feedBackInd);
+170         ruleSetManager.saveRuleSet();
+171         
+172         timer.processedTime();
+173         log.logInput(\textcolor{stringliteral}{"-------------------------------------------------------------"});
+174     \}
+\end{DoxyCode}
+\mbox{\Hypertarget{classcom_1_1github_1_1aites_1_1shlocalaites_1_1framework_1_1_local_ai_t_e_s_abc44ebc127ef39aa8e39c690b92d435a}\label{classcom_1_1github_1_1aites_1_1shlocalaites_1_1framework_1_1_local_ai_t_e_s_abc44ebc127ef39aa8e39c690b92d435a}} 
+\index{com\+::github\+::aites\+::shlocalaites\+::framework\+::\+Local\+Ai\+T\+ES@{com\+::github\+::aites\+::shlocalaites\+::framework\+::\+Local\+Ai\+T\+ES}!run\+Ai\+T\+ES@{run\+Ai\+T\+ES}}
+\index{run\+Ai\+T\+ES@{run\+Ai\+T\+ES}!com\+::github\+::aites\+::shlocalaites\+::framework\+::\+Local\+Ai\+T\+ES@{com\+::github\+::aites\+::shlocalaites\+::framework\+::\+Local\+Ai\+T\+ES}}
+\subsubsection{\texorpdfstring{run\+Ai\+T\+E\+S()}{runAiTES()}}
+{\footnotesize\ttfamily void com.\+github.\+aites.\+shlocalaites.\+framework.\+Local\+Ai\+T\+E\+S.\+run\+Ai\+T\+ES (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Local\+Ai\+T\+E\+S.\+java 파일의 40 번째 라인에서 정의되었습니다.
+
+
+\begin{DoxyCode}
+40                           \{
+41         \textcolor{comment}{// Set initialize variables.}
+42         timer.setSystemTime(\textcolor{stringliteral}{"2017.7.17 0:00"});
+43         gkURL = \textcolor{stringliteral}{"jdbc:mysql://220.149.235.85:3306/globalknowledge"};
+44         adaptiveActionList = \textcolor{keyword}{new} ArrayList<String>()\{\{
+45             add(\textcolor{stringliteral}{"powersaving"});
+46             add(\textcolor{stringliteral}{"ready"});
+47             add(\textcolor{stringliteral}{"stanby"});
+48             add(\textcolor{stringliteral}{"activity"});    
+49         \}\};
+50         ruleSetURL = \textcolor{stringliteral}{"smarthome.xml"};
+51         dymoduleFolder = \textcolor{stringliteral}{"modules"};
+52         participants.setSoftwareActionList(adaptiveActionList);
+53         
+54         \textcolor{comment}{//Connect global knowledge server.}
+55         \textcolor{keywordflow}{try}\{
+56             DBConnector db = \textcolor{keyword}{new} ConnectionStarter(gkURL,\textcolor{stringliteral}{"root"},\textcolor{stringliteral}{"1234"});
+57             db.dbConnect();
+58         \}\textcolor{keywordflow}{catch}(Exception e)\{
+59             e.printStackTrace();
+60         \}
+61         \textcolor{comment}{//Connect collaborative communication server.}
+62         brokerURL = \textcolor{stringliteral}{"tcp://127.0.0.1:1883"};
+63         clientID = \textcolor{stringliteral}{"Global1/Local1"};
+64         
+65         LocalAiTES smd = \textcolor{keyword}{new} LocalAiTES();
+66         Class cl = smd.getClass();
+67         
+68         \textcolor{keywordflow}{try}\{
+69             df.setMQTTConnection(brokerURL, cl, clientID);
+70             df.setAfficationMode(\textcolor{stringliteral}{"Local"});
+71             df.runClient();
+72         \}\textcolor{keywordflow}{catch}(Exception e)\{
+73             e.printStackTrace();
+74         \}
+75         log.logInput(\textcolor{stringliteral}{"~~~~~~~~Smart Home Local AiTES init Setting~~~~~~~~"});
+76         log.logInput(\textcolor{stringliteral}{"Init System time: "}+timer.getWholeTime());
+77         log.logInput(\textcolor{stringliteral}{"Connected Global Knowledge URL: "} +gkURL);
+78         log.logInput(\textcolor{stringliteral}{"Collaborative Communication Server URL: "}+brokerURL);
+79         String actionList=\textcolor{stringliteral}{"["};
+80         \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i=0; i<adaptiveActionList.size(); i++)\{
+81              \textcolor{keywordflow}{if}(i == adaptiveActionList.size()-1)\{
+82                  actionList = actionList+\textcolor{stringliteral}{"action"}+i+\textcolor{stringliteral}{":"}+adaptiveActionList.get(i);
+83              \}
+84              \textcolor{keywordflow}{else}\{
+85                  actionList = actionList+\textcolor{stringliteral}{"action"}+i+\textcolor{stringliteral}{":"}+adaptiveActionList.get(i)+\textcolor{stringliteral}{", "};
+86              \}  
+87         \}
+88         actionList = actionList+\textcolor{stringliteral}{"]"};
+89         log.logInput(\textcolor{stringliteral}{"SmartHome Environment Action List: "}+actionList);
+90         log.logInput(\textcolor{stringliteral}{"Local AiTES RuleSet URL:"}+ruleSetURL);
+91         log.logInput(\textcolor{stringliteral}{"Local AiTES dynamic module URL:"}+dymoduleFolder);
+92         log.logInput(\textcolor{stringliteral}{"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"});
+93         log.logFileCreate();
+94         
+95         File file = \textcolor{keyword}{new} File(dymoduleFolder+\textcolor{stringliteral}{"/powersaving.jar"});
+96         System.out.println(file.getAbsolutePath());
+97         System.out.println(file.getName());
+98 
+99     \}
+\end{DoxyCode}
+
+
+이 클래스에 대한 문서화 페이지는 다음의 파일로부터 생성되었습니다.\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/srsok/\+Ai\+T\+E\+S/\+Local\+Ai\+T\+E\+S\+Impl/\+Local\+Ai\+T\+E\+S\+Impl/src/com/github/aites/shlocalaites/framework/\mbox{\hyperlink{_local_ai_t_e_s_8java}{Local\+Ai\+T\+E\+S.\+java}}\end{DoxyCompactItemize}

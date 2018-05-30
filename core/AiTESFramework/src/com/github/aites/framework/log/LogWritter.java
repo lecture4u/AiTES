@@ -17,6 +17,7 @@ public class LogWritter {
 	private static String log = "";
 	private String filename = "./log.txt";
 	private static int logcounter =0;
+	private static int lognamecounter =0;
 	private static class LogWritterSingleton{
 		private static final LogWritter instance = new LogWritter();
 	}
@@ -42,7 +43,7 @@ public class LogWritter {
 	 */
 	public void logFileCreate(){
 		try{
-			filename = "./log"+logcounter+".txt";
+			filename = "./log"+lognamecounter+".txt";
 			File file = new File(filename);
 			FileWriter fw = new FileWriter(file, false);
 			fw.write(log);
@@ -51,6 +52,8 @@ public class LogWritter {
 			logcounter++;
 			if(logcounter == 10){
 				logcounter = 0;
+				lognamecounter++;
+				log = "";
 			}
 		}catch(Exception e){
 			e.printStackTrace();

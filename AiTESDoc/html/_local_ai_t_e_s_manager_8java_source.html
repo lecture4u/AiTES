@@ -1,0 +1,117 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.14"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>AiTESDoxygen: /Users/srsok/AiTES/core/AiTESFramework/src/com/github/aites/framework/framework/LocalAiTESManager.java 소스 파일</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+  $(document).ready(initResizable);
+/* @license-end */</script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">AiTESDoxygen
+   &#160;<span id="projectnumber">1.0.0</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 다음에 의해 생성됨 :  Doxygen 1.8.14 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'검색');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','검색');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('_local_ai_t_e_s_manager_8java_source.html','');});
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">LocalAiTESManager.java</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="_local_ai_t_e_s_manager_8java.html">이 파일의 문서화 페이지로 가기</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno"><a class="line" href="namespacecom_1_1github_1_1aites_1_1framework_1_1framework.html">    1</a></span>&#160;<span class="keyword">package </span>com.github.aites.framework.framework;</div><div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="keyword">import</span> java.lang.reflect.Method;</div><div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="keyword">import</span> java.util.ArrayList;</div><div class="line"><a name="l00010"></a><span class="lineno"><a class="line" href="classcom_1_1github_1_1aites_1_1framework_1_1framework_1_1_local_ai_t_e_s_manager.html">   10</a></span>&#160;<span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">class </span><a class="code" href="classcom_1_1github_1_1aites_1_1framework_1_1framework_1_1_local_ai_t_e_s_manager.html">LocalAiTESManager</a> {</div><div class="line"><a name="l00011"></a><span class="lineno"><a class="line" href="classcom_1_1github_1_1aites_1_1framework_1_1framework_1_1_local_ai_t_e_s_manager.html#a479caac5cbf611b89738b88e7978c615">   11</a></span>&#160;    <span class="keyword">public</span> <span class="keyword">static</span> String <a class="code" href="classcom_1_1github_1_1aites_1_1framework_1_1framework_1_1_local_ai_t_e_s_manager.html#a479caac5cbf611b89738b88e7978c615">brokerURL</a>;</div><div class="line"><a name="l00012"></a><span class="lineno"><a class="line" href="classcom_1_1github_1_1aites_1_1framework_1_1framework_1_1_local_ai_t_e_s_manager.html#a540298711c4e1c659aaf1f4bdd90c41d">   12</a></span>&#160;    <span class="keyword">public</span> <span class="keyword">static</span> Class <a class="code" href="classcom_1_1github_1_1aites_1_1framework_1_1framework_1_1_local_ai_t_e_s_manager.html#a540298711c4e1c659aaf1f4bdd90c41d">mainClass</a>;</div><div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="classcom_1_1github_1_1aites_1_1framework_1_1framework_1_1_local_ai_t_e_s_manager.html#a90f88498d6d48bfe43e6a5d6c0eff3a4">   13</a></span>&#160;    <span class="keyword">public</span> Method <a class="code" href="classcom_1_1github_1_1aites_1_1framework_1_1framework_1_1_local_ai_t_e_s_manager.html#a90f88498d6d48bfe43e6a5d6c0eff3a4">module</a>;</div><div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="classcom_1_1github_1_1aites_1_1framework_1_1framework_1_1_local_ai_t_e_s_manager.html#ab8984b4b213b234e0e055c289cc842c5">   14</a></span>&#160;    <span class="keyword">public</span> Object <a class="code" href="classcom_1_1github_1_1aites_1_1framework_1_1framework_1_1_local_ai_t_e_s_manager.html#ab8984b4b213b234e0e055c289cc842c5">clsInstance</a>;</div><div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="classcom_1_1github_1_1aites_1_1framework_1_1framework_1_1_local_ai_t_e_s_manager.html#a0b3260e3179b31185fce93254a9039c8">   15</a></span>&#160;    <span class="keyword">public</span> String <a class="code" href="classcom_1_1github_1_1aites_1_1framework_1_1framework_1_1_local_ai_t_e_s_manager.html#a0b3260e3179b31185fce93254a9039c8">ruleName</a>;</div><div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="classcom_1_1github_1_1aites_1_1framework_1_1framework_1_1_local_ai_t_e_s_manager.html#a8a35353b5b0725d6c560935e892b66a6">   16</a></span>&#160;    <span class="keyword">public</span> <span class="keyword">static</span> String <a class="code" href="classcom_1_1github_1_1aites_1_1framework_1_1framework_1_1_local_ai_t_e_s_manager.html#a8a35353b5b0725d6c560935e892b66a6">clientID</a>;</div><div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="classcom_1_1github_1_1aites_1_1framework_1_1framework_1_1_local_ai_t_e_s_manager.html#a63f2cc45a25395cea15a5840d9a0fbad">   17</a></span>&#160;    <span class="keyword">public</span> String <a class="code" href="classcom_1_1github_1_1aites_1_1framework_1_1framework_1_1_local_ai_t_e_s_manager.html#a63f2cc45a25395cea15a5840d9a0fbad">gkURL</a>;</div><div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="classcom_1_1github_1_1aites_1_1framework_1_1framework_1_1_local_ai_t_e_s_manager.html#a150010229fa99dbac302843f2801b963">   18</a></span>&#160;    <span class="keyword">public</span> ArrayList&lt;String&gt; <a class="code" href="classcom_1_1github_1_1aites_1_1framework_1_1framework_1_1_local_ai_t_e_s_manager.html#a150010229fa99dbac302843f2801b963">adaptiveActionList</a>;</div><div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="classcom_1_1github_1_1aites_1_1framework_1_1framework_1_1_local_ai_t_e_s_manager.html#ab0bf73d6d36ea00b62b70e9544a0e6b4">   19</a></span>&#160;    <span class="keyword">public</span> <span class="keyword">static</span> String <a class="code" href="classcom_1_1github_1_1aites_1_1framework_1_1framework_1_1_local_ai_t_e_s_manager.html#ab0bf73d6d36ea00b62b70e9544a0e6b4">ruleSetURL</a>;</div><div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="classcom_1_1github_1_1aites_1_1framework_1_1framework_1_1_local_ai_t_e_s_manager.html#ab732a58aeff4bc92c2385f98a417fe3a">   20</a></span>&#160;    <span class="keyword">public</span> <span class="keyword">static</span> String <a class="code" href="classcom_1_1github_1_1aites_1_1framework_1_1framework_1_1_local_ai_t_e_s_manager.html#ab732a58aeff4bc92c2385f98a417fe3a">dymoduleFolder</a>;</div><div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    </div><div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;   </div><div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keywordtype">void</span> <a class="code" href="classcom_1_1github_1_1aites_1_1framework_1_1framework_1_1_local_ai_t_e_s_manager.html#a2bc882848bd635b1a807bb1441df999b">manageAiTES</a>(String mqttMessage, String topic, String deviceName) <span class="keywordflow">throws</span> Exception;</div><div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    </div><div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;}</div><div class="ttc" id="classcom_1_1github_1_1aites_1_1framework_1_1framework_1_1_local_ai_t_e_s_manager_html_ab0bf73d6d36ea00b62b70e9544a0e6b4"><div class="ttname"><a href="classcom_1_1github_1_1aites_1_1framework_1_1framework_1_1_local_ai_t_e_s_manager.html#ab0bf73d6d36ea00b62b70e9544a0e6b4">com.github.aites.framework.framework.LocalAiTESManager.ruleSetURL</a></div><div class="ttdeci">static String ruleSetURL</div><div class="ttdef"><b>Definition:</b> <a href="_local_ai_t_e_s_manager_8java_source.html#l00019">LocalAiTESManager.java:19</a></div></div>
+<div class="ttc" id="classcom_1_1github_1_1aites_1_1framework_1_1framework_1_1_local_ai_t_e_s_manager_html_ab8984b4b213b234e0e055c289cc842c5"><div class="ttname"><a href="classcom_1_1github_1_1aites_1_1framework_1_1framework_1_1_local_ai_t_e_s_manager.html#ab8984b4b213b234e0e055c289cc842c5">com.github.aites.framework.framework.LocalAiTESManager.clsInstance</a></div><div class="ttdeci">Object clsInstance</div><div class="ttdef"><b>Definition:</b> <a href="_local_ai_t_e_s_manager_8java_source.html#l00014">LocalAiTESManager.java:14</a></div></div>
+<div class="ttc" id="classcom_1_1github_1_1aites_1_1framework_1_1framework_1_1_local_ai_t_e_s_manager_html_a2bc882848bd635b1a807bb1441df999b"><div class="ttname"><a href="classcom_1_1github_1_1aites_1_1framework_1_1framework_1_1_local_ai_t_e_s_manager.html#a2bc882848bd635b1a807bb1441df999b">com.github.aites.framework.framework.LocalAiTESManager.manageAiTES</a></div><div class="ttdeci">abstract void manageAiTES(String mqttMessage, String topic, String deviceName)</div><div class="ttdoc">Method for Managing AITES Module, String MQTTMessage, String Topic, String deviceName Called from the...</div></div>
+<div class="ttc" id="classcom_1_1github_1_1aites_1_1framework_1_1framework_1_1_local_ai_t_e_s_manager_html_a8a35353b5b0725d6c560935e892b66a6"><div class="ttname"><a href="classcom_1_1github_1_1aites_1_1framework_1_1framework_1_1_local_ai_t_e_s_manager.html#a8a35353b5b0725d6c560935e892b66a6">com.github.aites.framework.framework.LocalAiTESManager.clientID</a></div><div class="ttdeci">static String clientID</div><div class="ttdef"><b>Definition:</b> <a href="_local_ai_t_e_s_manager_8java_source.html#l00016">LocalAiTESManager.java:16</a></div></div>
+<div class="ttc" id="classcom_1_1github_1_1aites_1_1framework_1_1framework_1_1_local_ai_t_e_s_manager_html_a0b3260e3179b31185fce93254a9039c8"><div class="ttname"><a href="classcom_1_1github_1_1aites_1_1framework_1_1framework_1_1_local_ai_t_e_s_manager.html#a0b3260e3179b31185fce93254a9039c8">com.github.aites.framework.framework.LocalAiTESManager.ruleName</a></div><div class="ttdeci">String ruleName</div><div class="ttdef"><b>Definition:</b> <a href="_local_ai_t_e_s_manager_8java_source.html#l00015">LocalAiTESManager.java:15</a></div></div>
+<div class="ttc" id="classcom_1_1github_1_1aites_1_1framework_1_1framework_1_1_local_ai_t_e_s_manager_html"><div class="ttname"><a href="classcom_1_1github_1_1aites_1_1framework_1_1framework_1_1_local_ai_t_e_s_manager.html">com.github.aites.framework.framework.LocalAiTESManager</a></div><div class="ttdoc">Class run main local AiTES and managed feedback loops </div><div class="ttdef"><b>Definition:</b> <a href="_local_ai_t_e_s_manager_8java_source.html#l00010">LocalAiTESManager.java:10</a></div></div>
+<div class="ttc" id="classcom_1_1github_1_1aites_1_1framework_1_1framework_1_1_local_ai_t_e_s_manager_html_ab732a58aeff4bc92c2385f98a417fe3a"><div class="ttname"><a href="classcom_1_1github_1_1aites_1_1framework_1_1framework_1_1_local_ai_t_e_s_manager.html#ab732a58aeff4bc92c2385f98a417fe3a">com.github.aites.framework.framework.LocalAiTESManager.dymoduleFolder</a></div><div class="ttdeci">static String dymoduleFolder</div><div class="ttdef"><b>Definition:</b> <a href="_local_ai_t_e_s_manager_8java_source.html#l00020">LocalAiTESManager.java:20</a></div></div>
+<div class="ttc" id="classcom_1_1github_1_1aites_1_1framework_1_1framework_1_1_local_ai_t_e_s_manager_html_a150010229fa99dbac302843f2801b963"><div class="ttname"><a href="classcom_1_1github_1_1aites_1_1framework_1_1framework_1_1_local_ai_t_e_s_manager.html#a150010229fa99dbac302843f2801b963">com.github.aites.framework.framework.LocalAiTESManager.adaptiveActionList</a></div><div class="ttdeci">ArrayList&lt; String &gt; adaptiveActionList</div><div class="ttdef"><b>Definition:</b> <a href="_local_ai_t_e_s_manager_8java_source.html#l00018">LocalAiTESManager.java:18</a></div></div>
+<div class="ttc" id="classcom_1_1github_1_1aites_1_1framework_1_1framework_1_1_local_ai_t_e_s_manager_html_a540298711c4e1c659aaf1f4bdd90c41d"><div class="ttname"><a href="classcom_1_1github_1_1aites_1_1framework_1_1framework_1_1_local_ai_t_e_s_manager.html#a540298711c4e1c659aaf1f4bdd90c41d">com.github.aites.framework.framework.LocalAiTESManager.mainClass</a></div><div class="ttdeci">static Class mainClass</div><div class="ttdef"><b>Definition:</b> <a href="_local_ai_t_e_s_manager_8java_source.html#l00012">LocalAiTESManager.java:12</a></div></div>
+<div class="ttc" id="classcom_1_1github_1_1aites_1_1framework_1_1framework_1_1_local_ai_t_e_s_manager_html_a63f2cc45a25395cea15a5840d9a0fbad"><div class="ttname"><a href="classcom_1_1github_1_1aites_1_1framework_1_1framework_1_1_local_ai_t_e_s_manager.html#a63f2cc45a25395cea15a5840d9a0fbad">com.github.aites.framework.framework.LocalAiTESManager.gkURL</a></div><div class="ttdeci">String gkURL</div><div class="ttdef"><b>Definition:</b> <a href="_local_ai_t_e_s_manager_8java_source.html#l00017">LocalAiTESManager.java:17</a></div></div>
+<div class="ttc" id="classcom_1_1github_1_1aites_1_1framework_1_1framework_1_1_local_ai_t_e_s_manager_html_a90f88498d6d48bfe43e6a5d6c0eff3a4"><div class="ttname"><a href="classcom_1_1github_1_1aites_1_1framework_1_1framework_1_1_local_ai_t_e_s_manager.html#a90f88498d6d48bfe43e6a5d6c0eff3a4">com.github.aites.framework.framework.LocalAiTESManager.module</a></div><div class="ttdeci">Method module</div><div class="ttdef"><b>Definition:</b> <a href="_local_ai_t_e_s_manager_8java_source.html#l00013">LocalAiTESManager.java:13</a></div></div>
+<div class="ttc" id="classcom_1_1github_1_1aites_1_1framework_1_1framework_1_1_local_ai_t_e_s_manager_html_a479caac5cbf611b89738b88e7978c615"><div class="ttname"><a href="classcom_1_1github_1_1aites_1_1framework_1_1framework_1_1_local_ai_t_e_s_manager.html#a479caac5cbf611b89738b88e7978c615">com.github.aites.framework.framework.LocalAiTESManager.brokerURL</a></div><div class="ttdeci">static String brokerURL</div><div class="ttdef"><b>Definition:</b> <a href="_local_ai_t_e_s_manager_8java_source.html#l00011">LocalAiTESManager.java:11</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_a83f5229fdf5e23bd627407cce467bd6.html">AiTES</a></li><li class="navelem"><a class="el" href="dir_cc8716cf35b17173f35b47d1c2d25436.html">core</a></li><li class="navelem"><a class="el" href="dir_f90dc067e79e99f2cefc185de5f3d06c.html">AiTESFramework</a></li><li class="navelem"><a class="el" href="dir_06ba444c675166cbb2cf2784d573b0a4.html">src</a></li><li class="navelem"><a class="el" href="dir_d8bca7b023b29503d9a08b2023f5ce28.html">com</a></li><li class="navelem"><a class="el" href="dir_5b0c4450693e93a0ad069f996922ce85.html">github</a></li><li class="navelem"><a class="el" href="dir_3722e6d39391a729d07d32749eace515.html">aites</a></li><li class="navelem"><a class="el" href="dir_ae3fad8e5a54a0227e1025074a3c0bce.html">framework</a></li><li class="navelem"><a class="el" href="dir_70d32ac7d46f4ef329cc3649eba60578.html">framework</a></li><li class="navelem"><a class="el" href="_local_ai_t_e_s_manager_8java.html">LocalAiTESManager.java</a></li>
+    <li class="footer">다음에 의해 생성됨 : 
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.14 </li>
+  </ul>
+</div>
+</body>
+</html>
