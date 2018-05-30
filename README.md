@@ -15,11 +15,15 @@ This framework development by Artificial Intelligence & information architecture
 -[Google Groups](https://groups.google.com/forum/#!forum/aites-users).
 
 ## Versioning
+-[Version Log]()
 
 ## Full Documentation
 
 -[Wiki](https://github.com/lecture4u/AiTES/wiki).
+
 -[YouTube Tutorial Guide](https://www.youtube.com/channel/UChx4sQOn5lEVXXeNDrPOMlw/featured?disable_polymer=1).
+
+-[Framework document](https://github.com/lecture4u/AiTES/tree/master/AiTESDoc)
 
 ## Bugs and Feedback
 
