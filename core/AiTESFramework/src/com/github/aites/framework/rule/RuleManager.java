@@ -1,4 +1,4 @@
-package hyperledger.fabric.Rulemanager;
+package com.github.aites.framework.rule;
 
 
 import java.io.File;
