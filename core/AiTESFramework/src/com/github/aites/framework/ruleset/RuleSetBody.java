@@ -1,9 +1,9 @@
-package hyperledger.fabric.Rulemanager;
+package com.github.aites.framework.ruleset;
 
 import java.util.ArrayList;
 import java.util.Iterator;
 
-import hyperledger.fabric.Rulemanager.SWRLrule;
+import com.github.aites.framework.rule.SWRLrule;
 /**
  * Class for define and make object about ontology rule set body.
  * 
