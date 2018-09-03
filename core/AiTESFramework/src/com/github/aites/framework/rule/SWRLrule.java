@@ -1,4 +1,4 @@
-package hyperledger.fabric.Rulemanager;
+package com.github.aites.framework.ruleset;
 
 
 import java.util.ArrayList;
