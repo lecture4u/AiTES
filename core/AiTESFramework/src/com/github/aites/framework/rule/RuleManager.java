@@ -1,4 +1,5 @@
-package com.github.aites.framework.rule;
+package hyperledger.fabric.Rulemanager;
+
 
 import java.io.File;
 import java.util.Map;
@@ -22,7 +23,6 @@ import org.semanticweb.owlapi.reasoner.SimpleConfiguration;
 import org.semanticweb.owlapi.vocab.PrefixOWLOntologyFormat;
 
 import com.clarkparsia.pellet.owlapiv3.PelletReasonerFactory;
-
 
 
 import uk.ac.manchester.cs.owlapi.dlsyntax.DLSyntaxObjectRenderer;
@@ -89,6 +89,7 @@ public class RuleManager {
 		OWLClassAssertionAxiom axoimToExplain = dataFactory.getOWLClassAssertionAxiom(ruleClass, ind);
 		if(reasoner.isEntailed(axoimToExplain)){
 			return true;
+			
 		}
 		else{
 			return false;
@@ -112,4 +113,36 @@ public class RuleManager {
             } 
         } 
     } 
+	
+	public String DataPropertyValue(String individual, String Dataproperty) {
+		String result = "";
+		try {
+			ontology = manager.loadOntologyFromOntologyDocument(new File(BASE_URL));
+			
+			reasoner = resonerFactory.createReasoner(ontology, new SimpleConfiguration());
+			dataFactory = manager.getOWLDataFactory();
+			pm = manager.getOntologyFormat(ontology).asPrefixOWLOntologyFormat();
+			
+			OWLNamedIndividual ind = dataFactory.getOWLNamedIndividual(":" + individual, pm);
+			OWLDataProperty has = dataFactory.getOWLDataProperty(":" + Dataproperty, pm);
+			
+			for(OWLLiteral dp : reasoner.getDataPropertyValues(ind, has)) {
+				System.out.println("DataProperty: " + dp.getLiteral());
+				result = dp.getLiteral();
+			}
+			
+			
+		} catch (OWLOntologyCreationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return result;
+		
+	}
 }
+
+
+
+
+
+

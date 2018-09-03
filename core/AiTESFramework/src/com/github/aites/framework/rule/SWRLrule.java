@@ -1,4 +1,5 @@
-package com.github.aites.framework.rule;
+package hyperledger.fabric.Rulemanager;
+
 
 import java.util.ArrayList;
 /**
@@ -19,6 +20,7 @@ public class SWRLrule {
 	private ArrayList<PropertyAtom> rulePropertyAtoms = new ArrayList<PropertyAtom>();
 	private ArrayList<BuiltInAtom> ruleBulitInAtoms = new ArrayList<BuiltInAtom>();
 	private ArrayList<DataRangeAtom> ruleDataRangeAtoms = new ArrayList<DataRangeAtom>();
+	
     public SWRLrule(String swrlRule){
     	this.swrlRule = swrlRule;
     	ruleParsing();
@@ -88,6 +90,17 @@ public class SWRLrule {
 		ruleBulitInAtoms.set(bulitInIndex, bulitIn);
 		makeSWRLrule();
 	}
+	public void updateDataRangeAtom(int dataRangeIndex, String newDataType, String newMinValue, String newMaxValue, String newVariable) {
+		DataRangeAtom dataRange = ruleDataRangeAtoms.get(dataRangeIndex);
+		
+		dataRange.setDataType(newDataType);
+		dataRange.setMinValue(newMinValue);
+		dataRange.setMaxValue(newMaxValue);
+		dataRange.setVariable(newVariable);
+		
+		ruleDataRangeAtoms.set(dataRangeIndex, dataRange);
+		makeSWRLrule();
+	}
 	public void makeSWRLrule(){
 		swrlRule = "    DLSafeRule(\r\n"+annotation+
 				   "        Body(\r\n";
@@ -121,6 +134,10 @@ public class SWRLrule {
     	BuiltInAtom builtInAtom = new BuiltInAtom(swrlAtom,variable, dataValue, dataType);
     	ruleBulitInAtoms.add(builtInAtom);
 	}
+    public void addDataRangeAtom(String dataType, String minValue, String maxValue, String variable) {
+    	DataRangeAtom dataRangeAtom = new DataRangeAtom(dataType, minValue, maxValue, variable);
+    	ruleDataRangeAtoms.add(dataRangeAtom);
+    }
     public String getSWRLrule(){
     	return swrlRule;
     }
