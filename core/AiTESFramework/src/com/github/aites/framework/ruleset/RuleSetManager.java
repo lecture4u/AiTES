@@ -1,4 +1,5 @@
-package com.github.aites.framework.ruleset;
+package hyperledger.fabric.Rulemanager;
+
 
 import java.io.BufferedWriter;
 import java.io.File;
@@ -6,7 +7,7 @@ import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 
-import com.github.aites.framework.rule.SWRLrule;
+import hyperledger.fabric.Rulemanager.SWRLrule;
 /**
  * Class for manage ontology rule set
  * parsing rule set File, update rule, delete rule.
@@ -50,6 +51,12 @@ public class RuleSetManager {
 		ruleSetBody.deleteIndDeclaration(indName);
 		ruleSetBody.deleteAssertion(indName);
 	}
+	
+	public void assertClass(String className) {
+		String classAxiom = "    Declaration(Class(:" + className + "))\r\n";
+		ruleSetBody.addClassDeclaration(classAxiom);
+	}
+	
 	/**
 	 * Method for assertion data property axiom
 	 * asserted to rulest form DataPropertyAssertion(:dpname :individual "dpvaule"^^dptype)
@@ -78,11 +85,15 @@ public class RuleSetManager {
 	 * @exception IOException
 	 *     rule set save failed
 	 */
-	public void assertSWRLrule(SWRLrule rule){		
+	public void assertSWRLrule(String Rulename,SWRLrule rule){		
+		assertClass(Rulename);
 		ruleSetBody.addSWRLRule(rule);
 	}
 	public void updateSWRLBulitInRule(String ruleName, int bulitInIndex, String newValue){
-		ruleSetBody.updateSWRLRule(ruleName, bulitInIndex, newValue);
+		ruleSetBody.updateSWRLRule_BuiltInAtom(ruleName, bulitInIndex, newValue);
+	}
+	public void updateSWRLDataRangRule(String ruleName, int dataRangeIndex, String newDataType, String newMinValue, String newMaxValue, String newVariable) {
+		ruleSetBody.updateSWRLRule_DataRangeAtom(ruleName, dataRangeIndex, newDataType, newMinValue, newMaxValue, newVariable);
 	}
 	public void saveRuleSet(){
 		String ruleBodyValue = ruleSetBody.getRuleSetBody();

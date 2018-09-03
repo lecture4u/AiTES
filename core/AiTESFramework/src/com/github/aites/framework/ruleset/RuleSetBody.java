@@ -1,9 +1,9 @@
-package com.github.aites.framework.ruleset;
+package hyperledger.fabric.Rulemanager;
 
 import java.util.ArrayList;
 import java.util.Iterator;
 
-import com.github.aites.framework.rule.SWRLrule;
+import hyperledger.fabric.Rulemanager.SWRLrule;
 /**
  * Class for define and make object about ontology rule set body.
  * 
@@ -83,7 +83,7 @@ public class RuleSetBody {
     public void addSWRLRule(SWRLrule rule){
     	swrlRuleList.add(rule);
     }
-    public void updateSWRLRule(String ruleName, int bulitInIndex, String newValue){
+    public void updateSWRLRule_BuiltInAtom(String ruleName, int bulitInIndex, String newValue){
         for(int i=0; i<swrlRuleList.size(); i++){
         	if(swrlRuleList.get(i).getHeadClassAtom().getClassAtom().equals(ruleName)){
     			System.out.println("find rule, update axiom.");
@@ -94,6 +94,17 @@ public class RuleSetBody {
     		}
         }   	
     	
+    }
+    public void updateSWRLRule_DataRangeAtom(String ruleName, int dataRangeIndex, String newDataType, String newMinValue, String newMaxValue, String newVariable) {
+        for(int i=0; i<swrlRuleList.size(); i++){
+        	if(swrlRuleList.get(i).getHeadClassAtom().getClassAtom().equals(ruleName)){
+    			System.out.println("find rule, update axiom.");
+    			SWRLrule updaterule = swrlRuleList.get(i);
+    			updaterule.updateDataRangeAtom(dataRangeIndex, newDataType, newMinValue, newMaxValue, newVariable);
+    			
+    			swrlRuleList.set(i, updaterule);
+    		}
+        }   
     }
 	private void combineDeclartion(){
 		for(String c : classDeclarations){

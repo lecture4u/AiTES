@@ -1,4 +1,4 @@
-package com.github.aites.framework.ruleset;
+package hyperledger.fabric.Rulemanager;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -7,7 +7,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.*;
 
-import com.github.aites.framework.rule.SWRLrule;
+import hyperledger.fabric.Rulemanager.SWRLrule;
 
 /**
  * Class for parse and store ruleBody to OWL ruleset file.
@@ -142,3 +142,4 @@ public class RuleSetParser {
 	
 	}
 }
+
