@@ -1,5 +1,4 @@
-package hyperledger.fabric.Rulemanager;
-
+package com.github.aites.framework.ruleset;
 
 import java.io.BufferedWriter;
 import java.io.File;
@@ -7,7 +6,7 @@ import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 
-import hyperledger.fabric.Rulemanager.SWRLrule;
+import com.github.aites.framework.rule.SWRLrule;
 /**
  * Class for manage ontology rule set
  * parsing rule set File, update rule, delete rule.
