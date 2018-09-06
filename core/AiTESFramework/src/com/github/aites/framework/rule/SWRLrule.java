@@ -1,4 +1,4 @@
-package com.github.aites.framework.ruleset;
+package com.github.aites.framework.rule;
 
 
 import java.util.ArrayList;
