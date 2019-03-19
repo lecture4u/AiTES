@@ -11,13 +11,13 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="/Users/srsok/AiTES/IoTgateway/Java/AiTESIoTgateway/lib/org.eclipse.paho.client.mqttv3-1.0.2.jar"/>
 	<classpathentry kind="con" path="org.eclipse.m2e.MAVEN2_CLASSPATH_CONTAINER">
 		<attributes>
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="/Users/srsok/AiTES/IoTgateway/Java/AiTESIoTgateway/lib/opencsv-3.9.jar"/>
-	<classpathentry kind="lib" path="/Users/srsok/AiTES/IoTgateway/Java/AiTESIoTgateway/lib/json_simple-1.1.jar"/>
+	<classpathentry kind="lib" path="/home/labserver/AiTES/IoTgateway/Java/AiTESIoTgateway/lib/json_simple-1.1.jar"/>
+	<classpathentry kind="lib" path="/home/labserver/AiTES/IoTgateway/Java/AiTESIoTgateway/lib/opencsv-3.9.jar"/>
+	<classpathentry kind="lib" path="/home/labserver/AiTES/IoTgateway/Java/AiTESIoTgateway/lib/org.eclipse.paho.client.mqttv3-1.0.2.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

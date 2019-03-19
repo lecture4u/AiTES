@@ -32,7 +32,7 @@ public class Effector {
 		 * @return File
 		 */
     public void effectIoTgateway(String target, String action){
-		log.logInput("****Effect Dynamic Module to IoT gateay");
+		log.logInput("****Effect Dynamic Module to IoT gateway");
 		log.logInput("target:"+target);
 		log.logInput("action:"+action);
 		
@@ -46,6 +46,11 @@ public class Effector {
 		}
 		
 	}
+    public void effectIoTgatewayCloser() {
+    	log.logInput("****Effect Closer Message to IoT gateway");
+    	String pubTopic = makeCloser();
+       df.publish("closerMessage", pubTopic);
+    }
 	
     /**
 	 * Method for find jar file
@@ -70,6 +75,10 @@ public class Effector {
 	private String makeTopic(String target, String action){
 		pubTopic = afillPubtopic+"/"+target+"/"+action;
 		
+		return pubTopic;
+	}
+	private String makeCloser() {
+		pubTopic =afillPubtopic+"/Closer";
 		return pubTopic;
 	}
 	public String getTopic(){

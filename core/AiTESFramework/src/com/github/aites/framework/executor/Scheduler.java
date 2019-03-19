@@ -82,6 +82,7 @@ public class Scheduler{
 				it.remove();
 			}
 		}
+		effector.effectIoTgatewayCloser();
 
 	}/**
 	 * Method for print all plan information

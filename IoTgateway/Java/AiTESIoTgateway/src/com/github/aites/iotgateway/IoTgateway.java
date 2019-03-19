@@ -30,7 +30,8 @@ public class IoTgateway {
 			MQTTClient mt = new MQTTClient(clientID, brokerIP, moduleURL,csvURL);
 			mt.runClient();
 			mt.publishInitDeviceInfo();
-			mt.publishTestData();
+			mt.makeScheduleFromData();
+			//mt.publishTestData();
 		}
 		else if(args[0].equals("-r")){
 			System.out.println("Regular mode run");

@@ -120,4 +120,5 @@ public class Timer {
 		String calendarAddedTime = year+"."+month+"."+day+" "+currentTime+":00";
 		return calendarAddedTime;
 	}
+
 }

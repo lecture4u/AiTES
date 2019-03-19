@@ -1,0 +1,100 @@
+----------Get IoT environment Data from IoT gateway----------
+Topic:Local/Global1/Local1/Gateway1/envData
+Message:{"2017.7.17 9:00":[{"sensorName":"AC1","sensorData":"665","currentModule":"activity","dataType":"PS"},{"sensorName":"TV1","sensorData":"114.75","currentModule":"stanby","dataType":"PS"},{"sensorName":"Lamp1","sensorData":"7.5","currentModule":"stanby","dataType":"PS"},{"sensorName":"RVC1","sensorData":"25","currentModule":"activity","dataType":"PS"},{"sensorName":"FP1","sensorData":"22","currentModule":"activity","dataType":"PS"},{"sensorName":"WM1","sensorData":"220","currentModule":"powersaving","dataType":"PS"},{"sensorName":"Lamp2","sensorData":"15","currentModule":"activity","dataType":"PS"},{"sensorName":"SCP1","sensorData":"6.7","currentModule":"powersaving","dataType":"PS"},{"sensorName":"CCTV1","sensorData":"15","currentModule":"activity","dataType":"PS"},{"sensorName":"Mixer1","sensorData":"10.5","currentModule":"stanby","dataType":"PS"},{"sensorName":"AIS1","sensorData":"35","currentModule":"activity","dataType":"PS"},{"sensorName":"Oven1","sensorData":"180","currentModule":"powersaving","dataType":"PS"},{"sensorName":"SC1","sensorData":"37.19.24.324:127.07.43.115","currentModule":"activity","dataType":"GPS"},{"sensorName":"AC1","sensorData":"25.7","currentModule":"activity","dataType":"Tem"}]}
+deviceName:Gateway1
+Current System Time:2017.7.17 9:00
+Current connected IoT Env participants:
+
+#####Assertion individual to ruleSet:SHEdata2017717900#####
+---------------MonitorManager: Monitoring IoT env data and reasoning monitoring factor exceed the threshold.---------------
+ClientIDGlobal1/Local1
+Message:{"2017.7.17 9:00":[{"sensorName":"AC1","sensorData":"665","currentModule":"activity","dataType":"PS"},{"sensorName":"TV1","sensorData":"114.75","currentModule":"stanby","dataType":"PS"},{"sensorName":"Lamp1","sensorData":"7.5","currentModule":"stanby","dataType":"PS"},{"sensorName":"RVC1","sensorData":"25","currentModule":"activity","dataType":"PS"},{"sensorName":"FP1","sensorData":"22","currentModule":"activity","dataType":"PS"},{"sensorName":"WM1","sensorData":"220","currentModule":"powersaving","dataType":"PS"},{"sensorName":"Lamp2","sensorData":"15","currentModule":"activity","dataType":"PS"},{"sensorName":"SCP1","sensorData":"6.7","currentModule":"powersaving","dataType":"PS"},{"sensorName":"CCTV1","sensorData":"15","currentModule":"activity","dataType":"PS"},{"sensorName":"Mixer1","sensorData":"10.5","currentModule":"stanby","dataType":"PS"},{"sensorName":"AIS1","sensorData":"35","currentModule":"activity","dataType":"PS"},{"sensorName":"Oven1","sensorData":"180","currentModule":"powersaving","dataType":"PS"},{"sensorName":"SC1","sensorData":"37.19.24.324:127.07.43.115","currentModule":"activity","dataType":"GPS"},{"sensorName":"AC1","sensorData":"25.7","currentModule":"activity","dataType":"Tem"}]}
+RuleSetURL:./smarthome.xml
+*****PreProcessing: Parsed Json Data about collected:2017.7.17 9:00*****
+SensorName:AC1, SensorData:665, CurrentModule:activity, DataType:PS
+SensorName:TV1, SensorData:114.75, CurrentModule:stanby, DataType:PS
+SensorName:Lamp1, SensorData:7.5, CurrentModule:stanby, DataType:PS
+SensorName:RVC1, SensorData:25, CurrentModule:activity, DataType:PS
+SensorName:FP1, SensorData:22, CurrentModule:activity, DataType:PS
+SensorName:WM1, SensorData:220, CurrentModule:powersaving, DataType:PS
+SensorName:Lamp2, SensorData:15, CurrentModule:activity, DataType:PS
+SensorName:SCP1, SensorData:6.7, CurrentModule:powersaving, DataType:PS
+SensorName:CCTV1, SensorData:15, CurrentModule:activity, DataType:PS
+SensorName:Mixer1, SensorData:10.5, CurrentModule:stanby, DataType:PS
+SensorName:AIS1, SensorData:35, CurrentModule:activity, DataType:PS
+SensorName:Oven1, SensorData:180, CurrentModule:powersaving, DataType:PS
+SensorName:SC1, SensorData:37.19.24.324:127.07.43.115, CurrentModule:activity, DataType:GPS
+SensorName:AC1, SensorData:25.7, CurrentModule:activity, DataType:Tem
+*****Caculate Entire Smart Home PS and reasoning context need call analyzer*****
+Power consumtion:1316.45
+#####Reasoing rule about individual:SHEdata2017717900 and dataProperty:1316.45#####
+#####Rasoning result - Smart Home's entire Power consumtion state is:normal#####
+&&&&&Write monitoring process to global knowledge&&&&&
+monitoring date:2017.7.17 9:00
+wirte local collaborative ID:Global1/Local1
+Device sensor data:665,114.75,7.5,25,22,220,15,6.7,15,10.5,35,180
+Power consumtion state:normal
+Position Data:37.19.24.324:127.07.43.115
+Temperture Data:25.7
+Read current monitoring data
+collectDate:2017.7.17 9:00,mreult:normal,position:37.19.24.324:127.07.43.115,temperture:25.7
+---------------ExecutorManager: Execute Plan about This System Time:2017.7.17 9:00.---------------
+clientID:Global1/Local1
+gatewayID:Gateway1
+dmFolderName:modules
+pubTopic:IoTgateway/Global1/Local1/Gateway1
+**********execute scheduled plan***************
+****Effect Closer Message to IoT gateway
+*****Print current remain plan*****
+#####Delete individual to ruleSet:SHEdata2017717900#####
+-------------------------------------------------------------
+----------Get IoT environment Data from IoT gateway----------
+Topic:Local/Global1/Local1/Gateway1/envData
+Message:{"2017.7.17 10:00":[{"sensorName":"AC1","sensorData":"498.75","currentModule":"stanby","dataType":"PS"},{"sensorName":"TV1","sensorData":"38.25","currentModule":"ready","dataType":"PS"},{"sensorName":"Lamp1","sensorData":"1","currentModule":"powersaving","dataType":"PS"},{"sensorName":"RVC1","sensorData":"25","currentModule":"activity","dataType":"PS"},{"sensorName":"FP1","sensorData":"22","currentModule":"activity","dataType":"PS"},{"sensorName":"WM1","sensorData":"220","currentModule":"powersaving","dataType":"PS"},{"sensorName":"Lamp2","sensorData":"15","currentModule":"activity","dataType":"PS"},{"sensorName":"SCP1","sensorData":"6.7","currentModule":"powersaving","dataType":"PS"},{"sensorName":"CCTV1","sensorData":"15","currentModule":"activity","dataType":"PS"},{"sensorName":"Mixer1","sensorData":"3.75","currentModule":"ready","dataType":"PS"},{"sensorName":"AIS1","sensorData":"35","currentModule":"activity","dataType":"PS"},{"sensorName":"Oven1","sensorData":"180","currentModule":"powersaving","dataType":"PS"},{"sensorName":"SC1","sensorData":"37.19.26.434:127.07.44.167","currentModule":"activity","dataType":"GPS"},{"sensorName":"AC1","sensorData":"26.2","currentModule":"stanby","dataType":"Tem"}]}
+deviceName:Gateway1
+Current System Time:2017.7.17 10:00
+Current connected IoT Env participants:
+
+#####Assertion individual to ruleSet:SHEdata20177171000#####
+---------------MonitorManager: Monitoring IoT env data and reasoning monitoring factor exceed the threshold.---------------
+ClientIDGlobal1/Local1
+Message:{"2017.7.17 10:00":[{"sensorName":"AC1","sensorData":"498.75","currentModule":"stanby","dataType":"PS"},{"sensorName":"TV1","sensorData":"38.25","currentModule":"ready","dataType":"PS"},{"sensorName":"Lamp1","sensorData":"1","currentModule":"powersaving","dataType":"PS"},{"sensorName":"RVC1","sensorData":"25","currentModule":"activity","dataType":"PS"},{"sensorName":"FP1","sensorData":"22","currentModule":"activity","dataType":"PS"},{"sensorName":"WM1","sensorData":"220","currentModule":"powersaving","dataType":"PS"},{"sensorName":"Lamp2","sensorData":"15","currentModule":"activity","dataType":"PS"},{"sensorName":"SCP1","sensorData":"6.7","currentModule":"powersaving","dataType":"PS"},{"sensorName":"CCTV1","sensorData":"15","currentModule":"activity","dataType":"PS"},{"sensorName":"Mixer1","sensorData":"3.75","currentModule":"ready","dataType":"PS"},{"sensorName":"AIS1","sensorData":"35","currentModule":"activity","dataType":"PS"},{"sensorName":"Oven1","sensorData":"180","currentModule":"powersaving","dataType":"PS"},{"sensorName":"SC1","sensorData":"37.19.26.434:127.07.44.167","currentModule":"activity","dataType":"GPS"},{"sensorName":"AC1","sensorData":"26.2","currentModule":"stanby","dataType":"Tem"}]}
+RuleSetURL:./smarthome.xml
+*****PreProcessing: Parsed Json Data about collected:2017.7.17 10:00*****
+SensorName:AC1, SensorData:498.75, CurrentModule:stanby, DataType:PS
+SensorName:TV1, SensorData:38.25, CurrentModule:ready, DataType:PS
+SensorName:Lamp1, SensorData:1, CurrentModule:powersaving, DataType:PS
+SensorName:RVC1, SensorData:25, CurrentModule:activity, DataType:PS
+SensorName:FP1, SensorData:22, CurrentModule:activity, DataType:PS
+SensorName:WM1, SensorData:220, CurrentModule:powersaving, DataType:PS
+SensorName:Lamp2, SensorData:15, CurrentModule:activity, DataType:PS
+SensorName:SCP1, SensorData:6.7, CurrentModule:powersaving, DataType:PS
+SensorName:CCTV1, SensorData:15, CurrentModule:activity, DataType:PS
+SensorName:Mixer1, SensorData:3.75, CurrentModule:ready, DataType:PS
+SensorName:AIS1, SensorData:35, CurrentModule:activity, DataType:PS
+SensorName:Oven1, SensorData:180, CurrentModule:powersaving, DataType:PS
+SensorName:SC1, SensorData:37.19.26.434:127.07.44.167, CurrentModule:activity, DataType:GPS
+SensorName:AC1, SensorData:26.2, CurrentModule:stanby, DataType:Tem
+*****Caculate Entire Smart Home PS and reasoning context need call analyzer*****
+Power consumtion:1060.45
+#####Reasoing rule about individual:SHEdata20177171000 and dataProperty:1060.45#####
+#####Rasoning result - Smart Home's entire Power consumtion state is:normal#####
+&&&&&Write monitoring process to global knowledge&&&&&
+monitoring date:2017.7.17 10:00
+wirte local collaborative ID:Global1/Local1
+Device sensor data:498.75,38.25,1,25,22,220,15,6.7,15,3.75,35,180
+Power consumtion state:normal
+Position Data:37.19.26.434:127.07.44.167
+Temperture Data:26.2
+Read current monitoring data
+collectDate:2017.7.17 10:00,mreult:normal,position:37.19.26.434:127.07.44.167,temperture:26.2
+---------------ExecutorManager: Execute Plan about This System Time:2017.7.17 10:00.---------------
+clientID:Global1/Local1
+gatewayID:Gateway1
+dmFolderName:modules
+pubTopic:IoTgateway/Global1/Local1/Gateway1
+**********execute scheduled plan***************
+****Effect Closer Message to IoT gateway
+*****Print current remain plan*****
+#####Delete individual to ruleSet:SHEdata20177171000#####
+-------------------------------------------------------------

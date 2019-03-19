@@ -1,0 +1,46 @@
+version: '2'
+
+
+services:
+  db:
+    image: datajoint/mysql
+    ports:
+      - "3306:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=simple
+    volumes:
+      - ./data:/var/lib/mysql
+  mqtt:
+    image: ansi/mosquitto
+    container_name: mosquitto
+    ports:
+      - 1883:1883
+    entrypoint: /usr/local/sbin/mosquitto -c /etc/mosquitto/mosquitto.conf
+    volumes:
+      - ./etc/mosquitto:/etc/mosquitto:ro
+      - ./var/log/mosquitto:/var/log/mosquitto:rw
+  smartHomeLocalAiTES:
+    image: openjdk
+    container_name: smartHomeLocalAiTES
+    working_dir: /SmartHomeLocalAiTES
+    depends_on:
+      - mqtt
+      - db
+    command: bash -c "java -jar SmartHomeLocalAiTES.jar"
+    volumes:
+      - ./SmartHomeLocalAiTES:/SmartHomeLocalAiTES
+    stdin_open: true
+    tty: true
+        
+  iotGateway:
+    image: openjdk
+    container_name: iotGateway
+    working_dir: /IoTgateway
+    depends_on:
+      - mqtt
+      - smartHomeLocalAiTES
+    volumes:
+      - ./IoTgateway:/IoTgateway
+    stdin_open: true
+    tty: true
+    
